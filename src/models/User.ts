@@ -7,6 +7,8 @@ import { compare, genSalt, hash } from 'bcrypt';
 
     const salt = await genSalt(10)
     const hashed = await hash(user.password, salt)
+    
+    user.password = hashed
 
     next();
 })
@@ -14,22 +16,23 @@ import { compare, genSalt, hash } from 'bcrypt';
 export class User {
     
     @prop({ required: true })
-    firstName?: string
+    firstName?: string;
 
     @prop({ required: true })
-    lastName?: string
+    lastName?: string;
 
     @prop({ required: true, trim: true, unique: true })
-    email!: string
+    email!: string;
 
     @prop({ required: true })
-    password!: string
+    password!: string;
 
     async validatePassword(this: DocumentType<User>, candidatePassword: string) {
         
         try {
             const user = await compare(this.password, candidatePassword)
             return user
+
         } catch (error) {
             console.error(error, "Could not validate password")
             return false
