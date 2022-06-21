@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userModel, User } from "../models/User";
-import { userByNameInterface } from "./interfaces/userInterface";
+import { userInterface } from "./interfaces/userInterface";
 
 export const deleteUser = async (req: Request, res: Response) => {
 
@@ -12,7 +12,7 @@ export const deleteUser = async (req: Request, res: Response) => {
             const deleteById = await userModel.findOneAndDelete({ _id: id })
 
             if (deleteById) {
-                const myDelete: userByNameInterface = {
+                const myDelete: userInterface = {
                     _id: deleteById._id,
                     firstName: deleteById.firstName,
                     lastName: deleteById.lastName,

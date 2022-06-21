@@ -8,7 +8,7 @@ export interface allUserInterface {
     password: string
 };
 
-export interface userByNameInterface {
+export interface userInterface {
     _id: string,
     firstName: string,
     lastName: string,

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { userId, userByNameInterface } from "./interfaces/userInterface";
+import { userId, userInterface } from "./interfaces/userInterface";
 
 export const getUserByName = async (req: Request, res: Response, next: NextFunction) => {
     const { userName } = req.query
@@ -10,7 +10,7 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
         const user: userId | null = await userModel.findOne({ userName: userName })
 
         if (user) {
-            const allNames: userByNameInterface = {
+            const allNames: userInterface = {
                 _id: user._id,
                 firstName: user.firstName,
                 lastName: user.lastName,
