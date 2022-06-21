@@ -16,10 +16,13 @@ import { compare, genSalt, hash } from 'bcrypt';
 export class User {
     
     @prop({ required: true })
-    firstName?: string;
+    firstName: string;
 
     @prop({ required: true })
-    lastName?: string;
+    lastName: string;
+
+    @prop({ required: true })
+    userName: string;
 
     @prop({ required: true, trim: true, unique: true })
     email!: string;
