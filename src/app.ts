@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction, response } from "express";
 import morgan from "morgan"
+import routes from "./routes/index";
 
 const app = express()
 
@@ -21,5 +22,6 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
 });
 
 app.set("port", process.env.PORT || 3002)
+app.use('/', routes)
 
 export default app;
