@@ -1,20 +1,24 @@
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { userByNameInterface } from "./interfaces/userInterface";
+import { userId, userByNameInterface } from "./interfaces/userInterface";
 
 export const getUserByName = async (req: Request, res: Response, next: NextFunction) => {
-    const { firstName, lastName } = req.query
+    const { userName } = req.query
 
-    if (firstName || lastName) {
+    if (userName) {
 
-        const user: userByNameInterface = {}
-        if (firstName) user.firstName = firstName
-        if (lastName) user.lastName = lastName
+        const user: userId | null = await userModel.findOne({ userName: userName })
 
-        const names = await userModel.findOne(user)
-
-        res.status(200).json(names)
-
+        if (user) {
+            const allNames: userByNameInterface = {
+                _id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                userName: user.userName,
+                email: user.email,
+                password: user.password
+            }
+            res.status(200).json(allNames)
+        };
     };
-
-}
+};
