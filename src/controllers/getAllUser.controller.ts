@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInter";
+import { allUserInterface } from "./interfaces/userInterface";
 
 export const getAllUser = async (req: Request, res: Response, next: NextFunction) => {
 
@@ -8,7 +8,7 @@ export const getAllUser = async (req: Request, res: Response, next: NextFunction
     const allUsers: Array<User> = await userModel.find()
 
     if (allUsers) {
-        const userMap: Array<userInterface> = allUsers.map((user: any) => {
+        const userMap: Array<allUserInterface> = allUsers.map((user: any) => {
             return ({
                 _id: user.id,
                 firstName: user.firstName,
