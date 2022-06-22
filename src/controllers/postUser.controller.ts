@@ -1,22 +1,31 @@
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
 
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
+import jwt from "jsonwebtoken";
 
-    const { firstName, lastName, userName, email, password } = req.body;
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { firstName, lastName, userName, email, password } = req.body;
 
-    try {
-        const user = await userModel.create({
-            firstName,
-            lastName,
-            userName,
-            email,
-            password
-        });
+  try {
+    const user = await userModel.create({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+    });
 
-        res.status(201).json(user)
-
-    } catch (error) {
-        console.error(error)       
-    };
+    //crea un token y lo manda al header
+    const token: string = jwt.sign(
+      { _id: user._id },
+      process.env.TOKEN_SECRET || "TOKENTEST"
+    );
+    res.header("authToken", token).status(201).json(user);
+  } catch (error) {
+    console.error(error);
+  }
 };
