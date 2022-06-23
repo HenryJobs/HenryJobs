@@ -17,6 +17,7 @@ export const getUserById = async (req: Request, res: Response) => {
                     firstName: userId.firstName,
                     lastName: userId.lastName,
                     userName: userId.userName,
+                    userTypes: userId.userTypes,
                     email: userId.email,
                     password: userId.password
                 }

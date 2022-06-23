@@ -1,5 +1,14 @@
-import { prop, getModelForClass, pre, DocumentType } from '@typegoose/typegoose';
+import { prop, getModelForClass, pre, DocumentType, modelOptions } from '@typegoose/typegoose';
 import { compare, genSalt, hash } from 'bcrypt';
+
+
+enum UserTypes{
+    PG,
+    Graduate,
+    business,
+    Recluiter,
+    Staff
+}
 
 @pre<User>("save", async function(next) {
     const user = this
@@ -13,7 +22,16 @@ import { compare, genSalt, hash } from 'bcrypt';
     next();
 })
 
-export class User {
+//userTypes {
+    // PG
+    //Graduate
+    //business
+    //recluiter
+    //staff
+//}
+
+    @modelOptions({ options: { allowMixed: 0 } })
+    export class User {
     
     @prop({ required: true })
     firstName: string;
@@ -30,6 +48,44 @@ export class User {
     @prop({ required: true })
     password!: string;
 
+    @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
+    userTypes: UserTypes;
+
+    @prop({})
+    technologies: string[]
+
+    @prop({lowercase: true})
+    picture: string
+
+    @prop({})
+    country: string
+
+    @prop({})
+    backFront: string
+
+    @prop({})
+    language: string[]
+
+    @prop({})
+    otherstudies?: string[]
+    
+    @prop({})
+    contadorCurriculum: number
+
+    @prop({})
+    counterIngreso: number
+
+    //business
+
+    // @prop({})
+    // name: string
+
+    // @prop({lowercase: true})
+    // img: string
+
+    // @prop({})
+    // jobZummary: string
+    
     async validatePassword(this: DocumentType<User>, candidatePassword: string) {
         
         try {

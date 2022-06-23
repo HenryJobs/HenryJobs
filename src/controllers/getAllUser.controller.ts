@@ -4,7 +4,7 @@ import { allUserInterface } from "./interfaces/userInterface";
 
 export const getAllUser = async (req: Request, res: Response, next: NextFunction) => {
 
-  try {
+    try {
     const allUsers: Array<User> = await userModel.find()
 
     if (allUsers) {
@@ -13,6 +13,8 @@ export const getAllUser = async (req: Request, res: Response, next: NextFunction
                 _id: user.id,
                 firstName: user.firstName,
                 lastName: user.lastName,
+                userName: user.userName,
+                UserTypes: user.UserTypes,
                 email: user.email,
                 password: user.password
             });
@@ -24,7 +26,7 @@ export const getAllUser = async (req: Request, res: Response, next: NextFunction
         res.status(404).json("There is nothing here");
     } 
 
-  } catch (error) {
-      console.error(error)
+    } catch (error) {
+    console.error(error)
     };
 };
