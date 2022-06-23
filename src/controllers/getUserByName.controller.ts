@@ -16,6 +16,7 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 lastName: user.lastName,
                 userName: user.userName,
                 userTypes: user.userTypes,
+                image: user.image,
                 email: user.email,
                 password: user.password
             }

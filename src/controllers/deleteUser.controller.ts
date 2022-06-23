@@ -17,6 +17,7 @@ export const deleteUser = async (req: Request, res: Response) => {
                     firstName: deleteById.firstName,
                     lastName: deleteById.lastName,
                     userTypes: deleteById.userTypes,
+                    image: deleteById.image,
                     userName: deleteById.userName,
                     email: deleteById.email,
                     password: deleteById.password

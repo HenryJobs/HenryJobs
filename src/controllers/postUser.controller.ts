@@ -4,13 +4,14 @@ import { sendMail } from './config/emailer'
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
-    const { firstName, lastName, userName, email, password } = req.body;
+    const { firstName, lastName, userName, email, password, image } = req.body;
 
     try {
         const user = await userModel.create({ 
             firstName,
             lastName,
             userName,
+            image,
             email,
             password,
         });

@@ -48,6 +48,9 @@ enum UserTypes{
     @prop({ required: true })
     password!: string;
 
+    @prop({})
+    image: string;
+
     @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
     userTypes: UserTypes;
 

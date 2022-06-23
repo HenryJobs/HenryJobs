@@ -1,6 +1,5 @@
 ////pcmjcdzyfrgflexq
 import nodemailer from 'nodemailer'
-import { Transporter } from 'nodemailer'
 
 export const createTrans = async () => {
     const transport = nodemailer.createTransport({

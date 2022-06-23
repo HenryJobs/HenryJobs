@@ -5,6 +5,7 @@ export interface allUserInterface {
     firstName: string,
     lastName: string,
     UserTypes: string,
+    image: string,
     email: string,
     password: string
 };
@@ -15,6 +16,7 @@ export interface userInterface {
     lastName: string,
     userName: string,
     userTypes: number,
+    image: string,
     email: string,
     password: string
 }
