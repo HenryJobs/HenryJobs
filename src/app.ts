@@ -21,11 +21,11 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
     );
     next();
 });
+
 app.use(fileUpload({
     useTempFiles: true,
-    tempFileDir: "./upload"
+    tempFileDir: "./uploads"
 }));
-
 app.set("port", process.env.PORT || 3002)
 app.use('/', routes)
 

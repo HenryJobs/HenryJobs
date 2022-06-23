@@ -1,4 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
+import { UploadApiResponse } from "cloudinary";
+
 const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
 
 cloudinary.config({
@@ -8,6 +10,6 @@ cloudinary.config({
     secure: true,
 });
 
-export async function uploadImage(filePath: string) {
-    cloudinary.uploader.upload(filePath)
+export async function uploadImage(filePath: string): Promise<UploadApiResponse> {
+   return await cloudinary.uploader.upload(filePath)
 };
