@@ -1,3 +1,4 @@
+import { unlink } from 'fs-extra';
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
 import { uploadImage } from "../cloudinary";
@@ -39,15 +40,20 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
                 public_id: result.public_id,
                 secure_url: result.secure_url
             };
-        };
 
+            await unlink(tempFilePath);
+        };
+        
         if (banner.tempFilePath) {
             const result = await uploadImage(banner.tempFilePath)
             user.banner = {
                 public_id: result.public_id,
                 secure_url: result.secure_url
             };
+
+            await unlink(banner.tempFilePath)
         };
+
 
         await user.save();
         res.status(201).json(user)
