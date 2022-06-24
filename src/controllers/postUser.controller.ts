@@ -6,8 +6,6 @@ import { UploadedFile } from "express-fileupload";
 
 import jwt from "jsonwebtoken";
 
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
-
     const { firstName,
         lastName,
         userName,
