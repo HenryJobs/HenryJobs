@@ -30,6 +30,12 @@ export class User {
     @prop({ required: true })
     password!: string;
 
+    @prop()
+    profileImage: object;
+
+    @prop()
+    banner: object;
+
     async validatePassword(this: DocumentType<User>, candidatePassword: string) {
         
         try {

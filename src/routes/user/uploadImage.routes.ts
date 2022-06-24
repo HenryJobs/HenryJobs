@@ -1,8 +1,9 @@
-import { Router } from "express";
-import { uploadImageController } from "../../controllers/uploadImage.controller";
+// import { Router } from "express";
+// import { uploadImageController } from "../../controllers/uploadImage.controller";
 
-const router = Router()
 
-router.post('/', uploadImageController)
+// const router = Router()
 
-export default router;
+// router.post('/', uploadImageController)
+
+// export default router;
