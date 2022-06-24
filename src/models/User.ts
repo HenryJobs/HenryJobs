@@ -33,11 +33,17 @@ export class User {
   @prop({ required: true })
   password!: string;
 
-  async validatePassword(this: DocumentType<User>, candidatePassword: string) {
-    try {
-      const user = await compare(candidatePassword, this.password);
+  @prop()
+  profileImage: { public_id: string, secure_url: string };
 
-      return user;
+  @prop()
+  banner: { public_id: string, secure_url: string };
+
+    async validatePassword(this: DocumentType<User>, candidatePassword: string) {
+        
+        try {
+            const user = await compare(this.password, candidatePassword)
+            return user
     } catch (error) {
       console.error(error, "Could not validate password");
       return false;

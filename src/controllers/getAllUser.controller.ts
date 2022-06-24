@@ -14,7 +14,8 @@ export const getAllUser = async (req: Request, res: Response, next: NextFunction
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                password: user.password
+                password: user.password,
+                profileImage: user.profileImage
             });
         });
 
