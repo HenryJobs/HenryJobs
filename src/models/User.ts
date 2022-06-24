@@ -31,10 +31,10 @@ export class User {
     password!: string;
 
     @prop()
-    profileImage: object;
+    profileImage: { public_id: string, secure_url: string };
 
     @prop()
-    banner: object;
+    banner: { public_id: string, secure_url: string };
 
     async validatePassword(this: DocumentType<User>, candidatePassword: string) {
         
