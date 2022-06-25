@@ -59,14 +59,14 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
             await unlink(banner.tempFilePath)
         };
-        
+
         await user.save();
 
         // crea un token y lo manda al header
         const token: string = jwt.sign(
             { _id: user._id },
             TOKEN_SECRET || "TOKENTEST",
-            { expiresIn: 60*60*24 }
+            { expiresIn: 60 * 60 * 24 }
         );
         console.log(token)
         res.header("authToken", token).status(201).json(user)
