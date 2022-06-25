@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction, response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import morgan from "morgan";
 import routes from "./routes/index";
 import fileUpload from "express-fileupload";
@@ -26,6 +26,7 @@ app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: "./uploads"
 }));
+
 app.set("port", process.env.PORT || 3002)
 app.use('/', routes)
 
