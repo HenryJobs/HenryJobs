@@ -3,7 +3,7 @@ import { userModel, User } from "../models/User";
 
 import jwt from "jsonwebtoken";
 
-// const { TOKEN_SECRET } = process.env
+const { TOKEN_SECRET } = process.env
 
 export const signin = async (req: Request, res: Response) => {
 
@@ -27,7 +27,7 @@ export const signin = async (req: Request, res: Response) => {
     //Si ambos son correctos se genera un token que expira en 24hrs
     const token: string = jwt.sign(
         { id: user._id },
-        process.env.TOKEN_SECRET || "TOKENTEST",
+        TOKEN_SECRET || "TOKENTEST",
         { expiresIn: 60 * 60 * 24 }
     );
 
