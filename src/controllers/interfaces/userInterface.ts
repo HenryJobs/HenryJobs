@@ -14,9 +14,19 @@ export interface userInterface {
     firstName: string,
     lastName: string,
     userName: string,
-    userTypes: number,
     email: string,
-    password: string
+    password: string,
+    profileImage: object,
+    userTypes: number,
+    technologies: string[],
+    country: string,
+    backFront: string,
+    languages: string,
+    otherstudies: string[],
+    CurriculumCounter: number,
+    counterIngreso: number,
+    banner: object
+
 }
 
 export interface businessIterface {

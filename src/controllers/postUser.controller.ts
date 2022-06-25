@@ -6,7 +6,22 @@ import { UploadedFile } from "express-fileupload";
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
-    const { firstName, lastName, userName, email, password, profileImage } = req.body;
+    const { 
+        firstName,
+        lastName, 
+        userName, 
+        email, 
+        password, 
+        profileImage, 
+        userTypes,
+        technologies,
+        country,
+        backFront,
+        languages,
+        otherstudies,
+        CurriculumCounter,
+        counterIngreso,
+        } = req.body;
 
     const { tempFilePath } = req.files?.profileImage as UploadedFile;
     const banner = req.files?.banner as UploadedFile;
@@ -28,6 +43,16 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             userName,
             email,
             password,
+            profileImage,
+            userTypes,
+            technologies,
+            country,
+            backFront,
+            languages,
+            otherstudies,
+            CurriculumCounter,
+            counterIngreso,
+            banner
         });
 
         if (req.files?.profileImage) {

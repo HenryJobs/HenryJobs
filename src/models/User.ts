@@ -37,12 +37,12 @@ enum UserTypes{
 
     @prop({ required: true, trim: true, unique: true })
     email!: string;
-
+    
     @prop({ required: true })
     password!: string;
-
-    @prop({})
-    image: string;
+    
+    @prop()
+    profileImage: object;
 
     @prop({ enum: UserTypes, addNullToEnum: false, default: 1 })
     userTypes: UserTypes;
@@ -60,10 +60,10 @@ enum UserTypes{
     backFront: string
 
     @prop({})
-    languages: string[]
+    languages: string
 
     @prop({})
-    otherstudies?: string[]
+    otherstudies: string[]
     
     @prop({})
     CurriculumCounter: number
@@ -71,8 +71,6 @@ enum UserTypes{
     @prop({})
     counterIngreso: number
 
-    @prop()
-    profileImage: object;
 
     @prop()
     banner: object;

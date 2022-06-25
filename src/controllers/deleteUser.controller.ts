@@ -16,10 +16,20 @@ export const deleteUser = async (req: Request, res: Response) => {
                     _id: deleteById._id,
                     firstName: deleteById.firstName,
                     lastName: deleteById.lastName,
-                    userTypes: deleteById.userTypes,
                     userName: deleteById.userName,
                     email: deleteById.email,
-                    password: deleteById.password
+                    password: deleteById.password,
+                    profileImage: deleteById.profileImage,
+                    userTypes: deleteById.userTypes,
+                    technologies: deleteById.technologies,
+                    country: deleteById.country,
+                    backFront: deleteById.backFront,
+                    languages: deleteById.languages,
+                    otherstudies: deleteById.otherstudies,
+                    CurriculumCounter: deleteById.CurriculumCounter,
+                    counterIngreso: deleteById.counterIngreso,
+                    banner: deleteById.banner
+
                 };
 
                 return res.status(200).json(myDelete)

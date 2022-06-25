@@ -16,9 +16,18 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 firstName: userEmail.firstName,
                 lastName: userEmail.lastName,
                 userName: userEmail.userName,
-                userTypes: userEmail.userTypes,
                 email: userEmail.email,
-                password: userEmail.password
+                password: userEmail.password,
+                profileImage: userEmail.profileImage,
+                userTypes: userEmail.userTypes,
+                technologies: userEmail.technologies,
+                country: userEmail.country,
+                backFront: userEmail.backFront,
+                languages: userEmail.languages,
+                otherstudies: userEmail.otherstudies,
+                CurriculumCounter: userEmail.CurriculumCounter,
+                counterIngreso: userEmail.counterIngreso,
+                banner: userEmail.banner
             }
             res.status(200).json(allEmail)
         }
