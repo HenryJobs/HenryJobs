@@ -1,30 +1,30 @@
 import { Request, Response, NextFunction } from "express";
+import { payloadInterface } from "../controllers/interfaces/userInterface";
+
 import jwt from "jsonwebtoken";
 
-interface iPayload {
-  _id: string;
-  iat: number;
-  exp: number;
-}
+const { TOKEN_SECRET } = process.env;
 
-export const TokenValidation = (
-  req: Request,
-  res: Response,
-  next: NextFunction
+export const tokenValidation = (
+    req: Request,
+    res: Response,
+    next: NextFunction
 ) => {
-  const token = req.header("authToken");
+    const token = req.header("authToken");
 
-  if (!token)
-    return res
-      .status(401)
-      .send("unauthorized access is denied due to invalid credentials");
+    if (!token) {
+        return res
+            .status(401)
+            .send("Unauthorized access is denied due to invalid credentials");
+    }
 
-  const payload = jwt.verify(
-    token,
-    process.env.TOKEN_SECRET || "TOKENTRES"
-  ) as iPayload;
-  //para guardar el id del usuario en el req
-  req.userId = payload._id;
+    const payload = jwt.verify(
+        token,
+        TOKEN_SECRET || "TOKENTRES"
+    ) as payloadInterface;
 
-  next();
+    //para guardar el id del usuario en el req
+    req.userId = payload._id;
+
+    next();
 };

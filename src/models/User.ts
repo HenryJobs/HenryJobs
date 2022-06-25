@@ -39,16 +39,18 @@ export class User {
   @prop()
   banner: { public_id: string, secure_url: string };
 
-    async validatePassword(this: DocumentType<User>, candidatePassword: string) {
-        
-        try {
-            const user = await compare(this.password, candidatePassword)
-            return user
+  public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
+
+    try {
+      const user = await compare(this.password, candidatePassword)
+      console.log("esto es user --> ", user)
+      return user;
+
     } catch (error) {
-      console.error(error, "Could not validate password");
-      return false;
-    }
-  }
-}
+        console.error(error, "Could not validate password");
+        return false;
+    };
+  };
+};
 
 export const userModel = getModelForClass(User);
