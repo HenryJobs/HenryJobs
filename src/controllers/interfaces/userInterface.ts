@@ -51,7 +51,6 @@ export interface allBusinessInterface {
     jobSummary: string,
     image: string,
     country: string
-    password: string
     profileImage: object,
     banner: object
 
