@@ -22,3 +22,9 @@ export interface userInterface {
 export interface userId extends User {
     _id: string
 };
+
+export interface payloadInterface {
+    _id: string;
+    iat: number;
+    exp: number;
+};
