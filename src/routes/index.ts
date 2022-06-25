@@ -9,15 +9,20 @@ import createRoute from "./user/postUser.routes";
 import deleteRoute from "./user/delete.routes";
 import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
-import getUserByMail from './user/getEmailUser.routes'
 
-router.use('/user', userRoute);
+import getUserByMail from './user/getEmailUser.routes'
+import signinUser from "./user/signinUser.routes";
+
+import { tokenValidation } from "../libs/validateToken";
+
+router.use("/user", tokenValidation, userRoute);
 router.use('/name', nameRoute);
 router.use('/mail', getUserByMail)
 router.use('/user', createRoute);
 router.use('/user', deleteRoute);
 router.use('/user', putRoute);
 router.use('/user', getUserById);
+router.use("/signin", tokenValidation, signinUser);
 
 //post
 

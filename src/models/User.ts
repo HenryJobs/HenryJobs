@@ -1,7 +1,6 @@
 import { prop, getModelForClass, pre, DocumentType, modelOptions } from '@typegoose/typegoose';
 import { compare, genSalt, hash } from 'bcrypt';
 
-
 enum UserTypes{
     PG, // 1
     Graduate, //2 
@@ -14,44 +13,43 @@ enum UserTypes{
     const user = this
     if (!user.isModified("password")) return next()
 
-    const salt = await genSalt(10)
-    const hashed = await hash(user.password, salt)
-    
-    user.password = hashed
+  const salt = await genSalt(10);
+  const hashed = await hash(user.password, salt);
 
-    next();
+  user.password = hashed;
+  next();
 })
 
-
-    @modelOptions({ options: { allowMixed: 0 } })
-    export class User {
+@modelOptions({ options: { allowMixed: 0 } })
+export class User {
     
-    @prop({ required: true })
-    firstName: string;
+@prop({ required: true })
+firstName: string;
 
-    @prop({ required: true })
-    lastName: string;
+export class User {
+  @prop({ required: true })
+  firstName: string;
 
-    @prop({ required: true })
-    userName: string;
+  @prop({ required: true })
+  lastName: string;
 
-    @prop({ required: true, trim: true, unique: true })
-    email!: string;
-    
-    @prop({ required: true })
-    password!: string;
-    
-    @prop()
-    profileImage: object;
+  @prop({ required: true })
+  userName: string;
+
+  @prop({ required: true, trim: true, unique: true })
+  email!: string;
+
+  @prop({ required: true })
+  password!: string;
+
+  @prop()
+  profileImage: { public_id: string, secure_url: string };
 
     @prop({ enum: UserTypes, addNullToEnum: false, default: 1 })
     userTypes: UserTypes;
 
     @prop({})
     technologies: string[]
-
-    @prop({lowercase: true})
-    picture: string
 
     @prop({})
     country: string
@@ -88,17 +86,18 @@ enum UserTypes{
     // @prop({})
     // description: string;
     
-    async validatePassword(this: DocumentType<User>, candidatePassword: string) {
-        
-        try {
-            const user = await compare(this.password, candidatePassword)
-            return user
+  public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
 
-        } catch (error) {
-            console.error(error, "Could not validate password")
-            return false
-        }
+    try {
+      const user = await compare(this.password, candidatePassword)
+      console.log("esto es user --> ", user)
+      return user;
+
+    } catch (error) {
+        console.error(error, "Could not validate password");
+        return false;
     };
+  };
 };
 
-export const userModel = getModelForClass(User)
+export const userModel = getModelForClass(User);

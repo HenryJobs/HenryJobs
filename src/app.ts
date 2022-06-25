@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import morgan from "morgan"
+import morgan from "morgan";
 import routes from "./routes/index";
 import fileUpload from "express-fileupload";
 

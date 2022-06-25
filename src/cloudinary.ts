@@ -13,3 +13,8 @@ cloudinary.config({
 export async function uploadImage(filePath: string): Promise<UploadApiResponse> {
     return await cloudinary.uploader.upload(filePath, { folder: "HenryJobs" })
 };
+
+export async function deleteImage(publicId: string): Promise<any> {
+    return await cloudinary.uploader.destroy(publicId)
+}
+

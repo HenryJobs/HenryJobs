@@ -51,8 +51,18 @@ export interface allBusinessInterface {
     jobSummary: string,
     image: string,
     country: string
+    password: string
+    profileImage: object,
+    banner: object
+
 }
 
 export interface userId extends User {
     _id: string
+};
+
+export interface payloadInterface {
+    _id: string;
+    iat: number;
+    exp: number;
 };

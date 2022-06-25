@@ -13,7 +13,7 @@ export const getUserById = async (req: Request, res: Response) => {
             let userId = await userModel.findOne({ _id: id })
             if(userId){
                 const allId: userInterface = {
-                    _id: userId._id,
+                _id: userId._id,
                 firstName: userId.firstName,
                 lastName: userId.lastName,
                 userName: userId.userName,
