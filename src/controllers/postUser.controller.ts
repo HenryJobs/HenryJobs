@@ -1,6 +1,7 @@
 import { unlink } from 'fs-extra';
 import { Request, Response, NextFunction } from "express";
-import { userModel } from "../models/User";
+import { userModel, User } from "../models/User";
+import { sendMail } from './config/emailer';
 import { uploadImage } from "../cloudinary";
 import { UploadedFile } from "express-fileupload";
 
@@ -10,15 +11,25 @@ const { TOKEN_SECRET } = process.env;
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
-    const { firstName,
-        lastName,
-        userName,
-        email,
-        password } = req.body;
+    const { 
+        firstName,
+        lastName, 
+        userName, 
+        email, 
+        password, 
+        profileImage, 
+        userTypes,
+        technologies,
+        country,
+        backFront,
+        languages,
+        otherstudies,
+        CurriculumCounter,
+        counterIngreso,
+        } = req.body;
 
     const { tempFilePath } = req.files?.profileImage as UploadedFile;
     const banner = req.files?.banner as UploadedFile;
-
 
     try {
 
@@ -37,8 +48,17 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             userName,
             email,
             password,
+            profileImage,
+            userTypes,
+            technologies,
+            country,
+            backFront,
+            languages,
+            otherstudies,
+            CurriculumCounter,
+            counterIngreso,
+            banner
         });
-
 
         if (tempFilePath) {
             const result = await uploadImage(tempFilePath)

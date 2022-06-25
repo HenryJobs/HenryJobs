@@ -21,6 +21,14 @@ export const deleteUser = async (req: Request, res: Response) => {
                     email: deleteById.email,
                     password: deleteById.password,
                     profileImage: deleteById.profileImage,
+                    userTypes: deleteById.userTypes,
+                    technologies: deleteById.technologies,
+                    country: deleteById.country,
+                    backFront: deleteById.backFront,
+                    languages: deleteById.languages,
+                    otherstudies: deleteById.otherstudies,
+                    CurriculumCounter: deleteById.CurriculumCounter,
+                    counterIngreso: deleteById.counterIngreso,
                     banner: deleteById.banner
                 };
 

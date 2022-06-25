@@ -4,7 +4,7 @@ import { userModel, User } from "../models/User";
 export const updateUser = async (req: Request, res: Response) => {
 
     const { id } = req.params;
-    const { firstName, lastName, userName, email, password } = req.body;
+    const { firstName, lastName, userName, email, password, image } = req.body;
 
     try {
         const updated: any = await userModel.findByIdAndUpdate({ _id: id }, {
