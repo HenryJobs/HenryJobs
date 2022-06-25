@@ -15,8 +15,16 @@ export interface userInterface {
     userName: string,
     email: string,
     password: string
+    profileImage: object,
+    banner: object
 }
 
 export interface userId extends User {
     _id: string
+};
+
+export interface payloadInterface {
+    _id: string;
+    iat: number;
+    exp: number;
 };
