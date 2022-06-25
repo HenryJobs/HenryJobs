@@ -21,10 +21,6 @@ enum UserTypes{
 })
 
 @modelOptions({ options: { allowMixed: 0 } })
-export class User {
-    
-@prop({ required: true })
-firstName: string;
 
 export class User {
   @prop({ required: true })
