@@ -17,7 +17,6 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 lastName: userEmail.lastName,
                 userName: userEmail.userName,
                 userTypes: userEmail.userTypes,
-                image: userEmail.image,
                 email: userEmail.email,
                 password: userEmail.password
             }

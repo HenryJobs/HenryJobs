@@ -3,11 +3,15 @@ import { Post, postModel } from "../../models/Post";
 
 export const createPost = async (req: Request, res: Response) => {
 
-    const {  poster: {_id}, text } = req.body
+
+
+    const {  posterUser: _id, text } = req.body
 
     try {
+
         const post = await postModel.create({
-            poster: {_id},
+            posterUser: _id,
+            // postBusiness: _id,
             text
         });
 

@@ -18,7 +18,6 @@ export const getUserById = async (req: Request, res: Response) => {
                     lastName: userId.lastName,
                     userName: userId.userName,
                     userTypes: userId.userTypes,
-                    image: userId.image,
                     email: userId.email,
                     password: userId.password
                 }

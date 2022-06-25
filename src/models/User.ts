@@ -3,11 +3,11 @@ import { compare, genSalt, hash } from 'bcrypt';
 
 
 enum UserTypes{
-    PG,
-    Graduate,
-    business,
-    Recluiter,
-    Staff
+    PG, // 1
+    Graduate, //2 
+    Recruiter, //3
+    Staff, //4
+    Business //5
 }
 
 @pre<User>("save", async function(next) {
@@ -22,13 +22,6 @@ enum UserTypes{
     next();
 })
 
-//userTypes {
-    // PG
-    //Graduate
-    //business
-    //recluiter
-    //staff
-//}
 
     @modelOptions({ options: { allowMixed: 0 } })
     export class User {
@@ -51,7 +44,7 @@ enum UserTypes{
     @prop({})
     image: string;
 
-    @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
+    @prop({ enum: UserTypes, addNullToEnum: false, default: 1 })
     userTypes: UserTypes;
 
     @prop({})
@@ -67,27 +60,35 @@ enum UserTypes{
     backFront: string
 
     @prop({})
-    language: string[]
+    languages: string[]
 
     @prop({})
     otherstudies?: string[]
     
     @prop({})
-    contadorCurriculum: number
+    CurriculumCounter: number
 
     @prop({})
     counterIngreso: number
 
+    @prop()
+    profileImage: object;
+
+    @prop()
+    banner: object;
+
+    // @prop()
+    // follow: string[]
+
     //business
+    // @prop({})
+    // name: string;
 
     // @prop({})
-    // name: string
-
-    // @prop({lowercase: true})
-    // img: string
+    // jobSummary: string
 
     // @prop({})
-    // jobZummary: string
+    // description: string;
     
     async validatePassword(this: DocumentType<User>, candidatePassword: string) {
         

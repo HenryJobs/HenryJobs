@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
 import { allUserInterface } from "./interfaces/userInterface";
 
-export const getAllUser = async (req: Request, res: Response, next: NextFunction) => {
+export const getAllUser = async (_: Request, res: Response, next: NextFunction) => {
 
     try {
     const allUsers: Array<User> = await userModel.find()
@@ -15,9 +15,8 @@ export const getAllUser = async (req: Request, res: Response, next: NextFunction
                 lastName: user.lastName,
                 userName: user.userName,
                 UserTypes: user.UserTypes,
-                image: user.image,
                 email: user.email,
-                password: user.password
+                password: user.password,
             });
         });
 

@@ -5,7 +5,6 @@ export interface allUserInterface {
     firstName: string,
     lastName: string,
     UserTypes: string,
-    image: string,
     email: string,
     password: string
 };
@@ -16,9 +15,32 @@ export interface userInterface {
     lastName: string,
     userName: string,
     userTypes: number,
-    image: string,
     email: string,
     password: string
+}
+
+export interface businessIterface {
+
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    description: string,
+    jobSummary: string,
+    image: string,
+    country: string,
+
+}
+
+export interface allBusinessInterface {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    description: string,
+    jobSummary: string,
+    image: string,
+    country: string
 }
 
 export interface userId extends User {

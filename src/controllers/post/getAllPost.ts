@@ -6,7 +6,9 @@ export const getAllPost = async (_req: Request, res: Response) => {
 
         let posters: Post[]
 
-        posters = await postModel.find().populate("poster")
+        posters = await postModel.find().populate("posterUser")
+        
+
         
         if(posters){
             res.status(200).json(posters)
