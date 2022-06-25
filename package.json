@@ -4,7 +4,7 @@
   "description": "This is the official repository of Henry Job's platform",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/index.js",
+    "start": "node dist/index.js",
     "buld": "tsc",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\" "
   },
