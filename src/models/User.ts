@@ -29,7 +29,7 @@ export class User {
   @prop({ required: true })
   lastName: string;
 
-  @prop({ required: true })
+  @prop({ })
   userName: string;
 
   @prop({ required: true, trim: true, unique: true })
@@ -67,6 +67,13 @@ export class User {
 
   @prop()
   banner: object;
+
+  @prop()
+  followers: string[]
+
+  @prop()
+  follows: string[]
+
   // @prop()
   // follow: string[]
   //business

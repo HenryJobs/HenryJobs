@@ -7,8 +7,6 @@ export const createFollow = async (req: Request, res: Response) => {
 
     try {
 
-
-
         const follow = await followModel.create({
             followUser: _id,
             followers: _id,

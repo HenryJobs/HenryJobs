@@ -14,6 +14,9 @@ export class Follow {
 
     @prop({})
     followers: string[]
+
+    @prop({})
+    seguidos: string[]
     
 
 }
