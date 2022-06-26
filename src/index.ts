@@ -18,7 +18,8 @@
 // _____________|','   ///_/-------------/   |
 //               |===========,'
 
-import "dotenv/config";
+// import "dotenv/config";
+require("dotenv-extended").load();
 import app from "./app";
 require("./db");
 
