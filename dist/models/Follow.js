@@ -24,6 +24,10 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], Follow.prototype, "followers", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Array)
+], Follow.prototype, "seguidos", void 0);
 Follow = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Follow);

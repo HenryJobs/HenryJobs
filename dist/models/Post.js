@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postModel = exports.Post = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const User_1 = require("./User");
-const Bussiness_1 = require("./Bussiness");
 // @modelOptions({ options: { allowMixed: } })
 class Post {
 }
@@ -20,10 +19,6 @@ __decorate([
     (0, typegoose_1.prop)({ ref: () => User_1.User }),
     __metadata("design:type", Object)
 ], Post.prototype, "posterUser", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ ref: () => Bussiness_1.Business }),
-    __metadata("design:type", Object)
-], Post.prototype, "posterBusiness", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)

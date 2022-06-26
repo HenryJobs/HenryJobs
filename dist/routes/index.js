@@ -13,7 +13,7 @@ const delete_routes_1 = __importDefault(require("./user/delete.routes"));
 const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
-const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
+// import signinUser from "./user/signinUser.routes";
 // import { tokenValidation } from "../libs/validateToken";
 router.use("/user", getAllUser_routes_1.default);
 router.use('/name', getUserByName_routes_1.default);
@@ -22,7 +22,7 @@ router.use('/user', postUser_routes_1.default);
 router.use('/user', delete_routes_1.default);
 router.use('/user', putUser_routes_1.default);
 router.use('/user', getUserById_routes_1.default);
-router.use("/signin", signinUser_routes_1.default);
+// router.use("/signin", signinUser);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));

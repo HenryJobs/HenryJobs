@@ -64,7 +64,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "lastName", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ required: true }),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], User.prototype, "userName", void 0);
 __decorate([
@@ -115,6 +115,14 @@ __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", Object)
 ], User.prototype, "banner", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Array)
+], User.prototype, "followers", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Array)
+], User.prototype, "follows", void 0);
 User = __decorate([
     (0, typegoose_1.pre)("save", function (next) {
         return __awaiter(this, void 0, void 0, function* () {

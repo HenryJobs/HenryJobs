@@ -4,8 +4,8 @@
   "description": "This is the official repository of Henry Job's platform",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "buld": "tsc",
+    "start": "node ./dist/index.js",
+    "build": "npm install && tsc",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\" "
   },
   "repository": {
@@ -16,7 +16,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@typegoose/typegoose": "^9.9.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.30.0",
     "cors": "^2.8.5",
@@ -32,6 +31,7 @@
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
+    "@typegoose/typegoose": "^9.9.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",

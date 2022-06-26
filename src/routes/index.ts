@@ -11,7 +11,7 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 
 import getUserByMail from './user/getEmailUser.routes'
-import signinUser from "./user/signinUser.routes";
+// import signinUser from "./user/signinUser.routes";
 
 // import { tokenValidation } from "../libs/validateToken";
 
@@ -22,7 +22,7 @@ router.use('/user', createRoute);
 router.use('/user', deleteRoute);
 router.use('/user', putRoute);
 router.use('/user', getUserById);
-router.use("/signin", signinUser);
+// router.use("/signin", signinUser);
 
 //post
 
