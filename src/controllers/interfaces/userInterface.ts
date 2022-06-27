@@ -19,7 +19,7 @@ export interface userInterface {
     profileImage: object,
     userTypes: number,
     technologies: string[],
-    country: string,
+    country: object,
     backFront: string,
     languages: string,
     otherstudies: string[],
@@ -38,7 +38,7 @@ export interface businessIterface {
     description: string,
     jobSummary: string,
     image: string,
-    country: string,
+    country: object,
 
 }
 

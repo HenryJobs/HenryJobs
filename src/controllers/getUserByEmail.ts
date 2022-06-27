@@ -24,8 +24,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 country: userEmail.country,
                 backFront: userEmail.backFront,
                 languages: userEmail.languages,
-                otherstudies: userEmail.otherstudies,
-                CurriculumCounter: userEmail.CurriculumCounter,
+                otherstudies: userEmail.otherStudies,
+                CurriculumCounter: userEmail.curriculumCounter,
                 counterIngreso: userEmail.counterIngreso,
                 banner: userEmail.banner
             }
