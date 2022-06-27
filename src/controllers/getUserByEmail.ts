@@ -27,7 +27,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 otherstudies: userEmail.otherStudies,
                 CurriculumCounter: userEmail.curriculumCounter,
                 counterIngreso: userEmail.counterIngreso,
-                banner: userEmail.banner
+                banner: userEmail.banner,
+                premium: userEmail.premium
             }
             res.status(200).json(allEmail)
         }

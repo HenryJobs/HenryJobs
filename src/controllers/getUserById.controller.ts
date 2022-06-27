@@ -25,10 +25,11 @@ export const getUserById = async (req: Request, res: Response) => {
                 country: userId.country,
                 backFront: userId.backFront,
                 languages: userId.languages,
-                otherstudies: userId.otherstudies,
-                CurriculumCounter: userId.CurriculumCounter,
+                otherstudies: userId.otherStudies,
+                CurriculumCounter: userId.curriculumCounter,
                 counterIngreso: userId.counterIngreso,
-                banner: userId.banner
+                banner: userId.banner,
+                premium: userId.premium
                 }
                 return res.status(200).json(allId)
             };

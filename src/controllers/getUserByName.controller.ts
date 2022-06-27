@@ -23,10 +23,11 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 country: user.country,
                 backFront: user.backFront,
                 languages: user.languages,
-                otherstudies: user.otherstudies,
-                CurriculumCounter: user.CurriculumCounter,
+                otherstudies: user.otherStudies,
+                CurriculumCounter: user.curriculumCounter,
                 counterIngreso: user.counterIngreso,
-                banner: user.banner
+                banner: user.banner,
+                premium: user.premium
 
             }
             res.status(200).json(allNames)

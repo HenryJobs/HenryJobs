@@ -29,7 +29,7 @@ export interface userInterface {
     banner: object
     premium: boolean
 
-}
+};
 
 export interface businessIterface {
     _id: string,
@@ -55,7 +55,7 @@ export interface allBusinessInterface {
     profileImage: object,
     banner: object
     premium: boolean
-}
+};
 
 export interface userId extends User {
     _id: string

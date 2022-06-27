@@ -26,6 +26,7 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
         otherstudies,
         CurriculumCounter,
         counterIngreso,
+        premium
         } = req.body;
 
     const { tempFilePath } = req.files?.profileImage as UploadedFile;
@@ -57,7 +58,8 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             otherstudies,
             CurriculumCounter,
             counterIngreso,
-            banner
+            banner,
+            premium
         });
 
         if (tempFilePath) {
