@@ -7,6 +7,7 @@ export interface allUserInterface {
     UserTypes: string,
     email: string,
     password: string
+    premium: boolean
 };
 
 export interface userInterface {
@@ -26,11 +27,11 @@ export interface userInterface {
     CurriculumCounter: number,
     counterIngreso: number,
     banner: object
+    premium: boolean
 
 }
 
 export interface businessIterface {
-
     _id: string,
     name: string,
     email: string,
@@ -39,7 +40,7 @@ export interface businessIterface {
     jobSummary: string,
     image: string,
     country: object,
-
+    premium: boolean
 }
 
 export interface allBusinessInterface {
@@ -53,7 +54,7 @@ export interface allBusinessInterface {
     country: string
     profileImage: object,
     banner: object
-
+    premium: boolean
 }
 
 export interface userId extends User {
