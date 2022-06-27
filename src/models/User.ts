@@ -2,11 +2,11 @@ import { prop, getModelForClass, pre, DocumentType, modelOptions } from '@typego
 import { compare, genSalt, hash } from 'bcrypt';
 
 enum UserTypes{
-    PG, // 1
-    Graduate, //2 
-    Recruiter, //3
-    Staff, //4
-    Business //5
+    PG,        // 1
+    Graduate,  // 2 
+    Recruiter, // 3
+    Staff,     // 4
+    Business   // 5
 }
 
 @pre<User>("save", async function(next) {
@@ -77,10 +77,9 @@ export class User {
   @prop({})
   follows: string[]
 
-
-
   // @prop()
   // follow: string[]
+
   //business
   @prop({})
   name: string;
