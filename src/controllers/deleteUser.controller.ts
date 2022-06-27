@@ -26,10 +26,11 @@ export const deleteUser = async (req: Request, res: Response) => {
                     country: deleteById.country,
                     backFront: deleteById.backFront,
                     languages: deleteById.languages,
-                    otherstudies: deleteById.otherstudies,
-                    CurriculumCounter: deleteById.CurriculumCounter,
+                    otherstudies: deleteById.otherStudies,
+                    CurriculumCounter: deleteById.curriculumCounter,
                     counterIngreso: deleteById.counterIngreso,
-                    banner: deleteById.banner
+                    banner: deleteById.banner,
+                    premium: deleteById.premium
                 };
 
                 await deleteImage(deleteById.profileImage.public_id);
