@@ -29,7 +29,7 @@ export class User {
   @prop({ required: true })
   lastName: string;
 
-  @prop({ })
+  @prop({})
   userName: string;
 
   @prop({ required: true, trim: true, unique: true })
@@ -38,7 +38,7 @@ export class User {
   @prop({ required: true })
   password!: string;
 
-  @prop()
+  @prop({})
   profileImage: { public_id: string, secure_url: string };
 
   @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
@@ -50,7 +50,7 @@ export class User {
   @prop({})
   country: object
 
-  @prop()
+  @prop({})
   city: object
 
   @prop({})
@@ -60,21 +60,21 @@ export class User {
   languages: string
 
   @prop({})
-  otherstudies: string[]
-  
+  otherStudies: string[]
+
   @prop({})
-  CurriculumCounter: number
+  curriculumCounter: number
 
   @prop({})
   counterIngreso: number
 
-  @prop()
-  banner: object;
+  @prop({})
+  banner: object
 
-  @prop()
+  @prop({})
   followers: string[]
 
-  @prop()
+  @prop({})
   follows: string[]
 
 
@@ -84,10 +84,15 @@ export class User {
   //business
   @prop({})
   name: string;
+
   @prop({})
   jobSummary: string
+
   @prop({})
   description: string;
+
+  @prop({})
+  premium: boolean
   
   public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
 
