@@ -28,9 +28,11 @@ router.use('/user', getUserById);
 
 import createPostRoute from './post/createPost.routes'
 import getAllPostRoute from './post/getAllPost.routes'
+import deletePostRoute from './post/deletePost.routes'
 
 router.use('/post', getAllPostRoute)
 router.use('/post', createPostRoute)
+router.use('/post', deletePostRoute)
 
 //business
 

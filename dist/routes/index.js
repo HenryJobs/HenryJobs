@@ -26,8 +26,10 @@ router.use('/user', getUserById_routes_1.default);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
+const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
 router.use('/post', getAllPost_routes_1.default);
 router.use('/post', createPost_routes_1.default);
+router.use('/post', deletePost_routes_1.default);
 //business
 const createBusiness_routes_1 = __importDefault(require("./business/createBusiness.routes"));
 const getAllBusiness_routes_1 = __importDefault(require("./business/getAllBusiness.routes"));

@@ -15,7 +15,10 @@ const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { id } = req.params;
     try {
         if (id) {
-            const deleteById = yield Post_1.postModel.findOneAndDelete({});
+            const deleteById = yield Post_1.postModel.findOneAndDelete({ _id: id });
+            if (deleteById) {
+                res.status(200).json(deleteById);
+            }
         }
     }
     catch (err) {

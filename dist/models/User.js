@@ -80,7 +80,7 @@ __decorate([
     __metadata("design:type", Object)
 ], User.prototype, "profileImage", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ enum: UserTypes, addNullToEnum: false, default: 1 }),
+    (0, typegoose_1.prop)({ enum: UserTypes, addNullToEnum: false, default: 0 }),
     __metadata("design:type", Number)
 ], User.prototype, "userTypes", void 0);
 __decorate([

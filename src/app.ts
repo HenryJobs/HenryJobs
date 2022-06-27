@@ -28,6 +28,6 @@ app.use(fileUpload({
 }));
 
 app.set("port", process.env.PORT || 3002)
-app.use('/api', routes)
+app.use('/', routes)
 
 export default app;

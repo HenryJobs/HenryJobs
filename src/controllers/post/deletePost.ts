@@ -8,10 +8,12 @@ export const deletePost = async (req: Request, res: Response) => {
     try {
 
         if(id) {
-            const deleteById = await postModel.findOneAndDelete({
-
-            })
+            const deleteById = await postModel.findOneAndDelete({ _id: id })
+            if(deleteById){
+                res.status(200).json(deleteById)
+            }
         }
+
     } catch (err){
         console.error(err)
     }

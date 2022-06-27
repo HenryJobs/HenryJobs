@@ -41,7 +41,7 @@ export class User {
   @prop()
   profileImage: { public_id: string, secure_url: string };
 
-  @prop({ enum: UserTypes, addNullToEnum: false, default: 1 })
+  @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
   userTypes: UserTypes;
 
   @prop({})
