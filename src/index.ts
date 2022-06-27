@@ -23,6 +23,6 @@ import "dotenv/config";
 import app from "./app";
 require("./db");
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(app.get("port"), () => {
   console.log(`Listen on port ${app.get("port")}`)
 });
