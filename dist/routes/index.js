@@ -50,4 +50,7 @@ const getAllFollow_routes_1 = __importDefault(require("./follow/getAllFollow.rou
 const createFollow_routes_1 = __importDefault(require("./follow/createFollow.routes"));
 router.use('/follow', getAllFollow_routes_1.default);
 router.use('/follow', createFollow_routes_1.default);
+//
+const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
+router.use('/comment', createComment_routes_1.default);
 exports.default = router;

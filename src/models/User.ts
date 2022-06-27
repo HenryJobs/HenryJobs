@@ -48,7 +48,10 @@ export class User {
   technologies: string[]
 
   @prop({})
-  country: string
+  country: object
+
+  @prop()
+  city: object
 
   @prop({})
   backFront: string
@@ -74,15 +77,17 @@ export class User {
   @prop()
   follows: string[]
 
+
+
   // @prop()
   // follow: string[]
   //business
-  // @prop({})
-  // name: string;
-  // @prop({})
-  // jobSummary: string
-  // @prop({})
-  // description: string;
+  @prop({})
+  name: string;
+  @prop({})
+  jobSummary: string
+  @prop({})
+  description: string;
   
   public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
 

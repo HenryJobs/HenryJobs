@@ -59,5 +59,10 @@ import createFollowRoute from './follow/createFollow.routes'
 router.use('/follow', getAllFollowRoute)
 router.use('/follow', createFollowRoute)
 
+//
+import createCommentRoute from './Comment/createComment.routes'
+
+router.use('/comment', createCommentRoute)
+
 
 export default router;
