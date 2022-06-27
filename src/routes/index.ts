@@ -11,26 +11,28 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 
 import getUserByMail from './user/getEmailUser.routes'
-import signinUser from "./user/signinUser.routes";
+// import signinUser from "./user/signinUser.routes";
 
-import { tokenValidation } from "../libs/validateToken";
+// import { tokenValidation } from "../libs/validateToken";
 
-router.use("/user", tokenValidation, userRoute);
+router.use("/user", userRoute);
 router.use('/name', nameRoute);
 router.use('/mail', getUserByMail)
 router.use('/user', createRoute);
 router.use('/user', deleteRoute);
 router.use('/user', putRoute);
 router.use('/user', getUserById);
-router.use("/signin", tokenValidation, signinUser);
+// router.use("/signin", signinUser);
 
 //post
 
 import createPostRoute from './post/createPost.routes'
 import getAllPostRoute from './post/getAllPost.routes'
+import deletePostRoute from './post/deletePost.routes'
 
 router.use('/post', getAllPostRoute)
 router.use('/post', createPostRoute)
+router.use('/post', deletePostRoute)
 
 //business
 
@@ -56,6 +58,11 @@ import createFollowRoute from './follow/createFollow.routes'
 
 router.use('/follow', getAllFollowRoute)
 router.use('/follow', createFollowRoute)
+
+//
+import createCommentRoute from './Comment/createComment.routes'
+
+router.use('/comment', createCommentRoute)
 
 
 export default router;

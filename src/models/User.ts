@@ -29,7 +29,7 @@ export class User {
   @prop({ required: true })
   lastName: string;
 
-  @prop({ required: true })
+  @prop({ })
   userName: string;
 
   @prop({ required: true, trim: true, unique: true })
@@ -41,47 +41,54 @@ export class User {
   @prop()
   profileImage: { public_id: string, secure_url: string };
 
-    @prop({ enum: UserTypes, addNullToEnum: false, default: 1 })
-    userTypes: UserTypes;
+  @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
+  userTypes: UserTypes;
 
-    @prop({})
-    technologies: string[]
+  @prop({})
+  technologies: string[]
 
-    @prop({})
-    country: string
+  @prop({})
+  country: object
 
-    @prop({})
-    backFront: string
+  @prop()
+  city: object
 
-    @prop({})
-    languages: string
+  @prop({})
+  backFront: string
 
-    @prop({})
-    otherstudies: string[]
-    
-    @prop({})
-    CurriculumCounter: number
+  @prop({})
+  languages: string
 
-    @prop({})
-    counterIngreso: number
+  @prop({})
+  otherstudies: string[]
+  
+  @prop({})
+  CurriculumCounter: number
+
+  @prop({})
+  counterIngreso: number
+
+  @prop()
+  banner: object;
+
+  @prop()
+  followers: string[]
+
+  @prop()
+  follows: string[]
 
 
-    @prop()
-    banner: object;
 
-    // @prop()
-    // follow: string[]
-
-    //business
-    // @prop({})
-    // name: string;
-
-    // @prop({})
-    // jobSummary: string
-
-    // @prop({})
-    // description: string;
-    
+  // @prop()
+  // follow: string[]
+  //business
+  @prop({})
+  name: string;
+  @prop({})
+  jobSummary: string
+  @prop({})
+  description: string;
+  
   public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
 
     try {
