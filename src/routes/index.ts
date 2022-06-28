@@ -21,6 +21,7 @@ import createCommentRoute from './Comment/createComment.routes'
 import getAllFollowRoute from './follow/getAllFollow.routes'
 import createFollowRoute from './follow/createFollow.routes'
 
+// user
 router.use("/user", userRoute);
 router.use('/name', nameRoute);
 router.use('/mail', getUserByMail)
@@ -31,7 +32,6 @@ router.use('/user', getUserById);
 // router.use("/signin", signinUser);
 
 //post
-
 import createPostRoute from './post/createPost.routes'
 import getAllPostRoute from './post/getAllPost.routes'
 import deletePostRoute from './post/deletePost.routes'
