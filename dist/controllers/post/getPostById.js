@@ -10,6 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPostById = void 0;
+const Post_1 = require("../../models/Post");
 const getPostById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        let post;
+        if (id) {
+            post = yield Post_1.postModel.findById(id).populate("posterUser");
+            res.status(200).json(post);
+        }
+    }
+    catch (err) {
+        console.error(err);
+    }
 });
 exports.getPostById = getPostById;

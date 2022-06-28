@@ -20,7 +20,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { firstName, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, CurriculumCounter, counterIngreso, } = req.body;
+    const { firstName, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, CurriculumCounter, counterIngreso, premium } = req.body;
     const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
     const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
     try {
@@ -45,7 +45,8 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             otherstudies,
             CurriculumCounter,
             counterIngreso,
-            banner
+            banner,
+            premium
         });
         if (tempFilePath) {
             const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);

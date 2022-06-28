@@ -1,5 +1,6 @@
 import { prop, getModelForClass, Ref } from "@typegoose/typegoose";
 import { User } from "./User";
+import { Post } from "./Post";
 
 export class Coments {
 
@@ -8,6 +9,9 @@ export class Coments {
 
     @prop({type: String, required: true, trim: true})
     text: string
+
+    @prop({ref: () => Post})
+    postUser: Ref<Post>
 
 }
 

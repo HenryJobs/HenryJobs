@@ -27,18 +27,9 @@ var UserTypes;
     UserTypes[UserTypes["Graduate"] = 1] = "Graduate";
     UserTypes[UserTypes["Recruiter"] = 2] = "Recruiter";
     UserTypes[UserTypes["Staff"] = 3] = "Staff";
-    UserTypes[UserTypes["Business"] = 4] = "Business"; //5
+    UserTypes[UserTypes["Business"] = 4] = "Business"; // 5
 })(UserTypes || (UserTypes = {}));
 let User = class User {
-    // @prop()
-    // follow: string[]
-    //business
-    // @prop({})
-    // name: string;
-    // @prop({})
-    // jobSummary: string
-    // @prop({})
-    // description: string;
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -76,7 +67,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, typegoose_1.prop)(),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", Object)
 ], User.prototype, "profileImage", void 0);
 __decorate([
@@ -89,8 +80,12 @@ __decorate([
 ], User.prototype, "technologies", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], User.prototype, "country", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Object)
+], User.prototype, "city", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
@@ -102,27 +97,43 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
-], User.prototype, "otherstudies", void 0);
+], User.prototype, "otherStudies", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Number)
-], User.prototype, "CurriculumCounter", void 0);
+], User.prototype, "curriculumCounter", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Number)
 ], User.prototype, "counterIngreso", void 0);
 __decorate([
-    (0, typegoose_1.prop)(),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", Object)
 ], User.prototype, "banner", void 0);
 __decorate([
-    (0, typegoose_1.prop)(),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], User.prototype, "followers", void 0);
 __decorate([
-    (0, typegoose_1.prop)(),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], User.prototype, "follows", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "name", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "jobSummary", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "description", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Boolean)
+], User.prototype, "premium", void 0);
 User = __decorate([
     (0, typegoose_1.pre)("save", function (next) {
         return __awaiter(this, void 0, void 0, function* () {

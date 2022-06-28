@@ -1,14 +1,21 @@
-// import { Request, Response } from "express";
-// import { postComent, Coments } from "../../models/postComent";
+import { Request, Response } from "express";
+import { postComent, Coments } from "../../models/postComent";
 
-// export const getComentById = async (req: Request, res: Response) => {
+export const getComentById = async (req: Request, res: Response) => {
 
-//     try {
+    const { id } = req.params
+    try {
 
-//         if(req.query)
+        let comment: Coments | null
 
-//     } catch(err){
-//         console.error(err)
-//     }
+        comment = await postComent.findOne({ _id: id }).populate("comentUser")
 
-// }
+        if(comment){
+            res.status(200).json(comment)
+        }
+
+    } catch(err){
+        console.error(err)
+    }
+
+}
