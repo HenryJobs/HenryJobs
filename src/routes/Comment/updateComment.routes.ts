@@ -3,6 +3,6 @@ import { updateComent } from "../../controllers/PostComents/updateComent";
 
 const router = Router()
 
-router.put('/', updateComent)
+router.put('/:id', updateComent)
 
 export default router
