@@ -20,6 +20,7 @@ const createComment_routes_1 = __importDefault(require("./Comment/createComment.
 // follow
 const getAllFollow_routes_1 = __importDefault(require("./follow/getAllFollow.routes"));
 const createFollow_routes_1 = __importDefault(require("./follow/createFollow.routes"));
+// user
 router.use("/user", getAllUser_routes_1.default);
 router.use('/name', getUserByName_routes_1.default);
 router.use('/mail', getEmailUser_routes_1.default);
