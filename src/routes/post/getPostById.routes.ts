@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getComentById } from "../../controllers/PostComents/getComentById";
+import { getPostById } from "../../controllers/post/getPostById"; 
 
 const router = Router()
 
-router.get('/:id', getComentById)
+router.get('/:id', getPostById)
 
 export default router
