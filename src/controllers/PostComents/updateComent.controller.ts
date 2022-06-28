@@ -3,7 +3,8 @@ import { postComent } from "../../models/postComent";
 
 export const updateComent = async (req: Request, res: Response) => {
 
-    const { id, text } = req.body
+    const { id } = req.params;
+    const { text } = req.body;
 
     try {
         

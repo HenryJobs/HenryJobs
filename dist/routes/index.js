@@ -12,9 +12,14 @@ const postUser_routes_1 = __importDefault(require("./user/postUser.routes"));
 const delete_routes_1 = __importDefault(require("./user/delete.routes"));
 const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
-const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
 // import signinUser from "./user/signinUser.routes";
 // import { tokenValidation } from "../libs/validateToken";
+const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
+// comments
+const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
+// follow
+const getAllFollow_routes_1 = __importDefault(require("./follow/getAllFollow.routes"));
+const createFollow_routes_1 = __importDefault(require("./follow/createFollow.routes"));
 router.use("/user", getAllUser_routes_1.default);
 router.use('/name', getUserByName_routes_1.default);
 router.use('/mail', getEmailUser_routes_1.default);
@@ -31,26 +36,24 @@ router.use('/post', getAllPost_routes_1.default);
 router.use('/post', createPost_routes_1.default);
 router.use('/post', deletePost_routes_1.default);
 //business
-const createBusiness_routes_1 = __importDefault(require("./business/createBusiness.routes"));
-const getAllBusiness_routes_1 = __importDefault(require("./business/getAllBusiness.routes"));
-const putBusiness_routes_1 = __importDefault(require("./business/putBusiness.routes"));
-const deleteBusiness_routes_1 = __importDefault(require("./business/deleteBusiness.routes"));
-const getBusinessById_routes_1 = __importDefault(require("./business/getBusinessById.routes"));
-const getBusinessEmail_routes_1 = __importDefault(require("./business/getBusinessEmail.routes"));
-const getBusinessByName_routes_1 = __importDefault(require("./business/getBusinessByName.routes"));
-router.use('/business', getAllBusiness_routes_1.default);
-router.use('/business', createBusiness_routes_1.default);
-router.use('/business', putBusiness_routes_1.default);
-router.use('/business', deleteBusiness_routes_1.default);
-router.use('/business', getBusinessById_routes_1.default);
-router.use('/business', getBusinessEmail_routes_1.default);
-router.use('/business', getBusinessByName_routes_1.default);
+// import createBusinessRoute from './business/createBusiness.routes'
+// import getAllBusinessRoute from './business/getAllBusiness.routes'
+// import updateBusinessRoute from './business/putBusiness.routes'
+// import deleteBusinessRoute from './business/deleteBusiness.routes'
+// import getBusinessByIdRoute from './business/getBusinessById.routes'
+// import getBusinessByEmailRoute from './business/getBusinessEmail.routes'
+// import getBusinessByNameRoute from './business/getBusinessByName.routes'
+// router.use('/business', getAllBusinessRoute)
+// router.use('/business', createBusinessRoute)
+// router.use('/business', updateBusinessRoute)
+// router.use('/business', deleteBusinessRoute)
+// router.use('/business', getBusinessByIdRoute)
+// router.use('/business', getBusinessByEmailRoute)
+// router.use('/business', getBusinessByNameRoute)
 //follow
-const getAllFollow_routes_1 = __importDefault(require("./follow/getAllFollow.routes"));
-const createFollow_routes_1 = __importDefault(require("./follow/createFollow.routes"));
+// follow
 router.use('/follow', getAllFollow_routes_1.default);
 router.use('/follow', createFollow_routes_1.default);
-//
-const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
+// comments
 router.use('/comment', createComment_routes_1.default);
 exports.default = router;

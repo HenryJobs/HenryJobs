@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { BusinessModel } from "../../models/Bussiness";
-import { businessInterface } from "../interfaces/businessInterface";
+import { businessInterface } from "../interfaces/businessInterface.controller";
 
 export const deleteBusiness = async (req: Request, res: Response) => {
 

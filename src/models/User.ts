@@ -88,7 +88,7 @@ export class User {
   jobSummary: string
 
   @prop({})
-  description: string;
+  description: string
 
   @prop({})
   premium: boolean

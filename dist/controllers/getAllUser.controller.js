@@ -24,7 +24,8 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
                     UserTypes: user.UserTypes,
                     email: user.email,
                     password: user.password,
-                    profileImage: user.profileImage
+                    profileImage: user.profileImage,
+                    premium: user.premium
                 });
             });
             res.status(200).json(userMap);

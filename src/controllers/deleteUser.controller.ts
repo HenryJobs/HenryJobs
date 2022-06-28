@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInterface";
+import { userInterface } from "./interfaces/userInterface.controller";
 import { deleteImage } from "../cloudinary";
 
 export const deleteUser = async (req: Request, res: Response) => {
@@ -26,8 +26,8 @@ export const deleteUser = async (req: Request, res: Response) => {
                     country: deleteById.country,
                     backFront: deleteById.backFront,
                     languages: deleteById.languages,
-                    otherstudies: deleteById.otherStudies,
-                    CurriculumCounter: deleteById.curriculumCounter,
+                    otherStudies: deleteById.otherStudies,
+                    curriculumCounter: deleteById.curriculumCounter,
                     counterIngreso: deleteById.counterIngreso,
                     banner: deleteById.banner,
                     premium: deleteById.premium

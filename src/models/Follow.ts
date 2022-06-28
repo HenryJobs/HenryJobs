@@ -17,8 +17,6 @@ export class Follow {
 
     @prop({})
     seguidos: string[]
-    
-
 }
 
 export const followModel = getModelForClass(Follow)

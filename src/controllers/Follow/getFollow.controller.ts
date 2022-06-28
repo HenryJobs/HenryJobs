@@ -16,7 +16,5 @@ export const getAllFollow = async (req: Request, res: Response) => {
     } catch(err){
 
         console.error(err)
-
     }
-
 }

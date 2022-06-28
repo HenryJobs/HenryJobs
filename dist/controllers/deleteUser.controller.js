@@ -31,10 +31,11 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     country: deleteById.country,
                     backFront: deleteById.backFront,
                     languages: deleteById.languages,
-                    otherstudies: deleteById.otherstudies,
-                    CurriculumCounter: deleteById.CurriculumCounter,
+                    otherStudies: deleteById.otherStudies,
+                    curriculumCounter: deleteById.curriculumCounter,
                     counterIngreso: deleteById.counterIngreso,
-                    banner: deleteById.banner
+                    banner: deleteById.banner,
+                    premium: deleteById.premium
                 };
                 yield (0, cloudinary_1.deleteImage)(deleteById.profileImage.public_id);
                 // await deleteImage(deleteById.banner.public_id);

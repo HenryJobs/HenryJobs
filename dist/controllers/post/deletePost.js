@@ -19,10 +19,13 @@ const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             if (deleteById) {
                 res.status(200).json(deleteById);
             }
+            ;
         }
+        ;
     }
     catch (err) {
         console.error(err);
     }
+    ;
 });
 exports.deletePost = deletePost;

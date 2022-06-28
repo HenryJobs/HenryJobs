@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { userId, userInterface } from "./interfaces/userInterface";
+import { userId, userInterface } from "./interfaces/userInterface.controller";
 
 export const getUserByName = async (req: Request, res: Response, next: NextFunction) => {
     const { userName } = req.query
@@ -23,8 +23,8 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 country: user.country,
                 backFront: user.backFront,
                 languages: user.languages,
-                otherstudies: user.otherStudies,
-                CurriculumCounter: user.curriculumCounter,
+                otherStudies: user.otherStudies,
+                curriculumCounter: user.curriculumCounter,
                 counterIngreso: user.counterIngreso,
                 banner: user.banner,
                 premium: user.premium

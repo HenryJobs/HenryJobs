@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User, userModel } from "../models/User";
-import { userId, userInterface } from "./interfaces/userInterface";
+import { userId, userInterface } from "./interfaces/userInterface.controller";
 
 export const getUserEmail = async (req: Request, res: Response) => {
 
@@ -24,8 +24,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 country: userEmail.country,
                 backFront: userEmail.backFront,
                 languages: userEmail.languages,
-                otherstudies: userEmail.otherStudies,
-                CurriculumCounter: userEmail.curriculumCounter,
+                otherStudies: userEmail.otherStudies,
+                curriculumCounter: userEmail.curriculumCounter,
                 counterIngreso: userEmail.counterIngreso,
                 banner: userEmail.banner,
                 premium: userEmail.premium

@@ -16,7 +16,7 @@ export const createComent = async (req: Request, res: Response) => {
             text
         })
 
-        if(comentCreated){
+        if(comentCreated) {
             res.status(201).json(coment)
         }
 

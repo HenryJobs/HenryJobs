@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateComent = void 0;
 const postComent_1 = require("../../models/postComent");
 const updateComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id, text } = req.body;
+    const { id } = req.params;
+    const { text } = req.body;
     try {
         if (id) {
             const update = yield postComent_1.postComent.updateOne({ _id: id }, {

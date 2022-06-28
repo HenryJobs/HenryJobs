@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInterface";
+import { userInterface } from "./interfaces/userInterface.controller";
 
 export const getUserById = async (req: Request, res: Response) => {
 
@@ -8,7 +8,7 @@ export const getUserById = async (req: Request, res: Response) => {
 
     try {
 
-        if(id) {
+        if (id) {
 
             let userId = await userModel.findOne({ _id: id })
             if(userId){
@@ -25,8 +25,8 @@ export const getUserById = async (req: Request, res: Response) => {
                 country: userId.country,
                 backFront: userId.backFront,
                 languages: userId.languages,
-                otherstudies: userId.otherStudies,
-                CurriculumCounter: userId.curriculumCounter,
+                otherStudies: userId.otherStudies,
+                curriculumCounter: userId.curriculumCounter,
                 counterIngreso: userId.counterIngreso,
                 banner: userId.banner,
                 premium: userId.premium

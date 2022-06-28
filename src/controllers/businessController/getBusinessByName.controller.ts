@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { BusinessModel } from "../../models/Bussiness";
-import { businessId, businessInterface } from "../interfaces/businessInterface";
+import { businessId, businessInterface } from "../interfaces/businessInterface.controller";
 
 export const getBusinessByName = async (req: Request, res: Response) => {
 

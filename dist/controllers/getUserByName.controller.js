@@ -29,10 +29,11 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 country: user.country,
                 backFront: user.backFront,
                 languages: user.languages,
-                otherstudies: user.otherstudies,
-                CurriculumCounter: user.CurriculumCounter,
+                otherStudies: user.otherStudies,
+                curriculumCounter: user.curriculumCounter,
                 counterIngreso: user.counterIngreso,
-                banner: user.banner
+                banner: user.banner,
+                premium: user.premium
             };
             res.status(200).json(allNames);
         }

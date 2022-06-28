@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { payloadInterface } from "../controllers/interfaces/userInterface";
+import { payloadInterface } from "../controllers/interfaces/userInterface.controller";
 
 import jwt from "jsonwebtoken";
 

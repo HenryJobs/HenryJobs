@@ -23,8 +23,8 @@ export interface userInterface {
     country: object,
     backFront: string,
     languages: string,
-    otherstudies: string[],
-    CurriculumCounter: number,
+    otherStudies: string[],
+    curriculumCounter: number,
     counterIngreso: number,
     banner: object
     premium: boolean

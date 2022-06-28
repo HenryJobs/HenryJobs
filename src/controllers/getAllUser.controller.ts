@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
-import { allUserInterface } from "./interfaces/userInterface";
+import { allUserInterface } from "./interfaces/userInterface.controller";
 
 export const getAllUser = async (_: Request, res: Response, next: NextFunction) => {
 

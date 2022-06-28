@@ -13,14 +13,15 @@ exports.updateUser = void 0;
 const User_1 = require("../models/User");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { firstName, lastName, userName, email, password, image } = req.body;
+    const { firstName, lastName, userName, email, password, premium } = req.body;
     try {
         const updated = yield User_1.userModel.findByIdAndUpdate({ _id: id }, {
             firstName,
             lastName,
             userName,
             email,
-            password
+            password,
+            premium
         });
         res.status(200).json(updated);
     }

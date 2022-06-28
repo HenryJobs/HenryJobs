@@ -31,10 +31,11 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 country: userEmail.country,
                 backFront: userEmail.backFront,
                 languages: userEmail.languages,
-                otherstudies: userEmail.otherstudies,
-                CurriculumCounter: userEmail.CurriculumCounter,
+                otherStudies: userEmail.otherStudies,
+                curriculumCounter: userEmail.curriculumCounter,
                 counterIngreso: userEmail.counterIngreso,
-                banner: userEmail.banner
+                banner: userEmail.banner,
+                premium: userEmail.premium
             };
             res.status(200).json(allEmail);
         }
