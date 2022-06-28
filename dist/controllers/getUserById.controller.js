@@ -32,7 +32,7 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     languages: userId.languages,
                     otherStudies: userId.otherStudies,
                     curriculumCounter: userId.curriculumCounter,
-                    counterIngreso: userId.counterIngreso,
+                    counterIngreso: userId.counterIncome,
                     banner: userId.banner,
                     premium: userId.premium
                 };

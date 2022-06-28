@@ -11,13 +11,14 @@ const { TOKEN_SECRET } = process.env;
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
-    const { 
+    const {
         firstName,
-        lastName, 
-        userName, 
-        email, 
-        password, 
-        profileImage, 
+        lastName,
+        userName,
+        email,
+        password,
+        profileImage,
+        banner,
         userTypes,
         technologies,
         country,
@@ -27,10 +28,8 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
         CurriculumCounter,
         counterIngreso,
         premium
-        } = req.body;
+    } = req.body;
 
-    const { tempFilePath } = req.files?.profileImage as UploadedFile;
-    const banner = req.files?.banner as UploadedFile;
 
     try {
 
@@ -57,10 +56,14 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             languages,
             otherstudies,
             CurriculumCounter,
-            counterIngreso,
+            counterIncome: counterIngreso,
             banner,
             premium
         });
+
+    if (req.files) {
+        const { tempFilePath } = req.files?.profileImage as UploadedFile;
+        const banner = req.files?.banner as UploadedFile;
 
         if (tempFilePath) {
             const result = await uploadImage(tempFilePath)
@@ -81,6 +84,7 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
             await unlink(banner.tempFilePath)
         };
+    }
 
         await user.save();
 

@@ -105,7 +105,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Number)
-], User.prototype, "counterIngreso", void 0);
+], User.prototype, "counterIncome", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Object)
@@ -117,7 +117,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
-], User.prototype, "follows", void 0);
+], User.prototype, "following", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)

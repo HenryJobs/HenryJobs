@@ -53,8 +53,10 @@ router.use('/post', deletePost_routes_1.default);
 // router.use('/business', getBusinessByNameRoute)
 //follow
 // follow
+const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use('/follow', getAllFollow_routes_1.default);
 router.use('/follow', createFollow_routes_1.default);
+router.use('/follow', putFollow_routes_1.default);
 // comments
 router.use('/comment', createComment_routes_1.default);
 exports.default = router;

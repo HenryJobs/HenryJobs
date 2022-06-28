@@ -1,20 +1,17 @@
 import { Request, Response } from "express";
-import { followModel, Follow } from '../../models/Follow'
+import { userModel, User } from '../../models/User'
 
 export const getAllFollow = async (req: Request, res: Response) => {
 
+    const {  } = req.body;
+
     try {
-
-        let follower: Follow[]
-
-        follower = await followModel.find().populate("followUser", "followers")
-
+        const follower: User[] = await userModel.find().populate("followers", "follows")
         if(follower){
             res.status(200).json(follower)
-        }
+        };
 
     } catch(err){
-
         console.error(err)
-    }
-}
+    };
+};
