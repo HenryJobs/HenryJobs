@@ -10,6 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePost = void 0;
+const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { text } = req.body;
+    try {
+        const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
+            text
+        });
+        res.status(200).json(updated);
+    }
+    catch (err) {
+        console.error(err);
+    }
 });
 exports.updatePost = updatePost;

@@ -29,10 +29,14 @@ router.use('/user', getUserById);
 import createPostRoute from './post/createPost.routes'
 import getAllPostRoute from './post/getAllPost.routes'
 import deletePostRoute from './post/deletePost.routes'
+import updatePostRoute from './post/updatePost.routes'
+import getPostByIdRoute from './post/getPostById.routes'
 
 router.use('/post', getAllPostRoute)
 router.use('/post', createPostRoute)
 router.use('/post', deletePostRoute)
+router.use('/post', updatePostRoute)
+router.use('/post', getPostByIdRoute)
 
 //business
 
@@ -61,8 +65,16 @@ router.use('/follow', createFollowRoute)
 
 //
 import createCommentRoute from './Comment/createComment.routes'
+import deleteCommentRoute from './Comment/deleteComment.routes'
+import updateCommentRoute from './Comment/updateComment.routes'
+import getCommentIdRoute from './Comment/getCommentById.routes'
+import getAllCommentRoute from './Comment/getAllComment.routes'
 
+router.use('/comment', deleteCommentRoute)
 router.use('/comment', createCommentRoute)
+router.use('/comment', updateCommentRoute)
+router.use('/comment', getCommentIdRoute)
+router.use('/comment', getAllCommentRoute)
 
 
 export default router;

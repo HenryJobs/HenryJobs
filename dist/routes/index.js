@@ -27,9 +27,13 @@ router.use('/user', getUserById_routes_1.default);
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
 const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
+const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
+const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 router.use('/post', getAllPost_routes_1.default);
 router.use('/post', createPost_routes_1.default);
 router.use('/post', deletePost_routes_1.default);
+router.use('/post', updatePost_routes_1.default);
+router.use('/post', getPostById_routes_1.default);
 //business
 const createBusiness_routes_1 = __importDefault(require("./business/createBusiness.routes"));
 const getAllBusiness_routes_1 = __importDefault(require("./business/getAllBusiness.routes"));
@@ -52,5 +56,13 @@ router.use('/follow', getAllFollow_routes_1.default);
 router.use('/follow', createFollow_routes_1.default);
 //
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
+const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));
+const updateComment_routes_1 = __importDefault(require("./Comment/updateComment.routes"));
+const getCommentById_routes_1 = __importDefault(require("./Comment/getCommentById.routes"));
+const getAllComment_routes_1 = __importDefault(require("./Comment/getAllComment.routes"));
+router.use('/comment', deleteComment_routes_1.default);
 router.use('/comment', createComment_routes_1.default);
+router.use('/comment', updateComment_routes_1.default);
+router.use('/comment', getCommentById_routes_1.default);
+router.use('/comment', getAllComment_routes_1.default);
 exports.default = router;
