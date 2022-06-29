@@ -22,14 +22,15 @@ export const createUser = async (
     email,
     password,
     profileImage,
+    banner,
     userTypes,
     technologies,
     country,
     backFront,
     languages,
-    otherstudies,
+    otherStudies,
     workModality,
-    CurriculumCounter,
+    curriculumCounter,
     premium
   } = req.body;
 
@@ -51,13 +52,15 @@ export const createUser = async (
       email,
       password,
       userTypes,
+      profileImage,
+      banner,
       technologies,
       country,
       backFront,
       languages,
-      otherstudies,
+      otherStudies,
       workModality,
-      CurriculumCounter,
+      curriculumCounter,
       premium
     });
 

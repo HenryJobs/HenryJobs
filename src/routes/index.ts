@@ -10,6 +10,8 @@ import deleteRoute from "./user/delete.routes";
 import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
+import getUserByMail from "./user/getEmailUser.routes";
+
 //validadores
 import {
   tokenValidation,
@@ -21,7 +23,6 @@ import {
   validateBusinessToken,
 } from "../libs/validateToken";
 
-import getUserByMail from "./user/getEmailUser.routes";
 
 
 // user
