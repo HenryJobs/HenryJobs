@@ -9,8 +9,8 @@ export class Post {
     @prop({ ref: () => User })
     posterUser: Ref<User>; 
 
-    @prop({ ref: () => Business })
-    posterBusiness: Ref<Business>;
+    // @prop({ ref: () => Business })
+    // posterBusiness: Ref<Business>;
 
     @prop({required: true})
     text: string

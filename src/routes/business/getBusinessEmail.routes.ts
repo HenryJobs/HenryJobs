@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getBusinessEmail } from "../../controllers/businessController/getBusinessByMail";
+import { getBusinessEmail } from "../../controllers/businessController/getBusinessByMail.controller";
 
 
 const router = Router()

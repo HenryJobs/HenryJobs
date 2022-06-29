@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
-import { allUserInterface } from "./interfaces/userInterface";
+import { allUserInterface } from "./interfaces/userInterface.controller";
 
 export const getAllUser = async (_: Request, res: Response, next: NextFunction) => {
 
@@ -17,7 +17,8 @@ export const getAllUser = async (_: Request, res: Response, next: NextFunction) 
                 UserTypes: user.UserTypes,
                 email: user.email,
                 password: user.password,
-                profileImage: user.profileImage
+                profileImage: user.profileImage,
+                premium: user.premium
             });
         });
 

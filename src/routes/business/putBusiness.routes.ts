@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { updateBusiness } from "../../controllers/businessController/updateBusiness";
+import { updateBusiness } from "../../controllers/businessController/updateBusiness.controller";
 
 const router = Router()
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInterface";
+import { userInterface } from "./interfaces/userInterface.controller";
 import { deleteImage } from "../cloudinary";
 
 export const deleteUser = async (req: Request, res: Response) => {
@@ -11,7 +11,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 
         if (id) {
             const deleteById = await userModel.findOneAndDelete({ _id: id })
-            
+
             if (deleteById) {
                 const myDelete: userInterface = {
                     _id: deleteById._id,
@@ -26,22 +26,23 @@ export const deleteUser = async (req: Request, res: Response) => {
                     country: deleteById.country,
                     backFront: deleteById.backFront,
                     languages: deleteById.languages,
-                    otherstudies: deleteById.otherstudies,
-                    CurriculumCounter: deleteById.CurriculumCounter,
-                    counterIngreso: deleteById.counterIngreso,
-                    banner: deleteById.banner
+                    otherStudies: deleteById.otherStudies,
+                    curriculumCounter: deleteById.curriculumCounter,
+                    counterIngreso: deleteById.counterIncome,
+                    banner: deleteById.banner,
+                    premium: deleteById.premium
                 };
 
                 await deleteImage(deleteById.profileImage.public_id);
-                await deleteImage(deleteById.banner.public_id);
+                // await deleteImage(deleteById.banner.public_id);
                 return res.status(200).json(myDelete);
             };
-            
+
             res.status(404).json({ msg: "User does not exist" })
         };
-        
+
     } catch (error) {
-        console.error(error)  
+        console.error(error)
         res.status(500).json({ msg: "User ID not valid" })
     };
 };

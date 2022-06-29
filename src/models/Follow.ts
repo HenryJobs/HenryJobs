@@ -14,8 +14,9 @@ export class Follow {
 
     @prop({})
     followers: string[]
-    
 
+    @prop({})
+    seguidos: string[]
 }
 
 export const followModel = getModelForClass(Follow)
