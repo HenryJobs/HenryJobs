@@ -14,6 +14,7 @@ const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
 const PRUEBA_routes_1 = __importDefault(require("./user/PRUEBA.routes"));
+//validadores
 const validateToken_1 = require("../libs/validateToken");
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
 // comments
@@ -30,7 +31,7 @@ router.use("/user", delete_routes_1.default);
 router.use("/user", putUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
-router.use("/graduateprueba", validateToken_1.tokenValidation, PRUEBA_routes_1.default);
+router.use("/graduateprueba", validateToken_1.tokenValidation, validateToken_1.validatePGToken, PRUEBA_routes_1.default);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));

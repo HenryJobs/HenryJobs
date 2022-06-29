@@ -85,11 +85,17 @@ export const createUser = async (
 
     // crea un token y lo manda al header
     const token: string = jwt.sign(
-      { _id: user._id },
+      {
+        id: user._id,
+        type: user.userTypes,
+        premium: user.premium,
+        firstname: user.firstName,
+        lastname: user.lastName,
+      },
       TOKEN_SECRET || "TOKENTEST",
       { expiresIn: 60 * 60 * 24 }
     );
-    console.log(token);
+
     res.header("authToken", token).status(201).json(user);
     // res.status(201).json(user)
   } catch (error) {

@@ -64,8 +64,13 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         }
         yield user.save();
         // crea un token y lo manda al header
-        const token = jsonwebtoken_1.default.sign({ _id: user._id }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
-        console.log(token);
+        const token = jsonwebtoken_1.default.sign({
+            id: user._id,
+            type: user.userTypes,
+            premium: user.premium,
+            firstname: user.firstName,
+            lastname: user.lastName,
+        }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
         res.header("authToken", token).status(201).json(user);
         // res.status(201).json(user)
     }

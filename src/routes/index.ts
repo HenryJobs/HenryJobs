@@ -11,7 +11,16 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import PruebaGraduate from "./user/PRUEBA.routes";
-import { tokenValidation } from "../libs/validateToken";
+//validadores
+import {
+  tokenValidation,
+  validatePGToken,
+  validatePremiumToken,
+  validateGraduateToken,
+  validateRecruiterToken,
+  validateStaffToken,
+  validateBusinessToken,
+} from "../libs/validateToken";
 
 import getUserByMail from "./user/getEmailUser.routes";
 
@@ -31,7 +40,7 @@ router.use("/user", deleteRoute);
 router.use("/user", putRoute);
 router.use("/user", getUserById);
 router.use("/signin", Usersignin);
-router.use("/graduateprueba", tokenValidation, PruebaGraduate);
+router.use("/graduateprueba", tokenValidation, validatePGToken, PruebaGraduate);
 
 //post
 import createPostRoute from "./post/createPost.routes";
