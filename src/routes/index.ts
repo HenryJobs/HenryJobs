@@ -63,8 +63,12 @@ router.use("/post", deletePostRoute);
 //follow
 
 // follow
+
+import putFollow from "./follow/putFollow.routes";
+
 router.use("/follow", getAllFollowRoute);
 router.use("/follow", createFollowRoute);
+router.use("/follow", putFollow);
 
 // comments
 router.use("/comment", createCommentRoute);

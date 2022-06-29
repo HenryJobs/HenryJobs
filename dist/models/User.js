@@ -33,7 +33,7 @@ let User = class User {
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const user = yield (0, bcrypt_1.compare)(candidatePassword, this.password);
+                const user = yield (0, bcrypt_1.compare)(this.password, candidatePassword);
                 console.log("esto es user --> ", user);
                 return user;
             }
@@ -103,7 +103,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Number)
-], User.prototype, "counterIngreso", void 0);
+], User.prototype, "counterIncome", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Object)
@@ -115,7 +115,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
-], User.prototype, "follows", void 0);
+], User.prototype, "following", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)

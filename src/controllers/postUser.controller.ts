@@ -21,6 +21,7 @@ export const createUser = async (
     email,
     password,
     profileImage,
+    banner,
     userTypes,
     technologies,
     country,
@@ -31,9 +32,6 @@ export const createUser = async (
     counterIngreso,
     premium,
   } = req.body;
-
-  const { tempFilePath } = req.files?.profileImage as UploadedFile;
-  const banner = req.files?.banner as UploadedFile;
 
   try {
     if (!firstName || !lastName || !userName || !email || !password)
@@ -53,42 +51,41 @@ export const createUser = async (
       languages,
       otherstudies,
       CurriculumCounter,
-      counterIngreso,
+      counterIncome: counterIngreso,
       banner,
       premium,
     });
 
-    if (tempFilePath) {
-      const result = await uploadImage(tempFilePath);
-      user.profileImage = {
-        public_id: result.public_id,
-        secure_url: result.secure_url,
-      };
+    if (req.files) {
+      const { tempFilePath } = req.files?.profileImage as UploadedFile;
+      const banner = req.files?.banner as UploadedFile;
 
-      await unlink(tempFilePath);
-    }
+      if (tempFilePath) {
+        const result = await uploadImage(tempFilePath);
+        user.profileImage = {
+          public_id: result.public_id,
+          secure_url: result.secure_url,
+        };
 
-    if (banner.tempFilePath) {
-      const result = await uploadImage(banner.tempFilePath);
-      user.banner = {
-        public_id: result.public_id,
-        secure_url: result.secure_url,
-      };
+        await unlink(tempFilePath);
+      }
 
-      await unlink(banner.tempFilePath);
+      if (banner.tempFilePath) {
+        const result = await uploadImage(banner.tempFilePath);
+        user.banner = {
+          public_id: result.public_id,
+          secure_url: result.secure_url,
+        };
+
+        await unlink(banner.tempFilePath);
+      }
     }
 
     await user.save();
 
     // crea un token y lo manda al header
     const token: string = jwt.sign(
-      {
-        id: user._id,
-        type: user.userTypes,
-        premium: user.premium,
-        firstname: user.firstName,
-        lastname: user.lastName,
-      },
+      { _id: user._id },
       TOKEN_SECRET || "TOKENTEST",
       { expiresIn: 60 * 60 * 24 }
     );

@@ -25,7 +25,7 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 languages: user.languages,
                 otherStudies: user.otherStudies,
                 curriculumCounter: user.curriculumCounter,
-                counterIngreso: user.counterIngreso,
+                counterIngreso: user.counterIncome,
                 banner: user.banner,
                 premium: user.premium
 

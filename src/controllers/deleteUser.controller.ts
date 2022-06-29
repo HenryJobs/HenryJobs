@@ -11,7 +11,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 
         if (id) {
             const deleteById = await userModel.findOneAndDelete({ _id: id })
-            
+
             if (deleteById) {
                 const myDelete: userInterface = {
                     _id: deleteById._id,
@@ -28,7 +28,7 @@ export const deleteUser = async (req: Request, res: Response) => {
                     languages: deleteById.languages,
                     otherStudies: deleteById.otherStudies,
                     curriculumCounter: deleteById.curriculumCounter,
-                    counterIngreso: deleteById.counterIngreso,
+                    counterIngreso: deleteById.counterIncome,
                     banner: deleteById.banner,
                     premium: deleteById.premium
                 };
@@ -37,12 +37,12 @@ export const deleteUser = async (req: Request, res: Response) => {
                 // await deleteImage(deleteById.banner.public_id);
                 return res.status(200).json(myDelete);
             };
-            
+
             res.status(404).json({ msg: "User does not exist" })
         };
-        
+
     } catch (error) {
-        console.error(error)  
+        console.error(error)
         res.status(500).json({ msg: "User ID not valid" })
     };
 };

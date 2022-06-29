@@ -6,11 +6,11 @@ export const getUserEmail = async (req: Request, res: Response) => {
 
     const { email } = req.query
 
-    if(email){
+    if (email) {
         const userEmail: userId | null = await userModel.findOne({
             email: email
         })
-        if(userEmail){
+        if (userEmail) {
             const allEmail: userInterface = {
                 _id: userEmail._id,
                 firstName: userEmail.firstName,
@@ -26,7 +26,7 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 languages: userEmail.languages,
                 otherStudies: userEmail.otherStudies,
                 curriculumCounter: userEmail.curriculumCounter,
-                counterIngreso: userEmail.counterIngreso,
+                counterIngreso: userEmail.counterIncome,
                 banner: userEmail.banner,
                 premium: userEmail.premium
             }

@@ -31,7 +31,7 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 languages: user.languages,
                 otherStudies: user.otherStudies,
                 curriculumCounter: user.curriculumCounter,
-                counterIngreso: user.counterIngreso,
+                counterIngreso: user.counterIncome,
                 banner: user.banner,
                 premium: user.premium
             };

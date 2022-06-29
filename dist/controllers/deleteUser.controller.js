@@ -33,7 +33,7 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     languages: deleteById.languages,
                     otherStudies: deleteById.otherStudies,
                     curriculumCounter: deleteById.curriculumCounter,
-                    counterIngreso: deleteById.counterIngreso,
+                    counterIngreso: deleteById.counterIncome,
                     banner: deleteById.banner,
                     premium: deleteById.premium
                 };

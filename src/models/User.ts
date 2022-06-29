@@ -70,7 +70,7 @@ export class User {
   curriculumCounter: number;
 
   @prop({})
-  counterIngreso: number;
+  counterIncome: number;
 
   @prop({})
   banner: object;
@@ -79,7 +79,7 @@ export class User {
   followers: string[];
 
   @prop({})
-  follows: string[];
+  following: string[];
 
   // @prop()
   // follow: string[]
@@ -102,7 +102,7 @@ export class User {
     candidatePassword: string
   ) {
     try {
-      const user = await compare(candidatePassword, this.password);
+      const user = await compare(this.password, candidatePassword);
       console.log("esto es user --> ", user);
       return user;
     } catch (error) {
