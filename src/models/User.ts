@@ -102,7 +102,7 @@ export class User {
     candidatePassword: string
   ) {
     try {
-      const user = await compare(this.password, candidatePassword);
+      const user = await compare(candidatePassword, this.password);
       console.log("esto es user --> ", user);
       return user;
     } catch (error) {

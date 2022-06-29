@@ -33,7 +33,7 @@ let User = class User {
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const user = yield (0, bcrypt_1.compare)(this.password, candidatePassword);
+                const user = yield (0, bcrypt_1.compare)(candidatePassword, this.password);
                 console.log("esto es user --> ", user);
                 return user;
             }
