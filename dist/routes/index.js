@@ -12,29 +12,32 @@ const postUser_routes_1 = __importDefault(require("./user/postUser.routes"));
 const delete_routes_1 = __importDefault(require("./user/delete.routes"));
 const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
-// import signinUser from "./user/signinUser.routes";
-// import { tokenValidation } from "../libs/validateToken";
+const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
+const PRUEBA_routes_1 = __importDefault(require("./user/PRUEBA.routes"));
+const validateToken_1 = require("../libs/validateToken");
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 // follow
 const getAllFollow_routes_1 = __importDefault(require("./follow/getAllFollow.routes"));
 const createFollow_routes_1 = __importDefault(require("./follow/createFollow.routes"));
+// user
 router.use("/user", getAllUser_routes_1.default);
-router.use('/name', getUserByName_routes_1.default);
-router.use('/mail', getEmailUser_routes_1.default);
-router.use('/user', postUser_routes_1.default);
-router.use('/user', delete_routes_1.default);
-router.use('/user', putUser_routes_1.default);
-router.use('/user', getUserById_routes_1.default);
-// router.use("/signin", signinUser);
+router.use("/name", getUserByName_routes_1.default);
+router.use("/mail", getEmailUser_routes_1.default);
+router.use("/user", postUser_routes_1.default);
+router.use("/user", delete_routes_1.default);
+router.use("/user", putUser_routes_1.default);
+router.use("/user", getUserById_routes_1.default);
+router.use("/signin", signinUser_routes_1.default);
+router.use("/graduateprueba", validateToken_1.tokenValidation, PRUEBA_routes_1.default);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
 const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
-router.use('/post', getAllPost_routes_1.default);
-router.use('/post', createPost_routes_1.default);
-router.use('/post', deletePost_routes_1.default);
+router.use("/post", getAllPost_routes_1.default);
+router.use("/post", createPost_routes_1.default);
+router.use("/post", deletePost_routes_1.default);
 //business
 // import createBusinessRoute from './business/createBusiness.routes'
 // import getAllBusinessRoute from './business/getAllBusiness.routes'
@@ -52,8 +55,8 @@ router.use('/post', deletePost_routes_1.default);
 // router.use('/business', getBusinessByNameRoute)
 //follow
 // follow
-router.use('/follow', getAllFollow_routes_1.default);
-router.use('/follow', createFollow_routes_1.default);
+router.use("/follow", getAllFollow_routes_1.default);
+router.use("/follow", createFollow_routes_1.default);
 // comments
-router.use('/comment', createComment_routes_1.default);
+router.use("/comment", createComment_routes_1.default);
 exports.default = router;

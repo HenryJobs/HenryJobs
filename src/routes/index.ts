@@ -9,36 +9,38 @@ import createRoute from "./user/postUser.routes";
 import deleteRoute from "./user/delete.routes";
 import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
-// import signinUser from "./user/signinUser.routes";
-// import { tokenValidation } from "../libs/validateToken";
+import Usersignin from "./user/signinUser.routes";
+import PruebaGraduate from "./user/PRUEBA.routes";
+import { tokenValidation } from "../libs/validateToken";
 
-import getUserByMail from './user/getEmailUser.routes'
+import getUserByMail from "./user/getEmailUser.routes";
 
 // comments
-import createCommentRoute from './Comment/createComment.routes'
+import createCommentRoute from "./Comment/createComment.routes";
 
 // follow
-import getAllFollowRoute from './follow/getAllFollow.routes'
-import createFollowRoute from './follow/createFollow.routes'
+import getAllFollowRoute from "./follow/getAllFollow.routes";
+import createFollowRoute from "./follow/createFollow.routes";
 
 // user
 router.use("/user", userRoute);
-router.use('/name', nameRoute);
-router.use('/mail', getUserByMail)
-router.use('/user', createRoute);
-router.use('/user', deleteRoute);
-router.use('/user', putRoute);
-router.use('/user', getUserById);
-// router.use("/signin", signinUser);
+router.use("/name", nameRoute);
+router.use("/mail", getUserByMail);
+router.use("/user", createRoute);
+router.use("/user", deleteRoute);
+router.use("/user", putRoute);
+router.use("/user", getUserById);
+router.use("/signin", Usersignin);
+router.use("/graduateprueba", tokenValidation, PruebaGraduate);
 
 //post
-import createPostRoute from './post/createPost.routes'
-import getAllPostRoute from './post/getAllPost.routes'
-import deletePostRoute from './post/deletePost.routes'
+import createPostRoute from "./post/createPost.routes";
+import getAllPostRoute from "./post/getAllPost.routes";
+import deletePostRoute from "./post/deletePost.routes";
 
-router.use('/post', getAllPostRoute)
-router.use('/post', createPostRoute)
-router.use('/post', deletePostRoute)
+router.use("/post", getAllPostRoute);
+router.use("/post", createPostRoute);
+router.use("/post", deletePostRoute);
 
 //business
 
@@ -61,11 +63,10 @@ router.use('/post', deletePostRoute)
 //follow
 
 // follow
-router.use('/follow', getAllFollowRoute)
-router.use('/follow', createFollowRoute)
+router.use("/follow", getAllFollowRoute);
+router.use("/follow", createFollowRoute);
 
 // comments
-router.use('/comment', createCommentRoute)
-
+router.use("/comment", createCommentRoute);
 
 export default router;

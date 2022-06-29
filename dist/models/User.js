@@ -27,13 +27,13 @@ var UserTypes;
     UserTypes[UserTypes["Graduate"] = 1] = "Graduate";
     UserTypes[UserTypes["Recruiter"] = 2] = "Recruiter";
     UserTypes[UserTypes["Staff"] = 3] = "Staff";
-    UserTypes[UserTypes["Business"] = 4] = "Business"; // 5
+    UserTypes[UserTypes["Business"] = 4] = "Business";
 })(UserTypes || (UserTypes = {}));
 let User = class User {
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const user = yield (0, bcrypt_1.compare)(this.password, candidatePassword);
+                const user = yield (0, bcrypt_1.compare)(candidatePassword, this.password);
                 console.log("esto es user --> ", user);
                 return user;
             }
@@ -41,10 +41,8 @@ let User = class User {
                 console.error(error, "Could not validate password");
                 return false;
             }
-            ;
         });
     }
-    ;
 };
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
@@ -149,5 +147,4 @@ User = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], User);
 exports.User = User;
-;
 exports.userModel = (0, typegoose_1.getModelForClass)(User);

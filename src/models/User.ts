@@ -1,17 +1,23 @@
-import { prop, getModelForClass, pre, DocumentType, modelOptions } from '@typegoose/typegoose';
-import { compare, genSalt, hash } from 'bcrypt';
+import {
+  prop,
+  getModelForClass,
+  pre,
+  DocumentType,
+  modelOptions,
+} from "@typegoose/typegoose";
+import { compare, genSalt, hash } from "bcrypt";
 
-enum UserTypes{
-    PG,        // 1
-    Graduate,  // 2 
-    Recruiter, // 3
-    Staff,     // 4
-    Business   // 5
+enum UserTypes {
+  PG, // 1
+  Graduate, // 2
+  Recruiter, // 3
+  Staff, // 4
+  Business, // 5
 }
 
-@pre<User>("save", async function(next) {
-    const user = this
-    if (!user.isModified("password")) return next()
+@pre<User>("save", async function (next) {
+  const user = this;
+  if (!user.isModified("password")) return next();
 
   const salt = await genSalt(10);
   const hashed = await hash(user.password, salt);
@@ -19,9 +25,7 @@ enum UserTypes{
   user.password = hashed;
   next();
 })
-
 @modelOptions({ options: { allowMixed: 0 } })
-
 export class User {
   @prop({ required: true })
   firstName: string;
@@ -39,43 +43,43 @@ export class User {
   password!: string;
 
   @prop({})
-  profileImage: { public_id: string, secure_url: string };
+  profileImage: { public_id: string; secure_url: string };
 
   @prop({ enum: UserTypes, addNullToEnum: false, default: 0 })
   userTypes: UserTypes;
 
   @prop({})
-  technologies: string[]
+  technologies: string[];
 
   @prop({})
-  country: object
+  country: object;
 
   @prop({})
-  city: object
+  city: object;
 
   @prop({})
-  backFront: string
+  backFront: string;
 
   @prop({})
-  languages: string
+  languages: string;
 
   @prop({})
-  otherStudies: string[]
+  otherStudies: string[];
 
   @prop({})
-  curriculumCounter: number
+  curriculumCounter: number;
 
   @prop({})
-  counterIngreso: number
+  counterIngreso: number;
 
   @prop({})
-  banner: object
+  banner: object;
 
   @prop({})
-  followers: string[]
+  followers: string[];
 
   @prop({})
-  follows: string[]
+  follows: string[];
 
   // @prop()
   // follow: string[]
@@ -85,26 +89,27 @@ export class User {
   name: string;
 
   @prop({})
-  jobSummary: string
+  jobSummary: string;
 
   @prop({})
-  description: string
+  description: string;
 
   @prop({})
-  premium: boolean
-  
-  public async validatePassword(this: DocumentType<User>, candidatePassword: string) {
+  premium: boolean;
 
+  public async validatePassword(
+    this: DocumentType<User>,
+    candidatePassword: string
+  ) {
     try {
-      const user = await compare(this.password, candidatePassword)
-      console.log("esto es user --> ", user)
+      const user = await compare(candidatePassword, this.password);
+      console.log("esto es user --> ", user);
       return user;
-
     } catch (error) {
-        console.error(error, "Could not validate password");
-        return false;
-    };
-  };
-};
+      console.error(error, "Could not validate password");
+      return false;
+    }
+  }
+}
 
 export const userModel = getModelForClass(User);

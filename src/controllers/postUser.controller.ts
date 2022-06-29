@@ -1,7 +1,7 @@
-import { unlink } from 'fs-extra';
+import { unlink } from "fs-extra";
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { sendMail } from './config/emailer';
+import { sendMail } from "./config/emailer";
 import { uploadImage } from "../cloudinary";
 import { UploadedFile } from "express-fileupload";
 
@@ -9,93 +9,93 @@ import jwt from "jsonwebtoken";
 
 const { TOKEN_SECRET } = process.env;
 
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const {
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    profileImage,
+    userTypes,
+    technologies,
+    country,
+    backFront,
+    languages,
+    otherstudies,
+    CurriculumCounter,
+    counterIngreso,
+    premium,
+  } = req.body;
 
-    const { 
-        firstName,
-        lastName, 
-        userName, 
-        email, 
-        password, 
-        profileImage, 
-        userTypes,
-        technologies,
-        country,
-        backFront,
-        languages,
-        otherstudies,
-        CurriculumCounter,
-        counterIngreso,
-        premium
-        } = req.body;
+  const { tempFilePath } = req.files?.profileImage as UploadedFile;
+  const banner = req.files?.banner as UploadedFile;
 
-    const { tempFilePath } = req.files?.profileImage as UploadedFile;
-    const banner = req.files?.banner as UploadedFile;
+  try {
+    if (!firstName || !lastName || !userName || !email || !password)
+      res.status(400).json({ msg: "Some fields are required" });
 
-    try {
+    const user = await userModel.create({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      profileImage,
+      userTypes,
+      technologies,
+      country,
+      backFront,
+      languages,
+      otherstudies,
+      CurriculumCounter,
+      counterIngreso,
+      banner,
+      premium,
+    });
 
-        if (
-            !firstName ||
-            !lastName ||
-            !userName ||
-            !email ||
-            !password
-        ) res.status(400).json({ msg: "Some fields are required" });
+    if (tempFilePath) {
+      const result = await uploadImage(tempFilePath);
+      user.profileImage = {
+        public_id: result.public_id,
+        secure_url: result.secure_url,
+      };
 
-
-        const user = await userModel.create({
-            firstName,
-            lastName,
-            userName,
-            email,
-            password,
-            profileImage,
-            userTypes,
-            technologies,
-            country,
-            backFront,
-            languages,
-            otherstudies,
-            CurriculumCounter,
-            counterIngreso,
-            banner,
-            premium
-        });
-
-        if (tempFilePath) {
-            const result = await uploadImage(tempFilePath)
-            user.profileImage = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
-
-            await unlink(tempFilePath);
-        };
-
-        if (banner.tempFilePath) {
-            const result = await uploadImage(banner.tempFilePath)
-            user.banner = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
-
-            await unlink(banner.tempFilePath)
-        };
-
-        await user.save();
-
-        // crea un token y lo manda al header
-        const token: string = jwt.sign(
-            { _id: user._id },
-            TOKEN_SECRET || "TOKENTEST",
-            { expiresIn: 60 * 60 * 24 }
-        );
-        console.log(token)
-        res.header("authToken", token).status(201).json(user)
-        // res.status(201).json(user)
+      await unlink(tempFilePath);
     }
 
-    catch (error) {
-        console.error(error)
-    };
+    if (banner.tempFilePath) {
+      const result = await uploadImage(banner.tempFilePath);
+      user.banner = {
+        public_id: result.public_id,
+        secure_url: result.secure_url,
+      };
+
+      await unlink(banner.tempFilePath);
+    }
+
+    await user.save();
+
+    // crea un token y lo manda al header
+    const token: string = jwt.sign(
+      {
+        id: user._id,
+        type: user.userTypes,
+        premium: user.premium,
+        firstname: user.firstName,
+        lastname: user.lastName,
+      },
+      TOKEN_SECRET || "TOKENTEST",
+      { expiresIn: 60 * 60 * 24 }
+    );
+    console.log(token);
+    res.header("authToken", token).status(201).json(user);
+    // res.status(201).json(user)
+  } catch (error) {
+    console.error(error);
+  }
 };

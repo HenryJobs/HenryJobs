@@ -14,8 +14,13 @@ const tokenValidation = (req, res, next) => {
             .send("Unauthorized access is denied due to invalid credentials");
     }
     const payload = jsonwebtoken_1.default.verify(token, TOKEN_SECRET || "TOKENTRES");
+    console.log("payload", payload);
     //para guardar el id del usuario en el req
-    req.userId = payload._id;
+    req.userId = payload.id;
+    req.userType = payload.type;
+    req.userPremium = payload.premium;
+    req.userfirtsName = payload.firstname;
+    req.userLastname = payload.lastname;
     next();
 };
 exports.tokenValidation = tokenValidation;

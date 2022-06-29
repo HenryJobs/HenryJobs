@@ -12,29 +12,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.signin = void 0;
+exports.signinUser = void 0;
 const User_1 = require("../models/User");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
-const signin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, password } = req.body;
-    const user = yield User_1.userModel.findOne({ email: email });
-    console.log("este es el user de findOne por email -> ", user);
-    //valida usuario
-    if (!user) {
-        return res.status(400).send("Incorrect user information (code: 001)");
+const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email, password } = req.body;
+        const user = yield User_1.userModel.findOne({ email: email });
+        //valida usuario
+        if (!user) {
+            return res.status(400).send("Incorrect user information (code: 001)");
+        }
+        // Ya funciona :D!!
+        const correctPassword = yield user.validatePassword(password);
+        if (!correctPassword)
+            return res.status(400).send("Incorrect user information (code: 002)");
+        //Si ambos son correctos se genera un token que expira en 24hrs
+        const token = jsonwebtoken_1.default.sign({
+            id: user._id,
+            type: user.userTypes,
+            premium: user.premium,
+            firstname: user.firstName,
+            lastname: user.lastName,
+        }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
+        console.log("user", user);
+        res
+            .header("authToken", token)
+            .send(`Welcome ${user.firstName}  ${user.lastName}!`);
     }
-    // ver por qué carajo no funciona!!
-    const correctPassword = yield user.validatePassword(password);
-    console.log("password -> ", correctPassword);
-    if (!correctPassword)
-        return res.status(400).send("Incorrect user information (code: 002)");
-    //Si ambos son correctos se genera un token que expira en 24hrs
-    const token = jsonwebtoken_1.default.sign({ id: user._id }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
-    res
-        .header("authToken", token)
-        .send(`Welcome
-             ${user.firstName} 
-             ${user.lastName}!`);
+    catch (error) {
+        console.error(error);
+    }
 });
-exports.signin = signin;
+exports.signinUser = signinUser;

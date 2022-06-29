@@ -20,15 +20,11 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { firstName, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, CurriculumCounter, counterIngreso, premium } = req.body;
+    const { firstName, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, CurriculumCounter, counterIngreso, premium, } = req.body;
     const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
     const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
     try {
-        if (!firstName ||
-            !lastName ||
-            !userName ||
-            !email ||
-            !password)
+        if (!firstName || !lastName || !userName || !email || !password)
             res.status(400).json({ msg: "Some fields are required" });
         const user = yield User_1.userModel.create({
             firstName,
@@ -46,29 +42,33 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             CurriculumCounter,
             counterIngreso,
             banner,
-            premium
+            premium,
         });
         if (tempFilePath) {
             const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
             user.profileImage = {
                 public_id: result.public_id,
-                secure_url: result.secure_url
+                secure_url: result.secure_url,
             };
             yield (0, fs_extra_1.unlink)(tempFilePath);
         }
-        ;
         if (banner.tempFilePath) {
             const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
             user.banner = {
                 public_id: result.public_id,
-                secure_url: result.secure_url
+                secure_url: result.secure_url,
             };
             yield (0, fs_extra_1.unlink)(banner.tempFilePath);
         }
-        ;
         yield user.save();
         // crea un token y lo manda al header
-        const token = jsonwebtoken_1.default.sign({ _id: user._id }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
+        const token = jsonwebtoken_1.default.sign({
+            id: user._id,
+            type: user.userTypes,
+            premium: user.premium,
+            firstname: user.firstName,
+            lastname: user.lastName,
+        }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
         console.log(token);
         res.header("authToken", token).status(201).json(user);
         // res.status(201).json(user)
@@ -76,6 +76,5 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     catch (error) {
         console.error(error);
     }
-    ;
 });
 exports.createUser = createUser;
