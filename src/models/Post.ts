@@ -2,7 +2,7 @@ import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose"
 import { User } from "./User";
 import { Business } from "./Bussiness";
 
-    // @modelOptions({ options: { allowMixed: } })
+    @modelOptions({ options: { allowMixed: 0 } })
 
 export class Post {
 
@@ -14,6 +14,29 @@ export class Post {
 
     @prop({required: true})
     text: string
+
+    @prop({})
+    imgVideo: string
+    
+    @prop({})
+    date: string
+
+    @prop({})
+    image: string
+
+    @prop({})
+    workModality: string
+
+    @prop({})
+    technologies: string[]
+
+    @prop({})
+    backFront: string
+
+    @prop({})
+    country: string
+
+
 
 }
 

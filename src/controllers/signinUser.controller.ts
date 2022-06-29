@@ -28,7 +28,7 @@ export const signinUser = async (req: Request, res: Response) => {
         id: user._id,
         type: user.userTypes,
         premium: user.premium,
-        firstname: user.firstName,
+        name: user.name,
         lastname: user.lastName,
       },
       TOKEN_SECRET || "TOKENTEST",
@@ -37,7 +37,7 @@ export const signinUser = async (req: Request, res: Response) => {
     console.log("user", user);
     res
       .header("authToken", token)
-      .send(`Welcome ${user.firstName}  ${user.lastName}!`);
+      .send(`Welcome ${user.name}  ${user.lastName}!`);
   } catch (error) {
     console.error(error);
   }

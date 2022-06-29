@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
-import { allUserInterface } from "./interfaces/userInterface.controller";
+import { userInterface } from "./interfaces/userInterface";
 
 export const getAllUser = async (_: Request, res: Response, next: NextFunction) => {
 
@@ -8,16 +8,25 @@ export const getAllUser = async (_: Request, res: Response, next: NextFunction) 
     const allUsers: Array<User> = await userModel.find()
 
     if (allUsers) {
-        const userMap: Array<allUserInterface> = allUsers.map((user: any) => {
+        const userMap: Array<userInterface> = allUsers.map((user: any) => {
             return ({
-                _id: user.id,
-                firstName: user.firstName,
+                _id: user._id,
+                name: user.name,
                 lastName: user.lastName,
                 userName: user.userName,
-                UserTypes: user.UserTypes,
                 email: user.email,
                 password: user.password,
                 profileImage: user.profileImage,
+                userTypes: user.userTypes,
+                technologies: user.technologies,
+                country: user.country,
+                backFront: user.backFront,
+                languages: user.languages,
+                otherstudies: user.otherStudies,
+                CurriculumCounter: user.curriculumCounter,
+                counterIncome: user.counterIncome,
+                workModality: user.workModality,
+                banner: user.banner,
                 premium: user.premium
             });
         });

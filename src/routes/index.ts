@@ -23,9 +23,6 @@ import {
 
 import getUserByMail from "./user/getEmailUser.routes";
 
-// comments
-import createCommentRoute from "./Comment/createComment.routes";
-
 // follow
 import getAllFollowRoute from "./follow/getAllFollow.routes";
 import createFollowRoute from "./follow/createFollow.routes";
@@ -41,13 +38,18 @@ router.use("/user", getUserById);
 router.use("/signin", Usersignin);
 
 //post
-import createPostRoute from "./post/createPost.routes";
-import getAllPostRoute from "./post/getAllPost.routes";
-import deletePostRoute from "./post/deletePost.routes";
 
-router.use("/post", getAllPostRoute);
-router.use("/post", createPostRoute);
-router.use("/post", deletePostRoute);
+import createPostRoute from './post/createPost.routes'
+import getAllPostRoute from './post/getAllPost.routes'
+import deletePostRoute from './post/deletePost.routes'
+import updatePostRoute from './post/updatePost.routes'
+import getPostByIdRoute from './post/getPostById.routes'
+
+router.use('/post', getAllPostRoute)
+router.use('/post', createPostRoute)
+router.use('/post', deletePostRoute)
+router.use('/post', updatePostRoute)
+router.use('/post', getPostByIdRoute)
 
 //business
 
@@ -78,6 +80,17 @@ router.use("/follow", createFollowRoute);
 router.use("/follow", putFollow);
 
 // comments
-router.use("/comment", createCommentRoute);
+import createCommentRoute from './Comment/createComment.routes'
+import deleteCommentRoute from './Comment/deleteComment.routes'
+import updateCommentRoute from './Comment/updateComment.routes'
+import getCommentIdRoute from './Comment/getCommentById.routes'
+import getAllCommentRoute from './Comment/getAllComment.routes'
+
+router.use('/comment', deleteCommentRoute)
+router.use('/comment', createCommentRoute)
+router.use('/comment', updateCommentRoute)
+router.use('/comment', getCommentIdRoute)
+router.use('/comment', getAllCommentRoute)
+
 
 export default router;

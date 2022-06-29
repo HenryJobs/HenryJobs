@@ -7,12 +7,12 @@ import {
 } from "@typegoose/typegoose";
 import { compare, genSalt, hash } from "bcrypt";
 
-enum UserTypes {
-  PG, // 1
-  Graduate, // 2
-  Recruiter, // 3
-  Staff, // 4
-  Business, // 5
+enum UserTypes{
+    PG,        // 1
+    Graduate,  // 2 
+    Staff,     // 3
+    Recruiter, // 4
+    Business   // 5
 }
 
 @pre<User>("save", async function (next) {
@@ -28,7 +28,7 @@ enum UserTypes {
 @modelOptions({ options: { allowMixed: 0 } })
 export class User {
   @prop({ required: true })
-  firstName: string;
+  name: string;
 
   @prop({ required: true })
   lastName: string;
@@ -36,7 +36,7 @@ export class User {
   @prop({})
   userName: string;
 
-  @prop({ required: true, trim: true, unique: true })
+  @prop({ required: true, trim: true, unique: true }) 
   email!: string;
 
   @prop({ required: true })
@@ -70,7 +70,10 @@ export class User {
   curriculumCounter: number;
 
   @prop({})
-  counterIncome: number;
+  counterIncome: number
+
+  @prop({})
+  workModality: string
 
   @prop({})
   banner: object;
@@ -85,8 +88,6 @@ export class User {
   // follow: string[]
 
   //business
-  @prop({})
-  name: string;
 
   @prop({})
   jobSummary: string;

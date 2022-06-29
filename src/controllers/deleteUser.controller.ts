@@ -15,7 +15,7 @@ export const deleteUser = async (req: Request, res: Response) => {
             if (deleteById) {
                 const myDelete: userInterface = {
                     _id: deleteById._id,
-                    firstName: deleteById.firstName,
+                    name: deleteById.name,
                     lastName: deleteById.lastName,
                     userName: deleteById.userName,
                     email: deleteById.email,
@@ -26,9 +26,10 @@ export const deleteUser = async (req: Request, res: Response) => {
                     country: deleteById.country,
                     backFront: deleteById.backFront,
                     languages: deleteById.languages,
-                    otherStudies: deleteById.otherStudies,
-                    curriculumCounter: deleteById.curriculumCounter,
-                    counterIngreso: deleteById.counterIncome,
+                    otherstudies: deleteById.otherStudies,
+                    CurriculumCounter: deleteById.curriculumCounter,
+                    counterIncome: deleteById.counterIncome,
+                    workModality: deleteById.workModality,
                     banner: deleteById.banner,
                     premium: deleteById.premium
                 };

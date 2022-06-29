@@ -5,14 +5,32 @@ export const createPost = async (req: Request, res: Response) => {
 
 
 
-    const {  posterUser: _id, text } = req.body
+    const {  
+        posterUser: _id, 
+        text, 
+        imgVideo, 
+        image, 
+        date, 
+        workModality, 
+        languages, 
+        technologies, 
+        backFront, 
+        country } = req.body
 
     try {
 
         const post = await postModel.create({
             posterUser: _id,
             // postBusiness: _id,
-            text
+            text,
+            imgVideo,
+            image,
+            date,
+            workModality,
+            languages,
+            technologies,
+            backFront,
+            country
         });
 
         res.status(201).json(post)

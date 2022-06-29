@@ -1,14 +1,20 @@
-// import { Request, Response } from "express";
-// import { Coments, postComent } from "../../models/postComent";
+import { Request, Response } from "express";
+import { Coments, postComent } from "../../models/postComent";
 
-// export const getAllComents = async (req: Request, res: Response) => {
+export const getAllComents = async (req: Request, res: Response) => {
 
-//     try {
+    try {
 
-//         let coments: 
+        let coments: Coments[]
 
-//     } catch(err){
-//         console.error(err)
-//     }
+        coments = await postComent.find().populate("comentUser").populate("postUser")
 
-// }
+        if(coments){
+            res.status(200).json(coments)
+        }
+
+    } catch(err){
+        console.error(err)
+    }
+
+}

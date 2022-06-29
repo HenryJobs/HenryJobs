@@ -3,21 +3,22 @@ import { Coments, postComent } from '../../models/postComent';
 
 export const createComent = async (req: Request, res: Response) => {
 
-    const { comentUser, text } = req.body
+    const { comentUser, text, postUser } = req.body
 
     try {
 
-        const coment: Coments | null = await postComent.findOne({
-            $and: [{ text: text }, { comentUser: comentUser }],
-        });
+        // const coment: Coments | null = await postComent.findOne({
+        //     $and: [{ text: text }, { comentUser: comentUser }],
+        // });
 
         const comentCreated: Coments = await postComent.create({
             comentUser,
-            text
+            text,
+            postUser
         })
 
-        if(comentCreated) {
-            res.status(201).json(coment)
+        if(comentCreated){
+            res.status(201).json(comentCreated)
         }
 
     } catch(err){
