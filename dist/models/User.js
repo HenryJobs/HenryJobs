@@ -49,7 +49,7 @@ let User = class User {
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
+], User.prototype, "name", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)
@@ -105,7 +105,11 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Number)
-], User.prototype, "counterIngreso", void 0);
+], User.prototype, "counterIncome", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "workModality", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Object)
@@ -118,10 +122,6 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], User.prototype, "follows", void 0);
-__decorate([
-    (0, typegoose_1.prop)({}),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)

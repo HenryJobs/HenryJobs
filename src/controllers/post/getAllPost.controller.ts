@@ -8,8 +8,6 @@ export const getAllPost = async (_req: Request, res: Response) => {
 
         posters = await postModel.find().populate("posterUser")
         
-
-        
         if(posters){
             res.status(200).json(posters)
         } 

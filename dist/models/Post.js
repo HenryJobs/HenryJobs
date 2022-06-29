@@ -12,9 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postModel = exports.Post = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const User_1 = require("./User");
-// @modelOptions({ options: { allowMixed: } })
-class Post {
-}
+let Post = class Post {
+};
 __decorate([
     (0, typegoose_1.prop)({ ref: () => User_1.User }),
     __metadata("design:type", Object)
@@ -23,5 +22,36 @@ __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)
 ], Post.prototype, "text", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "imgVideo", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "date", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "image", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "workModality", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Array)
+], Post.prototype, "technologies", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "backFront", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "country", void 0);
+Post = __decorate([
+    (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
+], Post);
 exports.Post = Post;
 exports.postModel = (0, typegoose_1.getModelForClass)(Post);

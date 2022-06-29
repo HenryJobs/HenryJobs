@@ -12,7 +12,7 @@ const { TOKEN_SECRET } = process.env;
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
     const { 
-        firstName,
+        name,
         lastName, 
         userName, 
         email, 
@@ -24,18 +24,16 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
         backFront,
         languages,
         otherstudies,
+        workModality,
         CurriculumCounter,
-        counterIngreso,
         premium
         } = req.body;
 
-    const { tempFilePath } = req.files?.profileImage as UploadedFile;
-    const banner = req.files?.banner as UploadedFile;
 
     try {
 
         if (
-            !firstName ||
+            !name ||
             !lastName ||
             !userName ||
             !email ||
@@ -44,44 +42,47 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
 
         const user = await userModel.create({
-            firstName,
+            name,
             lastName,
             userName,
             email,
             password,
-            profileImage,
             userTypes,
             technologies,
             country,
             backFront,
             languages,
             otherstudies,
+            workModality,
             CurriculumCounter,
-            counterIngreso,
-            banner,
             premium
         });
 
-        if (tempFilePath) {
-            const result = await uploadImage(tempFilePath)
-            user.profileImage = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
+        if(req.files){
+            const { tempFilePath } = req.files?.profileImage as UploadedFile;
+            const banner = req.files?.banner as UploadedFile;
+            
+            if (tempFilePath) {
+                const result = await uploadImage(tempFilePath)
+                user.profileImage = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url
+                };
+                
+                await unlink(tempFilePath);
             };
-
-            await unlink(tempFilePath);
-        };
-
-        if (banner.tempFilePath) {
-            const result = await uploadImage(banner.tempFilePath)
-            user.banner = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
+            
+            if (banner.tempFilePath) {
+                const result = await uploadImage(banner.tempFilePath)
+                user.banner = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url
+                };
+            }
+                
+                await unlink(banner.tempFilePath)
             };
-
-            await unlink(banner.tempFilePath)
-        };
-
+            
         await user.save();
 
         // crea un token y lo manda al header

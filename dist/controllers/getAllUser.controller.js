@@ -17,14 +17,23 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
         if (allUsers) {
             const userMap = allUsers.map((user) => {
                 return ({
-                    _id: user.id,
-                    firstName: user.firstName,
+                    _id: user._id,
+                    name: user.name,
                     lastName: user.lastName,
                     userName: user.userName,
-                    UserTypes: user.UserTypes,
                     email: user.email,
                     password: user.password,
                     profileImage: user.profileImage,
+                    userTypes: user.userTypes,
+                    technologies: user.technologies,
+                    country: user.country,
+                    backFront: user.backFront,
+                    languages: user.languages,
+                    otherstudies: user.otherStudies,
+                    CurriculumCounter: user.curriculumCounter,
+                    counterIncome: user.counterIncome,
+                    workModality: user.workModality,
+                    banner: user.banner,
                     premium: user.premium
                 });
             });

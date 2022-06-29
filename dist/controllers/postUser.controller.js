@@ -20,49 +20,49 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { firstName, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, CurriculumCounter, counterIngreso, premium } = req.body;
-    const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
-    const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
+    const { name, lastName, userName, email, password, profileImage, userTypes, technologies, country, backFront, languages, otherstudies, workModality, CurriculumCounter, premium } = req.body;
     try {
-        if (!firstName ||
+        if (!name ||
             !lastName ||
             !userName ||
             !email ||
             !password)
             res.status(400).json({ msg: "Some fields are required" });
         const user = yield User_1.userModel.create({
-            firstName,
+            name,
             lastName,
             userName,
             email,
             password,
-            profileImage,
             userTypes,
             technologies,
             country,
             backFront,
             languages,
             otherstudies,
+            workModality,
             CurriculumCounter,
-            counterIngreso,
-            banner,
             premium
         });
-        if (tempFilePath) {
-            const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
-            user.profileImage = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
-            yield (0, fs_extra_1.unlink)(tempFilePath);
-        }
-        ;
-        if (banner.tempFilePath) {
-            const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
-            user.banner = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
+        if (req.files) {
+            const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
+            const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
+            if (tempFilePath) {
+                const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
+                user.profileImage = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url
+                };
+                yield (0, fs_extra_1.unlink)(tempFilePath);
+            }
+            ;
+            if (banner.tempFilePath) {
+                const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
+                user.banner = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url
+                };
+            }
             yield (0, fs_extra_1.unlink)(banner.tempFilePath);
         }
         ;

@@ -35,7 +35,7 @@ export const signin = async (req: Request, res: Response) => {
         .header("authToken", token)
         .send(
             `Welcome
-             ${user.firstName} 
+             ${user.name} 
              ${user.lastName}!`
         );
 };

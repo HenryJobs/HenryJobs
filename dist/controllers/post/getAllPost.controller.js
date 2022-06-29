@@ -9,25 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = void 0;
-const User_1 = require("../models/User");
-const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const { name, lastName, userName, email, password, workModality } = req.body;
+exports.getAllPost = void 0;
+const Post_1 = require("../../models/Post");
+const getAllPost = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const updated = yield User_1.userModel.findByIdAndUpdate({ _id: id }, {
-            name,
-            lastName,
-            userName,
-            email,
-            password,
-            workModality
-        });
-        res.status(200).json(updated);
+        let posters;
+        posters = yield Post_1.postModel.find().populate("posterUser");
+        if (posters) {
+            res.status(200).json(posters);
+        }
     }
-    catch (error) {
-        console.error(error);
+    catch (err) {
+        console.log(err);
     }
-    ;
 });
-exports.updateUser = updateUser;
+exports.getAllPost = getAllPost;

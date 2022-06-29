@@ -20,7 +20,7 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (userEmail) {
             const allEmail = {
                 _id: userEmail._id,
-                firstName: userEmail.firstName,
+                name: userEmail.name,
                 lastName: userEmail.lastName,
                 userName: userEmail.userName,
                 email: userEmail.email,
@@ -33,7 +33,8 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 languages: userEmail.languages,
                 otherstudies: userEmail.otherStudies,
                 CurriculumCounter: userEmail.curriculumCounter,
-                counterIngreso: userEmail.counterIngreso,
+                counterIncome: userEmail.counterIncome,
+                workModality: userEmail.workModality,
                 banner: userEmail.banner,
                 premium: userEmail.premium
             };

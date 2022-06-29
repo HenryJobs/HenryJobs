@@ -9,25 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = void 0;
-const User_1 = require("../models/User");
-const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.deletePost = void 0;
+const Post_1 = require("../../models/Post");
+const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { name, lastName, userName, email, password, workModality } = req.body;
     try {
-        const updated = yield User_1.userModel.findByIdAndUpdate({ _id: id }, {
-            name,
-            lastName,
-            userName,
-            email,
-            password,
-            workModality
-        });
-        res.status(200).json(updated);
+        if (id) {
+            const deleteById = yield Post_1.postModel.findOneAndDelete({ _id: id });
+            if (deleteById) {
+                res.status(200).json(deleteById);
+            }
+        }
     }
-    catch (error) {
-        console.error(error);
+    catch (err) {
+        console.error(err);
     }
-    ;
 });
-exports.updateUser = updateUser;
+exports.deletePost = deletePost;

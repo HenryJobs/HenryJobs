@@ -19,7 +19,7 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             if (userId) {
                 const allId = {
                     _id: userId._id,
-                    firstName: userId.firstName,
+                    name: userId.name,
                     lastName: userId.lastName,
                     userName: userId.userName,
                     email: userId.email,
@@ -32,7 +32,8 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     languages: userId.languages,
                     otherstudies: userId.otherStudies,
                     CurriculumCounter: userId.curriculumCounter,
-                    counterIngreso: userId.counterIngreso,
+                    counterIncome: userId.counterIncome,
+                    workModality: userId.workModality,
                     banner: userId.banner,
                     premium: userId.premium
                 };

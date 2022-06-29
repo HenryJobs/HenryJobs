@@ -34,7 +34,7 @@ const signin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res
         .header("authToken", token)
         .send(`Welcome
-             ${user.firstName} 
+             ${user.name} 
              ${user.lastName}!`);
 });
 exports.signin = signin;

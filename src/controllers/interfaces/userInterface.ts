@@ -2,7 +2,7 @@ import { User } from "../../models/User"
 
 export interface allUserInterface {
     _id: string,
-    firstName: string,
+    name: string,
     lastName: string,
     UserTypes: string,
     email: string,
@@ -12,10 +12,10 @@ export interface allUserInterface {
 
 export interface userInterface {
     _id: string,
-    firstName: string,
+    name: string,
     lastName: string,
     userName: string,
-    email: string,
+    email: string, 
     password: string,
     profileImage: object,
     userTypes: number,
@@ -25,7 +25,8 @@ export interface userInterface {
     languages: string,
     otherstudies: string[],
     CurriculumCounter: number,
-    counterIngreso: number,
+    counterIncome: number,
+    workModality: string,
     banner: object
     premium: boolean
 

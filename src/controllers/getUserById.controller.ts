@@ -14,7 +14,7 @@ export const getUserById = async (req: Request, res: Response) => {
             if(userId){
                 const allId: userInterface = {
                 _id: userId._id,
-                firstName: userId.firstName,
+                name: userId.name,
                 lastName: userId.lastName,
                 userName: userId.userName,
                 email: userId.email,
@@ -27,7 +27,8 @@ export const getUserById = async (req: Request, res: Response) => {
                 languages: userId.languages,
                 otherstudies: userId.otherStudies,
                 CurriculumCounter: userId.curriculumCounter,
-                counterIngreso: userId.counterIngreso,
+                counterIncome: userId.counterIncome,
+                workModality: userId.workModality,
                 banner: userId.banner,
                 premium: userId.premium
                 }

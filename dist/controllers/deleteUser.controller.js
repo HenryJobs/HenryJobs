@@ -20,7 +20,7 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             if (deleteById) {
                 const myDelete = {
                     _id: deleteById._id,
-                    firstName: deleteById.firstName,
+                    name: deleteById.name,
                     lastName: deleteById.lastName,
                     userName: deleteById.userName,
                     email: deleteById.email,
@@ -33,7 +33,8 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     languages: deleteById.languages,
                     otherstudies: deleteById.otherStudies,
                     CurriculumCounter: deleteById.curriculumCounter,
-                    counterIngreso: deleteById.counterIngreso,
+                    counterIncome: deleteById.counterIncome,
+                    workModality: deleteById.workModality,
                     banner: deleteById.banner,
                     premium: deleteById.premium
                 };

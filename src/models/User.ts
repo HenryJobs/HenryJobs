@@ -24,7 +24,7 @@ enum UserTypes{
 
 export class User {
   @prop({ required: true })
-  firstName: string;
+  name: string;
 
   @prop({ required: true })
   lastName: string;
@@ -66,7 +66,10 @@ export class User {
   curriculumCounter: number
 
   @prop({})
-  counterIngreso: number
+  counterIncome: number
+
+  @prop({})
+  workModality: string
 
   @prop({})
   banner: object
@@ -81,8 +84,6 @@ export class User {
   // follow: string[]
 
   //business
-  @prop({})
-  name: string;
 
   @prop({})
   jobSummary: string

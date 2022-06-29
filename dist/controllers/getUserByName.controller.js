@@ -18,7 +18,7 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         if (user) {
             const allNames = {
                 _id: user._id,
-                firstName: user.firstName,
+                name: user.name,
                 lastName: user.lastName,
                 userName: user.userName,
                 email: user.email,
@@ -31,7 +31,8 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 languages: user.languages,
                 otherstudies: user.otherStudies,
                 CurriculumCounter: user.curriculumCounter,
-                counterIngreso: user.counterIngreso,
+                counterIncome: user.counterIncome,
+                workModality: user.workModality,
                 banner: user.banner,
                 premium: user.premium
             };

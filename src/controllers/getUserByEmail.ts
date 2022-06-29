@@ -13,7 +13,7 @@ export const getUserEmail = async (req: Request, res: Response) => {
         if(userEmail){
             const allEmail: userInterface = {
                 _id: userEmail._id,
-                firstName: userEmail.firstName,
+                name: userEmail.name,
                 lastName: userEmail.lastName,
                 userName: userEmail.userName,
                 email: userEmail.email,
@@ -26,7 +26,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 languages: userEmail.languages,
                 otherstudies: userEmail.otherStudies,
                 CurriculumCounter: userEmail.curriculumCounter,
-                counterIngreso: userEmail.counterIngreso,
+                counterIncome: userEmail.counterIncome,
+                workModality: userEmail.workModality,
                 banner: userEmail.banner,
                 premium: userEmail.premium
             }
