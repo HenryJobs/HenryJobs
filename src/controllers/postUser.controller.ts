@@ -95,7 +95,7 @@ export const createUser = async (
         id: user._id,
         type: user.userTypes,
         premium: user.premium,
-        firstname: user.firstName,
+        name: user.name,
         lastname: user.lastName,
       },
       TOKEN_SECRET || "TOKENTEST",

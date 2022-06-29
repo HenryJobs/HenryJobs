@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInterface";
+import { userInterface } from "./interfaces/userInterface.controller";
 
 export const getAllUser = async (_: Request, res: Response, next: NextFunction) => {
 
@@ -22,8 +22,8 @@ export const getAllUser = async (_: Request, res: Response, next: NextFunction) 
                 country: user.country,
                 backFront: user.backFront,
                 languages: user.languages,
-                otherstudies: user.otherStudies,
-                CurriculumCounter: user.curriculumCounter,
+                otherStudies: user.otherStudies,
+                curriculumCounter: user.curriculumCounter,
                 counterIncome: user.counterIncome,
                 workModality: user.workModality,
                 banner: user.banner,

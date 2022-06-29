@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { userId, userInterface } from "./interfaces/userInterface.controller";
+import { userId, userInterface } from "./interfaces/userInterface";
 
 export const getUserByName = async (req: Request, res: Response, next: NextFunction) => {
     const { userName } = req.query

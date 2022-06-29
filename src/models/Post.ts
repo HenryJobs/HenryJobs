@@ -1,8 +1,7 @@
 import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose";
 import { User } from "./User";
-import { Business } from "./Bussiness";
 
-    @modelOptions({ options: { allowMixed: 0 } })
+@modelOptions({ options: { allowMixed: 0 } })
 
 export class Post {
 
@@ -35,9 +34,6 @@ export class Post {
 
     @prop({})
     country: string
-
-
-
 }
 
 export const postModel = getModelForClass(Post)

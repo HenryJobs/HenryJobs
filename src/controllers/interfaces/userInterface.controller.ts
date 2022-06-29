@@ -12,7 +12,7 @@ export interface allUserInterface {
 
 export interface userInterface {
   _id: string;
-  firstName: string;
+  name: string;
   lastName: string;
   userName: string;
   email: string;
@@ -25,7 +25,8 @@ export interface userInterface {
   languages: string;
   otherStudies: string[];
   curriculumCounter: number;
-  counterIngreso: number;
+  workModality: string;
+  counterIncome: number;
   banner: object;
   premium: boolean;
 }

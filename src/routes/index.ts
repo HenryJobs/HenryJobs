@@ -23,9 +23,6 @@ import {
 
 import getUserByMail from "./user/getEmailUser.routes";
 
-// follow
-import getAllFollowRoute from "./follow/getAllFollow.routes";
-import createFollowRoute from "./follow/createFollow.routes";
 
 // user
 router.use("/user", userRoute);
@@ -51,32 +48,10 @@ router.use('/post', deletePostRoute)
 router.use('/post', updatePostRoute)
 router.use('/post', getPostByIdRoute)
 
-//business
-
-// import createBusinessRoute from './business/createBusiness.routes'
-// import getAllBusinessRoute from './business/getAllBusiness.routes'
-// import updateBusinessRoute from './business/putBusiness.routes'
-// import deleteBusinessRoute from './business/deleteBusiness.routes'
-// import getBusinessByIdRoute from './business/getBusinessById.routes'
-// import getBusinessByEmailRoute from './business/getBusinessEmail.routes'
-// import getBusinessByNameRoute from './business/getBusinessByName.routes'
-
-// router.use('/business', getAllBusinessRoute)
-// router.use('/business', createBusinessRoute)
-// router.use('/business', updateBusinessRoute)
-// router.use('/business', deleteBusinessRoute)
-// router.use('/business', getBusinessByIdRoute)
-// router.use('/business', getBusinessByEmailRoute)
-// router.use('/business', getBusinessByNameRoute)
-
-//follow
-
 // follow
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", getAllFollowRoute);
-router.use("/follow", createFollowRoute);
 router.use("/follow", putFollow);
 
 // comments
