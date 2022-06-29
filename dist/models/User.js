@@ -25,8 +25,8 @@ var UserTypes;
 (function (UserTypes) {
     UserTypes[UserTypes["PG"] = 0] = "PG";
     UserTypes[UserTypes["Graduate"] = 1] = "Graduate";
-    UserTypes[UserTypes["Recruiter"] = 2] = "Recruiter";
-    UserTypes[UserTypes["Staff"] = 3] = "Staff";
+    UserTypes[UserTypes["Staff"] = 2] = "Staff";
+    UserTypes[UserTypes["Recruiter"] = 3] = "Recruiter";
     UserTypes[UserTypes["Business"] = 4] = "Business"; // 5
 })(UserTypes || (UserTypes = {}));
 let User = class User {
