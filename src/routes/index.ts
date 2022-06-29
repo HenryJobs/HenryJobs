@@ -10,7 +10,6 @@ import deleteRoute from "./user/delete.routes";
 import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
-import PruebaGraduate from "./user/PRUEBA.routes";
 //validadores
 import {
   tokenValidation,
@@ -40,7 +39,6 @@ router.use("/user", deleteRoute);
 router.use("/user", putRoute);
 router.use("/user", getUserById);
 router.use("/signin", Usersignin);
-router.use("/graduateprueba", tokenValidation, validatePGToken, PruebaGraduate);
 
 //post
 import createPostRoute from "./post/createPost.routes";
