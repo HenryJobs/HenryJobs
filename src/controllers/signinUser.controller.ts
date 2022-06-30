@@ -7,9 +7,16 @@ const { TOKEN_SECRET } = process.env;
 
 export const signinUser = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, userName } = req.body;
 
-    const user = await userModel.findOne({ email: email });
+    let user;
+    if (userName) {
+      user = await userModel.findOne({ userName: userName });
+    } else if (email) {
+      user = await userModel.findOne({ email: email });
+    } else {
+      return res.status(404).send("Fill in the user information completely");
+    }
 
     //valida usuario
     if (!user) {
@@ -17,6 +24,7 @@ export const signinUser = async (req: Request, res: Response) => {
     }
 
     // Ya funciona :D!!
+
     const correctPassword: boolean = await user.validatePassword(password);
 
     if (!correctPassword)
