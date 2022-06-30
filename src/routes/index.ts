@@ -12,16 +12,8 @@ import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
-//validadores
-import {
-  tokenValidation,
-  validatePGToken,
-  validatePremiumToken,
-  validateGraduateToken,
-  validateRecruiterToken,
-  validateStaffToken,
-  validateBusinessToken,
-} from "../libs/validateToken";
+//validador de token
+import { tokenValidation } from "../libs/validateToken";
 
 // user
 router.use("/user", tokenValidation, userRoute);
@@ -51,7 +43,7 @@ router.use("/post", getPostByIdRoute);
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", putFollow);
+router.use("/follow", tokenValidation, putFollow);
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";

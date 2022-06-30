@@ -24,6 +24,7 @@ export const signinUser = async (req: Request, res: Response) => {
     }
 
     // Ya funciona :D!!
+
     const correctPassword: boolean = await user.validatePassword(password);
 
     if (!correctPassword)

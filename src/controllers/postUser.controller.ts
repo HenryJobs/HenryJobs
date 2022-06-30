@@ -14,7 +14,6 @@ export const createUser = async (
   res: Response,
   next: NextFunction
 ) => {
-
   const {
     name,
     lastName,
@@ -31,19 +30,12 @@ export const createUser = async (
     otherStudies,
     workModality,
     curriculumCounter,
-    premium
+    premium,
   } = req.body;
 
   try {
-
-    if (
-      !name ||
-      !lastName ||
-      !userName ||
-      !email ||
-      !password
-    ) res.status(400).json({ msg: "Some fields are required" });
-
+    if (!name || !lastName || !userName || !email || !password)
+      res.status(400).json({ msg: "Some fields are required" });
 
     const user = await userModel.create({
       name,
@@ -61,7 +53,7 @@ export const createUser = async (
       otherStudies,
       workModality,
       curriculumCounter,
-      premium
+      premium,
     });
 
     if (req.files) {
@@ -69,26 +61,25 @@ export const createUser = async (
       const banner = req.files?.banner as UploadedFile;
 
       if (tempFilePath) {
-        const result = await uploadImage(tempFilePath)
+        const result = await uploadImage(tempFilePath);
         user.profileImage = {
           public_id: result.public_id,
-          secure_url: result.secure_url
+          secure_url: result.secure_url,
         };
 
         await unlink(tempFilePath);
-      };
+      }
 
       if (banner.tempFilePath) {
-        const result = await uploadImage(banner.tempFilePath)
+        const result = await uploadImage(banner.tempFilePath);
         user.banner = {
           public_id: result.public_id,
-          secure_url: result.secure_url
+          secure_url: result.secure_url,
         };
       }
 
-      await unlink(banner.tempFilePath)
-    };
-
+      await unlink(banner.tempFilePath);
+    }
 
     await user.save();
 
@@ -109,5 +100,5 @@ export const createUser = async (
     // res.status(201).json(user)
   } catch (error) {
     console.error(error);
-  };
-}
+  }
+};
