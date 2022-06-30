@@ -60,25 +60,25 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             banner
         });
 
-        if (tempFilePath) {
-            const result = await uploadImage(tempFilePath)
-            user.profileImage = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
+        // if (tempFilePath) {
+        //     const result = await uploadImage(tempFilePath)
+        //     user.profileImage = {
+        //         public_id: result.public_id,
+        //         secure_url: result.secure_url
+        //     };
 
-            await unlink(tempFilePath);
-        };
+        //     await unlink(tempFilePath);
+        // };
 
-        if (banner.tempFilePath) {
-            const result = await uploadImage(banner.tempFilePath)
-            user.banner = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            };
+        // if (banner.tempFilePath) {
+        //     const result = await uploadImage(banner.tempFilePath)
+        //     user.banner = {
+        //         public_id: result.public_id,
+        //         secure_url: result.secure_url
+        //     };
 
-            await unlink(banner.tempFilePath)
-        };
+        //     await unlink(banner.tempFilePath)
+        // };
 
         await user.save();
 
