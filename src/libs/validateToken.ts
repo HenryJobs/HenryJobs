@@ -37,7 +37,7 @@ export const tokenValidation = (
     token,
     TOKEN_SECRET || "TOKENTRES"
   ) as payloadInterface;
-
+  console.log("payload--->", payload);
   //para guardar el id del usuario en el req
   req.userId = payload.id;
   req.userType = payload.type;
