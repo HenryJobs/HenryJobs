@@ -46,7 +46,7 @@ const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             lastname: user.lastName,
         }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
         console.log("user", user);
-        res.header("authToken", token).send(token);
+        res.send(token);
     }
     catch (error) {
         console.error(error);
