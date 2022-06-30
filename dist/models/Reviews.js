@@ -10,3 +10,6 @@
 //Referencia al usuario que hace la review y a quien se la hace
 //Solo Usuarios que hayan trabajo juntos pueden hacer review
 //El usuario tendrá un promedio de score
+// class Review {
+//   titleReview: string,
+// }

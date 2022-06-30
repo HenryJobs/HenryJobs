@@ -16,7 +16,7 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
         const allUsers = yield User_1.userModel.find();
         if (allUsers) {
             const userMap = allUsers.map((user) => {
-                return ({
+                return {
                     _id: user._id,
                     name: user.name,
                     lastName: user.lastName,
@@ -34,8 +34,8 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
                     counterIncome: user.counterIncome,
                     workModality: user.workModality,
                     banner: user.banner,
-                    premium: user.premium
-                });
+                    premium: user.premium,
+                };
             });
             res.status(200).json(userMap);
         }
@@ -46,6 +46,5 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
     catch (error) {
         console.error(error);
     }
-    ;
 });
 exports.getAllUser = getAllUser;
