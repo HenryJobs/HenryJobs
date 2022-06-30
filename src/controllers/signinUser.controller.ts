@@ -43,9 +43,7 @@ export const signinUser = async (req: Request, res: Response) => {
       { expiresIn: 60 * 60 * 24 }
     );
     console.log("user", user);
-    res
-      .header("authToken", token)
-      .send(`Welcome ${user.name}  ${user.lastName}!`);
+    res.header("authToken", token).send(token);
   } catch (error) {
     console.error(error);
   }
