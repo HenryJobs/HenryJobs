@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllPost } from "../../controllers/post/getAllPost";
+import { getAllPost } from "../../controllers/post/getAllPost.controller";
 
 const router = Router()
 

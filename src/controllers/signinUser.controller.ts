@@ -3,39 +3,48 @@ import { userModel, User } from "../models/User";
 
 import jwt from "jsonwebtoken";
 
-const { TOKEN_SECRET } = process.env
+const { TOKEN_SECRET } = process.env;
 
-export const signin = async (req: Request, res: Response) => {
+export const signinUser = async (req: Request, res: Response) => {
+  try {
+    const { email, password, userName } = req.body;
 
-    const { email, password } = req.body;
-
-    const user = await userModel.findOne({ email: email });
-    console.log("este es el user de findOne por email -> ", user)
+    let user;
+    if (userName) {
+      user = await userModel.findOne({ userName: userName });
+    } else if (email) {
+      user = await userModel.findOne({ email: email });
+    } else {
+      return res.status(404).send("Fill in the user information completely");
+    }
 
     //valida usuario
     if (!user) {
-
-        return res.status(400).send("Incorrect user information (code: 001)");
+      return res.status(400).send("Incorrect user information (code: 001)");
     }
 
-    // ver por qué carajo no funciona!!
+    // Ya funciona :D!!
+
     const correctPassword: boolean = await user.validatePassword(password);
-    console.log("password -> ", correctPassword);
+
     if (!correctPassword)
-        return res.status(400).send("Incorrect user information (code: 002)");
+      return res.status(400).send("Incorrect user information (code: 002)");
 
     //Si ambos son correctos se genera un token que expira en 24hrs
     const token: string = jwt.sign(
-        { id: user._id },
-        TOKEN_SECRET || "TOKENTEST",
-        { expiresIn: 60 * 60 * 24 }
+      {
+        id: user._id,
+        type: user.userTypes,
+        premium: user.premium,
+        name: user.name,
+        lastname: user.lastName,
+      },
+      TOKEN_SECRET || "TOKENTEST",
+      { expiresIn: 60 * 60 * 24 }
     );
-
-    res
-        .header("authToken", token)
-        .send(
-            `Welcome
-             ${user.firstName} 
-             ${user.lastName}!`
-        );
+    console.log("user", user);
+    res.send(token);
+  } catch (error) {
+    console.error(error);
+  }
 };
