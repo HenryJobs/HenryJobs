@@ -16,10 +16,10 @@ import getUserByMail from "./user/getEmailUser.routes";
 import { tokenValidation } from "../libs/validateToken";
 
 // user
+router.use("/user", createRoute);
 router.use("/user", tokenValidation, userRoute);
 router.use("/name", nameRoute);
 router.use("/mail", getUserByMail);
-router.use("/user", createRoute);
 router.use("/user", tokenValidation, deleteRoute);
 router.use("/user", tokenValidation, putRoute);
 router.use("/user", getUserById);
@@ -57,5 +57,12 @@ router.use("/comment", tokenValidation, createCommentRoute);
 router.use("/comment", tokenValidation, updateCommentRoute);
 router.use("/comment", getCommentIdRoute);
 router.use("/comment", getAllCommentRoute);
+
+//reviews
+import getReviews from "./Reviews/getReviews.routes";
+import postReview from "./Reviews/postReviews.routes";
+
+router.use("/reviews", getReviews);
+router.use("/reviews", postReview);
 
 export default router;

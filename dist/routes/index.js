@@ -17,10 +17,10 @@ const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.route
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
+router.use("/user", postUser_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, getAllUser_routes_1.default);
 router.use("/name", getUserByName_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
-router.use("/user", postUser_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, delete_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, putUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);
@@ -50,4 +50,9 @@ router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.d
 router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
 router.use("/comment", getCommentById_routes_1.default);
 router.use("/comment", getAllComment_routes_1.default);
+//reviews
+const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
+const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
+router.use("/reviews", getReviews_routes_1.default);
+router.use("/reviews", postReviews_routes_1.default);
 exports.default = router;
