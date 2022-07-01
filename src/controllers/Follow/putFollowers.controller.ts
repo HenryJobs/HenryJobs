@@ -15,7 +15,7 @@ export const putFollow = async (req: Request, res: Response, next: NextFunction)
                 await user?.updateOne({ $push: { followers: userId } })
                 await currentUser?.updateOne({ $push: { following: id } })
 
-                return res.status(200).json(user)
+                return res.status(200).json(currentUser)
             };
             res.status(500).json({ msg: "You already follow this user" })
         }
