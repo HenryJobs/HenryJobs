@@ -20,13 +20,9 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, backFront, languages, otherStudies, workModality, curriculumCounter, premium } = req.body;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, backFront, languages, otherStudies, workModality, curriculumCounter, premium, } = req.body;
     try {
-        if (!name ||
-            !lastName ||
-            !userName ||
-            !email ||
-            !password)
+        if (!name || !lastName || !userName || !email || !password)
             res.status(400).json({ msg: "Some fields are required" });
         const user = yield User_1.userModel.create({
             name,
@@ -44,7 +40,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             otherStudies,
             workModality,
             curriculumCounter,
-            premium
+            premium,
         });
         if (req.files) {
             const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
@@ -53,21 +49,19 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
                 const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
                 user.profileImage = {
                     public_id: result.public_id,
-                    secure_url: result.secure_url
+                    secure_url: result.secure_url,
                 };
                 yield (0, fs_extra_1.unlink)(tempFilePath);
             }
-            ;
             if (banner.tempFilePath) {
                 const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
                 user.banner = {
                     public_id: result.public_id,
-                    secure_url: result.secure_url
+                    secure_url: result.secure_url,
                 };
             }
             yield (0, fs_extra_1.unlink)(banner.tempFilePath);
         }
-        ;
         yield user.save();
         // crea un token y lo manda al header
         const token = jsonwebtoken_1.default.sign({
@@ -83,6 +77,5 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     catch (error) {
         console.error(error);
     }
-    ;
 });
 exports.createUser = createUser;

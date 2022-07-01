@@ -18,8 +18,17 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { email, password } = req.body;
-        const user = yield User_1.userModel.findOne({ email: email });
+        const { email, password, userName } = req.body;
+        let user;
+        if (userName) {
+            user = yield User_1.userModel.findOne({ userName: userName });
+        }
+        else if (email) {
+            user = yield User_1.userModel.findOne({ email: email });
+        }
+        else {
+            return res.status(404).send("Fill in the user information completely");
+        }
         //valida usuario
         if (!user) {
             return res.status(400).send("Incorrect user information (code: 001)");

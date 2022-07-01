@@ -23,5 +23,5 @@ app.use((0, express_fileupload_1.default)({
     tempFileDir: "./uploads"
 }));
 app.set("port", process.env.PORT || 3002);
-app.use('/', index_1.default);
+app.use('/api', index_1.default);
 exports.default = app;
