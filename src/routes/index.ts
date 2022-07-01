@@ -61,8 +61,10 @@ router.use("/comment", getAllCommentRoute);
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
 import postReview from "./Reviews/postReviews.routes";
-
+// /reviews/:idUser
+// /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
+// /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews);
-router.use("/reviews", postReview);
+router.use("/reviews", tokenValidation, postReview);
 
 export default router;

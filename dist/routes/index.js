@@ -53,6 +53,9 @@ router.use("/comment", getAllComment_routes_1.default);
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
+// /reviews/:idUser
+// /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
+// /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
-router.use("/reviews", postReviews_routes_1.default);
+router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
 exports.default = router;

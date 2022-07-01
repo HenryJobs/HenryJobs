@@ -13,10 +13,19 @@ exports.getReviews = void 0;
 const Reviews_1 = require("../../models/Reviews");
 const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { idUser } = req.params;
+    const { date, score } = req.query;
     try {
+        const obj = {};
+        if (date) {
+            obj.date = date;
+        }
+        if (score) {
+            obj.score = score;
+        }
         const reviews = yield Reviews_1.reviewsModel
             .find({ reviewReceiver: idUser })
-            .populate("reviewer", "userName");
+            .populate("reviewer", "userName")
+            .sort(obj);
         res.send(reviews);
     }
     catch (error) { }
