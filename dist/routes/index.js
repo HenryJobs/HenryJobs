@@ -22,7 +22,7 @@ router.use("/user", getUserById_routes_1.default);
 router.use("/name", getUserByName_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
-router.use("/user", validateToken_1.tokenValidation, getAllUser_routes_1.default);
+router.use("/user", getAllUser_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, delete_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, putUser_routes_1.default);
 //post

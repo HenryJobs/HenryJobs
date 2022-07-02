@@ -21,7 +21,7 @@ router.use("/user", getUserById);
 router.use("/name", nameRoute);
 router.use("/mail", getUserByMail);
 router.use("/signin", Usersignin);
-router.use("/user", tokenValidation, userRoute);
+router.use("/user", userRoute);
 router.use("/user", tokenValidation, deleteRoute);
 router.use("/user", tokenValidation, putRoute);
 

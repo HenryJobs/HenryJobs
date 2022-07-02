@@ -15,18 +15,29 @@ const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { idUser } = req.params;
     const { date, score } = req.query;
     try {
-        const obj = {};
-        if (date) {
-            obj.date = date;
+        if (!idUser) {
+            res.status(404).send("not id user found");
         }
-        if (score) {
-            obj.score = score;
+        else {
+            const obj = {};
+            if (date) {
+                obj.date = date;
+            }
+            if (score) {
+                obj.score = score;
+            }
+            const reviews = yield Reviews_1.reviewsModel
+                .find({ reviewReceiver: idUser })
+                .populate("reviewer", "userName")
+                .populate("reviewReceiver", "userName")
+                .sort(obj);
+            if (reviews.length < 1) {
+                res.status(404).send("not reviews found");
+            }
+            else {
+                res.send(reviews);
+            }
         }
-        const reviews = yield Reviews_1.reviewsModel
-            .find({ reviewReceiver: idUser })
-            .populate("reviewer", "userName")
-            .sort(obj);
-        res.send(reviews);
     }
     catch (error) { }
 });
