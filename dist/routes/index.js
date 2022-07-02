@@ -18,13 +18,13 @@ const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.route
 const validateToken_1 = require("../libs/validateToken");
 // user
 router.use("/user", postUser_routes_1.default);
-router.use("/user", validateToken_1.tokenValidation, getAllUser_routes_1.default);
+router.use("/user", getUserById_routes_1.default);
 router.use("/name", getUserByName_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
+router.use("/signin", signinUser_routes_1.default);
+router.use("/user", validateToken_1.tokenValidation, getAllUser_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, delete_routes_1.default);
 router.use("/user", validateToken_1.tokenValidation, putUser_routes_1.default);
-router.use("/user", getUserById_routes_1.default);
-router.use("/signin", signinUser_routes_1.default);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
@@ -32,10 +32,10 @@ const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"))
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 router.use("/post", getAllPost_routes_1.default);
+router.use("/post", getPostById_routes_1.default);
 router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default);
 router.use("/post", validateToken_1.tokenValidation, deletePost_routes_1.default);
 router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default);
-router.use("/post", getPostById_routes_1.default);
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default);
@@ -45,11 +45,11 @@ const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.
 const updateComment_routes_1 = __importDefault(require("./Comment/updateComment.routes"));
 const getCommentById_routes_1 = __importDefault(require("./Comment/getCommentById.routes"));
 const getAllComment_routes_1 = __importDefault(require("./Comment/getAllComment.routes"));
+router.use("/comment", getCommentById_routes_1.default);
+router.use("/comment", getAllComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, deleteComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
-router.use("/comment", getCommentById_routes_1.default);
-router.use("/comment", getAllComment_routes_1.default);
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
