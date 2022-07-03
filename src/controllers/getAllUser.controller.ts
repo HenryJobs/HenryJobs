@@ -27,7 +27,8 @@ export const getAllUser = async (_: Request, res: Response, next: NextFunction) 
                 counterIncome: user.counterIncome,
                 workModality: user.workModality,
                 banner: user.banner,
-                premium: user.premium
+                premium: user.premium,
+                stars: user.stars
             });
         });
 

@@ -28,7 +28,8 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 counterIncome: user.counterIncome,
                 workModality: user.workModality,
                 banner: user.banner,
-                premium: user.premium
+                premium: user.premium,
+                stars: user.stars
 
             }
             res.status(200).json(allNames)

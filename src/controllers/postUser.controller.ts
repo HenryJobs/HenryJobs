@@ -31,7 +31,8 @@ export const createUser = async (
     otherStudies,
     workModality,
     curriculumCounter,
-    premium
+    premium,
+    stars
   } = req.body;
 
   try {
@@ -61,7 +62,8 @@ export const createUser = async (
       otherStudies,
       workModality,
       curriculumCounter,
-      premium
+      premium,
+      stars
     });
 
     if (req.files) {

@@ -29,7 +29,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 counterIncome: userEmail.counterIncome,
                 workModality: userEmail.workModality,
                 banner: userEmail.banner,
-                premium: userEmail.premium
+                premium: userEmail.premium,
+                stars: userEmail.stars
             }
             res.status(200).json(allEmail)
         }

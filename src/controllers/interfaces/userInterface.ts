@@ -20,7 +20,7 @@ export interface userInterface {
     profileImage: object,
     userTypes: number,
     technologies: string[],
-    country: object,
+    country: string,
     backFront: string,
     languages: string,
     otherstudies: string[],
@@ -29,6 +29,7 @@ export interface userInterface {
     workModality: string,
     banner: object
     premium: boolean
+    stars: number
 
 };
 
