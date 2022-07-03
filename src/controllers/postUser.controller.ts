@@ -34,12 +34,13 @@ export const createUser = async (
     premium,
     stars,
     acercaDe
-  } = req.body;
+  } = req.body.payload;
+
 
   try {
     if (!name || !userName || !email || !password)
       res.status(400).json({ msg: "Some fields are required" });
-
+      
     const user = await userModel.create({
       name,
       lastName,
