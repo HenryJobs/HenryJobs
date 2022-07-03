@@ -36,7 +36,9 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 counterIncome: userEmail.counterIncome,
                 workModality: userEmail.workModality,
                 banner: userEmail.banner,
-                premium: userEmail.premium
+                acercaDe: userEmail.acercaDe,
+                premium: userEmail.premium,
+                stars: userEmail.stars
             };
             res.status(200).json(allEmail);
         }

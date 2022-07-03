@@ -17,6 +17,7 @@ const User_1 = require("../models/User");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('hola');
     try {
         const { email, password, userName } = req.body;
         let user;
