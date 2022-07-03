@@ -12,7 +12,7 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
         if (user) {
             const allNames: userInterface = {
                 _id: user._id,
-                firstName: user.firstName,
+                name: user.name,
                 lastName: user.lastName,
                 userName: user.userName,
                 email: user.email,
@@ -23,10 +23,12 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 country: user.country,
                 backFront: user.backFront,
                 languages: user.languages,
-                otherstudies: user.otherstudies,
-                CurriculumCounter: user.CurriculumCounter,
-                counterIngreso: user.counterIngreso,
-                banner: user.banner
+                otherstudies: user.otherStudies,
+                CurriculumCounter: user.curriculumCounter,
+                counterIncome: user.counterIncome,
+                workModality: user.workModality,
+                banner: user.banner,
+                premium: user.premium
 
             }
             res.status(200).json(allNames)
