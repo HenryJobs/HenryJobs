@@ -31,6 +31,7 @@ export const deleteUser = async (req: Request, res: Response) => {
                     counterIncome: deleteById.counterIncome,
                     workModality: deleteById.workModality,
                     banner: deleteById.banner,
+                    acercaDe: deleteById.acercaDe,
                     premium: deleteById.premium,
                     stars: deleteById.stars
                 };
