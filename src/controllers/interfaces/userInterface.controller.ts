@@ -30,7 +30,7 @@ export interface userInterface {
   banner: object;
   acercaDe: string;
   premium: boolean;
-  stars: number
+  stars: number;
 }
 
 export interface businessIterface {
