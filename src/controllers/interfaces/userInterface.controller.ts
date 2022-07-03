@@ -20,7 +20,7 @@ export interface userInterface {
   profileImage: object;
   userTypes: number;
   technologies: string[];
-  country: object;
+  country: string;
   backFront: string;
   languages: string;
   otherStudies: string[];
@@ -28,7 +28,9 @@ export interface userInterface {
   workModality: string;
   counterIncome: number;
   banner: object;
+  acercaDe: string;
   premium: boolean;
+  stars: number;
 }
 
 export interface businessIterface {
@@ -39,7 +41,7 @@ export interface businessIterface {
   description: string;
   jobSummary: string;
   image: string;
-  country: object;
+  country: string;
   premium: boolean;
 }
 

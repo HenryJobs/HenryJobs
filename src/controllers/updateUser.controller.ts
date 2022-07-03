@@ -5,7 +5,7 @@ import { userInterface } from "./interfaces/userInterface.controller";
 export const updateUser = async (req: Request, res: Response) => {
 
     const { id } = req.params;
-    const { name, lastName, userName, email, password, workModality } = req.body;
+    const { name, lastName, userName, email, password, workModality, stars } = req.body;
 
     try {
         const updated: any = await userModel.findByIdAndUpdate({ _id: id }, {
@@ -14,7 +14,8 @@ export const updateUser = async (req: Request, res: Response) => {
             userName,
             email,
             password,
-            workModality
+            workModality,
+            stars
         });
 
         res.status(200).json(updated)

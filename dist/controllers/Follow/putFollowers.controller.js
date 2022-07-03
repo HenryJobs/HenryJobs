@@ -21,7 +21,7 @@ const putFollow = (req, res, next) => __awaiter(void 0, void 0, void 0, function
             if (!(user === null || user === void 0 ? void 0 : user.followers.includes(userId))) {
                 yield (user === null || user === void 0 ? void 0 : user.updateOne({ $push: { followers: userId } }));
                 yield (currentUser === null || currentUser === void 0 ? void 0 : currentUser.updateOne({ $push: { following: id } }));
-                return res.status(200).json({ msg: "User has been followed" });
+                return res.status(200).json(currentUser);
             }
             ;
             res.status(500).json({ msg: "You already follow this user" });

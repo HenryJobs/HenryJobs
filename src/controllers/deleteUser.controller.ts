@@ -31,7 +31,8 @@ export const deleteUser = async (req: Request, res: Response) => {
                     counterIncome: deleteById.counterIncome,
                     workModality: deleteById.workModality,
                     banner: deleteById.banner,
-                    premium: deleteById.premium
+                    premium: deleteById.premium,
+                    stars: deleteById.stars
                 };
 
                 await deleteImage(deleteById.profileImage.public_id);

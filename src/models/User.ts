@@ -30,7 +30,7 @@ export class User {
   @prop({ required: true })
   name: string;
 
-  @prop({ required: true })
+  @prop({})
   lastName: string;
 
   @prop({})
@@ -52,10 +52,10 @@ export class User {
   technologies: string[];
 
   @prop({})
-  country: object;
+  country: string;
 
   @prop({})
-  city: object;
+  city: string;
 
   @prop({})
   backFront: string;
@@ -78,6 +78,9 @@ export class User {
   @prop({})
   banner: object;
 
+  @prop({ min: 1, max: 5 })
+  stars: number
+
   @prop({})
   followers: string[];
 
@@ -94,6 +97,9 @@ export class User {
 
   @prop({})
   description: string;
+
+  @prop({})
+  acercaDe: string;
 
   @prop({})
   premium: boolean;
