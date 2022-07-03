@@ -66,7 +66,7 @@ export interface payloadInterface {
   id: string;
   type: number;
   premium: boolean;
-  firstname: string;
+  name: string;
   lastname: string;
   iat: number;
   exp: number;
