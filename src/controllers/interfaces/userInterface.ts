@@ -11,25 +11,27 @@ export interface allUserInterface {
 }
 
 export interface userInterface {
-  _id: string;
-  name: string;
-  lastName: string;
-  userName: string;
-  email: string;
-  password: string;
-  profileImage: object;
-  userTypes: number;
-  technologies: string[];
-  country: object;
-  backFront: string;
-  languages: string;
-  otherstudies: string[];
-  CurriculumCounter: number;
-  counterIncome: number;
-  workModality: string;
-  banner: object;
-  premium: boolean;
-}
+    _id: string,
+    name: string,
+    lastName: string,
+    userName: string,
+    email: string, 
+    password: string,
+    profileImage: object,
+    userTypes: number,
+    technologies: string[],
+    country: string,
+    backFront: string,
+    languages: string,
+    otherstudies: string[],
+    CurriculumCounter: number,
+    counterIncome: number,
+    workModality: string,
+    banner: object
+    premium: boolean
+    stars: number
+
+};
 
 export interface businessIterface {
   _id: string;
