@@ -30,7 +30,7 @@ export class User {
   @prop({ required: true })
   name: string;
 
-  @prop({ required: true })
+  @prop({})
   lastName: string;
 
   @prop({})
@@ -94,6 +94,9 @@ export class User {
 
   @prop({})
   description: string;
+
+  @prop({})
+  acercaDe: string;
 
   @prop({})
   premium: boolean;

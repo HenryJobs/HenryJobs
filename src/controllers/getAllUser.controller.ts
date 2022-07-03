@@ -30,6 +30,7 @@ export const getAllUser = async (
           counterIncome: user.counterIncome,
           workModality: user.workModality,
           banner: user.banner,
+          acercaDe: user.acercaDe,
           premium: user.premium,
         };
       });

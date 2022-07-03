@@ -30,6 +30,7 @@ export const getUserById = async (req: Request, res: Response) => {
                 counterIncome: userId.counterIncome,
                 workModality: userId.workModality,
                 banner: userId.banner,
+                acercaDe: userId.acercaDe,
                 premium: userId.premium
                 }
                 return res.status(200).json(allId)

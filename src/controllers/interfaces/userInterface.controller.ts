@@ -28,7 +28,9 @@ export interface userInterface {
   workModality: string;
   counterIncome: number;
   banner: object;
+  acercaDe: string;
   premium: boolean;
+
 }
 
 export interface businessIterface {
