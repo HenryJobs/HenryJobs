@@ -52,10 +52,10 @@ export class User {
   technologies: string[];
 
   @prop({})
-  country: object;
+  country: string;
 
   @prop({})
-  city: object;
+  city: string;
 
   @prop({})
   backFront: string;
@@ -77,6 +77,9 @@ export class User {
 
   @prop({})
   banner: object;
+
+  @prop({ min: 1, max: 5 })
+  stars: number
 
   @prop({})
   followers: string[];

@@ -31,7 +31,8 @@ export const getUserById = async (req: Request, res: Response) => {
                 workModality: userId.workModality,
                 banner: userId.banner,
                 acercaDe: userId.acercaDe,
-                premium: userId.premium
+                premium: userId.premium,
+                stars: userId.stars
                 }
                 return res.status(200).json(allId)
             };
