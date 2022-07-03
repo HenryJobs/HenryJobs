@@ -25,13 +25,15 @@ export const createUser = async (
     userTypes,
     technologies,
     country,
+    city,
     backFront,
     languages,
     otherStudies,
     workModality,
     curriculumCounter,
     premium,
-    stars
+    stars,
+    acercaDe
   } = req.body;
 
   try {
@@ -49,13 +51,15 @@ export const createUser = async (
       banner,
       technologies,
       country,
+      city,
       backFront,
       languages,
       otherStudies,
       workModality,
       curriculumCounter,
       premium,
-      stars
+      stars,
+      acercaDe
     });
 
     if (req.files) {
