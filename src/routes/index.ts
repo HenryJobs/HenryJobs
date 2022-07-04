@@ -22,8 +22,10 @@ router.use("/name", nameRoute);
 router.use("/mail", getUserByMail);
 router.use("/signin", Usersignin);
 router.use("/user", userRoute);
-router.use("/user", tokenValidation, deleteRoute);
-router.use("/user", tokenValidation, putRoute);
+router.use("/user", deleteRoute);
+router.use("/user", putRoute);
+
+//sacar para la demo los token, volverlos a poner inmediatamente
 
 //post
 

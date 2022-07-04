@@ -23,8 +23,9 @@ router.use("/name", getUserByName_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
 router.use("/user", getAllUser_routes_1.default);
-router.use("/user", validateToken_1.tokenValidation, delete_routes_1.default);
-router.use("/user", validateToken_1.tokenValidation, putUser_routes_1.default);
+router.use("/user", delete_routes_1.default);
+router.use("/user", putUser_routes_1.default);
+//sacar para la demo los token, volverlos a poner inmediatamente
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
