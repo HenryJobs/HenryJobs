@@ -14,13 +14,13 @@ export const createTrans = async () => {
 return transport
 }
 
-export const sendMail = async () => {
+export const sendMail = async (to: any, who: any) => {
     const transporter = await createTrans()
     const info: any = transporter.sendMail({
-        from: '"funciona carajo" <gaerca123@gmail.com>',
-        to: ["gaerca123@gmail.com"],
-        subject: "nodemailer baby",
-        html: "<b>estas doxeado ameo</b>"
+        from: '<henryjobsproject@gmail.com>',
+        to: `${to}`,
+        subject: "registro",
+        text: `${who}, te encuentras registrado`
     })
     console.log("message sent", info.messageId)
 

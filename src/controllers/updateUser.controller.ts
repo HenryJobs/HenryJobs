@@ -24,7 +24,7 @@ export const updateUser = async (req: Request, res: Response) => {
         curriculumCounter,
         premium,
         stars,
-        acercaDe
+        acercaDe,
     } = req.body;
 
     try {
