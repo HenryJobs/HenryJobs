@@ -25,18 +25,22 @@ export const createUser = async (
     userTypes,
     technologies,
     country,
+    city,
     backFront,
     languages,
     otherStudies,
     workModality,
     curriculumCounter,
     premium,
-  } = req.body;
+    stars,
+    acercaDe
+  } = req.body.payload;
+
 
   try {
-    if (!name || !lastName || !userName || !email || !password)
+    if (!name || !userName || !email || !password)
       res.status(400).json({ msg: "Some fields are required" });
-
+      
     const user = await userModel.create({
       name,
       lastName,
@@ -48,12 +52,15 @@ export const createUser = async (
       banner,
       technologies,
       country,
+      city,
       backFront,
       languages,
       otherStudies,
       workModality,
       curriculumCounter,
       premium,
+      stars,
+      acercaDe
     });
 
     if (req.files) {

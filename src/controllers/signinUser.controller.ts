@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 const { TOKEN_SECRET } = process.env;
 
 export const signinUser = async (req: Request, res: Response) => {
+  console.log('hola')
   try {
     const { email, password, userName } = req.body;
 

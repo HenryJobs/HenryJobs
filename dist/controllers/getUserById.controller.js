@@ -35,7 +35,9 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     counterIncome: userId.counterIncome,
                     workModality: userId.workModality,
                     banner: userId.banner,
-                    premium: userId.premium
+                    acercaDe: userId.acercaDe,
+                    premium: userId.premium,
+                    stars: userId.stars
                 };
                 return res.status(200).json(allId);
             }

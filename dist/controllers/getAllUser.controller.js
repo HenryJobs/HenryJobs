@@ -16,7 +16,7 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
         const allUsers = yield User_1.userModel.find();
         if (allUsers) {
             const userMap = allUsers.map((user) => {
-                return {
+                return ({
                     _id: user._id,
                     name: user.name,
                     lastName: user.lastName,
@@ -35,8 +35,11 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
                     workModality: user.workModality,
                     banner: user.banner,
                     premium: user.premium,
-                };
+                    acercaDe: user.acercaDe,
+                    stars: user.stars
+                });
             });
+            res.status(200).json(userMap);
             res.status(200).json(userMap);
         }
         else {

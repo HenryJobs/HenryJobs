@@ -28,13 +28,13 @@ const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
     return transport;
 });
 exports.createTrans = createTrans;
-const sendMail = () => __awaiter(void 0, void 0, void 0, function* () {
+const sendMail = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
-        from: '"funciona carajo" <gaerca123@gmail.com>',
-        to: ["gaerca123@gmail.com"],
-        subject: "nodemailer baby",
-        html: "<b>estas doxeado ameo</b>"
+        from: '<henryjobsproject@gmail.com>',
+        to: `${to}`,
+        subject: "registro",
+        text: `${who}, te encuentras registrado`
     });
     console.log("message sent", info.messageId);
     return;

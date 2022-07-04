@@ -15,4 +15,4 @@ async function dbConnect () {
 };
 dbConnect();
 
-export default dbConnect
+export default dbConnect;

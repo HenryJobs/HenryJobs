@@ -49,7 +49,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "name", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ required: true }),
+    (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], User.prototype, "lastName", void 0);
 __decorate([
@@ -78,11 +78,11 @@ __decorate([
 ], User.prototype, "technologies", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], User.prototype, "country", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], User.prototype, "city", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
@@ -113,6 +113,10 @@ __decorate([
     __metadata("design:type", Object)
 ], User.prototype, "banner", void 0);
 __decorate([
+    (0, typegoose_1.prop)({ min: 1, max: 5 }),
+    __metadata("design:type", Number)
+], User.prototype, "stars", void 0);
+__decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], User.prototype, "followers", void 0);
@@ -128,6 +132,10 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], User.prototype, "description", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "acercaDe", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Boolean)
