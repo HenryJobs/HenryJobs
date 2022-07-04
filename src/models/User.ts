@@ -8,12 +8,13 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes{
-    PG,        // 1
+    PG = 1,        // 1
     Graduate,  // 2 
     Staff,     // 3
     Recruiter, // 4
     Business   // 5
 }
+console.log(UserTypes)
 
 @pre<User>("save", async function (next) {
   const user = this;
