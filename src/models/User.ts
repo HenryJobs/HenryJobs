@@ -88,9 +88,7 @@ export class User {
   @prop({})
   following: string[];
 
-  // @prop()
-  // follow: string[]
-
+  
   //business
 
   @prop({})
