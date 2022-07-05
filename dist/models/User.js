@@ -23,12 +23,13 @@ const typegoose_1 = require("@typegoose/typegoose");
 const bcrypt_1 = require("bcrypt");
 var UserTypes;
 (function (UserTypes) {
-    UserTypes[UserTypes["PG"] = 0] = "PG";
-    UserTypes[UserTypes["Graduate"] = 1] = "Graduate";
-    UserTypes[UserTypes["Staff"] = 2] = "Staff";
-    UserTypes[UserTypes["Recruiter"] = 3] = "Recruiter";
-    UserTypes[UserTypes["Business"] = 4] = "Business"; // 5
+    UserTypes[UserTypes["PG"] = 1] = "PG";
+    UserTypes[UserTypes["Graduate"] = 2] = "Graduate";
+    UserTypes[UserTypes["Staff"] = 3] = "Staff";
+    UserTypes[UserTypes["Recruiter"] = 4] = "Recruiter";
+    UserTypes[UserTypes["Business"] = 5] = "Business"; // 5
 })(UserTypes || (UserTypes = {}));
+console.log(UserTypes);
 let User = class User {
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
