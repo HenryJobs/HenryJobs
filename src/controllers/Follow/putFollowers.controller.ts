@@ -2,27 +2,26 @@ import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../../models/User";
 
 export const putFollow = async (req: Request, res: Response, next: NextFunction) => {
-
+    
     const { id } = req.params;
-    const { userId } = req.body;
+    const userId = req.body.id;
 
     try {
         if (id !== userId) {
-            console.log("primer línea dentro del if")
             const user = await userModel.findById(id)
             const currentUser = await userModel.findById(userId)
 
-            console.log("llego al primer if anidado")
-            if (!user?.followers.includes(userId)) {
+            if (!currentUser?.following.includes(id)) {
                 await user?.updateOne({ $push: { followers: userId }})
                 await currentUser?.updateOne({ $push: { following: id }})
-                return res.status(200).json(user?.followers)
+                let resp = await userModel.findById(userId)
+                return res.status(200).json(resp?.following)
             };
-            console.log("llego al segundo if anidado")
-            if (user?.followers.includes(userId)) {
+            if (currentUser?.following.includes(id)) {
                 await user?.updateOne({ $pull: { followers: userId } })
-                await user?.updateOne({ $pull: { following: id } })
-                res.status(200).json(user?.followers)
+                await currentUser?.updateOne({ $pull: { following: id } })
+                let resp = await userModel.findById(userId)
+                res.status(200).json(resp?.following)
             // res.status(500).json({ msg: "You already follow this user" })
             }
         }
