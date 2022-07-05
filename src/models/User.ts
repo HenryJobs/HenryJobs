@@ -2,6 +2,7 @@ import {
   prop,
   getModelForClass,
   pre,
+  Ref,
   DocumentType,
   modelOptions,
 } from "@typegoose/typegoose";
@@ -83,10 +84,10 @@ export class User {
   stars: number
 
   @prop({})
-  followers: string[];
+  followers: string[]; 
 
   @prop({})
-  following: string[];
+  following: string[]
 
   
   //business

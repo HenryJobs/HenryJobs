@@ -45,7 +45,7 @@ router.use("/post", tokenValidation, updatePostRoute);
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", tokenValidation, putFollow);
+router.use("/follow", putFollow); // acordarse de agregar el tokenValidation
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";
