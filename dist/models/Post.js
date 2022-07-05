@@ -56,14 +56,6 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], Post.prototype, "country", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 }),
-    __metadata("design:type", Number)
-], Post.prototype, "step", void 0);
-__decorate([
-    (0, typegoose_1.prop)({}),
-    __metadata("design:type", Array)
-], Post.prototype, "applicants", void 0);
 Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);
