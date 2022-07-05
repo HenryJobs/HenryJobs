@@ -2,6 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
+
 //user
 import userRoute from "./user/getAllUser.routes";
 import nameRoute from "./user/getUserByName.routes";
@@ -12,8 +13,10 @@ import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
+
 //validador de token
 import { tokenValidation } from "../libs/validateToken";
+
 
 // user
 router.use("/user", createRoute);
@@ -34,17 +37,12 @@ import getAllPostRoute from "./post/getAllPost.routes";
 import deletePostRoute from "./post/deletePost.routes";
 import updatePostRoute from "./post/updatePost.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
-// import stepRoute from "./post/updateStep.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
 router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", deletePostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
-// router.use('/post/step', stepRoute)
-
-// step
-
 
 
 // follow
@@ -52,6 +50,7 @@ router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
 import putFollow from "./follow/putFollow.routes";
 
 router.use("/follow", putFollow); // acordarse de agregar el tokenValidation
+
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";

@@ -25,6 +25,8 @@ export interface userInterface {
   languages: string;
   otherStudies: string[];
   curriculumCounter: number;
+  followers: string[];
+  following: string[];
   workModality: string;
   counterIncome: number;
   banner: object;

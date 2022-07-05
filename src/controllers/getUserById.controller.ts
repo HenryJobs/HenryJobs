@@ -25,6 +25,8 @@ export const getUserById = async (req: Request, res: Response) => {
                 country: userId.country,
                 backFront: userId.backFront,
                 languages: userId.languages,
+                followers: userId.followers,
+                following: userId.following,
                 otherStudies: userId.otherStudies,
                 curriculumCounter: userId.curriculumCounter,
                 counterIncome: userId.counterIncome,

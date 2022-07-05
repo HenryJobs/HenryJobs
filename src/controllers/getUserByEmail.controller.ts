@@ -28,14 +28,14 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 curriculumCounter: userEmail.curriculumCounter,
                 counterIncome: userEmail.counterIncome,
                 workModality: userEmail.workModality,
+                followers: userEmail.followers,
+                following: userEmail.following,
                 banner: userEmail.banner,
                 acercaDe: userEmail.acercaDe,
                 premium: userEmail.premium,
                 stars: userEmail.stars
             }
             res.status(200).json(allEmail)
-        }
-    }
-
-
-}
+        };
+    };
+};

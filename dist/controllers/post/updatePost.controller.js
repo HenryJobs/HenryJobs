@@ -13,18 +13,19 @@ exports.updatePost = void 0;
 const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country, } = req.body;
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step } = req.body;
     try {
-        // const post = await postModel.findById(id)
-        // if (!post?.applicants.hasOwnProperty(userId) === userId) {
-        //     console.log("entré al if que agrega")
-        //     console.log("este es el userId", userId)
-        //     await post?.updateOne({ $push: { applicants: userId }})
-        // }
-        // if (post?.applicants.hasOwnProperty(userId) === userId) {
-        //     console.log("entré al if que saca")
-        //     await post?.updateOne({ $pull: { applicants: userId } })
-        // }
+        const post = yield Post_1.postModel.findById(id);
+        if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
+            console.log("entré al if que agrega");
+            console.log("este es el userId", userId);
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $push: { applicants: [{ userId: userId, step: step }] } }));
+            console.log(post);
+        }
+        if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+            console.log("entré al if que saca");
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+        }
         const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
             text,
             imgVideo,

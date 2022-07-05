@@ -9,7 +9,7 @@ export const updateStep = async (req: Request, res: Response) => {
     try {
 
         const post = await postModel.findByIdAndUpdate( { _id: id }, {
-                
+
         })
         
         res.status(200).json(post)

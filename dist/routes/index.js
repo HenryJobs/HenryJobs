@@ -32,14 +32,11 @@ const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"))
 const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
-// import stepRoute from "./post/updateStep.routes";
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
 router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
-// router.use('/post/step', stepRoute)
-// step
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
