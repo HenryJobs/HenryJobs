@@ -34,12 +34,18 @@ import getAllPostRoute from "./post/getAllPost.routes";
 import deletePostRoute from "./post/deletePost.routes";
 import updatePostRoute from "./post/updatePost.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
+// import stepRoute from "./post/updateStep.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
-router.use("/post", tokenValidation, createPostRoute);
-router.use("/post", tokenValidation, deletePostRoute);
-router.use("/post", tokenValidation, updatePostRoute);
+router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", deletePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
+// router.use('/post/step', stepRoute)
+
+// step
+
+
 
 // follow
 

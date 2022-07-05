@@ -2,19 +2,20 @@ import {
   prop,
   getModelForClass,
   pre,
-  Ref,
   DocumentType,
   modelOptions,
 } from "@typegoose/typegoose";
 import { compare, genSalt, hash } from "bcrypt";
 
-enum UserTypes{
+enum UserTypes {
     PG = 1,        // 1
     Graduate,  // 2 
     Staff,     // 3
     Recruiter, // 4
     Business   // 5
 }
+
+
 console.log(UserTypes)
 
 @pre<User>("save", async function (next) {
@@ -27,6 +28,7 @@ console.log(UserTypes)
   user.password = hashed;
   next();
 })
+
 @modelOptions({ options: { allowMixed: 0 } })
 export class User {
   @prop({ required: true })

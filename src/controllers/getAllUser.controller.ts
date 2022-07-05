@@ -39,8 +39,6 @@ export const getAllUser = async (
         });
 
         res.status(200).json(userMap)
-
-      res.status(200).json(userMap);
     } else {
       res.status(404).json("There is nothing here");
     }
