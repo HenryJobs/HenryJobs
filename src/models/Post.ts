@@ -41,8 +41,12 @@ export class Post {
     @prop({})
     country: string
 
-//     @prop({ enum: Step, addNullToEnum: false, default: 0 })
-//     applicants: { userId: string, step: Step }
+    @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
+    step: Step
+
+    @prop({})
+    applicants: object[]
+
 }
 
 export const postModel = getModelForClass(Post)

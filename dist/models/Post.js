@@ -12,15 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postModel = exports.Post = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const User_1 = require("./User");
-<<<<<<< HEAD
 var Step;
 (function (Step) {
     Step[Step["Pending"] = 0] = "Pending";
     Step[Step["Accepted"] = 1] = "Accepted";
     Step[Step["Rejected"] = 2] = "Rejected";
 })(Step || (Step = {}));
-=======
->>>>>>> fb10e07c83abf5f65e45eae8ebbbe184a52ad546
 let Post = class Post {
 };
 __decorate([
@@ -59,6 +56,14 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], Post.prototype, "country", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 }),
+    __metadata("design:type", Number)
+], Post.prototype, "step", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Array)
+], Post.prototype, "applicants", void 0);
 Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);

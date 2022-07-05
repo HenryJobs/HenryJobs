@@ -32,7 +32,6 @@ const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"))
 const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
-<<<<<<< HEAD
 // import stepRoute from "./post/updateStep.routes";
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
@@ -41,13 +40,6 @@ router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tok
 router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // router.use('/post/step', stepRoute)
 // step
-=======
-router.use("/post", getAllPost_routes_1.default);
-router.use("/post", getPostById_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, deletePost_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default);
->>>>>>> fb10e07c83abf5f65e45eae8ebbbe184a52ad546
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation

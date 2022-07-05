@@ -13,27 +13,11 @@ exports.putFollow = void 0;
 const User_1 = require("../../models/User");
 const putFollow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-<<<<<<< HEAD
-    const { userId } = req.body;
-=======
     const userId = req.body.id;
->>>>>>> fb10e07c83abf5f65e45eae8ebbbe184a52ad546
     try {
         if (id !== userId) {
             const user = yield User_1.userModel.findById(id);
             const currentUser = yield User_1.userModel.findById(userId);
-<<<<<<< HEAD
-            if (!(user === null || user === void 0 ? void 0 : user.followers.includes(userId))) {
-                yield (user === null || user === void 0 ? void 0 : user.updateOne({ $push: { followers: userId } }));
-                yield (currentUser === null || currentUser === void 0 ? void 0 : currentUser.updateOne({ $push: { following: id } }));
-                return res.status(200).json(user === null || user === void 0 ? void 0 : user.followers);
-            }
-            ;
-            if (user === null || user === void 0 ? void 0 : user.followers.includes(userId)) {
-                yield (user === null || user === void 0 ? void 0 : user.updateOne({ $pull: { followers: userId } }));
-                yield (user === null || user === void 0 ? void 0 : user.updateOne({ $pull: { following: id } }));
-                res.status(200).json(user === null || user === void 0 ? void 0 : user.followers);
-=======
             if (!(currentUser === null || currentUser === void 0 ? void 0 : currentUser.following.includes(id))) {
                 yield (user === null || user === void 0 ? void 0 : user.updateOne({ $push: { followers: userId } }));
                 yield (currentUser === null || currentUser === void 0 ? void 0 : currentUser.updateOne({ $push: { following: id } }));
@@ -47,7 +31,6 @@ const putFollow = (req, res, next) => __awaiter(void 0, void 0, void 0, function
                 let resp = yield User_1.userModel.findById(userId);
                 res.status(200).json(resp === null || resp === void 0 ? void 0 : resp.following);
                 // res.status(500).json({ msg: "You already follow this user" })
->>>>>>> fb10e07c83abf5f65e45eae8ebbbe184a52ad546
             }
         }
     }
