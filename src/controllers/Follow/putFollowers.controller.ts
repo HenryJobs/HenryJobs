@@ -19,7 +19,7 @@ export const putFollow = async (req: Request, res: Response, next: NextFunction)
 
             if (user?.followers.includes(userId)) {
                 await user?.updateOne({ $pull: { followers: userId } })
-                await user?.updateOne({ $pull: { following: id } })
+                await currentUser?.updateOne({ $pull: { following: id } })
                 res.status(200).json(user?.followers)
             }
         }
