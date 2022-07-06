@@ -17,7 +17,6 @@ const User_1 = require("../models/User");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('hola');
     try {
         const { email, password, userName } = req.body;
         let user;
@@ -45,6 +44,7 @@ const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             premium: user.premium,
             name: user.name,
             lastname: user.lastName,
+            following: user.following
         }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
         console.log("user", user);
         res.send(token);

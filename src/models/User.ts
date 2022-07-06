@@ -7,13 +7,14 @@ import {
 } from "@typegoose/typegoose";
 import { compare, genSalt, hash } from "bcrypt";
 
-enum UserTypes{
-    PG,        // 1
+enum UserTypes {
+    PG = 1,    // 1
     Graduate,  // 2 
     Staff,     // 3
     Recruiter, // 4
     Business   // 5
 }
+
 
 @pre<User>("save", async function (next) {
   const user = this;
@@ -25,6 +26,7 @@ enum UserTypes{
   user.password = hashed;
   next();
 })
+
 @modelOptions({ options: { allowMixed: 0 } })
 export class User {
   @prop({ required: true })
@@ -82,14 +84,12 @@ export class User {
   stars: number
 
   @prop({})
-  followers: string[];
+  followers: string[]; 
 
   @prop({})
-  following: string[];
+  following: string[]
 
-  // @prop()
-  // follow: string[]
-
+  
   //business
 
   @prop({})

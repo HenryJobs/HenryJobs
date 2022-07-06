@@ -1,6 +1,12 @@
 import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose";
 import { User } from "./User";
 
+// enum Step {
+//   Pending,
+//   Accepted,
+//   Rejected
+// }
+
 @modelOptions({ options: { allowMixed: 0 } })
 
 export class Post {
@@ -35,11 +41,12 @@ export class Post {
     @prop({})
     country: string
 
-    @prop({ref: () => User})
-    likes: Ref<User>
-    
-    @prop({ref: () => User})
-    liked: Ref<User>
+    @prop({})
+    applicants: object[]
+
+    // @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
+    // step: Step
+
 
 }
 

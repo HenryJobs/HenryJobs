@@ -25,6 +25,8 @@ export const deleteUser = async (req: Request, res: Response) => {
                     technologies: deleteById.technologies,
                     country: deleteById.country,
                     backFront: deleteById.backFront,
+                    followers: deleteById.followers,
+                    following: deleteById.following,
                     languages: deleteById.languages,
                     otherStudies: deleteById.otherStudies,
                     curriculumCounter: deleteById.curriculumCounter,

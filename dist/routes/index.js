@@ -34,12 +34,12 @@ const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"))
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, deletePost_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default);
+router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
-router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default);
+router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));

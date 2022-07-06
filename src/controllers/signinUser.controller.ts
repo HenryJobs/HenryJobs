@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 const { TOKEN_SECRET } = process.env;
 
 export const signinUser = async (req: Request, res: Response) => {
-  console.log('hola')
   try {
     const { email, password, userName } = req.body;
 
@@ -39,6 +38,7 @@ export const signinUser = async (req: Request, res: Response) => {
         premium: user.premium,
         name: user.name,
         lastname: user.lastName,
+        following: user.following
       },
       TOKEN_SECRET || "TOKENTEST",
       { expiresIn: 60 * 60 * 24 }
