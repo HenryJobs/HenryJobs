@@ -40,16 +40,16 @@ import getPostByIdRoute from "./post/getPostById.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
-router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, deletePostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", deletePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
 
 
 // follow
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el tokenValidation
+router.use("/follow", putFollow); // acordarse de agregar el tokenValidation
 
 
 // comments
@@ -75,5 +75,12 @@ import deleteReviews from "./Reviews/deleteReviews.routes";
 router.use("/reviews", getReviews);
 router.use("/reviews", tokenValidation, deleteReviews);
 router.use("/reviews", tokenValidation, postReview);
+
+//likes
+import updateLikesPost from './Likes/putLikesPost.routes'
+import updateLikeComment from './Likes/putLikesComment.routes'
+
+router.use('/postlike', updateLikesPost)
+router.use('/commentlike', updateLikeComment)
 
 export default router;

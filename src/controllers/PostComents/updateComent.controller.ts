@@ -12,7 +12,7 @@ export const updateComent = async (req: Request, res: Response) => {
             const update = await postComent.findByIdAndUpdate({ _id: id }, {
                 text: text,
                 likes: likes,
-                liked: liked
+                //liked: liked
             });
             
             res.status(200).json(update)

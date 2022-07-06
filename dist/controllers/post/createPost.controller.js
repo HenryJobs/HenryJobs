@@ -27,7 +27,7 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             backFront,
             country,
             likes,
-            liked
+            //liked
         });
         res.status(201).json(post);
     }

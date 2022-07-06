@@ -44,7 +44,7 @@ export const updatePost = async (req: Request, res: Response) => {
             backFront,
             country,
             likes,
-            liked
+            //liked
         })
 
         // res.status(200).json(updated)

@@ -19,7 +19,7 @@ const updateComent = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, {
                 text: text,
                 likes: likes,
-                liked: liked
+                //liked: liked
             });
             res.status(200).json(update);
         }

@@ -16,7 +16,7 @@ export const createComent = async (req: Request, res: Response) => {
             text,
             postUser,
             likes,
-            liked
+            // liked
         })
 
         if(comentCreated){

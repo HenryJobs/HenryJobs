@@ -13,11 +13,13 @@ export class Coments {
     @prop({ref: () => Post})
     postUser: Ref<Post>
     
-    @prop({ref: () => User, default: false})
-    likes: Ref<User> //boolean
+    @prop({})
+    likes: string[] //boolean or ref?
+
+    //si es por ref debería existir un likes (cant de likes que)
     
-    @prop({ref: () => User, default: false})
-    liked: Ref<User> //boolean
+    // @prop({ref: () => User, default: false})
+    // liked: boolean //boolean or ref?
 
 
 }

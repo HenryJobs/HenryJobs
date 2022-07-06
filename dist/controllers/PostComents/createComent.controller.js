@@ -22,7 +22,7 @@ const createComent = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             text,
             postUser,
             likes,
-            liked
+            // liked
         });
         if (comentCreated) {
             res.status(201).json(comentCreated);

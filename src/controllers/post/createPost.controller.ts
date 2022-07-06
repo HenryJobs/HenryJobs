@@ -35,7 +35,7 @@ export const createPost = async (req: Request, res: Response) => {
             backFront,
             country,
             likes,
-            liked
+            //liked
         });
 
         res.status(201).json(post)

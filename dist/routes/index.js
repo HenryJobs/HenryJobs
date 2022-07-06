@@ -61,4 +61,9 @@ const deleteReviews_routes_1 = __importDefault(require("./Reviews/deleteReviews.
 router.use("/reviews", getReviews_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, deleteReviews_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
+//likes
+const putLikesPost_routes_1 = __importDefault(require("./Likes/putLikesPost.routes"));
+const putLikesComment_routes_1 = __importDefault(require("./Likes/putLikesComment.routes"));
+router.use('/postlike', putLikesPost_routes_1.default);
+router.use('/commentlike', putLikesComment_routes_1.default);
 exports.default = router;

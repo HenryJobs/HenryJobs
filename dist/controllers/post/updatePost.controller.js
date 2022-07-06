@@ -13,11 +13,7 @@ exports.updatePost = void 0;
 const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-<<<<<<< HEAD
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country, likes, liked } = req.body;
-=======
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step } = req.body;
->>>>>>> a9722843c774a9556e36e9d12cd9bb995e91b868
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, likes, liked, step } = req.body;
     try {
         const post = yield Post_1.postModel.findById(id);
         if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
@@ -40,7 +36,7 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             backFront,
             country,
             likes,
-            liked
+            //liked
         });
         // res.status(200).json(updated)
         res.status(200).json(updated);
