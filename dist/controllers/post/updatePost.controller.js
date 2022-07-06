@@ -13,7 +13,7 @@ exports.updatePost = void 0;
 const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country } = req.body;
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, likes, liked } = req.body;
     try {
         const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
             text,
@@ -23,7 +23,9 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             workModality,
             technologies,
             backFront,
-            country
+            country,
+            likes,
+            liked
         });
         res.status(200).json(updated);
     }

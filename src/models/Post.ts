@@ -34,6 +34,13 @@ export class Post {
 
     @prop({})
     country: string
+
+    @prop({ref: () => User})
+    likes: Ref<User>
+    
+    @prop({ref: () => User})
+    liked: Ref<User>
+
 }
 
 export const postModel = getModelForClass(Post)

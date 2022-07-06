@@ -12,6 +12,13 @@ export class Coments {
 
     @prop({ref: () => Post})
     postUser: Ref<Post>
+    
+    @prop({ref: () => User})
+    likes: Ref<User>
+    
+    @prop({ref: () => User})
+    liked: Ref<User>
+
 
 }
 

@@ -12,7 +12,10 @@ export const updatePost = async(req: Request, res: Response) => {
         workModality, 
         technologies, 
         backFront, 
-        country } = req.body
+        country,
+        likes,
+        liked
+    } = req.body
 
     try {
         const updated: any = await postModel.findByIdAndUpdate({ _id: id }, {
@@ -23,7 +26,9 @@ export const updatePost = async(req: Request, res: Response) => {
             workModality,
             technologies,
             backFront,
-            country
+            country,
+            likes,
+            liked
         })
 
         res.status(200).json(updated)

@@ -4,13 +4,15 @@ import { postComent } from "../../models/postComent";
 export const updateComent = async (req: Request, res: Response) => {
 
     const { id } = req.params
-    const { text } = req.body
+    const { text, likes, liked } = req.body
 
     try {
         
         if(id) {
             const update = await postComent.findByIdAndUpdate({ _id: id }, {
-                text: text
+                text: text,
+                likes: likes,
+                liked: liked
             });
             
             res.status(200).json(update)

@@ -27,5 +27,13 @@ __decorate([
     (0, typegoose_1.prop)({ ref: () => Post_1.Post }),
     __metadata("design:type", Object)
 ], Coments.prototype, "postUser", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ ref: () => User_1.User }),
+    __metadata("design:type", Object)
+], Coments.prototype, "likes", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ ref: () => User_1.User }),
+    __metadata("design:type", Object)
+], Coments.prototype, "liked", void 0);
 exports.Coments = Coments;
 exports.postComent = (0, typegoose_1.getModelForClass)(Coments);

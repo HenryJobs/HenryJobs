@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createPost = void 0;
 const Post_1 = require("../../models/Post");
 const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { posterUser: _id, text, imgVideo, image, date, workModality, languages, technologies, backFront, country } = req.body;
+    const { posterUser: _id, text, imgVideo, image, date, workModality, languages, technologies, backFront, country, likes, liked } = req.body;
     try {
         const post = yield Post_1.postModel.create({
             posterUser: _id,
@@ -25,7 +25,9 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             languages,
             technologies,
             backFront,
-            country
+            country,
+            likes,
+            liked
         });
         res.status(201).json(post);
     }
