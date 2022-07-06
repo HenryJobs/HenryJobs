@@ -14,6 +14,8 @@ export const updatePost = async (req: Request, res: Response) => {
         backFront,
         country,
         userId,
+        likes,
+        liked,
         step } = req.body
 
     try {
@@ -41,6 +43,8 @@ export const updatePost = async (req: Request, res: Response) => {
             technologies,
             backFront,
             country,
+            likes,
+            liked
         })
 
         // res.status(200).json(updated)

@@ -13,11 +13,11 @@ export class Coments {
     @prop({ref: () => Post})
     postUser: Ref<Post>
     
-    @prop({ref: () => User})
-    likes: Ref<User>
+    @prop({ref: () => User, default: false})
+    likes: Ref<User> //boolean
     
-    @prop({ref: () => User})
-    liked: Ref<User>
+    @prop({ref: () => User, default: false})
+    liked: Ref<User> //boolean
 
 
 }

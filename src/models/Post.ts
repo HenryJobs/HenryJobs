@@ -44,6 +44,12 @@ export class Post {
     @prop({})
     applicants: object[]
 
+    @prop({ref: () => User, default: false})
+    likes: Ref<User> //boolean?
+
+    @prop({ref: () => User, default: false })
+    liked: Ref<User> //boolean?
+
     // @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
     // step: Step
 
