@@ -21,6 +21,7 @@ export interface userInterface {
   userTypes: number;
   technologies: string[];
   country: string;
+  province: string;
   backFront: string;
   languages: string;
   otherStudies: string[];
@@ -73,4 +74,12 @@ export interface payloadInterface {
   lastname: string;
   iat: number;
   exp: number;
+}
+
+export interface applicantsInterface {
+  showBusiness:number;
+  showStudent: number;
+  step: string;
+  userId: string;
+  name: string
 }

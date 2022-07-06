@@ -8,11 +8,11 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes {
-    PG = 1,    // 1
-    Graduate,  // 2 
-    Staff,     // 3
-    Recruiter, // 4
-    Business   // 5
+  PG = 1,    // 1
+  Graduate,  // 2 
+  Staff,     // 3
+  Recruiter, // 4
+  Business   // 5
 }
 
 
@@ -38,7 +38,7 @@ export class User {
   @prop({})
   userName: string;
 
-  @prop({ required: true, trim: true, unique: true }) 
+  @prop({ required: true, trim: true, unique: true })
   email!: string;
 
   @prop({ required: true })
@@ -57,7 +57,7 @@ export class User {
   country: string;
 
   @prop({})
-  city: string;
+  province: string;
 
   @prop({})
   backFront: string;
@@ -84,12 +84,16 @@ export class User {
   stars: number
 
   @prop({})
-  followers: string[]; 
+  followers: string[];
 
   @prop({})
   following: string[]
 
-  
+  @prop({})
+  applications: string[]
+
+
+
   //business
 
   @prop({})

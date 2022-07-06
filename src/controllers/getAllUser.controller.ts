@@ -23,6 +23,7 @@ export const getAllUser = async (
                 userTypes: user.userTypes,
                 technologies: user.technologies,
                 country: user.country,
+                province: user.province,
                 backFront: user.backFront,
                 languages: user.languages,
                 otherStudies: user.otherStudies,

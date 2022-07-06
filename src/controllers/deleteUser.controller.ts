@@ -24,6 +24,7 @@ export const deleteUser = async (req: Request, res: Response) => {
                     userTypes: deleteById.userTypes,
                     technologies: deleteById.technologies,
                     country: deleteById.country,
+                    province: deleteById.province,
                     backFront: deleteById.backFront,
                     followers: deleteById.followers,
                     following: deleteById.following,

@@ -21,6 +21,7 @@ export const getUserByName = async (req: Request, res: Response, next: NextFunct
                 userTypes: user.userTypes,
                 technologies: user.technologies,
                 country: user.country,
+                province: user.province,
                 backFront: user.backFront,
                 followers: user.followers,
                 following: user.following,

@@ -29,6 +29,7 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 userTypes: userEmail.userTypes,
                 technologies: userEmail.technologies,
                 country: userEmail.country,
+                province: userEmail.province,
                 backFront: userEmail.backFront,
                 languages: userEmail.languages,
                 otherStudies: userEmail.otherStudies,

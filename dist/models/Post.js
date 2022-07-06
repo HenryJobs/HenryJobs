@@ -12,11 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postModel = exports.Post = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const User_1 = require("./User");
-// enum Step {
-//   Pending,
-//   Accepted,
-//   Rejected
-// }
 let Post = class Post {
 };
 __decorate([
@@ -63,4 +58,5 @@ Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);
 exports.Post = Post;
+;
 exports.postModel = (0, typegoose_1.getModelForClass)(Post);

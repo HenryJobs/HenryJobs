@@ -40,7 +40,7 @@ export const createUser = async (
   try {
     if (!name || !userName || !email || !password)
       res.status(400).json({ msg: "Some fields are required" });
-      
+
     const user = await userModel.create({
       name,
       lastName,
@@ -52,7 +52,7 @@ export const createUser = async (
       banner,
       technologies,
       country,
-      city,
+      province: city,
       backFront,
       languages,
       otherStudies,

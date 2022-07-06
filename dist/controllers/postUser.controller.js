@@ -35,7 +35,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             banner,
             technologies,
             country,
-            city,
+            province: city,
             backFront,
             languages,
             otherStudies,

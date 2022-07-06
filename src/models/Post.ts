@@ -1,11 +1,7 @@
 import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose";
+import { applicantsInterface } from "../controllers/interfaces/userInterface.controller";
 import { User } from "./User";
 
-// enum Step {
-//   Pending,
-//   Accepted,
-//   Rejected
-// }
 
 @modelOptions({ options: { allowMixed: 0 } })
 
@@ -13,9 +9,6 @@ export class Post {
 
     @prop({ ref: () => User })
     posterUser: Ref<User>; 
-
-    // @prop({ ref: () => Business })
-    // posterBusiness: Ref<Business>;
 
     @prop({required: true})
     text: string
@@ -42,12 +35,7 @@ export class Post {
     country: string
 
     @prop({})
-    applicants: object[]
-
-    // @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
-    // step: Step
-
-
-}
+    applicants: applicantsInterface[]
+};
 
 export const postModel = getModelForClass(Post)
