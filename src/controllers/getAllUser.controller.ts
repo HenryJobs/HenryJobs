@@ -32,11 +32,11 @@ export const getAllUser = async (
                 banner: user.banner,
                 premium: user.premium,
                 acercaDe: user.acercaDe,
-                stars: user.stars
+                stars: user.stars,
+                followers: user.followers,
+                following: user.following
             });
         });
-
-        res.status(200).json(userMap)
 
       res.status(200).json(userMap);
     } else {

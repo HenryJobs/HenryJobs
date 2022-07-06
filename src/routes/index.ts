@@ -2,6 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
+
 //user
 import userRoute from "./user/getAllUser.routes";
 import nameRoute from "./user/getUserByName.routes";
@@ -12,8 +13,10 @@ import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
+
 //validador de token
 import { tokenValidation } from "../libs/validateToken";
+
 
 // user
 router.use("/user", createRoute);
@@ -37,15 +40,17 @@ import getPostByIdRoute from "./post/getPostById.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
-router.use("/post", tokenValidation, createPostRoute);
-router.use("/post", tokenValidation, deletePostRoute);
-router.use("/post", tokenValidation, updatePostRoute);
+router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", tokenValidation, deletePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
+
 
 // follow
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", tokenValidation, putFollow);
+router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el tokenValidation
+
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";

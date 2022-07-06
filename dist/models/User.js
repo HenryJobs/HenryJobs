@@ -29,7 +29,6 @@ var UserTypes;
     UserTypes[UserTypes["Recruiter"] = 4] = "Recruiter";
     UserTypes[UserTypes["Business"] = 5] = "Business"; // 5
 })(UserTypes || (UserTypes = {}));
-console.log(UserTypes);
 let User = class User {
     validatePassword(candidatePassword) {
         return __awaiter(this, void 0, void 0, function* () {
