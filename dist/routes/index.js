@@ -48,9 +48,9 @@ const getCommentById_routes_1 = __importDefault(require("./Comment/getCommentByI
 const getAllComment_routes_1 = __importDefault(require("./Comment/getAllComment.routes"));
 router.use("/comment", getCommentById_routes_1.default);
 router.use("/comment", getAllComment_routes_1.default);
-router.use("/comment", deleteComment_routes_1.default);
-router.use("/comment", createComment_routes_1.default);
-router.use("/comment", updateComment_routes_1.default);
+router.use("/comment", deleteComment_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/comment", createComment_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/comment", updateComment_routes_1.default); // acordarse de agregar el tokenValidation
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
@@ -59,6 +59,6 @@ const deleteReviews_routes_1 = __importDefault(require("./Reviews/deleteReviews.
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
-router.use("/reviews", validateToken_1.tokenValidation, deleteReviews_routes_1.default);
-router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
+router.use("/reviews", deleteReviews_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/reviews", postReviews_routes_1.default); // acordarse de agregar el tokenValidation
 exports.default = router;

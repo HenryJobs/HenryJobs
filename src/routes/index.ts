@@ -56,14 +56,14 @@ router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el to
 import createCommentRoute from "./Comment/createComment.routes";
 import deleteCommentRoute from "./Comment/deleteComment.routes";
 import updateCommentRoute from "./Comment/updateComment.routes";
-import getCommentIdRoute from "./Comment/getCommentById.routes";
-import getAllCommentRoute from "./Comment/getAllComment.routes";
+import getCommentIdRoute from "./Comment/getCommentById.routes"; 
+import getAllCommentRoute from "./Comment/getAllComment.routes"; 
 
 router.use("/comment", getCommentIdRoute);
 router.use("/comment", getAllCommentRoute);
-router.use("/comment", deleteCommentRoute);
-router.use("/comment", createCommentRoute);
-router.use("/comment", updateCommentRoute);
+router.use("/comment", deleteCommentRoute); // acordarse de agregar el tokenValidation
+router.use("/comment", createCommentRoute); // acordarse de agregar el tokenValidation
+router.use("/comment", updateCommentRoute); // acordarse de agregar el tokenValidation
 
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
@@ -73,7 +73,7 @@ import deleteReviews from "./Reviews/deleteReviews.routes";
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews);
-router.use("/reviews", tokenValidation, deleteReviews);
-router.use("/reviews", tokenValidation, postReview);
+router.use("/reviews", deleteReviews);  // acordarse de agregar el tokenValidation
+router.use("/reviews", postReview);     // acordarse de agregar el tokenValidation
 
 export default router;
