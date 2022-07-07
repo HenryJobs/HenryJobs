@@ -1,8 +1,8 @@
-// import { updateStep } from "../../controllers/post/updateStep.controller";
-// import { Router } from "express";
+import { updateStep } from "../../controllers/post/updateStep.controller";
+import { Router } from "express";
 
-// const router = Router();
+const router = Router();
 
-// router.put('/', updateStep);
+router.put('/:id', updateStep);
 
-// export default router;
+export default router;

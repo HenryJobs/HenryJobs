@@ -69,6 +69,16 @@ export const updatePost = async (req: Request, res: Response) => {
         //     console.log("showBusinessProperty -> ", showBusinessProperty)
         //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
         // }
+        if (
+            !userIdProperty?.includes(userId)
+        ) {
+            console.log("entré al primer if")
+            console.log("userIdProperty -> ", userIdProperty)
+            console.log("stepProperty -> ", stepProperty)
+            console.log("showStudentProperty -> ", showStudentProperty)
+            console.log("showBusinessProperty -> ", showBusinessProperty)
+            await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
+        }
 
         if (
             userIdProperty?.includes(userId)

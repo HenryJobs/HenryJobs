@@ -1,9 +1,11 @@
 import { Router } from "express";
-
 const router = Router();
 
+//validador de token
+import { tokenValidation } from "../libs/validateToken";
 
 //user
+
 import userRoute from "./user/getAllUser.routes";
 import nameRoute from "./user/getUserByName.routes";
 import createRoute from "./user/postUser.routes";
@@ -13,12 +15,6 @@ import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
-
-//validador de token
-import { tokenValidation } from "../libs/validateToken";
-
-
-// user
 router.use("/user", createRoute);
 router.use("/user", getUserById);
 router.use("/name", nameRoute);
@@ -37,12 +33,14 @@ import getAllPostRoute from "./post/getAllPost.routes";
 import deletePostRoute from "./post/deletePost.routes";
 import updatePostRoute from "./post/updatePost.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
+import updateStep from "./post/updateStep.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
 router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", deletePostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
+router.use("/step", updateStep)
 
 
 // follow

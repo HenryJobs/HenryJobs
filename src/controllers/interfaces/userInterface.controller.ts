@@ -77,8 +77,8 @@ export interface payloadInterface {
 }
 
 export interface applicantsInterface {
-  showBusiness:number;
-  showStudent: number;
+  showBusiness: boolean;
+  showStudent: boolean;
   step: string;
   userId: string;
   name: string
