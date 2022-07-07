@@ -29,13 +29,15 @@ router.use("/user", putUser_routes_1.default);
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));
 const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"));
-const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
+const softdeletePost_routes_1 = __importDefault(require("./post/softdeletePost.routes"));
+const StaffFunctionsPost_controller_1 = __importDefault(require("./post/StaffFunctionsPost.controller"));
+router.use("/post/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctionsPost_controller_1.default);
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
+router.use("/post", softdeletePost_routes_1.default);
 router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default); // acordarse de agregar el tokenValidation
-router.use("/post", validateToken_1.tokenValidation, deletePost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
@@ -60,7 +62,7 @@ const StaffFunctions_1 = __importDefault(require("./Reviews/StaffFunctions"));
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
-router.use("/reviews", softDelete_routes_1.default);
+router.use("/reviews", validateToken_1.tokenValidation, softDelete_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
 router.use("/reviews/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_1.default);
 exports.default = router;

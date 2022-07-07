@@ -44,15 +44,15 @@ const reactivate = (querys) => __awaiter(void 0, void 0, void 0, function* () {
         return true;
     }
     else if (querys.modelName === "post") {
-        yield Post_1.postModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: undefined } });
+        yield Post_1.postModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
         return true;
     }
     else if (querys.modelName === "user") {
-        yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: undefined } });
+        yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
         return true;
     }
     else if (querys.modelName === "postComent") {
-        yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: undefined } });
+        yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
         return true;
     }
     else {

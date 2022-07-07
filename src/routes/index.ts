@@ -31,14 +31,21 @@ router.use("/user", putRoute);
 
 import createPostRoute from "./post/createPost.routes";
 import getAllPostRoute from "./post/getAllPost.routes";
-import deletePostRoute from "./post/deletePost.routes";
 import updatePostRoute from "./post/updatePost.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
+import softdeletePostRoute from "./post/softdeletePost.routes";
+import StaffFunctionsPost from "./post/StaffFunctionsPost.controller";
 
+router.use(
+  "/post/staffOnly",
+  tokenValidation,
+  validateStaffToken,
+  StaffFunctionsPost
+);
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
+router.use("/post", softdeletePostRoute);
 router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, deletePostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
 
 // follow
@@ -70,7 +77,7 @@ import staffFunctions from "./Reviews/StaffFunctions";
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 
 router.use("/reviews", getReviews);
-router.use("/reviews", softdeleteReviews);
+router.use("/reviews", tokenValidation, softdeleteReviews);
 router.use("/reviews", tokenValidation, postReview);
 router.use(
   "/reviews/staffOnly",

@@ -59,6 +59,14 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], Post.prototype, "applicants", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], Post.prototype, "active", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Date)
+], Post.prototype, "dateSoftDelte", void 0);
 Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);

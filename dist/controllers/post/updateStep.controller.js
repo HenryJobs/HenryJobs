@@ -16,12 +16,16 @@ const updateStep = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { step } = req.body;
     try {
         const post = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {});
-        res.status(200).json(post);
+        if (!(post === null || post === void 0 ? void 0 : post.active)) {
+            res.status(404).json("this item has been removed");
+        }
+        else {
+            res.status(200).json(post);
+        }
     }
     catch (err) {
         console.error(err);
     }
-    ;
 });
 exports.updateStep = updateStep;
 // if (!post?.applicants.hasOwnProperty(step) === step) {

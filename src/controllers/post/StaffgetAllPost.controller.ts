@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { Post, postModel } from "../../models/Post";
 
-export const getAllPost = async (_req: Request, res: Response) => {
+export const StaffgetAllPost = async (_req: Request, res: Response) => {
   try {
     let posters: Post[];
 
-    posters = await postModel.find({ active: true }).populate("posterUser");
+    posters = await postModel.find().populate("posterUser");
 
     if (posters) {
       res.status(200).json(posters);

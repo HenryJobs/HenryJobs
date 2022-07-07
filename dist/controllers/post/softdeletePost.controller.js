@@ -9,19 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPostById = void 0;
-const Post_1 = require("../../models/Post");
-const getPostById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.softdeletePost = void 0;
+const softdelete_1 = require("../../libs/softdelete");
+const softdeletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        let post;
         if (id) {
-            post = yield Post_1.postModel.findById(id).populate("posterUser");
-            if (!(post === null || post === void 0 ? void 0 : post.active)) {
-                res.status(404).json("this item has been removed");
-            }
-            else {
-                res.status(200).json(post);
+            const deleteById = yield (0, softdelete_1.softDelete)({ modelName: "post", id });
+            if (deleteById) {
+                res.status(200).json("deleted");
             }
         }
     }
@@ -29,4 +25,4 @@ const getPostById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         console.error(err);
     }
 });
-exports.getPostById = getPostById;
+exports.softdeletePost = softdeletePost;

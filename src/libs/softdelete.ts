@@ -53,19 +53,19 @@ export const reactivate = async (querys: Querys) => {
   } else if (querys.modelName === "post") {
     await postModel.findByIdAndUpdate(
       { _id: id },
-      { $set: { active: true, dateSoftDelte: undefined } }
+      { $set: { active: true, dateSoftDelte: null } }
     );
     return true;
   } else if (querys.modelName === "user") {
     await userModel.findByIdAndUpdate(
       { _id: id },
-      { $set: { active: true, dateSoftDelte: undefined } }
+      { $set: { active: true, dateSoftDelte: null } }
     );
     return true;
   } else if (querys.modelName === "postComent") {
     await postComent.findByIdAndUpdate(
       { _id: id },
-      { $set: { active: true, dateSoftDelte: undefined } }
+      { $set: { active: true, dateSoftDelte: null } }
     );
     return true;
   } else {
