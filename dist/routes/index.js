@@ -14,8 +14,6 @@ const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
-//validador de token
-const validateToken_1 = require("../libs/validateToken");
 // user
 router.use("/user", postUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);
@@ -39,7 +37,7 @@ router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tok
 router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
-router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));

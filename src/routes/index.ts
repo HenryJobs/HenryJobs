@@ -49,7 +49,7 @@ router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el tokenValidation
+router.use("/follow", putFollow); // acordarse de agregar el tokenValidation
 
 
 // comments
