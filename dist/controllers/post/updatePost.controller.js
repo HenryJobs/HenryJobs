@@ -74,7 +74,7 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             console.log("stepProperty -> ", stepProperty);
             console.log("showStudentProperty -> ", showStudentProperty);
             console.log("showBusinessProperty -> ", showBusinessProperty);
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $setOnInsert: { applicants: { userId, step, showStudent, showBusiness } } }, { upsert: true }));
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $setOnInsert: { applicants: { userId, step, showStudent, showBusiness } } }));
         }
         // if( userIdProperty?.includes(userId)
         //     || !stepProperty?.includes(step)
