@@ -17,6 +17,11 @@ export class Review {
 
   @prop({ ref: () => User })
   reviewReceiver: Ref<User>;
+
+  @prop({ default: true })
+  active: boolean;
+  @prop()
+  dateSoftDelte: Date;
 }
 
 export const reviewsModel = getModelForClass(Review);

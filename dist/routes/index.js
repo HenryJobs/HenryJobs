@@ -34,12 +34,12 @@ const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"))
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
-router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
-router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tokenValidation
-router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", validateToken_1.tokenValidation, deletePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
-router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));
@@ -55,10 +55,12 @@ router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.d
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
 const deleteReviews_routes_1 = __importDefault(require("./Reviews/deleteReviews.routes"));
+const softDelete_routes_1 = __importDefault(require("./Reviews/softDelete.routes"));
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
+router.use("/reviews", softDelete_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, deleteReviews_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
 exports.default = router;

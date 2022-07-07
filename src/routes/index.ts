@@ -2,7 +2,6 @@ import { Router } from "express";
 
 const router = Router();
 
-
 //user
 import userRoute from "./user/getAllUser.routes";
 import nameRoute from "./user/getUserByName.routes";
@@ -13,10 +12,8 @@ import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
-
 //validador de token
 import { tokenValidation } from "../libs/validateToken";
-
 
 // user
 router.use("/user", createRoute);
@@ -44,13 +41,11 @@ router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar e
 router.use("/post", tokenValidation, deletePostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
 
-
 // follow
 
 import putFollow from "./follow/putFollow.routes";
 
 router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el tokenValidation
-
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";
@@ -69,10 +64,12 @@ router.use("/comment", tokenValidation, updateCommentRoute);
 import getReviews from "./Reviews/getReviews.routes";
 import postReview from "./Reviews/postReviews.routes";
 import deleteReviews from "./Reviews/deleteReviews.routes";
+import softdeleteReviews from "./Reviews/softDelete.routes";
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews);
+router.use("/reviews", softdeleteReviews);
 router.use("/reviews", tokenValidation, deleteReviews);
 router.use("/reviews", tokenValidation, postReview);
 
