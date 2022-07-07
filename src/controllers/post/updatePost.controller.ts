@@ -87,7 +87,7 @@ export const updatePost = async (req: Request, res: Response) => {
             console.log("stepProperty -> ", stepProperty)
             console.log("showStudentProperty -> ", showStudentProperty)
             console.log("showBusinessProperty -> ", showBusinessProperty)
-            // await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}}, { $setOnInsert: { applicants: { userId, step, showStudent, showBusiness }}}, { upsert: true })
+            await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}}, { upsert: true })
         }
 
 

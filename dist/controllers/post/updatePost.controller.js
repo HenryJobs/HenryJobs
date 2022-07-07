@@ -63,7 +63,7 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             console.log("stepProperty -> ", stepProperty);
             console.log("showStudentProperty -> ", showStudentProperty);
             console.log("showBusinessProperty -> ", showBusinessProperty);
-            // await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}}, { $setOnInsert: { applicants: { userId, step, showStudent, showBusiness }}}, { upsert: true })
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness } } }, { upsert: true }));
         }
         const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
             text,
