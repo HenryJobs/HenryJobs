@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const router = (0, express_1.Router)();
+//validador de token
+const validateToken_1 = require("../libs/validateToken");
 //user
 const getAllUser_routes_1 = __importDefault(require("./user/getAllUser.routes"));
 const getUserByName_routes_1 = __importDefault(require("./user/getUserByName.routes"));
@@ -14,9 +16,6 @@ const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
-//validador de token
-const validateToken_1 = require("../libs/validateToken");
-// user
 router.use("/user", postUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);
 router.use("/name", getUserByName_routes_1.default);
@@ -32,11 +31,13 @@ const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"))
 const deletePost_routes_1 = __importDefault(require("./post/deletePost.routes"));
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
+const updateStep_routes_1 = __importDefault(require("./post/updateStep.routes"));
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
 router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/step", updateStep_routes_1.default);
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation

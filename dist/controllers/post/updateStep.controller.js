@@ -12,10 +12,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateStep = void 0;
 const Post_1 = require("../../models/Post");
 const updateStep = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
     const { id } = req.params;
-    const { step } = req.body;
+    const { userId, step, showStudent, showBusiness, name } = req.body;
     try {
-        const post = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {});
+        const post = yield Post_1.postModel.findById(id);
+        const userIdProperty = (_a = post === null || post === void 0 ? void 0 : post.applicants) === null || _a === void 0 ? void 0 : _a.map(e => e.userId);
+        const stepProperty = (_b = post === null || post === void 0 ? void 0 : post.applicants) === null || _b === void 0 ? void 0 : _b.map(e => e.step);
+        const showStudentProperty = (_c = post === null || post === void 0 ? void 0 : post.applicants) === null || _c === void 0 ? void 0 : _c.map(e => e.showStudent);
+        const showBusinessProperty = (_d = post === null || post === void 0 ? void 0 : post.applicants) === null || _d === void 0 ? void 0 : _d.map(e => e.showBusiness);
+        console.log("el forro de userIdProperty", userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId));
+        console.log("el forro de stepProperty", stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step));
+        if ((userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))
+            && !(stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))
+            || (stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))) {
+            console.log("el forro de userIdProperty", userIdProperty);
+            console.log("el forro de stepProperty", stepProperty);
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness } } }));
+        }
+        console.log("llega acá el forro");
         res.status(200).json(post);
     }
     catch (err) {
@@ -24,11 +39,3 @@ const updateStep = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     ;
 });
 exports.updateStep = updateStep;
-// if (!post?.applicants.hasOwnProperty(step) === step) {
-//     console.log("entré al if que agrega")
-//     await post?.updateOne({ $push: { applicants: step }})
-// }
-// if (post?.applicants.hasOwnProperty(step) === step) {
-//     console.log("entré al if que saca")
-//     await post?.updateOne({ $pull: { applicants: step } })
-// }
