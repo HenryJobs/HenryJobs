@@ -8,7 +8,8 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes {
-    PG = 1,    // 1
+    NN,
+    PG,    // 1
     Graduate,  // 2 
     Staff,     // 3
     Recruiter, // 4
