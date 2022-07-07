@@ -23,6 +23,7 @@ const typegoose_1 = require("@typegoose/typegoose");
 const bcrypt_1 = require("bcrypt");
 var UserTypes;
 (function (UserTypes) {
+    UserTypes[UserTypes["NN"] = 0] = "NN";
     UserTypes[UserTypes["PG"] = 1] = "PG";
     UserTypes[UserTypes["Graduate"] = 2] = "Graduate";
     UserTypes[UserTypes["Staff"] = 3] = "Staff";

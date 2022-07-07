@@ -39,7 +39,7 @@ router.use("/post", deletePost_routes_1.default); // acordarse de agregar el tok
 router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
-router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));
@@ -48,9 +48,9 @@ const getCommentById_routes_1 = __importDefault(require("./Comment/getCommentByI
 const getAllComment_routes_1 = __importDefault(require("./Comment/getAllComment.routes"));
 router.use("/comment", getCommentById_routes_1.default);
 router.use("/comment", getAllComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, deleteComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
+router.use("/comment", deleteComment_routes_1.default);
+router.use("/comment", createComment_routes_1.default);
+router.use("/comment", updateComment_routes_1.default);
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));

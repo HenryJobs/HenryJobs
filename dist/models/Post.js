@@ -56,19 +56,9 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "country", void 0);
 __decorate([
-<<<<<<< HEAD
-    (0, typegoose_1.prop)({ ref: () => User_1.User }),
-    __metadata("design:type", Object)
-], Post.prototype, "likes", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ ref: () => User_1.User }),
-    __metadata("design:type", Object)
-], Post.prototype, "liked", void 0);
-=======
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Array)
 ], Post.prototype, "applicants", void 0);
->>>>>>> a9722843c774a9556e36e9d12cd9bb995e91b868
 Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);

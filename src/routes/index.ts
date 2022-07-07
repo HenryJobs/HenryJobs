@@ -40,9 +40,9 @@ import getPostByIdRoute from "./post/getPostById.routes";
 
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
-router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, deletePostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", deletePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
 
 
 // follow
@@ -61,9 +61,9 @@ import getAllCommentRoute from "./Comment/getAllComment.routes";
 
 router.use("/comment", getCommentIdRoute);
 router.use("/comment", getAllCommentRoute);
-router.use("/comment", tokenValidation, deleteCommentRoute);
-router.use("/comment", tokenValidation, createCommentRoute);
-router.use("/comment", tokenValidation, updateCommentRoute);
+router.use("/comment", deleteCommentRoute);
+router.use("/comment", createCommentRoute);
+router.use("/comment", updateCommentRoute);
 
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
