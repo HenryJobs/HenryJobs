@@ -65,6 +65,18 @@ router.use("/comment", tokenValidation, deleteCommentRoute);
 router.use("/comment", tokenValidation, createCommentRoute);
 router.use("/comment", tokenValidation, updateCommentRoute);
 
+//applicants
+import putApplicantsRoute from './Applicants/put.applicants.routes'
+import createApplicantsRoute from './Applicants/create.applicants.routes'
+import getAllApplicantsRoute from './Applicants/getAllApplicants.routes'
+import getApplicantsByIdRoute from './Applicants/getAllApplicantsById.routes'
+
+
+router.use('/applicants', putApplicantsRoute)
+router.use('/applicants', createApplicantsRoute)
+router.use('/applicants', getAllApplicantsRoute)
+router.use('/applicants', getApplicantsByIdRoute)
+
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
 import postReview from "./Reviews/postReviews.routes";

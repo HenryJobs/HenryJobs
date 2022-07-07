@@ -51,6 +51,15 @@ router.use("/comment", getAllComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, deleteComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
+//applicants
+const put_applicants_routes_1 = __importDefault(require("./Applicants/put.applicants.routes"));
+const create_applicants_routes_1 = __importDefault(require("./Applicants/create.applicants.routes"));
+const getAllApplicants_routes_1 = __importDefault(require("./Applicants/getAllApplicants.routes"));
+const getAllApplicantsById_routes_1 = __importDefault(require("./Applicants/getAllApplicantsById.routes"));
+router.use('/applicants', put_applicants_routes_1.default);
+router.use('/applicants', create_applicants_routes_1.default);
+router.use('/applicants', getAllApplicants_routes_1.default);
+router.use('/applicants', getAllApplicantsById_routes_1.default);
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
