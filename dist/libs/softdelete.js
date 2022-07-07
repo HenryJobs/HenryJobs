@@ -40,7 +40,7 @@ exports.softDelete = softDelete;
 const reactivate = (querys) => __awaiter(void 0, void 0, void 0, function* () {
     const id = querys.id;
     if (querys.modelName === "reviews") {
-        yield Reviews_1.reviewsModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: undefined } });
+        yield Reviews_1.reviewsModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
         return true;
     }
     else if (querys.modelName === "post") {

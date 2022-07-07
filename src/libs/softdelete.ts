@@ -47,7 +47,7 @@ export const reactivate = async (querys: Querys) => {
   if (querys.modelName === "reviews") {
     await reviewsModel.findByIdAndUpdate(
       { _id: id },
-      { $set: { active: true, dateSoftDelte: undefined } }
+      { $set: { active: true, dateSoftDelte: null } }
     );
     return true;
   } else if (querys.modelName === "post") {

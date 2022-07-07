@@ -9,18 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.softdeleteReviews = void 0;
+exports.reactivateReviews = void 0;
 const softdelete_1 = require("../../libs/softdelete");
-const softdeleteReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { idReview } = req.params;
+const reactivateReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idReview } = req.body;
     try {
         if (idReview) {
-            const deleteById = yield (0, softdelete_1.softDelete)({
+            const reactivateById = yield (0, softdelete_1.reactivate)({
                 modelName: "reviews",
                 id: idReview,
             });
-            if (deleteById) {
-                res.status(200).json("deleted");
+            if (reactivateById) {
+                res.status(200).json("reactivated");
             }
             else {
                 res.status(404).send("no review found");
@@ -34,4 +34,4 @@ const softdeleteReviews = (req, res) => __awaiter(void 0, void 0, void 0, functi
         console.error(err);
     }
 });
-exports.softdeleteReviews = softdeleteReviews;
+exports.reactivateReviews = reactivateReviews;

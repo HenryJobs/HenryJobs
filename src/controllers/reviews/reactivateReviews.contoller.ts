@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 
-import { softDelete } from "../../libs/softdelete";
+import { reactivate } from "../../libs/softdelete";
 
-export const softdeleteReviews = async (req: Request, res: Response) => {
-  const { idReview } = req.params;
+export const reactivateReviews = async (req: Request, res: Response) => {
+  const { idReview } = req.body;
 
   try {
     if (idReview) {
-      const deleteById = await softDelete({
+      const reactivateById = await reactivate({
         modelName: "reviews",
         id: idReview,
       });
-      if (deleteById) {
-        res.status(200).json("deleted");
+      if (reactivateById) {
+        res.status(200).json("reactivated");
       } else {
         res.status(404).send("no review found");
       }

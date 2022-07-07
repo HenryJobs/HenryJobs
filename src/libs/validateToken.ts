@@ -86,7 +86,7 @@ export const validateRecruiterToken = (
   res: Response,
   next: NextFunction
 ) => {
-  validateUserTypes(req, res, next, 3);
+  validateUserTypes(req, res, next, 4);
 };
 
 export const validateStaffToken = (
@@ -94,7 +94,7 @@ export const validateStaffToken = (
   res: Response,
   next: NextFunction
 ) => {
-  validateUserTypes(req, res, next, 4);
+  validateUserTypes(req, res, next, 3);
 };
 
 export const validateBusinessToken = (

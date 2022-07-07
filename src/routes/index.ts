@@ -13,7 +13,7 @@ import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
 
 //validador de token
-import { tokenValidation } from "../libs/validateToken";
+import { tokenValidation, validateStaffToken } from "../libs/validateToken";
 
 // user
 router.use("/user", createRoute);
@@ -63,14 +63,20 @@ router.use("/comment", tokenValidation, updateCommentRoute);
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
 import postReview from "./Reviews/postReviews.routes";
-import deleteReviews from "./Reviews/deleteReviews.routes";
 import softdeleteReviews from "./Reviews/softDelete.routes";
+import staffFunctions from "./Reviews/StaffFunctions";
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
+
 router.use("/reviews", getReviews);
 router.use("/reviews", softdeleteReviews);
-router.use("/reviews", tokenValidation, deleteReviews);
 router.use("/reviews", tokenValidation, postReview);
+router.use(
+  "/reviews/staffOnly",
+  tokenValidation,
+  validateStaffToken,
+  staffFunctions
+);
 
 export default router;

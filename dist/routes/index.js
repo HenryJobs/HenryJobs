@@ -54,13 +54,13 @@ router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.d
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
-const deleteReviews_routes_1 = __importDefault(require("./Reviews/deleteReviews.routes"));
 const softDelete_routes_1 = __importDefault(require("./Reviews/softDelete.routes"));
+const StaffFunctions_1 = __importDefault(require("./Reviews/StaffFunctions"));
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
 router.use("/reviews", softDelete_routes_1.default);
-router.use("/reviews", validateToken_1.tokenValidation, deleteReviews_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
+router.use("/reviews/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_1.default);
 exports.default = router;

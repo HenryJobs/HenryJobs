@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getReviews = void 0;
+exports.StaffgetReviews = void 0;
 const Reviews_1 = require("../../models/Reviews");
-const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const StaffgetReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { idUser } = req.params;
     const { date, score } = req.query;
     try {
@@ -27,7 +27,7 @@ const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 obj.score = score;
             }
             const reviews = yield Reviews_1.reviewsModel
-                .find({ reviewReceiver: idUser, active: true })
+                .find({ reviewReceiver: idUser })
                 .populate("reviewer", "userName")
                 .populate("reviewReceiver", "userName")
                 .sort(obj);
@@ -41,5 +41,5 @@ const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
     catch (error) { }
 });
-exports.getReviews = getReviews;
+exports.StaffgetReviews = StaffgetReviews;
 //

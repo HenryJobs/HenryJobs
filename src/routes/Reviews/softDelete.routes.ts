@@ -3,6 +3,6 @@ import { softdeleteReviews } from "../../controllers/reviews/softdeleteReviews.c
 
 const router = Router();
 
-router.delete("/softdelete/:idReview", softdeleteReviews);
+router.delete("/:idReview", softdeleteReviews);
 
 export = router;
