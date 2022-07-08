@@ -15,11 +15,17 @@ const updateComent = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { id } = req.params;
     const { text } = req.body;
     try {
-        if (id) {
-            const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, {
-                text: text
-            });
-            res.status(200).json(update);
+        const comment = yield postComent_1.postComent.findOne({ _id: id });
+        if (!(comment === null || comment === void 0 ? void 0 : comment.active)) {
+            res.status(404).send("this item has been removed");
+        }
+        else {
+            if (id) {
+                const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, {
+                    text: text,
+                });
+                res.status(200).json(update);
+            }
         }
     }
     catch (err) {

@@ -34,7 +34,7 @@ import getAllPostRoute from "./post/getAllPost.routes";
 import updatePostRoute from "./post/updatePost.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
 import softdeletePostRoute from "./post/softdeletePost.routes";
-import StaffFunctionsPost from "./post/StaffFunctionsPost.controller";
+import StaffFunctionsPost from "./post/StaffFunctionsPost.routes";
 
 router.use(
   "/post/staffOnly",
@@ -56,14 +56,21 @@ router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el to
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";
-import deleteCommentRoute from "./Comment/deleteComment.routes";
 import updateCommentRoute from "./Comment/updateComment.routes";
 import getCommentIdRoute from "./Comment/getCommentById.routes";
 import getAllCommentRoute from "./Comment/getAllComment.routes";
+import softdelteCommentRoute from "./Comment/softdeleteComment.routes";
+import staffFunctionsComments from "./Comment/StaffFunctions.routes";
 
+router.use(
+  "/comment/staffOnly",
+  tokenValidation,
+  validateStaffToken,
+  staffFunctionsComments
+);
 router.use("/comment", getCommentIdRoute);
 router.use("/comment", getAllCommentRoute);
-router.use("/comment", tokenValidation, deleteCommentRoute);
+router.use("/comment", tokenValidation, softdelteCommentRoute);
 router.use("/comment", tokenValidation, createCommentRoute);
 router.use("/comment", tokenValidation, updateCommentRoute);
 
@@ -71,7 +78,7 @@ router.use("/comment", tokenValidation, updateCommentRoute);
 import getReviews from "./Reviews/getReviews.routes";
 import postReview from "./Reviews/postReviews.routes";
 import softdeleteReviews from "./Reviews/softDelete.routes";
-import staffFunctions from "./Reviews/StaffFunctions";
+import staffFunctions from "./Reviews/StaffFunctions.routes";
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa

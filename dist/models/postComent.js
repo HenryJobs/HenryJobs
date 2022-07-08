@@ -27,5 +27,13 @@ __decorate([
     (0, typegoose_1.prop)({ ref: () => Post_1.Post }),
     __metadata("design:type", Object)
 ], Coments.prototype, "postUser", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], Coments.prototype, "active", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Date)
+], Coments.prototype, "dateSoftDelte", void 0);
 exports.Coments = Coments;
 exports.postComent = (0, typegoose_1.getModelForClass)(Coments);

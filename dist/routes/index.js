@@ -32,8 +32,8 @@ const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"))
 const updatePost_routes_1 = __importDefault(require("./post/updatePost.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 const softdeletePost_routes_1 = __importDefault(require("./post/softdeletePost.routes"));
-const StaffFunctionsPost_controller_1 = __importDefault(require("./post/StaffFunctionsPost.controller"));
-router.use("/post/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctionsPost_controller_1.default);
+const StaffFunctionsPost_routes_1 = __importDefault(require("./post/StaffFunctionsPost.routes"));
+router.use("/post/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctionsPost_routes_1.default);
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
 router.use("/post", softdeletePost_routes_1.default);
@@ -44,25 +44,27 @@ const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"))
 router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
-const deleteComment_routes_1 = __importDefault(require("./Comment/deleteComment.routes"));
 const updateComment_routes_1 = __importDefault(require("./Comment/updateComment.routes"));
 const getCommentById_routes_1 = __importDefault(require("./Comment/getCommentById.routes"));
 const getAllComment_routes_1 = __importDefault(require("./Comment/getAllComment.routes"));
+const softdeleteComment_routes_1 = __importDefault(require("./Comment/softdeleteComment.routes"));
+const StaffFunctions_routes_1 = __importDefault(require("./Comment/StaffFunctions.routes"));
+router.use("/comment/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_routes_1.default);
 router.use("/comment", getCommentById_routes_1.default);
 router.use("/comment", getAllComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, deleteComment_routes_1.default);
+router.use("/comment", validateToken_1.tokenValidation, softdeleteComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.default);
 router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
 const softDelete_routes_1 = __importDefault(require("./Reviews/softDelete.routes"));
-const StaffFunctions_1 = __importDefault(require("./Reviews/StaffFunctions"));
+const StaffFunctions_routes_2 = __importDefault(require("./Reviews/StaffFunctions.routes"));
 // /reviews/:idUser
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, softDelete_routes_1.default);
 router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
-router.use("/reviews/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_1.default);
+router.use("/reviews/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_routes_2.default);
 exports.default = router;

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { Coments, postComent } from "../../models/postComent";
 
-export const getAllComents = async (req: Request, res: Response) => {
+export const staffgetAllComents = async (req: Request, res: Response) => {
   try {
     let coments: Coments[];
 
     coments = await postComent
-      .find({ active: true })
+      .find()
       .populate("comentUser")
       .populate("postUser");
 

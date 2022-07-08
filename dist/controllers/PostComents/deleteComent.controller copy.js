@@ -9,22 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getComentById = void 0;
+exports.deleteComent = void 0;
 const postComent_1 = require("../../models/postComent");
-const getComentById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
+const deleteComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.query;
     try {
-        let comment;
-        comment = yield postComent_1.postComent.findOne({ _id: id }).populate("comentUser");
-        if ((comment === null || comment === void 0 ? void 0 : comment.active) === true) {
-            res.status(200).json(comment);
-        }
-        else {
-            res.status(404).send("this item has been removed");
+        if (id) {
+            const deleteById = yield postComent_1.postComent.findByIdAndDelete({ _id: id });
+            if (deleteById) {
+                res.status(200).json(deleteById);
+            }
         }
     }
     catch (err) {
         console.error(err);
     }
 });
-exports.getComentById = getComentById;
+exports.deleteComent = deleteComent;
