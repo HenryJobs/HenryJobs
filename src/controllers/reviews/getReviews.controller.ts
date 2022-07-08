@@ -34,7 +34,7 @@ export const getReviews = async (req: Request, res: Response) => {
         obj.score = score;
       }
       const reviews = await reviewsModel
-        .find({ reviewReceiver: idUser })
+        .find({ reviewReceiver: idUser, active: true })
         .populate("reviewer", "userName")
         .populate("reviewReceiver", "userName")
         .sort(obj);

@@ -27,7 +27,7 @@ const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 obj.score = score;
             }
             const reviews = yield Reviews_1.reviewsModel
-                .find({ reviewReceiver: idUser })
+                .find({ reviewReceiver: idUser, active: true })
                 .populate("reviewer", "userName")
                 .populate("reviewReceiver", "userName")
                 .sort(obj);

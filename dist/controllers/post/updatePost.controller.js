@@ -12,98 +12,43 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePost = void 0;
 const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d;
     const { id } = req.params;
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step, showStudent, showBusiness, name } = req.body;
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step, } = req.body;
     try {
         const post = yield Post_1.postModel.findById(id);
-        console.log("showStudent & business", showStudent, showBusiness);
-        const userIdProperty = (_a = post === null || post === void 0 ? void 0 : post.applicants) === null || _a === void 0 ? void 0 : _a.map(e => e.userId);
-        const stepProperty = (_b = post === null || post === void 0 ? void 0 : post.applicants) === null || _b === void 0 ? void 0 : _b.map(e => e.step);
-        const showStudentProperty = (_c = post === null || post === void 0 ? void 0 : post.applicants) === null || _c === void 0 ? void 0 : _c.map(e => e.showStudent);
-        const showBusinessProperty = (_d = post === null || post === void 0 ? void 0 : post.applicants) === null || _d === void 0 ? void 0 : _d.map(e => e.showBusiness);
-        console.log(userIdProperty);
-        console.log(stepProperty);
-        console.log("student", showStudentProperty);
-        console.log("business", showBusinessProperty);
-        // if (!userIdProperty?.includes(userId)) {
-        //     console.log("userIdProperty primer if -> ", userIdProperty)
-        //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness}}})
-        // }
-        // if (userIdProperty?.includes(userId) && stepProperty?.includes(step)) {
-        //     console.log("userIdProperty segundo if -> ", userIdProperty)
-        //     console.log("-> ", showStudent, showBusiness)
-        //     await post?.updateOne( { $pull: { applicants: { userId, step, showStudent, showBusiness }}})
-        // }
-        // if (userIdProperty?.includes(userId) && !stepProperty?.includes(step)) {
-        //     console.log("userIdProperty segundo if -> ", userIdProperty)
-        //     console.log("esto es esparta", showStudent, showBusiness)
-        //     await post?.updateOne( { $set: { applicants: { userId, step, showStudent, showBusiness }}})
-        // }
-        // if (
-        //     !userIdProperty?.includes(userId)
-        //     && !stepProperty?.includes(step)
-        //     && !showStudentProperty?.includes(showStudent)
-        //     && !showBusinessProperty?.includes(showBusiness)
-        // ) {
-        //     console.log("entré al primer if")
-        //     console.log("userIdProperty -> ", userIdProperty)
-        //     console.log("stepProperty -> ", stepProperty)
-        //     console.log("showStudentProperty -> ", showStudentProperty)
-        //     console.log("showBusinessProperty -> ", showBusinessProperty)
-        //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
-        // }
-        // if (
-        //     !userIdProperty?.includes(userId)
-        // ) {
-        //     console.log("entré al primer if")
-        //     console.log("userIdProperty -> ", userIdProperty)
-        //     console.log("stepProperty -> ", stepProperty)
-        //     console.log("showStudentProperty -> ", showStudentProperty)
-        //     console.log("showBusinessProperty -> ", showBusinessProperty)
-        //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
-        // }
-        if ((userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))
-            && (stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))
-            && (showStudentProperty === null || showStudentProperty === void 0 ? void 0 : showStudentProperty.includes(showStudent))
-            && (showBusinessProperty === null || showBusinessProperty === void 0 ? void 0 : showBusinessProperty.includes(showBusiness))) {
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: { userId, step, showStudent, showBusiness } } }));
+        if (!(post === null || post === void 0 ? void 0 : post.active)) {
+            res.status(404).json("this item has been removed");
         }
-        if (!(userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))) {
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness } } }, { upsert: true }));
+        else {
+            if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
+                console.log("entré al if que agrega");
+                console.log("este es el userId", userId);
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({
+                    $push: { applicants: [{ userId: userId, step: step }] },
+                }));
+                console.log(post);
+            }
+            if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+                console.log("entré al if que saca");
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+            }
+            const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
+                text,
+                imgVideo,
+                date,
+                image,
+                workModality,
+                technologies,
+                backFront,
+                country,
+            });
+            if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+                console.log("entré al if que saca");
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+            }
+            // res.status(200).json(updated)
+            res.status(200).json(updated);
         }
-        // if(
-        //     userIdProperty?.includes(userId)
-        //     || !stepProperty?.includes(step)
-        //     || !showStudentProperty?.includes(showStudent)
-        //     || !showBusinessProperty?.includes(showBusiness))
-        //         {
-        //         console.log("entré al tercero mi rey")
-        //     console.log("userIdProperty -> ", userIdProperty)
-        //     console.log("stepProperty -> ", stepProperty)
-        //     console.log("showStudentProperty -> ", showStudentProperty)
-        //     console.log("showBusinessProperty -> ", showBusinessProperty)
-        //     await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}})
-        //} 
-        // if( userIdProperty?.includes(userId)
-        //     || !stepProperty?.includes(step)
-        //     || !showStudentProperty?.includes(showStudent)
-        //     || !showBusinessProperty?.includes(showBusiness)
-        // ){
-        //     await post?.updateOne({ $ { applicants: { userId, step, showStudent, showBusiness }}},  { upsert: true })
-        // }
-        const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
-            text,
-            imgVideo,
-            date,
-            image,
-            workModality,
-            technologies,
-            backFront,
-            country
-        });
-        console.log('llegó acá??');
-        res.status(200).json(updated);
     }
     catch (err) {
         console.error(err);

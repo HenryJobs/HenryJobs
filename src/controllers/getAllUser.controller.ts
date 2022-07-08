@@ -8,7 +8,7 @@ export const getAllUser = async (
   next: NextFunction
 ) => {
   try {
-    const allUsers: Array<User> = await userModel.find();
+    const allUsers: Array<User> = await userModel.find({ active: true });
 
     if (allUsers) {
         const userMap: Array<userInterface> = allUsers.map((user: any) => {

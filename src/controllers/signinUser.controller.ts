@@ -7,22 +7,19 @@ const { TOKEN_SECRET } = process.env;
 
 export const signinUser = async (req: Request, res: Response) => {
   try {
-    const { email, password, userName } = req.body;
+    const { email, password } = req.body;
 
-    let user;
-    if (userName) {
-      user = await userModel.findOne({ userName: userName });
-    } else if (email) {
-      user = await userModel.findOne({ email: email });
-    } else {
-      return res.status(404).send("Fill in the user information completely");
-    }
+    const user = await userModel.findOne({
+      $or: [{ email }, { userName: email }],
+    });
 
-    //valida usuario
     if (!user) {
+      //valida usuario
       return res.status(400).send("Incorrect user information (code: 001)");
     }
-
+    if (!user?.active) {
+      return res.status(400).send("This user is disabled");
+    }
     // Ya funciona :D!!
 
     const correctPassword: boolean = await user.validatePassword(password);
@@ -38,12 +35,12 @@ export const signinUser = async (req: Request, res: Response) => {
         premium: user.premium,
         name: user.name,
         lastname: user.lastName,
-        following: user.following
+        following: user.following,
       },
       TOKEN_SECRET || "TOKENTEST",
       { expiresIn: 60 * 60 * 24 }
     );
-    console.log("user", user);
+
     res.send(token);
   } catch (error) {
     console.error(error);

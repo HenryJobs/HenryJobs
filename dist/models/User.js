@@ -23,6 +23,7 @@ const typegoose_1 = require("@typegoose/typegoose");
 const bcrypt_1 = require("bcrypt");
 var UserTypes;
 (function (UserTypes) {
+    UserTypes[UserTypes["NN"] = 0] = "NN";
     UserTypes[UserTypes["PG"] = 1] = "PG";
     UserTypes[UserTypes["Graduate"] = 2] = "Graduate";
     UserTypes[UserTypes["Staff"] = 3] = "Staff";
@@ -34,11 +35,9 @@ let User = class User {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const user = yield (0, bcrypt_1.compare)(candidatePassword, this.password);
-                console.log("esto es user --> ", user);
                 return user;
             }
             catch (error) {
-                console.error(error, "Could not validate password");
                 return false;
             }
         });
@@ -144,6 +143,14 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", Boolean)
 ], User.prototype, "premium", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], User.prototype, "active", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Date)
+], User.prototype, "dateSoftDelte", void 0);
 User = __decorate([
     (0, typegoose_1.pre)("save", function (next) {
         return __awaiter(this, void 0, void 0, function* () {

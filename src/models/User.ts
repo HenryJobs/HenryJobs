@@ -8,13 +8,13 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes {
-  PG = 1,    // 1
-  Graduate,  // 2 
-  Staff,     // 3
-  Recruiter, // 4
-  Business   // 5
+    NN,
+    PG,    // 1
+    Graduate,  // 2 
+    Staff,     // 3
+    Recruiter, // 4
+    Business   // 5
 }
-
 
 @pre<User>("save", async function (next) {
   const user = this;
@@ -26,7 +26,6 @@ enum UserTypes {
   user.password = hashed;
   next();
 })
-
 @modelOptions({ options: { allowMixed: 0 } })
 export class User {
   @prop({ required: true })
@@ -72,27 +71,25 @@ export class User {
   curriculumCounter: number;
 
   @prop({})
-  counterIncome: number
+  counterIncome: number;
 
   @prop({})
-  workModality: string
+  workModality: string;
 
   @prop({})
   banner: object;
 
   @prop({ min: 1, max: 5 })
-  stars: number
+  stars: number;
 
   @prop({})
   followers: string[];
 
   @prop({})
-  following: string[]
+  following: string[];
 
   @prop({})
   applications: string[]
-
-
 
   //business
 
@@ -108,16 +105,20 @@ export class User {
   @prop({})
   premium: boolean;
 
+  @prop({ default: true })
+  active: boolean;
+
+  @prop()
+  dateSoftDelte: Date;
+
   public async validatePassword(
     this: DocumentType<User>,
     candidatePassword: string
   ) {
     try {
       const user = await compare(candidatePassword, this.password);
-      console.log("esto es user --> ", user);
       return user;
     } catch (error) {
-      console.error(error, "Could not validate password");
       return false;
     }
   }

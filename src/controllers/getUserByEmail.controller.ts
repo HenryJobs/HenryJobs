@@ -8,7 +8,8 @@ export const getUserEmail = async (req: Request, res: Response) => {
 
     if (email) {
         const userEmail: userId | null = await userModel.findOne({
-            email: email
+            email: email,
+            active: true
         })
         if (userEmail) {
             const allEmail: userInterface = {

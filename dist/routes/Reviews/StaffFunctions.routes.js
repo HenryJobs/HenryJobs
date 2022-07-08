@@ -1,0 +1,10 @@
+"use strict";
+const express_1 = require("express");
+const StaffgetallReviews_controller_1 = require("../../controllers/reviews/StaffgetallReviews.controller");
+const deleteReviews_controller_1 = require("../../controllers/reviews/deleteReviews.controller");
+const reactivateReviews_contoller_1 = require("../../controllers/reviews/reactivateReviews.contoller");
+const router = (0, express_1.Router)();
+router.get("/:idUser", StaffgetallReviews_controller_1.StaffgetReviews);
+router.delete("/:idReview", deleteReviews_controller_1.deleteReviews);
+router.put("/", reactivateReviews_contoller_1.reactivateReviews);
+module.exports = router;

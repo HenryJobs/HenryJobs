@@ -4,38 +4,42 @@ import { User } from "./User";
 
 
 @modelOptions({ options: { allowMixed: 0 } })
-
 export class Post {
+  @prop({ ref: () => User })
+  posterUser: Ref<User>;
 
-    @prop({ ref: () => User })
-    posterUser: Ref<User>; 
+  @prop({ required: true })
+  text: string;
 
-    @prop({required: true})
-    text: string
+  @prop({})
+  imgVideo: string;
 
-    @prop({})
-    imgVideo: string
-    
-    @prop({})
-    date: string
+  @prop({})
+  date: string;
 
-    @prop({})
-    image: string
+  @prop({})
+  image: string;
 
-    @prop({})
-    workModality: string
+  @prop({})
+  workModality: string;
 
-    @prop({})
-    technologies: string[]
+  @prop({})
+  technologies: string[];
 
-    @prop({})
-    backFront: string
+  @prop({})
+  backFront: string;
 
-    @prop({})
-    country: string
+  @prop({})
+  country: string;
 
-    @prop({})
-    applicants: applicantsInterface[]
+  @prop({})
+  applicants: applicantsInterface[]
+
+  @prop({ default: true })
+  active: boolean;
+  @prop()
+  dateSoftDelte: Date;
+
 };
 
-export const postModel = getModelForClass(Post)
+export const postModel = getModelForClass(Post);
