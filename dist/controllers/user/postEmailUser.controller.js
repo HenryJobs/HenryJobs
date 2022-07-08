@@ -8,23 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createUser = void 0;
+exports.createUserGoogle = void 0;
 const fs_extra_1 = require("fs-extra");
-const User_1 = require("../models/User");
-const cloudinary_1 = require("../cloudinary");
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const { TOKEN_SECRET } = process.env;
-const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const User_1 = require("../../models/User");
+const cloudinary_1 = require("../../cloudinary");
+const createUserGoogle = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
     try {
         if (!name || !userName || !email || !password)
             res.status(400).json({ msg: "Some fields are required" });
-        //s
+        if (email)
+            next();
         const user = yield User_1.userModel.create({
             name,
             lastName,
@@ -67,19 +63,9 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             yield (0, fs_extra_1.unlink)(banner.tempFilePath);
         }
         yield user.save();
-        // crea un token y lo manda al header
-        const token = jsonwebtoken_1.default.sign({
-            id: user._id,
-            type: user.userTypes,
-            premium: user.premium,
-            name: user.name,
-            lastname: user.lastName,
-        }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
-        res.header("authToken", token).status(201).json(user);
-        // res.status(201).json(user)
     }
     catch (error) {
         console.error(error);
     }
 });
-exports.createUser = createUser;
+exports.createUserGoogle = createUserGoogle;

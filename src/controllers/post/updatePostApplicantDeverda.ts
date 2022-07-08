@@ -20,7 +20,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
 
         console.log(applicantsUpdated)
 
-        await post?.updateOne( { $set: {applicants: applicantsUpdated }})
+        await post?.updateOne( { $addToSet: {applicants: applicantsUpdated }})
         // await post?.save()
 
         res.status(200).json(post)

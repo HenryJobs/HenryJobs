@@ -14,12 +14,14 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
+import postUserGoogleRoute from './user/getEmailGoogle.routes' 
 
 router.use("/user", createRoute);
-router.use("/user", getUserById);
-router.use("/name", nameRoute);
+router.use('/user', postUserGoogleRoute)
 router.use("/mail", getUserByMail);
 router.use("/signin", Usersignin);
+router.use("/user", getUserById);
+router.use("/name", nameRoute);
 router.use("/user", userRoute);
 router.use("/user", deleteRoute);
 router.use("/user", putRoute);
