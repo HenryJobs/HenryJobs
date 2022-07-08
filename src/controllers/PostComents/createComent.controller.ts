@@ -3,7 +3,7 @@ import { Coments, postComent } from '../../models/postComent';
 
 export const createComent = async (req: Request, res: Response) => {
 
-    const { comentUser, text, postUser } = req.body
+    const { comentUser, text, postUser, likes, liked } = req.body
 
     try {
 
@@ -14,7 +14,9 @@ export const createComent = async (req: Request, res: Response) => {
         const comentCreated: Coments = await postComent.create({
             comentUser,
             text,
-            postUser
+            postUser,
+            likes,
+            liked
         })
 
         if(comentCreated){

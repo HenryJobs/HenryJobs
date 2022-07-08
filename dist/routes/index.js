@@ -38,12 +38,12 @@ const StaffFunctionsPost_routes_1 = __importDefault(require("./post/StaffFunctio
 router.use("/post/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctionsPost_routes_1.default);
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
-router.use("/post", softdeletePost_routes_1.default);
-router.use("/post", validateToken_1.tokenValidation, createPost_routes_1.default); // acordarse de agregar el tokenValidation
-router.use("/post", validateToken_1.tokenValidation, updatePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", softdeletePost_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/post", updatePost_routes_1.default); // acordarse de agregar el tokenValidation
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
-router.use("/follow", validateToken_1.tokenValidation, putFollow_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation
 // comments
 const createComment_routes_1 = __importDefault(require("./Comment/createComment.routes"));
 const updateComment_routes_1 = __importDefault(require("./Comment/updateComment.routes"));
@@ -54,9 +54,9 @@ const StaffFunctions_routes_1 = __importDefault(require("./Comment/StaffFunction
 router.use("/comment/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_routes_1.default);
 router.use("/comment", getCommentById_routes_1.default);
 router.use("/comment", getAllComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, softdeleteComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, createComment_routes_1.default);
-router.use("/comment", validateToken_1.tokenValidation, updateComment_routes_1.default);
+router.use("/comment", softdeleteComment_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/comment", createComment_routes_1.default); // acordarse de agregar el tokenValidation
+router.use("/comment", updateComment_routes_1.default); // acordarse de agregar el tokenValidation
 //reviews
 const getReviews_routes_1 = __importDefault(require("./Reviews/getReviews.routes"));
 const postReviews_routes_1 = __importDefault(require("./Reviews/postReviews.routes"));
@@ -66,7 +66,7 @@ const StaffFunctions_routes_2 = __importDefault(require("./Reviews/StaffFunction
 // /reviews/:idUser?date=1  sort del más viejo al más nuevo o date=-1 viceversa
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 router.use("/reviews", getReviews_routes_1.default);
-router.use("/reviews", validateToken_1.tokenValidation, softDelete_routes_1.default);
-router.use("/reviews", validateToken_1.tokenValidation, postReviews_routes_1.default);
+router.use("/reviews", softDelete_routes_1.default); //tokens
+router.use("/reviews", postReviews_routes_1.default); //tokens
 router.use("/reviews/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctions_routes_2.default);
 exports.default = router;

@@ -42,6 +42,10 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 backFront,
                 country,
             });
+            if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+                console.log("entré al if que saca");
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+            }
             // res.status(200).json(updated)
             res.status(200).json(updated);
         }

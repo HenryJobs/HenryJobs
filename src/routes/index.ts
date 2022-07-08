@@ -52,15 +52,15 @@ router.use(
 );
 router.use("/post", getAllPostRoute);
 router.use("/post", getPostByIdRoute);
-router.use("/post", softdeletePostRoute);
-router.use("/post", tokenValidation, createPostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", tokenValidation, updatePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", softdeletePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
 
 // follow
 
 import putFollow from "./follow/putFollow.routes";
 
-router.use("/follow", tokenValidation, putFollow); // acordarse de agregar el tokenValidation
+router.use("/follow", putFollow); // acordarse de agregar el tokenValidation
 
 // comments
 import createCommentRoute from "./Comment/createComment.routes";
@@ -78,9 +78,9 @@ router.use(
 );
 router.use("/comment", getCommentIdRoute);
 router.use("/comment", getAllCommentRoute);
-router.use("/comment", tokenValidation, softdelteCommentRoute);
-router.use("/comment", tokenValidation, createCommentRoute);
-router.use("/comment", tokenValidation, updateCommentRoute);
+router.use("/comment", softdelteCommentRoute); // acordarse de agregar el tokenValidation
+router.use("/comment", createCommentRoute); // acordarse de agregar el tokenValidation
+router.use("/comment", updateCommentRoute); // acordarse de agregar el tokenValidation
 
 //reviews
 import getReviews from "./Reviews/getReviews.routes";
@@ -92,8 +92,8 @@ import staffFunctions from "./Reviews/StaffFunctions.routes";
 // /reviews/:idUser?score=1 sort del peor al mejor o score=-1 viceversa
 
 router.use("/reviews", getReviews);
-router.use("/reviews", tokenValidation, softdeleteReviews);
-router.use("/reviews", tokenValidation, postReview);
+router.use("/reviews", softdeleteReviews); //tokens
+router.use("/reviews", postReview); //tokens
 router.use(
   "/reviews/staffOnly",
   tokenValidation,

@@ -8,11 +8,20 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes {
+<<<<<<< HEAD
   PG = 1, // 1
   Graduate, // 2
   Staff, // 3
   Recruiter, // 4
   Business, // 5
+=======
+    NN,
+    PG,    // 1
+    Graduate,  // 2 
+    Staff,     // 3
+    Recruiter, // 4
+    Business   // 5
+>>>>>>> 529a93c45a2bf6c2e539a62bfda2732c57967bf4
 }
 
 @pre<User>("save", async function (next) {

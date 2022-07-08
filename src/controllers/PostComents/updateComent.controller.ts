@@ -3,23 +3,20 @@ import { postComent } from "../../models/postComent";
 
 export const updateComent = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { text } = req.body;
+  const { text, likes, liked } = req.body;
 
   try {
-    const comment = await postComent.findOne({ _id: id });
-    if (!comment?.active) {
-      res.status(404).send("this item has been removed");
-    } else {
-      if (id) {
-        const update = await postComent.findByIdAndUpdate(
-          { _id: id },
-          {
-            text: text,
-          }
-        );
+    if (id) {
+      const update = await postComent.findByIdAndUpdate(
+        { _id: id, active: true },
+        {
+          text: text,
+          likes: likes,
+          liked: liked,
+        }
+      );
 
-        res.status(200).json(update);
-      }
+      res.status(200).json(update);
     }
   } catch (err) {
     console.error(err);

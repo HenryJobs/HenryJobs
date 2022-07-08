@@ -49,6 +49,11 @@ export const updatePost = async (req: Request, res: Response) => {
         }
       );
 
+      if (post?.applicants.includes(userId)) {
+        console.log("entré al if que saca");
+        await post?.updateOne({ $pull: { applicants: [{ userId, step }] } });
+      }
+
       // res.status(200).json(updated)
       res.status(200).json(updated);
     }

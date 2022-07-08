@@ -13,19 +13,15 @@ exports.updateComent = void 0;
 const postComent_1 = require("../../models/postComent");
 const updateComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { text } = req.body;
+    const { text, likes, liked } = req.body;
     try {
-        const comment = yield postComent_1.postComent.findOne({ _id: id });
-        if (!(comment === null || comment === void 0 ? void 0 : comment.active)) {
-            res.status(404).send("this item has been removed");
-        }
-        else {
-            if (id) {
-                const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, {
-                    text: text,
-                });
-                res.status(200).json(update);
-            }
+        if (id) {
+            const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id, active: true }, {
+                text: text,
+                likes: likes,
+                liked: liked,
+            });
+            res.status(200).json(update);
         }
     }
     catch (err) {

@@ -9,28 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createComent = void 0;
-const postComent_1 = require("../../models/postComent");
-const createComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { comentUser, text, postUser, likes, liked } = req.body;
+exports.putLikes = void 0;
+const Likes_1 = require("../../models/Likes");
+const putLikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { likes, liked } = req.body;
     try {
-        // const coment: Coments | null = await postComent.findOne({
-        //     $and: [{ text: text }, { comentUser: comentUser }],
-        // });
-        const comentCreated = yield postComent_1.postComent.create({
-            comentUser,
-            text,
-            postUser,
-            likes,
-            liked
-        });
-        if (comentCreated) {
-            res.status(201).json(comentCreated);
+        if (id) {
+            const updateLikes = yield Likes_1.likeModel.findByIdAndUpdate({ _id: id }, {
+                liked: liked,
+                likes: likes
+            });
+            res.status(200).json(updateLikes);
         }
     }
     catch (err) {
         console.error(err);
     }
-    ;
 });
-exports.createComent = createComent;
+exports.putLikes = putLikes;
