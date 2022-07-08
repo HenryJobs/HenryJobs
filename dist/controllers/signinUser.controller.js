@@ -18,20 +18,16 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { email, password, userName } = req.body;
-        let user;
-        if (userName) {
-            user = yield User_1.userModel.findOne({ userName: userName });
-        }
-        else if (email) {
-            user = yield User_1.userModel.findOne({ email: email });
-        }
-        else {
-            return res.status(404).send("Fill in the user information completely");
-        }
-        //valida usuario
+        const { email, password } = req.body;
+        const user = yield User_1.userModel.findOne({
+            $or: [{ email }, { userName: email }],
+        });
         if (!user) {
+            //valida usuario
             return res.status(400).send("Incorrect user information (code: 001)");
+        }
+        if (!(user === null || user === void 0 ? void 0 : user.active)) {
+            return res.status(400).send("This user is disabled");
         }
         // Ya funciona :D!!
         const correctPassword = yield user.validatePassword(password);
@@ -44,9 +40,8 @@ const signinUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             premium: user.premium,
             name: user.name,
             lastname: user.lastName,
-            following: user.following
+            following: user.following,
         }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
-        console.log("user", user);
         res.send(token);
     }
     catch (error) {

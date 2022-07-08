@@ -13,31 +13,42 @@ exports.updatePost = void 0;
 const Post_1 = require("../../models/Post");
 const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step } = req.body;
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, userId, step, } = req.body;
     try {
         const post = yield Post_1.postModel.findById(id);
-        if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
-            console.log("entré al if que agrega");
-            console.log("este es el userId", userId);
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $push: { applicants: [{ userId: userId, step: step }] } }));
-            console.log(post);
+        if (!(post === null || post === void 0 ? void 0 : post.active)) {
+            res.status(404).json("this item has been removed");
         }
-        if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
-            console.log("entré al if que saca");
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+        else {
+            if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
+                console.log("entré al if que agrega");
+                console.log("este es el userId", userId);
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({
+                    $push: { applicants: [{ userId: userId, step: step }] },
+                }));
+                console.log(post);
+            }
+            if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+                console.log("entré al if que saca");
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+            }
+            const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
+                text,
+                imgVideo,
+                date,
+                image,
+                workModality,
+                technologies,
+                backFront,
+                country,
+            });
+            if (post === null || post === void 0 ? void 0 : post.applicants.includes(userId)) {
+                console.log("entré al if que saca");
+                yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: [{ userId, step }] } }));
+            }
+            // res.status(200).json(updated)
+            res.status(200).json(updated);
         }
-        const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
-            text,
-            imgVideo,
-            date,
-            image,
-            workModality,
-            technologies,
-            backFront,
-            country,
-        });
-        // res.status(200).json(updated)
-        res.status(200).json(updated);
     }
     catch (err) {
         console.error(err);

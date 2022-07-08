@@ -38,5 +38,13 @@ __decorate([
     (0, typegoose_1.prop)({ ref: () => User_1.User }),
     __metadata("design:type", Object)
 ], Review.prototype, "reviewReceiver", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], Review.prototype, "active", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Date)
+], Review.prototype, "dateSoftDelte", void 0);
 exports.Review = Review;
 exports.reviewsModel = (0, typegoose_1.getModelForClass)(Review);

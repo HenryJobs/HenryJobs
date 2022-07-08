@@ -1,0 +1,26 @@
+Para el borrado lógico se añadirá un "Active: true" a los modelos de:
+
+[] Post
+[] PostComents
+[] Reviews
+[] Users
+
+Si tienen Active: true pueden obtenerse desde el get para todos pero si Active: false solo podrán obtenerse para el staff.
+
+FILTRO EN get
+Se incluirá un find({active: true}) a todos los gets:
+
+------USER------------
+[] getAllUser.controller
+[] getUserByEmail.controller
+[] getUserById.controller
+[] getUserByName.controller
+[] updateUser.controller
+
+----------FOLLOW---------------
+[]putFollow
+
+----------POST-----------------
+[]getAllPost
+[]getPostById
+[]updatePost

@@ -14,7 +14,10 @@ const User_1 = require("../models/User");
 const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { userName } = req.query;
     if (userName) {
-        const user = yield User_1.userModel.findOne({ userName: userName });
+        const user = yield User_1.userModel.findOne({
+            userName: userName,
+            active: true,
+        });
         if (user) {
             const allNames = {
                 _id: user._id,
@@ -38,12 +41,11 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 banner: user.banner,
                 acercaDe: user.acercaDe,
                 premium: user.premium,
-                stars: user.stars
+                stars: user.stars,
             };
             res.status(200).json(allNames);
         }
-        ;
+        res.status(404).send("user not found");
     }
-    ;
 });
 exports.getUserByName = getUserByName;

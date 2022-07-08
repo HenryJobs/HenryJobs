@@ -15,6 +15,10 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { id } = req.params;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, } = req.body;
     try {
+        const userActive = yield User_1.userModel.findById(id);
+        if (!(userActive === null || userActive === void 0 ? void 0 : userActive.active)) {
+            return res.status(404).send("this user was deleted");
+        }
         const updated = yield User_1.userModel.findByIdAndUpdate({ _id: id }, {
             name,
             lastName,
@@ -36,13 +40,12 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             curriculumCounter,
             premium,
             stars,
-            acercaDe
+            acercaDe,
         });
         res.status(200).json(updated);
     }
     catch (error) {
         console.error(error);
     }
-    ;
 });
 exports.updateUser = updateUser;

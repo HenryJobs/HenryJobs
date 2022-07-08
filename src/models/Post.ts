@@ -1,4 +1,9 @@
-import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose";
+import {
+  prop,
+  getModelForClass,
+  Ref,
+  modelOptions,
+} from "@typegoose/typegoose";
 import { User } from "./User";
 
 // enum Step {
@@ -8,46 +13,47 @@ import { User } from "./User";
 // }
 
 @modelOptions({ options: { allowMixed: 0 } })
-
 export class Post {
+  @prop({ ref: () => User })
+  posterUser: Ref<User>;
 
-    @prop({ ref: () => User })
-    posterUser: Ref<User>; 
+  // @prop({ ref: () => Business })
+  // posterBusiness: Ref<Business>;
 
-    // @prop({ ref: () => Business })
-    // posterBusiness: Ref<Business>;
+  @prop({ required: true })
+  text: string;
 
-    @prop({required: true})
-    text: string
+  @prop({})
+  imgVideo: string;
 
-    @prop({})
-    imgVideo: string
-    
-    @prop({})
-    date: string
+  @prop({})
+  date: string;
 
-    @prop({})
-    image: string
+  @prop({})
+  image: string;
 
-    @prop({})
-    workModality: string
+  @prop({})
+  workModality: string;
 
-    @prop({})
-    technologies: string[]
+  @prop({})
+  technologies: string[];
 
-    @prop({})
-    backFront: string
+  @prop({})
+  backFront: string;
 
-    @prop({})
-    country: string
+  @prop({})
+  country: string;
 
-    @prop({})
-    applicants: object[]
+  @prop({})
+  applicants: object[];
 
-    // @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
-    // step: Step
+  // @prop({ type: () => [Object], enum: Step, addNullToEnum: false, default: 0 })
+  // step: Step
 
-
+  @prop({ default: true })
+  active: boolean;
+  @prop()
+  dateSoftDelte: Date;
 }
 
-export const postModel = getModelForClass(Post)
+export const postModel = getModelForClass(Post);
