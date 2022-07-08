@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUserGoogle = void 0;
 const fs_extra_1 = require("fs-extra");
-const User_1 = require("../../models/User");
-const cloudinary_1 = require("../../cloudinary");
+const User_1 = require("../models/User");
+const cloudinary_1 = require("../cloudinary");
 const createUserGoogle = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;

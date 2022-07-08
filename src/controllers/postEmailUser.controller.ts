@@ -1,7 +1,7 @@
 import { unlink } from "fs-extra";
 import { Request, Response, NextFunction } from "express";
-import { userModel, User } from "../../models/User";
-import { uploadImage } from "../../cloudinary";
+import { userModel, User } from "../models/User";
+import { uploadImage } from "../cloudinary";
 import { UploadedFile } from "express-fileupload";
 
 
@@ -21,7 +21,7 @@ export const createUserGoogle = async (
     userTypes,
     technologies,
     country,
-    city,
+    province,
     backFront,
     languages,
     otherStudies,
@@ -32,10 +32,7 @@ export const createUserGoogle = async (
     acercaDe
     } = req.body.payload;
 
-
     try {
-    if (!name || !userName || !email || !password)
-    res.status(400).json({ msg: "Some fields are required" });
 
     if (email) next();
 
@@ -50,7 +47,7 @@ export const createUserGoogle = async (
     banner,
     technologies,
     country,
-    province: city,
+    province,
     backFront,
     languages,
     otherStudies,

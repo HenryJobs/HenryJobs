@@ -14,11 +14,11 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
-import postUserGoogleRoute from './user/getEmailGoogle.routes' 
+import postUserGoogleRoute from './user/postEmailGoogle.routes' 
 
-router.use("/user", createRoute);
-router.use('/user', postUserGoogleRoute)
+router.use('/googleauth', postUserGoogleRoute);
 router.use("/mail", getUserByMail);
+router.use("/user", createRoute);
 router.use("/signin", Usersignin);
 router.use("/user", getUserById);
 router.use("/name", nameRoute);
@@ -64,18 +64,6 @@ router.use("/comment", getAllCommentRoute);
 router.use("/comment", tokenValidation, deleteCommentRoute);
 router.use("/comment", tokenValidation, createCommentRoute);
 router.use("/comment", tokenValidation, updateCommentRoute);
-
-//applicants
-import putApplicantsRoute from './Applicants/put.applicants.routes'
-import createApplicantsRoute from './Applicants/create.applicants.routes'
-import getAllApplicantsRoute from './Applicants/getAllApplicants.routes'
-import getApplicantsByIdRoute from './Applicants/getAllApplicantsById.routes'
-
-
-router.use('/applicants', putApplicantsRoute)
-router.use('/applicants', createApplicantsRoute)
-router.use('/applicants', getAllApplicantsRoute)
-router.use('/applicants', getApplicantsByIdRoute)
 
 //reviews
 import getReviews from "./Reviews/getReviews.routes";

@@ -20,7 +20,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
     try {
         if (!name || !userName || !email || !password)
             res.status(400).json({ msg: "Some fields are required" });
@@ -36,7 +36,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             banner,
             technologies,
             country,
-            province: city,
+            province,
             backFront,
             languages,
             otherStudies,
