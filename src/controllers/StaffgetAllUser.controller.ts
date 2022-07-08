@@ -2,13 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import { User, userModel } from "../models/User";
 import { userInterface } from "./interfaces/userInterface.controller";
 
-export const getAllUser = async (
+export const StaffgetAllUser = async (
   _: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const allUsers: Array<User> = await userModel.find({ active: true });
+    const allUsers: Array<User> = await userModel.find();
 
     if (allUsers) {
       const userMap: Array<userInterface> = allUsers.map((user: any) => {

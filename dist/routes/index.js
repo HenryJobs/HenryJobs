@@ -9,11 +9,12 @@ const router = (0, express_1.Router)();
 const getAllUser_routes_1 = __importDefault(require("./user/getAllUser.routes"));
 const getUserByName_routes_1 = __importDefault(require("./user/getUserByName.routes"));
 const postUser_routes_1 = __importDefault(require("./user/postUser.routes"));
-const delete_routes_1 = __importDefault(require("./user/delete.routes"));
 const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
+const softdelete_routes_1 = __importDefault(require("./user/softdelete.routes"));
+const StaffUserFunctions_routes_1 = __importDefault(require("./user/StaffUserFunctions.routes"));
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
@@ -23,8 +24,9 @@ router.use("/name", getUserByName_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
 router.use("/user", getAllUser_routes_1.default);
-router.use("/user", delete_routes_1.default);
+router.use("/user", softdelete_routes_1.default);
 router.use("/user", putUser_routes_1.default);
+router.use("/user/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffUserFunctions_routes_1.default);
 //sacar para la demo los token, volverlos a poner inmediatamente
 //post
 const createPost_routes_1 = __importDefault(require("./post/createPost.routes"));

@@ -6,24 +6,32 @@ const router = Router();
 import userRoute from "./user/getAllUser.routes";
 import nameRoute from "./user/getUserByName.routes";
 import createRoute from "./user/postUser.routes";
-import deleteRoute from "./user/delete.routes";
 import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
+import softdeleteUser from "./user/softdelete.routes";
+import staffFunctionsUser from "./user/StaffUserFunctions.routes";
 
 //validador de token
 import { tokenValidation, validateStaffToken } from "../libs/validateToken";
 
 // user
+
 router.use("/user", createRoute);
 router.use("/user", getUserById);
 router.use("/name", nameRoute);
 router.use("/mail", getUserByMail);
 router.use("/signin", Usersignin);
 router.use("/user", userRoute);
-router.use("/user", deleteRoute);
+router.use("/user", softdeleteUser);
 router.use("/user", putRoute);
+router.use(
+  "/user/staffOnly",
+  tokenValidation,
+  validateStaffToken,
+  staffFunctionsUser
+);
 
 //sacar para la demo los token, volverlos a poner inmediatamente
 

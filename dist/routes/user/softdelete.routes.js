@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const softdeleteComent_controller_1 = require("../../controllers/PostComents/softdeleteComent.controller");
+const softdeleteUser_controller_1 = require("../../controllers/softdeleteUser.controller");
 const router = (0, express_1.Router)();
-router.delete("/:id", softdeleteComent_controller_1.softdeleteComent);
+router.delete("/:id", softdeleteUser_controller_1.softdeleteUser);
 exports.default = router;

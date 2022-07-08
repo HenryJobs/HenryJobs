@@ -6,5 +6,5 @@ const reactivateReviews_contoller_1 = require("../../controllers/reviews/reactiv
 const router = (0, express_1.Router)();
 router.get("/:idUser", StaffgetallReviews_controller_1.StaffgetReviews);
 router.delete("/:idReview", deleteReviews_controller_1.deleteReviews);
-router.put("/reactivate", reactivateReviews_contoller_1.reactivateReviews);
+router.put("/", reactivateReviews_contoller_1.reactivateReviews);
 module.exports = router;

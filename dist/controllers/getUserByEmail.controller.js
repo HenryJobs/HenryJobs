@@ -15,7 +15,8 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { email } = req.query;
     if (email) {
         const userEmail = yield User_1.userModel.findOne({
-            email: email
+            email: email,
+            active: true,
         });
         if (userEmail) {
             const allEmail = {
@@ -40,12 +41,10 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 banner: userEmail.banner,
                 acercaDe: userEmail.acercaDe,
                 premium: userEmail.premium,
-                stars: userEmail.stars
+                stars: userEmail.stars,
             };
             res.status(200).json(allEmail);
         }
-        ;
     }
-    ;
 });
 exports.getUserEmail = getUserEmail;

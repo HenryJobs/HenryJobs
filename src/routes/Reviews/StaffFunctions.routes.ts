@@ -7,6 +7,6 @@ const router = Router();
 
 router.get("/:idUser", StaffgetReviews);
 router.delete("/:idReview", deleteReviews);
-router.put("/reactivate", reactivateReviews);
+router.put("/", reactivateReviews);
 
 export = router;

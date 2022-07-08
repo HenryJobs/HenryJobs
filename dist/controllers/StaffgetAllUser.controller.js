@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUser = void 0;
+exports.StaffgetAllUser = void 0;
 const User_1 = require("../models/User");
-const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const StaffgetAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = yield User_1.userModel.find({ active: true });
+        const allUsers = yield User_1.userModel.find();
         if (allUsers) {
             const userMap = allUsers.map((user) => {
                 return {
@@ -51,4 +51,4 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
         console.error(error);
     }
 });
-exports.getAllUser = getAllUser;
+exports.StaffgetAllUser = StaffgetAllUser;

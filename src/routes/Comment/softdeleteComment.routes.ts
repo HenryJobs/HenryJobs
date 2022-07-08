@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { softdeleteComent } from "../../controllers/PostComents/SoftdeleteComent.controller";
+import { softdeleteComent } from "../../controllers/PostComents/softdeleteComent.controller";
 
 const router = Router();
 

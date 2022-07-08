@@ -8,13 +8,12 @@ import {
 import { compare, genSalt, hash } from "bcrypt";
 
 enum UserTypes {
-    PG = 1,    // 1
-    Graduate,  // 2 
-    Staff,     // 3
-    Recruiter, // 4
-    Business   // 5
+  PG = 1, // 1
+  Graduate, // 2
+  Staff, // 3
+  Recruiter, // 4
+  Business, // 5
 }
-
 
 @pre<User>("save", async function (next) {
   const user = this;
@@ -26,7 +25,6 @@ enum UserTypes {
   user.password = hashed;
   next();
 })
-
 @modelOptions({ options: { allowMixed: 0 } })
 export class User {
   @prop({ required: true })
@@ -38,7 +36,7 @@ export class User {
   @prop({})
   userName: string;
 
-  @prop({ required: true, trim: true, unique: true }) 
+  @prop({ required: true, trim: true, unique: true })
   email!: string;
 
   @prop({ required: true })
@@ -72,24 +70,23 @@ export class User {
   curriculumCounter: number;
 
   @prop({})
-  counterIncome: number
+  counterIncome: number;
 
   @prop({})
-  workModality: string
+  workModality: string;
 
   @prop({})
   banner: object;
 
   @prop({ min: 1, max: 5 })
-  stars: number
+  stars: number;
 
   @prop({})
-  followers: string[]; 
+  followers: string[];
 
   @prop({})
-  following: string[]
+  following: string[];
 
-  
   //business
 
   @prop({})
@@ -103,6 +100,11 @@ export class User {
 
   @prop({})
   premium: boolean;
+
+  @prop({ default: true })
+  active: boolean;
+  @prop()
+  dateSoftDelte: Date;
 
   public async validatePassword(
     this: DocumentType<User>,

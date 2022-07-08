@@ -15,7 +15,7 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { id } = req.params;
     try {
         if (id) {
-            let userId = yield User_1.userModel.findOne({ _id: id });
+            let userId = yield User_1.userModel.findOne({ _id: id, active: true });
             if (userId) {
                 const allId = {
                     _id: userId._id,
@@ -39,18 +39,15 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     banner: userId.banner,
                     acercaDe: userId.acercaDe,
                     premium: userId.premium,
-                    stars: userId.stars
+                    stars: userId.stars,
                 };
                 return res.status(200).json(allId);
             }
-            ;
             return res.status(404).json({ msg: "User does not exist" });
         }
-        ;
     }
     catch (error) {
         console.error(error);
     }
-    ;
 });
 exports.getUserById = getUserById;

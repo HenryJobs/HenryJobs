@@ -25,7 +25,7 @@ const softDelete = (querys) => __awaiter(void 0, void 0, void 0, function* () {
         return true;
     }
     else if (querys.modelName === "user") {
-        yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: false, dateSoftDelte: new Date() } });
+        const user = yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: false, dateSoftDelte: new Date() } });
         return true;
     }
     else if (querys.modelName === "postComent") {
@@ -48,7 +48,7 @@ const reactivate = (querys) => __awaiter(void 0, void 0, void 0, function* () {
         return true;
     }
     else if (querys.modelName === "user") {
-        yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
+        const userreactive = yield User_1.userModel.findByIdAndUpdate({ _id: id }, { $set: { active: true, dateSoftDelte: null } });
         return true;
     }
     else if (querys.modelName === "postComent") {

@@ -25,7 +25,7 @@ export const softDelete = async (querys: Querys) => {
     );
     return true;
   } else if (querys.modelName === "user") {
-    await userModel.findByIdAndUpdate(
+    const user = await userModel.findByIdAndUpdate(
       { _id: id },
       { $set: { active: false, dateSoftDelte: new Date() } }
     );
@@ -57,10 +57,11 @@ export const reactivate = async (querys: Querys) => {
     );
     return true;
   } else if (querys.modelName === "user") {
-    await userModel.findByIdAndUpdate(
+    const userreactive = await userModel.findByIdAndUpdate(
       { _id: id },
       { $set: { active: true, dateSoftDelte: null } }
     );
+
     return true;
   } else if (querys.modelName === "postComent") {
     await postComent.findByIdAndUpdate(
