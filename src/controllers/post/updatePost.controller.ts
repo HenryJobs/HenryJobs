@@ -69,16 +69,18 @@ export const updatePost = async (req: Request, res: Response) => {
         //     console.log("showBusinessProperty -> ", showBusinessProperty)
         //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
         // }
-        if (
-            !userIdProperty?.includes(userId)
-        ) {
-            console.log("entré al primer if")
-            console.log("userIdProperty -> ", userIdProperty)
-            console.log("stepProperty -> ", stepProperty)
-            console.log("showStudentProperty -> ", showStudentProperty)
-            console.log("showBusinessProperty -> ", showBusinessProperty)
-            await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
-        }
+
+
+        // if (
+        //     !userIdProperty?.includes(userId)
+        // ) {
+        //     console.log("entré al primer if")
+        //     console.log("userIdProperty -> ", userIdProperty)
+        //     console.log("stepProperty -> ", stepProperty)
+        //     console.log("showStudentProperty -> ", showStudentProperty)
+        //     console.log("showBusinessProperty -> ", showBusinessProperty)
+        //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
+        // }
 
         if (
             userIdProperty?.includes(userId)
@@ -90,29 +92,27 @@ export const updatePost = async (req: Request, res: Response) => {
         }
 
         if(
-            !userIdProperty?.includes(userId)
-        || !stepProperty?.includes(step)
-        || !showStudentProperty?.includes(showStudent)
-        || !showBusinessProperty?.includes(showBusiness))
-
+            !userIdProperty?.includes(userId))
         {
-            await post?.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness }}})
+            await post?.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness }}}, {upsert: true})
         }
 
-        if(
-            userIdProperty?.includes(userId)
-            || !stepProperty?.includes(step)
-            || !showStudentProperty?.includes(showStudent)
-            || !showBusinessProperty?.includes(showBusiness))
-                {
-                console.log("entré al tercero mi rey")
-            console.log("userIdProperty -> ", userIdProperty)
-            console.log("stepProperty -> ", stepProperty)
-            console.log("showStudentProperty -> ", showStudentProperty)
-            console.log("showBusinessProperty -> ", showBusinessProperty)
-            await post?.updateOne({ $setOnInsert: { applicants: { userId, step, showStudent, showBusiness }}})
+        
 
-        } 
+        // if(
+        //     userIdProperty?.includes(userId)
+        //     || !stepProperty?.includes(step)
+        //     || !showStudentProperty?.includes(showStudent)
+        //     || !showBusinessProperty?.includes(showBusiness))
+        //         {
+        //         console.log("entré al tercero mi rey")
+        //     console.log("userIdProperty -> ", userIdProperty)
+        //     console.log("stepProperty -> ", stepProperty)
+        //     console.log("showStudentProperty -> ", showStudentProperty)
+        //     console.log("showBusinessProperty -> ", showBusinessProperty)
+        //     await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}})
+
+        //} 
 
         // if( userIdProperty?.includes(userId)
         //     || !stepProperty?.includes(step)

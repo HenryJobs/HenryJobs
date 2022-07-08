@@ -53,37 +53,38 @@ const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         //     console.log("showBusinessProperty -> ", showBusinessProperty)
         //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
         // }
-        if (!(userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))) {
-            console.log("entré al primer if");
-            console.log("userIdProperty -> ", userIdProperty);
-            console.log("stepProperty -> ", stepProperty);
-            console.log("showStudentProperty -> ", showStudentProperty);
-            console.log("showBusinessProperty -> ", showBusinessProperty);
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } }));
-        }
+        // if (
+        //     !userIdProperty?.includes(userId)
+        // ) {
+        //     console.log("entré al primer if")
+        //     console.log("userIdProperty -> ", userIdProperty)
+        //     console.log("stepProperty -> ", stepProperty)
+        //     console.log("showStudentProperty -> ", showStudentProperty)
+        //     console.log("showBusinessProperty -> ", showBusinessProperty)
+        //     await post?.updateOne({ $push: { applicants: { userId, step, showStudent, showBusiness } } })
+        // }
         if ((userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))
             && (stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))
             && (showStudentProperty === null || showStudentProperty === void 0 ? void 0 : showStudentProperty.includes(showStudent))
             && (showBusinessProperty === null || showBusinessProperty === void 0 ? void 0 : showBusinessProperty.includes(showBusiness))) {
             yield (post === null || post === void 0 ? void 0 : post.updateOne({ $pull: { applicants: { userId, step, showStudent, showBusiness } } }));
         }
-        if (!(userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))
-            || !(stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))
-            || !(showStudentProperty === null || showStudentProperty === void 0 ? void 0 : showStudentProperty.includes(showStudent))
-            || !(showBusinessProperty === null || showBusinessProperty === void 0 ? void 0 : showBusinessProperty.includes(showBusiness))) {
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness } } }));
+        if (!(userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))) {
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness } } }, { upsert: true }));
         }
-        if ((userIdProperty === null || userIdProperty === void 0 ? void 0 : userIdProperty.includes(userId))
-            || !(stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))
-            || !(showStudentProperty === null || showStudentProperty === void 0 ? void 0 : showStudentProperty.includes(showStudent))
-            || !(showBusinessProperty === null || showBusinessProperty === void 0 ? void 0 : showBusinessProperty.includes(showBusiness))) {
-            console.log("entré al tercero mi rey");
-            console.log("userIdProperty -> ", userIdProperty);
-            console.log("stepProperty -> ", stepProperty);
-            console.log("showStudentProperty -> ", showStudentProperty);
-            console.log("showBusinessProperty -> ", showBusinessProperty);
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $setOnInsert: { applicants: { userId, step, showStudent, showBusiness } } }));
-        }
+        // if(
+        //     userIdProperty?.includes(userId)
+        //     || !stepProperty?.includes(step)
+        //     || !showStudentProperty?.includes(showStudent)
+        //     || !showBusinessProperty?.includes(showBusiness))
+        //         {
+        //         console.log("entré al tercero mi rey")
+        //     console.log("userIdProperty -> ", userIdProperty)
+        //     console.log("stepProperty -> ", stepProperty)
+        //     console.log("showStudentProperty -> ", showStudentProperty)
+        //     console.log("showBusinessProperty -> ", showBusinessProperty)
+        //     await post?.updateOne({ $set: { applicants: { userId, step, showStudent, showBusiness }}})
+        //} 
         // if( userIdProperty?.includes(userId)
         //     || !stepProperty?.includes(step)
         //     || !showStudentProperty?.includes(showStudent)
