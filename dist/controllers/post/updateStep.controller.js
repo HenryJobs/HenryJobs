@@ -28,7 +28,7 @@ const updateStep = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             || (stepProperty === null || stepProperty === void 0 ? void 0 : stepProperty.includes(step))) {
             console.log("el forro de userIdProperty", userIdProperty);
             console.log("el forro de stepProperty", stepProperty);
-            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness } } }));
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({ $unset: { applicants: { userId, step, showStudent, showBusiness } } }));
         }
         console.log("llega acá el forro");
         res.status(200).json(post);

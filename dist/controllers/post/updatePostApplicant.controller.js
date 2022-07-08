@@ -32,5 +32,6 @@ const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0
     catch (err) {
         console.error(err);
     }
+    ;
 });
 exports.updatePostApplicantStatus = updatePostApplicantStatus;

@@ -9,7 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postApplicant = void 0;
-const postApplicant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.updatePostApplicant = void 0;
+const Post_1 = require("../../models/Post");
+const updatePostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { userId, step } = req.body;
+    try {
+        let post = yield Post_1.postModel.findById(id);
+        console.log(id, "id bro");
+        const applicants = post === null || post === void 0 ? void 0 : post.applicants;
+        console.log(applicants);
+        let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
+            if (applicant.userId !== userId) {
+                return Object.assign(Object.assign({}, applicant), { userId, step });
+            }
+        });
+        console.log(applicantsUpdated);
+        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: applicantsUpdated } }));
+        res.status(200).json(post);
+    }
+    catch (err) {
+        console.error(err);
+    }
+    ;
 });
-exports.postApplicant = postApplicant;
+exports.updatePostApplicant = updatePostApplicant;

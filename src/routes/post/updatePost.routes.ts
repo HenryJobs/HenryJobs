@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { updatePost } from "../../controllers/post/updatePost.controller";
+import { updatePostApplicant } from "../../controllers/post/postApplicant.controller";
 
 const router = Router()
 
-router.put('/:id', updatePost)
+router.put('/:id', updatePostApplicant)
 
 export default router

@@ -31,7 +31,7 @@ export const updateStep = async (req: Request, res: Response) => {
         ) {
             console.log("el forro de userIdProperty", userIdProperty)
             console.log("el forro de stepProperty", stepProperty)
-            await post?.updateOne({ $addToSet: { applicants: { userId, step, showStudent, showBusiness }}})
+            await post?.updateOne({ $unset: { applicants: { userId, step, showStudent, showBusiness }}})
         }
 
         console.log("llega acá el forro")
