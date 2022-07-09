@@ -50,7 +50,7 @@ export const createUser = async (
 
       if(email === emailUser?.email){  
         console.log("email forro", email)
-        return res.status(200).send("email already exist")
+        return res.status(200).send("next")
     }
 
     else {
@@ -77,6 +77,9 @@ export const createUser = async (
       acercaDe
     });
 
+    sendMail(email, 'henryjobsproject@gmail.com')
+
+
     if (req.files) {
       const { tempFilePath } = req.files?.profileImage as UploadedFile;
       const banner = req.files?.banner as UploadedFile;
@@ -87,7 +90,6 @@ export const createUser = async (
           public_id: result.public_id,
           secure_url: result.secure_url,
         };
-
         await unlink(tempFilePath);
       }
 
@@ -97,9 +99,9 @@ export const createUser = async (
           public_id: result.public_id,
           secure_url: result.secure_url,
         };
+        await unlink(banner.tempFilePath);
       }
 
-      await unlink(banner.tempFilePath);
     }
 
     await user.save();

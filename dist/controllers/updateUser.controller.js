@@ -10,8 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = void 0;
+const fs_extra_1 = require("fs-extra");
+const cloudinary_1 = require("../cloudinary");
 const User_1 = require("../models/User");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b;
     const { id } = req.params;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, } = req.body;
     try {
@@ -42,6 +45,27 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             stars,
             acercaDe,
         });
+        if (req.files) {
+            const profileImage = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
+            const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
+            if (profileImage.tempFilePath) {
+                const result = yield (0, cloudinary_1.uploadImage)(profileImage.tempFilePath);
+                updated.profileImage = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url,
+                };
+                yield (0, fs_extra_1.unlink)(profileImage.tempFilePath);
+            }
+            if (banner.tempFilePath) {
+                const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
+                updated.banner = {
+                    public_id: result.public_id,
+                    secure_url: result.secure_url,
+                };
+                yield (0, fs_extra_1.unlink)(banner.tempFilePath);
+            }
+        }
+        yield updated.save();
         res.status(200).json(updated);
     }
     catch (error) {

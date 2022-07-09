@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendMail = exports.createTrans = void 0;
+exports.comment = exports.password = exports.sendMail = exports.createTrans = void 0;
 ////pcmjcdzyfrgflexq
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -36,7 +36,31 @@ const sendMail = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
         subject: "registro",
         text: `${who}, te encuentras registrado`
     });
-    console.log("message sent", info.messageId);
+    console.log("message sent", info.message);
     return;
 });
 exports.sendMail = sendMail;
+const password = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
+    const transporter = yield (0, exports.createTrans)();
+    const info = transporter.sendMail({
+        from: '<henryjobsproject@gmail.com>',
+        to: `${to}`,
+        subject: "contraseña",
+        text: `tu contraseña es ${123456789}`
+    });
+    console.log("message sent", info.message);
+    return;
+});
+exports.password = password;
+const comment = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
+    const transporter = yield (0, exports.createTrans)();
+    const info = transporter.sendMail({
+        from: '<henryjobsproject@gmail.com>',
+        to: `${to}`,
+        subject: "han contestado tu publicación",
+        text: `${who}, han contestado tu publicación`
+    });
+    console.log("message sent", info.message);
+    return;
+});
+exports.comment = comment;

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = void 0;
 const fs_extra_1 = require("fs-extra");
 const User_1 = require("../models/User");
+const emailer_1 = require("./config/emailer");
 const cloudinary_1 = require("../cloudinary");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
@@ -31,7 +32,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         }
         if (email === (emailUser === null || emailUser === void 0 ? void 0 : emailUser.email)) {
             console.log("email forro", email);
-            return res.status(200).send("email already exist");
+            return res.status(200).send("next");
         }
         else {
             const user = yield User_1.userModel.create({
@@ -55,6 +56,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
                 stars,
                 acercaDe
             });
+            (0, emailer_1.sendMail)(email, 'henryjobsproject@gmail.com');
             if (req.files) {
                 const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
                 const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
@@ -72,8 +74,8 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
                         public_id: result.public_id,
                         secure_url: result.secure_url,
                     };
+                    yield (0, fs_extra_1.unlink)(banner.tempFilePath);
                 }
-                yield (0, fs_extra_1.unlink)(banner.tempFilePath);
             }
             yield user.save();
             // crea un token y lo manda al header
