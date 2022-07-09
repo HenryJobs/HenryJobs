@@ -13,7 +13,7 @@ exports.pushPostApplicant = void 0;
 const Post_1 = require("../../models/Post");
 const pushPostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { userId, step } = req.body;
+    const { userId, step, showBusiness, name } = req.body;
     try {
         const post = yield Post_1.postModel.findById(id);
         if (!(post === null || post === void 0 ? void 0 : post.active)) {
@@ -22,7 +22,7 @@ const pushPostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, functi
         else {
             if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
                 yield (post === null || post === void 0 ? void 0 : post.updateOne({
-                    $push: { applicants: { userId: userId, step: step } },
+                    $push: { applicants: { userId: userId, step: step, showBusiness: showBusiness, name: name } },
                 }));
             }
             res.status(200).json(post);

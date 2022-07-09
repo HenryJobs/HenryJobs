@@ -13,7 +13,7 @@ exports.updatePostApplicant = void 0;
 const Post_1 = require("../../models/Post");
 const updatePostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { userId, step } = req.body;
+    const { userId, step, showBusiness, name } = req.body;
     try {
         let post = yield Post_1.postModel.findById(id);
         console.log(id, "id bro");
@@ -21,7 +21,7 @@ const updatePostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, func
         console.log(applicants);
         let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
             if (applicant.userId !== userId) {
-                return Object.assign(Object.assign({}, applicant), { userId, step });
+                return Object.assign(Object.assign({}, applicant), { userId, step, showBusiness, name });
             }
         });
         console.log(applicantsUpdated);

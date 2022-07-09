@@ -3,7 +3,7 @@ import { postModel } from "../../models/Post";
 
 export const pushPostApplicant = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { userId, step } = req.body;
+  const { userId, step, showBusiness, name } = req.body;
 
   try {
     const post = await postModel.findById(id);
@@ -12,7 +12,7 @@ export const pushPostApplicant = async (req: Request, res: Response) => {
     } else {
       if (!post?.applicants.includes(userId)) {
         await post?.updateOne({
-          $push: { applicants: { userId: userId, step: step } },
+          $push: { applicants: { userId: userId, step: step, showBusiness: showBusiness, name: name } },
         });
       }
 

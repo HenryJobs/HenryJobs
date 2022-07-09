@@ -5,7 +5,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
     
     const { id } = req.params
 
-    const { userId, step } = req.body
+    const { userId, step, showBusiness, name } = req.body
 
     try {
 
@@ -18,7 +18,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
         const applicants = post?.applicants
         let applicantsUpdated: any = applicants?.map((applicant: any) => {
             if (!(applicant.userId === userId)) return applicant;
-            return { ...applicant, step }
+            return { ...applicant, step, showBusiness, name }
         })
 
         await post?.updateOne({ $set: { applicants: applicantsUpdated } })

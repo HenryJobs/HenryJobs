@@ -13,7 +13,7 @@ exports.updatePostApplicantStatus = void 0;
 const Post_1 = require("../../models/Post");
 const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { userId, step } = req.body;
+    const { userId, step, showBusiness, name } = req.body;
     try {
         let post = yield Post_1.postModel.findById(id);
         if (!(post === null || post === void 0 ? void 0 : post.active)) {
@@ -23,7 +23,7 @@ const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0
         let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
             if (!(applicant.userId === userId))
                 return applicant;
-            return Object.assign(Object.assign({}, applicant), { step });
+            return Object.assign(Object.assign({}, applicant), { step, showBusiness, name });
         });
         yield (post === null || post === void 0 ? void 0 : post.updateOne({ $set: { applicants: applicantsUpdated } }));
         res.status(200).json(post);

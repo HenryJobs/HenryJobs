@@ -5,7 +5,7 @@ export const updatePostApplicant =async (req: Request, res: Response) => {
     
     const { id } = req.params
 
-    const { userId, step } = req.body
+    const { userId, step, showBusiness, name } = req.body
 
     try {
 
@@ -15,7 +15,7 @@ export const updatePostApplicant =async (req: Request, res: Response) => {
         console.log(applicants)
         let applicantsUpdated: any = applicants?.map((applicant: any) => {
             if(applicant.userId !== userId) {
-                return {...applicant, userId, step }
+                return {...applicant, userId, step, showBusiness, name }
             }
         })
 
