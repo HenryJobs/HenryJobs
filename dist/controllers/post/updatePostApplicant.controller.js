@@ -16,21 +16,21 @@ const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0
     const { userId, step } = req.body;
     try {
         let post = yield Post_1.postModel.findById(id);
-        console.log(id, "id bro");
+        if (!(post === null || post === void 0 ? void 0 : post.active)) {
+            return res.status(404).json("this item has been removed");
+        }
         const applicants = post === null || post === void 0 ? void 0 : post.applicants;
-        console.log(applicants);
         let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
             if (!(applicant.userId === userId))
                 return applicant;
             return Object.assign(Object.assign({}, applicant), { step });
         });
-        console.log(applicantsUpdated);
         yield (post === null || post === void 0 ? void 0 : post.updateOne({ $set: { applicants: applicantsUpdated } }));
-        // await post?.save()
         res.status(200).json(post);
     }
     catch (err) {
         console.error(err);
     }
+    ;
 });
 exports.updatePostApplicantStatus = updatePostApplicantStatus;

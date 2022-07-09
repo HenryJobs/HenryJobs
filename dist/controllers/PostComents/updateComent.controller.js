@@ -13,11 +13,13 @@ exports.updateComent = void 0;
 const postComent_1 = require("../../models/postComent");
 const updateComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { text } = req.body;
+    const { text, likes, liked } = req.body;
     try {
         if (id) {
-            const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id }, {
-                text: text
+            const update = yield postComent_1.postComent.findByIdAndUpdate({ _id: id, active: true }, {
+                text: text,
+                likes: likes,
+                liked: liked,
             });
             res.status(200).json(update);
         }

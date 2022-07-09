@@ -13,7 +13,7 @@ exports.getAllUser = void 0;
 const User_1 = require("../models/User");
 const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = yield User_1.userModel.find();
+        const allUsers = yield User_1.userModel.find({ active: true });
         if (allUsers) {
             const userMap = allUsers.map((user) => {
                 return ({

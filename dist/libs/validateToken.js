@@ -58,11 +58,11 @@ const validateGraduateToken = (req, res, next) => {
 };
 exports.validateGraduateToken = validateGraduateToken;
 const validateRecruiterToken = (req, res, next) => {
-    validateUserTypes(req, res, next, 3);
+    validateUserTypes(req, res, next, 4);
 };
 exports.validateRecruiterToken = validateRecruiterToken;
 const validateStaffToken = (req, res, next) => {
-    validateUserTypes(req, res, next, 4);
+    validateUserTypes(req, res, next, 3);
 };
 exports.validateStaffToken = validateStaffToken;
 const validateBusinessToken = (req, res, next) => {

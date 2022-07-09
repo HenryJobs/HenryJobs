@@ -15,7 +15,10 @@ export const createPost = async (req: Request, res: Response) => {
         languages, 
         technologies, 
         backFront, 
-        country } = req.body
+        country,
+        likes,
+        liked
+    } = req.body
 
     try {
 
@@ -30,7 +33,9 @@ export const createPost = async (req: Request, res: Response) => {
             languages,
             technologies,
             backFront,
-            country
+            country,
+            likes,
+            liked
         });
 
         res.status(201).json(post)

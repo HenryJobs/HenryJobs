@@ -1,0 +1,10 @@
+"use strict";
+const express_1 = require("express");
+const StaffgetAllComent_controller_1 = require("../../controllers/PostComents/StaffgetAllComent.controller");
+const deleteComent_controller_1 = require("../../controllers/PostComents/deleteComent.controller");
+const reactiveComent_controller_1 = require("../../controllers/PostComents/reactiveComent.controller");
+const router = (0, express_1.Router)();
+router.put("/:id", reactiveComent_controller_1.reactiveComent);
+router.get("/", StaffgetAllComent_controller_1.staffgetAllComents);
+router.delete("/", deleteComent_controller_1.deleteComent);
+module.exports = router;

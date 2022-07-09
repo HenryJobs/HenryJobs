@@ -16,8 +16,11 @@ const getComentById = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         let comment;
         comment = yield postComent_1.postComent.findOne({ _id: id }).populate("comentUser");
-        if (comment) {
+        if ((comment === null || comment === void 0 ? void 0 : comment.active) === true) {
             res.status(200).json(comment);
+        }
+        else {
+            res.status(404).send("this item has been removed");
         }
     }
     catch (err) {

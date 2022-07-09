@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createComent = void 0;
 const postComent_1 = require("../../models/postComent");
 const createComent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { comentUser, text, postUser } = req.body;
+    const { comentUser, text, postUser, likes, liked } = req.body;
     try {
         // const coment: Coments | null = await postComent.findOne({
         //     $and: [{ text: text }, { comentUser: comentUser }],
@@ -20,7 +20,9 @@ const createComent = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const comentCreated = yield postComent_1.postComent.create({
             comentUser,
             text,
-            postUser
+            postUser,
+            likes,
+            liked
         });
         if (comentCreated) {
             res.status(201).json(comentCreated);

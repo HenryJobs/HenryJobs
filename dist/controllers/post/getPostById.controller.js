@@ -17,7 +17,12 @@ const getPostById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         let post;
         if (id) {
             post = yield Post_1.postModel.findById(id).populate("posterUser");
-            res.status(200).json(post);
+            if (!(post === null || post === void 0 ? void 0 : post.active)) {
+                res.status(404).json("this item has been removed");
+            }
+            else {
+                res.status(200).json(post);
+            }
         }
     }
     catch (err) {
