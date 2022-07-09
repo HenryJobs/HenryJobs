@@ -9,28 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updatePostApplicantStatus = void 0;
+exports.updatePostGral = void 0;
 const Post_1 = require("../../models/Post");
-const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const updatePostGral = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { userId, step } = req.body;
+    const { text, imgVideo, date, image, workModality, technologies, backFront, country, } = req.body;
     try {
-        let post = yield Post_1.postModel.findById(id);
+        const post = yield Post_1.postModel.findById(id);
         if (!(post === null || post === void 0 ? void 0 : post.active)) {
-            return res.status(404).json("this item has been removed");
+            res.status(404).json("this item has been removed");
         }
-        const applicants = post === null || post === void 0 ? void 0 : post.applicants;
-        let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
-            if (!(applicant.userId === userId))
-                return applicant;
-            return Object.assign(Object.assign({}, applicant), { step });
-        });
-        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $set: { applicants: applicantsUpdated } }));
-        res.status(200).json(post);
+        else {
+            const updated = yield Post_1.postModel.findByIdAndUpdate({ _id: id }, {
+                text,
+                imgVideo,
+                date,
+                image,
+                workModality,
+                technologies,
+                backFront,
+                country,
+            });
+            res.status(200).json(updated);
+        }
     }
     catch (err) {
         console.error(err);
     }
-    ;
 });
-exports.updatePostApplicantStatus = updatePostApplicantStatus;
+exports.updatePostGral = updatePostGral;

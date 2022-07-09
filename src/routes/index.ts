@@ -39,12 +39,13 @@ router.use(
 
 import createPostRoute from "./post/createPost.routes";
 import getAllPostRoute from "./post/getAllPost.routes";
-import updatePostApplicant from "./post/updatePost.routes";
+import updatePostApplicant from "./post/postApplicant.routes";
 import getPostByIdRoute from "./post/getPostById.routes";
 import updatePostApplicantsRoute from "./post/updatePostApplicantstatus.routes";
-import updatePostRoute from "./post/updatePost.routes";
+import updatePostRoute from "./post/postApplicant.routes"; // put addToSet newLogic
 import softdeletePostRoute from "./post/softdeletePost.routes";
 import StaffFunctionsPost from "./post/StaffFunctionsPost.routes";
+import pushPostApplicant from "./post/pushPostApplicant.routes"; // put de push oldLogic
 
 router.use(
   "/post/staffOnly",
@@ -57,8 +58,9 @@ router.use("/post", getPostByIdRoute);
 router.use("/post", createPostRoute); // acordarse de agregar el tokenValidation
 router.use("/post", updatePostApplicant); // acordarse de agregar el tokenValidation
 router.use("/post/apply", updatePostApplicantsRoute)
+router.use("/post/old", pushPostApplicant) // put de push oldLogic
 router.use("/post", softdeletePostRoute); // acordarse de agregar el tokenValidation
-router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation
+router.use("/post", updatePostRoute); // acordarse de agregar el tokenValidation // put addToSet newLogic
 
 // follow
 
