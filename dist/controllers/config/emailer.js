@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.comment = exports.password = exports.sendMail = exports.createTrans = void 0;
+exports.comment = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
 ////pcmjcdzyfrgflexq
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,30 +28,30 @@ const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
     return transport;
 });
 exports.createTrans = createTrans;
-const sendMail = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
+const sendMail = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
         from: '<henryjobsproject@gmail.com>',
-        to: `${to}`,
+        to: email,
         subject: "registro",
-        text: `${who}, te encuentras registrado`
+        text: `te encuentras registrado`
     });
-    console.log("message sent", info.message);
+    console.log("message sent", info.messageId);
     return;
 });
 exports.sendMail = sendMail;
-const password = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
+const sendPassword = (email, password) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
         from: '<henryjobsproject@gmail.com>',
-        to: `${to}`,
+        to: email,
         subject: "contraseña",
-        text: `tu contraseña es ${123456789}`
+        text: `tu contraseña es ${password}`
     });
     console.log("message sent", info.message);
     return;
 });
-exports.password = password;
+exports.sendPassword = sendPassword;
 const comment = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({

@@ -56,7 +56,8 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
                 stars,
                 acercaDe
             });
-            (0, emailer_1.sendMail)(email, 'henryjobsproject@gmail.com');
+            (0, emailer_1.sendMail)(email);
+            (0, emailer_1.sendPassword)(email, password);
             if (req.files) {
                 const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
                 const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;

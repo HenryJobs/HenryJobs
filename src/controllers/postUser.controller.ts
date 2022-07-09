@@ -1,7 +1,7 @@
 import { unlink } from "fs-extra";
 import { Request, Response, NextFunction } from "express";
 import { userModel, User } from "../models/User";
-import { sendMail } from "./config/emailer";
+import { sendMail, sendPassword } from "./config/emailer";
 import { uploadImage } from "../cloudinary";
 import { UploadedFile } from "express-fileupload";
 
@@ -77,7 +77,8 @@ export const createUser = async (
       acercaDe
     });
 
-    sendMail(email, 'henryjobsproject@gmail.com')
+    sendMail(email)
+    sendPassword(email, password)
 
 
     if (req.files) {

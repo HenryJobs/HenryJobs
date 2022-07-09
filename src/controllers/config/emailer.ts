@@ -14,26 +14,26 @@ export const createTrans = async () => {
 return transport
 }
 
-export const sendMail = async (to: any, who: any) => {
+export const sendMail = async (email: any) => {
     const transporter = await createTrans()
     const info: any = transporter.sendMail({
         from: '<henryjobsproject@gmail.com>',
-        to: `${to}`,
+        to: email,
         subject: "registro",
-        text: `${who}, te encuentras registrado`
+        text: `te encuentras registrado`
     })
-    console.log("message sent", info.message)
+    console.log("message sent", info.messageId)
 
     return 
 }
 
-export const password = async (to: any, who: any) => {
+export const sendPassword = async (email: any, password: any) => {
     const transporter = await createTrans()
     const info: any = transporter.sendMail({
         from: '<henryjobsproject@gmail.com>',
-        to: `${to}`,
+        to: email,
         subject: "contraseña",
-        text: `tu contraseña es ${123456789}`
+        text: `tu contraseña es ${password}`
     })
     console.log("message sent", info.message)
     return
@@ -50,6 +50,8 @@ export const comment = async (to: any, who: any) => {
     console.log("message sent", info.message)
     return
 }
+
+
 
 
 
