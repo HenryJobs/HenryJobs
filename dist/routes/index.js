@@ -19,8 +19,8 @@ const StaffUserFunctions_routes_1 = __importDefault(require("./user/StaffUserFun
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
-router.use('/googleauth', postEmailGoogle_routes_1.default);
-router.use("/mail", getEmailUser_routes_1.default);
+router.use('/googleauth', postEmailGoogle_routes_1.default, getEmailUser_routes_1.default);
+// router.use("/mail", getUserByMail);
 router.use("/user", postUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);

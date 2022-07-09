@@ -34,7 +34,11 @@ export const createUserGoogle = async (
 
     try {
 
-    if (email) next();
+        if(email){ req.query.userEmail = email; 
+            console.log("email forro", email)
+            return next()
+        }
+            else{
 
     const user = await userModel.create({
     name,
@@ -84,7 +88,11 @@ export const createUserGoogle = async (
     }
 
     await user.save()
-} catch (error) {
-    console.error(error);
+
+    return res.status(200).json(user)
+}     
+} catch (err) {
+    console.error(err);
+
 }
 };

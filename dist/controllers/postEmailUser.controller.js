@@ -17,53 +17,59 @@ const createUserGoogle = (req, res, next) => __awaiter(void 0, void 0, void 0, f
     var _a, _b;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
     try {
-        if (email)
-            next();
-        const user = yield User_1.userModel.create({
-            name,
-            lastName,
-            userName,
-            email,
-            password,
-            userTypes,
-            profileImage,
-            banner,
-            technologies,
-            country,
-            province,
-            backFront,
-            languages,
-            otherStudies,
-            workModality,
-            curriculumCounter,
-            premium,
-            stars,
-            acercaDe
-        });
-        if (req.files) {
-            const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
-            const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
-            if (tempFilePath) {
-                const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
-                user.profileImage = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-                yield (0, fs_extra_1.unlink)(tempFilePath);
-            }
-            if (banner.tempFilePath) {
-                const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
-                user.banner = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-            }
-            yield (0, fs_extra_1.unlink)(banner.tempFilePath);
+        if (email) {
+            req.query.userEmail = email;
+            console.log("email forro", email);
+            return next();
         }
-        yield user.save();
+        else {
+            const user = yield User_1.userModel.create({
+                name,
+                lastName,
+                userName,
+                email,
+                password,
+                userTypes,
+                profileImage,
+                banner,
+                technologies,
+                country,
+                province,
+                backFront,
+                languages,
+                otherStudies,
+                workModality,
+                curriculumCounter,
+                premium,
+                stars,
+                acercaDe
+            });
+            if (req.files) {
+                const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
+                const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
+                if (tempFilePath) {
+                    const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
+                    user.profileImage = {
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    };
+                    yield (0, fs_extra_1.unlink)(tempFilePath);
+                }
+                if (banner.tempFilePath) {
+                    const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
+                    user.banner = {
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    };
+                }
+                yield (0, fs_extra_1.unlink)(banner.tempFilePath);
+            }
+            yield user.save();
+            return res.status(200).json(user);
+        }
     }
-    catch (error) {
-        console.error(error);
+    catch (err) {
+        console.error(err);
     }
 });
 exports.createUserGoogle = createUserGoogle;

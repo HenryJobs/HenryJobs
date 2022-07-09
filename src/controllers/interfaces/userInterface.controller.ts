@@ -36,31 +36,6 @@ export interface userInterface {
   stars: number;
 }
 
-export interface businessIterface {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  description: string;
-  jobSummary: string;
-  image: string;
-  country: string;
-  premium: boolean;
-}
-
-export interface allBusinessInterface {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  description: string;
-  jobSummary: string;
-  image: string;
-  country: string;
-  profileImage: object;
-  banner: object;
-  premium: boolean;
-}
 
 export interface userId extends User {
   _id: string;

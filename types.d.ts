@@ -5,5 +5,6 @@ declare namespace Express {
     userPremium: boolean;
     userfirtsName: string;
     userLastname: string;
+    userEmail: any;
   }
 }

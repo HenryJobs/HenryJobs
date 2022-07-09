@@ -4,7 +4,10 @@ import { userId, userInterface } from "./interfaces/userInterface.controller";
 
 export const getUserEmail = async (req: Request, res: Response) => {
 
-    const { email } = req.query
+    const { email } = req.userEmail
+
+    console.log("que onda")
+
 
     if (email) {
         const userEmail: userId | null = await userModel.findOne({
