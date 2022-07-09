@@ -13,14 +13,13 @@ const putUser_routes_1 = __importDefault(require("./user/putUser.routes"));
 const getUserById_routes_1 = __importDefault(require("./user/getUserById.routes"));
 const signinUser_routes_1 = __importDefault(require("./user/signinUser.routes"));
 const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.routes"));
-const postEmailGoogle_routes_1 = __importDefault(require("./user/postEmailGoogle.routes"));
 const softdelete_routes_1 = __importDefault(require("./user/softdelete.routes"));
 const StaffUserFunctions_routes_1 = __importDefault(require("./user/StaffUserFunctions.routes"));
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
-router.use('/googleauth', postEmailGoogle_routes_1.default, getEmailUser_routes_1.default);
-// router.use("/mail", getUserByMail);
+// router.use('/googleauth', postUserGoogleRoute, getUserByMail);
+router.use("/mail", getEmailUser_routes_1.default);
 router.use("/user", postUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
 router.use("/user", getUserById_routes_1.default);

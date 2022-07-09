@@ -38,10 +38,22 @@ export const createUser = async (
 
 
   try {
-    if (!name || !userName || !email || !password)
-      res.status(400).json({ msg: "Some fields are required" });
+    
+    let emailUser = await userModel.findOne({
+      email: email,
+      active: true
+    });
 
-      //s
+    if (!name || !userName || !email || !password) {
+      return res.status(400).json({ msg: "Some fields are required" });
+    }
+
+      if(email === emailUser?.email){  
+        console.log("email forro", email)
+        return res.status(200).send("email already exist")
+    }
+
+    else {
 
     const user = await userModel.create({
       name,
@@ -107,6 +119,8 @@ export const createUser = async (
 
     res.header("authToken", token).status(201).json(user);
     // res.status(201).json(user)
+    }
+    console.log("ata aca bro")
   } catch (error) {
     console.error(error);
   }

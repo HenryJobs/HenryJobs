@@ -19,8 +19,8 @@ import { tokenValidation, validateStaffToken } from "../libs/validateToken";
 
 // user
 
-router.use('/googleauth', postUserGoogleRoute, getUserByMail);
-// router.use("/mail", getUserByMail);
+// router.use('/googleauth', postUserGoogleRoute, getUserByMail);
+router.use("/mail", getUserByMail);
 router.use("/user", createRoute);
 router.use("/signin", Usersignin);
 router.use("/user", getUserById);

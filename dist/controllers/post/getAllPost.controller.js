@@ -13,10 +13,15 @@ exports.getAllPost = void 0;
 const Post_1 = require("../../models/Post");
 const getAllPost = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let posters;
-        posters = yield Post_1.postModel.find({ active: true }).populate("posterUser");
+        //let posters: Post[];
+        let posters = yield Post_1.postModel.find({ active: true }).populate("posterUser");
+        const otrospost = posters.map((e) => {
+            if (e.posterUser !== null) {
+                return e;
+            }
+        });
         if (posters) {
-            res.status(200).json(posters);
+            res.status(200).json(otrospost);
         }
     }
     catch (err) {

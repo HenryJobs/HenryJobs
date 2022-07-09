@@ -22,61 +22,72 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     var _a, _b;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
     try {
-        if (!name || !userName || !email || !password)
-            res.status(400).json({ msg: "Some fields are required" });
-        //s
-        const user = yield User_1.userModel.create({
-            name,
-            lastName,
-            userName,
-            email,
-            password,
-            userTypes,
-            profileImage,
-            banner,
-            technologies,
-            country,
-            province,
-            backFront,
-            languages,
-            otherStudies,
-            workModality,
-            curriculumCounter,
-            premium,
-            stars,
-            acercaDe
+        let emailUser = yield User_1.userModel.findOne({
+            email: email,
+            active: true
         });
-        if (req.files) {
-            const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
-            const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
-            if (tempFilePath) {
-                const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
-                user.profileImage = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-                yield (0, fs_extra_1.unlink)(tempFilePath);
-            }
-            if (banner.tempFilePath) {
-                const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
-                user.banner = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-            }
-            yield (0, fs_extra_1.unlink)(banner.tempFilePath);
+        if (!name || !userName || !email || !password) {
+            return res.status(400).json({ msg: "Some fields are required" });
         }
-        yield user.save();
-        // crea un token y lo manda al header
-        const token = jsonwebtoken_1.default.sign({
-            id: user._id,
-            type: user.userTypes,
-            premium: user.premium,
-            name: user.name,
-            lastname: user.lastName,
-        }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
-        res.header("authToken", token).status(201).json(user);
-        // res.status(201).json(user)
+        if (email === (emailUser === null || emailUser === void 0 ? void 0 : emailUser.email)) {
+            console.log("email forro", email);
+            return res.status(200).send("email already exist");
+        }
+        else {
+            const user = yield User_1.userModel.create({
+                name,
+                lastName,
+                userName,
+                email,
+                password,
+                userTypes,
+                profileImage,
+                banner,
+                technologies,
+                country,
+                province,
+                backFront,
+                languages,
+                otherStudies,
+                workModality,
+                curriculumCounter,
+                premium,
+                stars,
+                acercaDe
+            });
+            if (req.files) {
+                const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
+                const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
+                if (tempFilePath) {
+                    const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
+                    user.profileImage = {
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    };
+                    yield (0, fs_extra_1.unlink)(tempFilePath);
+                }
+                if (banner.tempFilePath) {
+                    const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
+                    user.banner = {
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    };
+                }
+                yield (0, fs_extra_1.unlink)(banner.tempFilePath);
+            }
+            yield user.save();
+            // crea un token y lo manda al header
+            const token = jsonwebtoken_1.default.sign({
+                id: user._id,
+                type: user.userTypes,
+                premium: user.premium,
+                name: user.name,
+                lastname: user.lastName,
+            }, TOKEN_SECRET || "TOKENTEST", { expiresIn: 60 * 60 * 24 });
+            res.header("authToken", token).status(201).json(user);
+            // res.status(201).json(user)
+        }
+        console.log("ata aca bro");
     }
     catch (error) {
         console.error(error);
