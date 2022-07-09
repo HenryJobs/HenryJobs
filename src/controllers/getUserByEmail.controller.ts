@@ -4,7 +4,7 @@ import { userId, userInterface } from "./interfaces/userInterface.controller";
 
 export const getUserEmail = async (req: Request, res: Response) => {
 
-    const { email } = req.userEmail
+    const { email } = req.query
 
     console.log("que onda")
 

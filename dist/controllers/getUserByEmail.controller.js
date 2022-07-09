@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserEmail = void 0;
 const User_1 = require("../models/User");
 const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email } = req.userEmail;
+    const { email } = req.query;
     console.log("que onda");
     if (email) {
         const userEmail = yield User_1.userModel.findOne({
