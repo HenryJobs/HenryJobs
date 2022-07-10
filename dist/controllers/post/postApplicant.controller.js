@@ -16,21 +16,24 @@ const updatePostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, func
     const { userId, step, showBusiness, name } = req.body;
     try {
         let post = yield Post_1.postModel.findById(id);
-        console.log(id, "id bro");
+        // console.log(id, "id bro")
+        // console.log("la chota del post", post)
         const applicants = post === null || post === void 0 ? void 0 : post.applicants;
-        console.log(applicants);
+        // console.log("una chotita ",applicants)
         let applicantsUpdated = applicants === null || applicants === void 0 ? void 0 : applicants.map((applicant) => {
+            // console.log("la chota", applicant.userId)
             if (applicant.userId !== userId) {
                 return Object.assign(Object.assign({}, applicant), { userId, step, showBusiness, name });
             }
         });
         console.log(applicantsUpdated);
-        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $addToSet: { applicants: applicantsUpdated } }));
+        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $unset: { applicants: applicantsUpdated } }));
         res.status(200).json(post);
     }
     catch (err) {
         console.error(err);
     }
     ;
+    //////////////////////////////////// NO HAY QUE DARLE BOLA !!!!!! ////////////////////////////////////////////////////////////////
 });
 exports.updatePostApplicant = updatePostApplicant;

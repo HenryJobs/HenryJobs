@@ -35,19 +35,17 @@ const getAllPost_routes_1 = __importDefault(require("./post/getAllPost.routes"))
 const postApplicant_routes_1 = __importDefault(require("./post/postApplicant.routes"));
 const getPostById_routes_1 = __importDefault(require("./post/getPostById.routes"));
 const updatePostApplicantstatus_routes_1 = __importDefault(require("./post/updatePostApplicantstatus.routes"));
-const postApplicant_routes_2 = __importDefault(require("./post/postApplicant.routes")); // put addToSet newLogic
+const pushPostApplicant_routes_1 = __importDefault(require("./post/pushPostApplicant.routes")); // put addToSet oldLogic
 const softdeletePost_routes_1 = __importDefault(require("./post/softdeletePost.routes"));
 const StaffFunctionsPost_routes_1 = __importDefault(require("./post/StaffFunctionsPost.routes"));
-const pushPostApplicant_routes_1 = __importDefault(require("./post/pushPostApplicant.routes")); // put de push oldLogic
 router.use("/post/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffFunctionsPost_routes_1.default);
 router.use("/post", getAllPost_routes_1.default);
 router.use("/post", getPostById_routes_1.default);
 router.use("/post", createPost_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post", postApplicant_routes_1.default); // acordarse de agregar el tokenValidation
 router.use("/post/apply", updatePostApplicantstatus_routes_1.default);
-router.use("/post/old", pushPostApplicant_routes_1.default); // put de push oldLogic
+router.use("/post/old", pushPostApplicant_routes_1.default); // put de push old
 router.use("/post", softdeletePost_routes_1.default); // acordarse de agregar el tokenValidation
-router.use("/post", postApplicant_routes_2.default); // acordarse de agregar el tokenValidation // put addToSet newLogic
 // follow
 const putFollow_routes_1 = __importDefault(require("./follow/putFollow.routes"));
 router.use("/follow", putFollow_routes_1.default); // acordarse de agregar el tokenValidation

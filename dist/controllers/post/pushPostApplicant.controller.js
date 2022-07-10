@@ -16,17 +16,16 @@ const pushPostApplicant = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const { userId, step, showBusiness, name } = req.body;
     try {
         const post = yield Post_1.postModel.findById(id);
+        const falopa = post === null || post === void 0 ? void 0 : post.applicants.map(e => e.userId);
         if (!(post === null || post === void 0 ? void 0 : post.active)) {
             res.status(404).json("this item has been removed");
         }
-        else {
-            if (!(post === null || post === void 0 ? void 0 : post.applicants.includes(userId))) {
-                yield (post === null || post === void 0 ? void 0 : post.updateOne({
-                    $push: { applicants: { userId: userId, step: step, showBusiness: showBusiness, name: name } },
-                }));
-            }
-            res.status(200).json(post);
+        if (!(falopa === null || falopa === void 0 ? void 0 : falopa.includes(userId))) {
+            yield (post === null || post === void 0 ? void 0 : post.updateOne({
+                $push: { applicants: { userId: userId, step: step, showBusiness: showBusiness, name: name } },
+            }));
         }
+        res.status(200).json(post);
     }
     catch (err) {
         console.error(err);
