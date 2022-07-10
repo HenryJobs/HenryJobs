@@ -34,7 +34,7 @@ export const createUser = async (
     premium,
     stars,
     acercaDe
-  } = req.body.payload;
+  } = req.body;
 
 
   try {
@@ -82,16 +82,16 @@ export const createUser = async (
 
 
     if (req.files) {
-      const { tempFilePath } = req.files?.profileImage as UploadedFile;
+      const profileImage = req.files?.profileImage as UploadedFile;
       const banner = req.files?.banner as UploadedFile;
 
-      if (tempFilePath) {
-        const result = await uploadImage(tempFilePath);
+      if (profileImage.tempFilePath) {
+        const result = await uploadImage(profileImage.tempFilePath);
         user.profileImage = {
           public_id: result.public_id,
           secure_url: result.secure_url,
         };
-        await unlink(tempFilePath);
+        await unlink(profileImage.tempFilePath);
       }
 
       if (banner.tempFilePath) {
@@ -104,8 +104,8 @@ export const createUser = async (
       }
 
     }
-
     await user.save();
+
 
     // crea un token y lo manda al header
     const token: string = jwt.sign(

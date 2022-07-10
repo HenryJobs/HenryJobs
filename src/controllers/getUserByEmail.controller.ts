@@ -6,9 +6,6 @@ export const getUserEmail = async (req: Request, res: Response) => {
 
     const { email } = req.query
 
-    console.log("que onda")
-
-
     if (email) {
         const userEmail: userId | null = await userModel.findOne({
             email: email,

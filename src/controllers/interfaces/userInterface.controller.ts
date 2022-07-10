@@ -1,13 +1,10 @@
 import { User } from "../../models/User";
 
-export interface allUserInterface {
+export interface userWarningInterface {
   _id: string;
-  firstName: string;
+  name: string;
   lastName: string;
-  UserTypes: string;
   email: string;
-  password: string;
-  premium: boolean;
 }
 
 export interface userInterface {
