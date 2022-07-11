@@ -41,7 +41,9 @@ export const getUserEmail = async (req: Request, res: Response) => {
             }
             
             res.status(200).json(allEmail)
-        };
+        } else {
+            res.status(200).send("disponible")
+        }
     }
     } catch(err){
         res.status(200).send("disponible")
