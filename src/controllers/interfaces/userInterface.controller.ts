@@ -1,8 +1,8 @@
 import { User } from "../../models/User";
 
-export interface emailContact {
+export interface userWarningInterface {
   _id: string;
-  firstName: string;
+  name: string;
   lastName: string;
   email: string;
 }

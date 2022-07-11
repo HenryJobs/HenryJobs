@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.comment = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
+exports.sendEmailWarning = exports.comment = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
 ////pcmjcdzyfrgflexq
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -64,3 +64,15 @@ const comment = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
     return;
 });
 exports.comment = comment;
+const sendEmailWarning = (email, user) => __awaiter(void 0, void 0, void 0, function* () {
+    const transporter = yield (0, exports.createTrans)();
+    const info = transporter.sendMail({
+        from: '<henryjobsproject@gmail.com>',
+        to: email,
+        subject: "registro",
+        text: `Hola ${user}, detectamos recientemente que tus postulaciones en el período acordado por contrato no estaría cumpliénse. Por favor, te pedimos que puedas ponerte al corriente con las postulaciones enviadas a empresas`
+    });
+    console.log("message sent", info.messageId);
+    return;
+});
+exports.sendEmailWarning = sendEmailWarning;

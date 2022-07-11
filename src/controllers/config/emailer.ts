@@ -51,10 +51,15 @@ export const comment = async (to: any, who: any) => {
     return
 }
 
+export const sendEmailWarning = async (email: any, user: any) => {
+    const transporter = await createTrans()
+    const info: any = transporter.sendMail({
+        from: '<henryjobsproject@gmail.com>',
+        to: email,
+        subject: "registro",
+        text: `Hola ${user}, detectamos recientemente que tus postulaciones en el período acordado por contrato no estaría cumpliénse. Por favor, te pedimos que puedas ponerte al corriente con las postulaciones enviadas a empresas`
+    })
+    console.log("message sent", info.messageId)
 
-
-
-
-
-
-
+    return 
+}

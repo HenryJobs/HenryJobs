@@ -21,7 +21,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body.payload;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe } = req.body;
     try {
         let emailUser = yield User_1.userModel.findOne({
             email: email,
@@ -59,15 +59,15 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             (0, emailer_1.sendMail)(email);
             (0, emailer_1.sendPassword)(email, password);
             if (req.files) {
-                const { tempFilePath } = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
+                const profileImage = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
                 const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
-                if (tempFilePath) {
-                    const result = yield (0, cloudinary_1.uploadImage)(tempFilePath);
+                if (profileImage.tempFilePath) {
+                    const result = yield (0, cloudinary_1.uploadImage)(profileImage.tempFilePath);
                     user.profileImage = {
                         public_id: result.public_id,
                         secure_url: result.secure_url,
                     };
-                    yield (0, fs_extra_1.unlink)(tempFilePath);
+                    yield (0, fs_extra_1.unlink)(profileImage.tempFilePath);
                 }
                 if (banner.tempFilePath) {
                     const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
