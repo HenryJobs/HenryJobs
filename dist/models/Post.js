@@ -27,8 +27,8 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "imgVideo", void 0);
 __decorate([
-    (0, typegoose_1.prop)({}),
-    __metadata("design:type", String)
+    (0, typegoose_1.prop)({ default: new Date() }),
+    __metadata("design:type", Date)
 ], Post.prototype, "date", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
@@ -66,5 +66,4 @@ Post = __decorate([
     (0, typegoose_1.modelOptions)({ options: { allowMixed: 0 } })
 ], Post);
 exports.Post = Post;
-;
 exports.postModel = (0, typegoose_1.getModelForClass)(Post);

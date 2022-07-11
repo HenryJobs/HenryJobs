@@ -1,7 +1,11 @@
-import { prop, getModelForClass, Ref, modelOptions } from "@typegoose/typegoose";
+import {
+  prop,
+  getModelForClass,
+  Ref,
+  modelOptions,
+} from "@typegoose/typegoose";
 import { applicantsInterface } from "../controllers/interfaces/userInterface.controller";
 import { User } from "./User";
-
 
 @modelOptions({ options: { allowMixed: 0 } })
 export class Post {
@@ -14,8 +18,8 @@ export class Post {
   @prop({})
   imgVideo: string;
 
-  @prop({})
-  date: string;
+  @prop({ default: new Date() })
+  date: Date;
 
   @prop({})
   image: string;
@@ -33,13 +37,12 @@ export class Post {
   country: string;
 
   @prop({})
-  applicants: applicantsInterface[]
+  applicants: applicantsInterface[];
 
   @prop({ default: true })
   active: boolean;
   @prop()
   dateSoftDelte: Date;
-
-};
+}
 
 export const postModel = getModelForClass(Post);
