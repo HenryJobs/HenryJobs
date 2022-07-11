@@ -47,7 +47,9 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 };
                 res.status(200).json(allEmail);
             }
-            ;
+            else {
+                res.status(200).send("disponible");
+            }
         }
     }
     catch (err) {
