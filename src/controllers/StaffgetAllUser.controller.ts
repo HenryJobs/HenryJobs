@@ -36,6 +36,9 @@ export const StaffgetAllUser = async (
           stars: user.stars,
           followers: user.followers,
           following: user.following,
+          linkedin: user.linkedin,
+          github: user.github,
+          gmail: user.gmail
         };
       });
 

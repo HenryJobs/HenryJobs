@@ -34,6 +34,11 @@ export const getUserById = async (req: Request, res: Response) => {
           acercaDe: userId.acercaDe,
           premium: userId.premium,
           stars: userId.stars,
+          linkedin: userId.linkedin,
+          github: userId.github,
+          gmail: userId.gmail
+
+
         };
         return res.status(200).json(allId);
       }

@@ -40,6 +40,9 @@ export const getUserByName = async (
         acercaDe: user.acercaDe,
         premium: user.premium,
         stars: user.stars,
+        linkedin: user.linkedin,
+        github: user.github,
+        gmail: user.gmail
       };
       res.status(200).json(allNames);
     }

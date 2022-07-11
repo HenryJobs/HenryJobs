@@ -29,6 +29,9 @@ export const createUserGoogle = async (
     curriculumCounter,
     premium,
     stars,
+    linkedin,
+    github,
+    gmail,
     acercaDe
     } = req.body.payload;
 
@@ -59,7 +62,10 @@ export const createUserGoogle = async (
     curriculumCounter,
     premium,
     stars,
-    acercaDe
+    acercaDe,
+    linkedin,
+    github,
+    gmail
     });
 
     if (req.files) {

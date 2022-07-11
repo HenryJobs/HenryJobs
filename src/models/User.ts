@@ -89,7 +89,16 @@ export class User {
   following: string[];
 
   @prop({})
-  applications: string[]
+  applications: string[];
+
+  @prop({})
+  linkedin: string;
+
+  @prop({})
+  gmail: string;
+
+  @prop({})
+  github: string;
 
   //business
 

@@ -33,7 +33,10 @@ export const createUser = async (
     curriculumCounter,
     premium,
     stars,
-    acercaDe
+    acercaDe,
+    linkedin,
+    github,
+    gmail
   } = req.body;
 
 
@@ -74,7 +77,10 @@ export const createUser = async (
       curriculumCounter,
       premium,
       stars,
-      acercaDe
+      acercaDe,
+      linkedin,
+      github,
+      gmail
     });
 
     sendMail(email)

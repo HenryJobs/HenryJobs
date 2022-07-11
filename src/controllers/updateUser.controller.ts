@@ -29,6 +29,9 @@ export const updateUser = async (req: Request, res: Response) => {
     premium,
     stars,
     acercaDe,
+    linkedin,
+    github,
+    gmail
   } = req.body;
 
   try {
@@ -60,6 +63,9 @@ export const updateUser = async (req: Request, res: Response) => {
         premium,
         stars,
         acercaDe,
+        linkedin,
+        github,
+        gmail
       }
     );
 
