@@ -16,7 +16,7 @@ const User_1 = require("../models/User");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     const { id } = req.params;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, } = req.body;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, linkedin, github, gmail } = req.body;
     try {
         const userActive = yield User_1.userModel.findById(id);
         if (!(userActive === null || userActive === void 0 ? void 0 : userActive.active)) {
@@ -44,6 +44,9 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             premium,
             stars,
             acercaDe,
+            linkedin,
+            github,
+            gmail
         });
         if (req.files) {
             const profileImage = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;

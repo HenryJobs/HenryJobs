@@ -130,6 +130,18 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
+], User.prototype, "linkedin", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "gmail", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], User.prototype, "github", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
 ], User.prototype, "jobSummary", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),

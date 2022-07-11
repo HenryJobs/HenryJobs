@@ -39,7 +39,10 @@ const getAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, function*
                     acercaDe: user.acercaDe,
                     stars: user.stars,
                     followers: user.followers,
-                    following: user.following
+                    following: user.following,
+                    linkedin: user.linkedin,
+                    github: user.github,
+                    gmail: user.gmail
                 });
             });
             res.status(200).json(userMap);

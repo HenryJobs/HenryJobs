@@ -41,6 +41,9 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     acercaDe: userId.acercaDe,
                     premium: userId.premium,
                     stars: userId.stars,
+                    linkedin: userId.linkedin,
+                    github: userId.github,
+                    gmail: userId.gmail
                 };
                 return res.status(200).json(allId);
             }

@@ -1,48 +1,48 @@
 import {
-  prop,
-  getModelForClass,
-  Ref,
-  modelOptions,
+	prop,
+	getModelForClass,
+	Ref,
+	modelOptions,
 } from "@typegoose/typegoose";
 import { applicantsInterface } from "../controllers/interfaces/userInterface.controller";
 import { User } from "./User";
 
 @modelOptions({ options: { allowMixed: 0 } })
 export class Post {
-  @prop({ ref: () => User })
-  posterUser: Ref<User>;
+	@prop({ ref: () => User })
+	posterUser: Ref<User>;
 
-  @prop({ required: true })
-  text: string;
+	@prop({ required: true })
+	text: string;
 
-  @prop({})
-  imgVideo: string;
+	@prop({})
+	imgVideo: string;
 
-  @prop({ default: new Date() })
-  date: Date;
+	@prop({ default: new Date() })
+	date: Date;
 
-  @prop({})
-  image: string;
+	@prop({})
+	image: string;
 
-  @prop({})
-  workModality: string;
+	@prop({})
+	workModality: string;
 
-  @prop({})
-  technologies: string[];
+	@prop({})
+	technologies: string[];
 
-  @prop({})
-  backFront: string;
+	@prop({})
+	backFront: string;
 
-  @prop({})
-  country: string;
+	@prop({})
+	country: string;
 
-  @prop({})
-  applicants: applicantsInterface[];
+	@prop({})
+	applicants: applicantsInterface[];
 
-  @prop({ default: true })
-  active: boolean;
-  @prop()
-  dateSoftDelte: Date;
+	@prop({ default: true })
+	active: boolean;
+	@prop()
+	dateSoftDelte: Date;
 }
 
 export const postModel = getModelForClass(Post);

@@ -2,18 +2,18 @@ import { Request, Response } from "express";
 import { Coments, postComent } from "../../models/postComent";
 
 export const getAllComents = async (req: Request, res: Response) => {
-  try {
-    let coments: Coments[];
+	try {
+		let coments: Coments[];
 
-    coments = await postComent
-      .find({ active: true })
-      .populate("comentUser")
-      .populate("postUser");
+		coments = await postComent
+			.find({ active: true })
+			.populate("comentUser")
+			.populate("postUser");
 
-    if (coments) {
-      res.status(200).json(coments);
-    }
-  } catch (err) {
-    console.error(err);
-  }
+		if (coments) {
+			res.status(200).json(coments);
+		}
+	} catch (err) {
+		console.error(err);
+	}
 };

@@ -1,8 +1,8 @@
 import { postModel } from "../../models/Post";
 import { Request, Response } from "express";
 
-export const updatePostApplicant =async (req: Request, res: Response) => {
-    
+export const updatePostApplicant = async (req: Request, res: Response) => {
+
     const { id } = req.params
 
     const { userId, step, showBusiness, name } = req.body
@@ -16,18 +16,18 @@ export const updatePostApplicant =async (req: Request, res: Response) => {
         // console.log("una chotita ",applicants)
         let applicantsUpdated: any = applicants?.map((applicant: any) => {
             // console.log("la chota", applicant.userId)
-            if(applicant.userId !== userId) {
-                return {...applicant, userId, step, showBusiness, name }
+            if (applicant.userId !== userId) {
+                return { ...applicant, userId, step, showBusiness, name }
             }
         })
 
         console.log(applicantsUpdated)
 
-        await post?.updateOne({ $unset: { applicants: applicantsUpdated }})
+        await post?.updateOne({ $unset: { applicants: applicantsUpdated } })
 
         res.status(200).json(post)
 
-    } catch (err){
+    } catch (err) {
         console.error(err)
     };
     //////////////////////////////////// NO HAY QUE DARLE BOLA !!!!!! ////////////////////////////////////////////////////////////////

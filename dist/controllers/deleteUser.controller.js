@@ -41,7 +41,10 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     banner: deleteById.banner,
                     acercaDe: deleteById.acercaDe,
                     premium: deleteById.premium,
-                    stars: deleteById.stars
+                    stars: deleteById.stars,
+                    linkedin: deleteById.linkedin,
+                    github: deleteById.github,
+                    gmail: deleteById.gmail
                 };
                 yield (0, cloudinary_1.deleteImage)(deleteById.profileImage.public_id);
                 // await deleteImage(deleteById.banner.public_id);

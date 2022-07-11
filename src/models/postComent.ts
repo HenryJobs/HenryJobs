@@ -3,20 +3,20 @@ import { User } from "./User";
 import { Post } from "./Post";
 
 export class Coments {
-  @prop({ ref: () => User })
-  comentUser: Ref<User>;
+	@prop({ ref: () => User })
+	comentUser: Ref<User>;
 
-  @prop({ type: String, required: true, trim: true })
-  text: string;
+	@prop({ type: String, required: true, trim: true })
+	text: string;
 
-  @prop({ref: () => Post})
-  postUser: Ref<Post>
+	@prop({ ref: () => Post })
+	postUser: Ref<Post>
 
-  @prop({ default: true })
-  active: boolean;
+	@prop({ default: true })
+	active: boolean;
 
-  @prop()
-  dateSoftDelte: Date;
+	@prop()
+	dateSoftDelte: Date;
 }
 
 export const postComent = getModelForClass(Coments);
