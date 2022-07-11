@@ -40,6 +40,7 @@ export const getUserEmail = async (req: Request, res: Response) => {
                 premium: userEmail.premium,
                 stars: userEmail.stars
             }
+            
             res.status(200).json(allEmail)
         };
     };
