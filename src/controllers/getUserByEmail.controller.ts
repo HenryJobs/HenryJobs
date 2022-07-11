@@ -6,7 +6,9 @@ export const getUserEmail = async (req: Request, res: Response) => {
 
     const { email } = req.query
 
-    if (email) {
+    try {
+
+        if (email) {
         const userEmail: userId | null = await userModel.findOne({
             email: email,
             active: true
@@ -39,6 +41,11 @@ export const getUserEmail = async (req: Request, res: Response) => {
             }
             
             res.status(200).json(allEmail)
-        };
-    };
+        } else {
+            res.status(200).send("disponible")
+        }
+    }
+    } catch(err){
+        res.status(200).send("disponible")
+    }
 };
