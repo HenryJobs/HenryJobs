@@ -13,41 +13,47 @@ exports.getUserEmail = void 0;
 const User_1 = require("../models/User");
 const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.query;
-    if (email) {
-        const userEmail = yield User_1.userModel.findOne({
-            email: email,
-            active: true
-        });
-        if (userEmail) {
-            const allEmail = {
-                _id: userEmail._id,
-                name: userEmail.name,
-                lastName: userEmail.lastName,
-                userName: userEmail.userName,
-                email: userEmail.email,
-                password: userEmail.password,
-                profileImage: userEmail.profileImage,
-                userTypes: userEmail.userTypes,
-                technologies: userEmail.technologies,
-                country: userEmail.country,
-                province: userEmail.province,
-                backFront: userEmail.backFront,
-                languages: userEmail.languages,
-                otherStudies: userEmail.otherStudies,
-                curriculumCounter: userEmail.curriculumCounter,
-                counterIncome: userEmail.counterIncome,
-                workModality: userEmail.workModality,
-                followers: userEmail.followers,
-                following: userEmail.following,
-                banner: userEmail.banner,
-                acercaDe: userEmail.acercaDe,
-                premium: userEmail.premium,
-                stars: userEmail.stars
-            };
-            res.status(200).json(allEmail);
+    try {
+        if (email) {
+            const userEmail = yield User_1.userModel.findOne({
+                email: email,
+                active: true
+            });
+            if (userEmail) {
+                const allEmail = {
+                    _id: userEmail._id,
+                    name: userEmail.name,
+                    lastName: userEmail.lastName,
+                    userName: userEmail.userName,
+                    email: userEmail.email,
+                    password: userEmail.password,
+                    profileImage: userEmail.profileImage,
+                    userTypes: userEmail.userTypes,
+                    technologies: userEmail.technologies,
+                    country: userEmail.country,
+                    province: userEmail.province,
+                    backFront: userEmail.backFront,
+                    languages: userEmail.languages,
+                    otherStudies: userEmail.otherStudies,
+                    curriculumCounter: userEmail.curriculumCounter,
+                    counterIncome: userEmail.counterIncome,
+                    workModality: userEmail.workModality,
+                    followers: userEmail.followers,
+                    following: userEmail.following,
+                    banner: userEmail.banner,
+                    acercaDe: userEmail.acercaDe,
+                    premium: userEmail.premium,
+                    stars: userEmail.stars
+                };
+                res.status(200).json(allEmail);
+            }
+            else {
+                res.status(200).send("disponible");
+            }
         }
-        ;
     }
-    ;
+    catch (err) {
+        res.status(200).send("disponible");
+    }
 });
 exports.getUserEmail = getUserEmail;
