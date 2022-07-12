@@ -7,7 +7,7 @@ export const createTrans = async () => {
 		port: 465,
 		secure: true,
 		auth: {
-			user: 'gaerca123@gmail.com',
+			user: 'henryjobsproject@gmail.com',
 			pass: 'pcmjcdzyfrgflexq',
 		}
 	})

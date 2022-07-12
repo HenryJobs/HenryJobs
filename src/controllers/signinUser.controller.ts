@@ -36,6 +36,7 @@ export const signinUser = async (req: Request, res: Response) => {
 				name: user.name,
 				lastname: user.lastName,
 				following: user.following,
+				email: user.email
 			},
 			TOKEN_SECRET || "TOKENTEST",
 			{ expiresIn: 60 * 60 * 24 }
