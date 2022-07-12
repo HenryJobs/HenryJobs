@@ -34,6 +34,8 @@ export const updateUser = async (req: Request, res: Response) => {
     gmail
   } = req.body;
 
+  console.log("body -> ", req.body)
+
   try {
     const userActive = await userModel.findById(id);
     if (!userActive?.active) {
@@ -70,6 +72,8 @@ export const updateUser = async (req: Request, res: Response) => {
     );
 
     if (req.files) {
+      console.log("entró al req.files")
+      console.log("req.files -> ", req.files)
       const profileImage = req.files?.profileImage as UploadedFile;
       const banner = req.files?.banner as UploadedFile;
 

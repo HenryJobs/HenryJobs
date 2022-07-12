@@ -40,6 +40,9 @@ const StaffgetAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, func
                     stars: user.stars,
                     followers: user.followers,
                     following: user.following,
+                    linkedin: user.linkedin,
+                    github: user.github,
+                    gmail: user.gmail
                 };
             });
             res.status(200).json(userMap);

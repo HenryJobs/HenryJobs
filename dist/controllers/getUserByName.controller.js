@@ -43,6 +43,9 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 acercaDe: user.acercaDe,
                 premium: user.premium,
                 stars: user.stars,
+                linkedin: user.linkedin,
+                github: user.github,
+                gmail: user.gmail
             };
             res.status(200).json(allNames);
         }
