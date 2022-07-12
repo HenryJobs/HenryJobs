@@ -10,14 +10,6 @@ export const getEmailContact = async (req: Request, res: Response) => {
     try {
         
         if (id) {
-            const business: userId | null = await userModel.findById(id);
-            if(business){
-                console.log(business, "esto")
-                const businessEmail: contactInterface = {
-                    _id: business?._id,
-                    name: business?.name,
-                    email: business?.email
-                }
                 const user: userId | null = await userModel.findById(id);
                 
                 if (user) {
@@ -27,14 +19,13 @@ export const getEmailContact = async (req: Request, res: Response) => {
                         name: user?.name,
                         email: user?.email
                     }
-                    contact(allEmail?.email, businessEmail?.email)
-                    return res.status(200).json([allEmail, businessEmail]);
+                    return res.status(200).json(allEmail);
                 }
             }
-        }
-        res.status(200).send("hola lucho")
+            res.status(200).send("hola lucho")
+        }catch (err) {
+            res.status(500).send("El server crasheó papá")
 
-    } catch (err) {
-        res.status(500).send("El server crasheó papá")
+    } 
     }
-};
+

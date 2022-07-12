@@ -11,30 +11,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getEmailContact = void 0;
 const User_1 = require("../models/User");
-const emailer_1 = require("./config/emailer");
 const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
         if (id) {
-            const business = yield User_1.userModel.findById(id);
-            if (business) {
-                console.log(business, "esto");
-                const businessEmail = {
-                    _id: business === null || business === void 0 ? void 0 : business._id,
-                    name: business === null || business === void 0 ? void 0 : business.name,
-                    email: business === null || business === void 0 ? void 0 : business.email
+            const user = yield User_1.userModel.findById(id);
+            if (user) {
+                console.log("user dentro del if ", user);
+                const allEmail = {
+                    _id: user === null || user === void 0 ? void 0 : user._id,
+                    name: user === null || user === void 0 ? void 0 : user.name,
+                    email: user === null || user === void 0 ? void 0 : user.email
                 };
-                const user = yield User_1.userModel.findById(id);
-                if (user) {
-                    console.log("user dentro del if ", user);
-                    const allEmail = {
-                        _id: user === null || user === void 0 ? void 0 : user._id,
-                        name: user === null || user === void 0 ? void 0 : user.name,
-                        email: user === null || user === void 0 ? void 0 : user.email
-                    };
-                    (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, businessEmail === null || businessEmail === void 0 ? void 0 : businessEmail.email);
-                    return res.status(200).json([allEmail, businessEmail]);
-                }
+                return res.status(200).json(allEmail);
             }
         }
         res.status(200).send("hola lucho");
