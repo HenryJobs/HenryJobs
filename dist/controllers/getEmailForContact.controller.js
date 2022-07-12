@@ -17,17 +17,25 @@ const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function
     const { id } = req.params;
     try {
         if (id) {
-            const user = yield User_1.userModel.findById(id);
-            if (user) {
-                console.log("user dentro del if ", user);
-                const allEmail = {
-                    _id: user === null || user === void 0 ? void 0 : user._id,
-                    name: user === null || user === void 0 ? void 0 : user.name,
-                    lastName: user === null || user === void 0 ? void 0 : user.lastName,
-                    email: user === null || user === void 0 ? void 0 : user.email
+            const business = yield User_1.userModel.findById(id);
+            if (business) {
+                console.log(business, "esto");
+                const businessEmail = {
+                    _id: business === null || business === void 0 ? void 0 : business._id,
+                    name: business === null || business === void 0 ? void 0 : business.name,
+                    email: business === null || business === void 0 ? void 0 : business.email
                 };
-                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, email);
-                return res.status(200).json(allEmail);
+                const user = yield User_1.userModel.findById(id);
+                if (user) {
+                    console.log("user dentro del if ", user);
+                    const allEmail = {
+                        _id: user === null || user === void 0 ? void 0 : user._id,
+                        name: user === null || user === void 0 ? void 0 : user.name,
+                        email: user === null || user === void 0 ? void 0 : user.email
+                    };
+                    (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, business === null || business === void 0 ? void 0 : business.email);
+                    return res.status(200).json([allEmail, businessEmail]);
+                }
             }
         }
         res.status(200).send("hola lucho");

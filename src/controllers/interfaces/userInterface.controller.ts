@@ -3,7 +3,6 @@ import { User } from "../../models/User";
 export interface contactInterface {
 	_id: string;
 	name: string;
-	lastName: string;
 	email: string;
 }
 

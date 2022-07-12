@@ -16,7 +16,6 @@ export const getEmailWarning = async (req: Request, res: Response) => {
                 const allEmail: contactInterface = {
                     _id: user?._id,
                     name: user?.name,
-                    lastName: user?.lastName,
                     email: user?.email
                 }
 

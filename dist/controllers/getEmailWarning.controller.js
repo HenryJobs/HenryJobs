@@ -22,7 +22,6 @@ const getEmailWarning = (req, res) => __awaiter(void 0, void 0, void 0, function
                 const allEmail = {
                     _id: user === null || user === void 0 ? void 0 : user._id,
                     name: user === null || user === void 0 ? void 0 : user.name,
-                    lastName: user === null || user === void 0 ? void 0 : user.lastName,
                     email: user === null || user === void 0 ? void 0 : user.email
                 };
                 (0, emailer_1.sendEmailWarning)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, allEmail === null || allEmail === void 0 ? void 0 : allEmail.name);

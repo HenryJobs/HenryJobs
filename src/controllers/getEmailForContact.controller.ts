@@ -11,18 +11,26 @@ export const getEmailContact = async (req: Request, res: Response) => {
     try {
         
         if (id) {
-            const user: userId | null = await userModel.findById(id);
-            
-            if (user) {
-                console.log("user dentro del if ", user)
-                const allEmail: contactInterface = {
-                    _id: user?._id,
-                    name: user?.name,
-                    lastName: user?.lastName,
-                    email: user?.email
+            const business: userId | null = await userModel.findById(id);
+            if(business){
+                console.log(business, "esto")
+                const businessEmail: contactInterface = {
+                    _id: business?._id,
+                    name: business?.name,
+                    email: business?.email
                 }
-                contact(allEmail?.email, email)
-                return res.status(200).json(allEmail);
+                const user: userId | null = await userModel.findById(id);
+                
+                if (user) {
+                    console.log("user dentro del if ", user)
+                    const allEmail: contactInterface = {
+                        _id: user?._id,
+                        name: user?.name,
+                        email: user?.email
+                    }
+                    contact(allEmail?.email, business?.email)
+                    return res.status(200).json([allEmail, businessEmail]);
+                }
             }
         }
         res.status(200).send("hola lucho")
