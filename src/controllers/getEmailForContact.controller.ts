@@ -22,7 +22,7 @@ export const getEmailContact = async (req: Request, res: Response) => {
                     }
 
                     contact(allEmail?.email, email)
-                    return res.status(200).json(allEmail);
+                    return res.status(200).json(email);
                 }
             }
             res.status(200).send("hola lucho")
