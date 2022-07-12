@@ -6,6 +6,7 @@ import { contactInterface, userId } from "./interfaces/userInterface.controller"
 export const getEmailContact = async (req: Request, res: Response) => {
     
     const { id } = req.params;
+    const { email } = req.body
 
     try {
         
@@ -19,7 +20,8 @@ export const getEmailContact = async (req: Request, res: Response) => {
                         name: user?.name,
                         email: user?.email
                     }
-                    contact(allEmail?.email)
+
+                    contact(allEmail?.email, email)
                     return res.status(200).json(allEmail);
                 }
             }

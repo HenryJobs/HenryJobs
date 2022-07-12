@@ -76,13 +76,13 @@ const sendEmailWarning = (email, user) => __awaiter(void 0, void 0, void 0, func
     return;
 });
 exports.sendEmailWarning = sendEmailWarning;
-const contact = (email) => __awaiter(void 0, void 0, void 0, function* () {
+const contact = (email, falopa) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
         from: '<henryjobsproject@gmail.com>',
         to: email,
         subject: "contacto",
-        text: `Hola, te han contactado`
+        text: `Hola, ${falopa} te han contactado`
     });
     console.log("message sent", info.messageId);
     return;

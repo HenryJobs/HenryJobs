@@ -11,8 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getEmailContact = void 0;
 const User_1 = require("../models/User");
+const emailer_1 = require("./config/emailer");
 const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
+    const { email } = req.body;
     try {
         if (id) {
             const user = yield User_1.userModel.findById(id);
@@ -23,6 +25,7 @@ const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function
                     name: user === null || user === void 0 ? void 0 : user.name,
                     email: user === null || user === void 0 ? void 0 : user.email
                 };
+                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, email);
                 return res.status(200).json(allEmail);
             }
         }
