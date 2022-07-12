@@ -27,7 +27,7 @@ export const getEmailContact = async (req: Request, res: Response) => {
                 return res.status(200).json(allEmail);
             }
         }
-        res.status(404).send("Mail not found")
+        res.status(200).send("hola lucho")
 
     } catch (err) {
         res.status(500).send("El server crasheó papá")
