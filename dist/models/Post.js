@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postModel = exports.Post = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const User_1 = require("./User");
-let Post = class Post {
+const defaultClasses_1 = require("@typegoose/typegoose/lib/defaultClasses");
+let Post = class Post extends defaultClasses_1.TimeStamps {
 };
 __decorate([
     (0, typegoose_1.prop)({ ref: () => User_1.User }),
@@ -34,6 +35,10 @@ __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
 ], Post.prototype, "image", void 0);
+__decorate([
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", String)
+], Post.prototype, "languages", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)

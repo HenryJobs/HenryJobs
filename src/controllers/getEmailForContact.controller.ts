@@ -11,10 +11,8 @@ export const getEmailContact = async (req: Request, res: Response) => {
     try {
         
         if (id) {
-            const business = await userModel.findOne({email: email})
-            console.log(business, "esto es business")
             const user: userId | null = await userModel.findById(id);
-
+            
             if (user) {
                 console.log("user dentro del if ", user)
                 const allEmail: contactInterface = {
@@ -23,7 +21,7 @@ export const getEmailContact = async (req: Request, res: Response) => {
                     lastName: user?.lastName,
                     email: user?.email
                 }
-                contact(allEmail?.email, business?.email)
+                contact(allEmail?.email, email)
                 return res.status(200).json(allEmail);
             }
         }

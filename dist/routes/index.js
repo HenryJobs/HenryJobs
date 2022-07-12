@@ -16,10 +16,12 @@ const getEmailUser_routes_1 = __importDefault(require("./user/getEmailUser.route
 const softdelete_routes_1 = __importDefault(require("./user/softdelete.routes"));
 const StaffUserFunctions_routes_1 = __importDefault(require("./user/StaffUserFunctions.routes"));
 const getEmailWarning_routes_1 = __importDefault(require("./user/getEmailWarning.routes"));
+const getEmailContact_routes_1 = __importDefault(require("./user/getEmailContact.routes"));
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
 // router.use('/googleauth', postUserGoogleRoute, getUserByMail);
+router.use("/contact", getEmailContact_routes_1.default);
 router.use("/mail", getEmailUser_routes_1.default);
 router.use("/user", postUser_routes_1.default);
 router.use("/signin", signinUser_routes_1.default);
