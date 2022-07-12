@@ -19,6 +19,7 @@ export const getEmailContact = async (req: Request, res: Response) => {
                         name: user?.name,
                         email: user?.email
                     }
+                    contact(allEmail?.email)
                     return res.status(200).json(allEmail);
                 }
             }
