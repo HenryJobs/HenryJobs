@@ -5,7 +5,6 @@ import { contactInterface, userId } from "./interfaces/userInterface.controller"
 
 export const getEmailContact = async (req: Request, res: Response) => {
     
-    const { email } = req.body;
     const { id } = req.params;
 
     try {
