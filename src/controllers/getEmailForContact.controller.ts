@@ -9,10 +9,10 @@ export const getEmailContact = async (req: Request, res: Response) => {
     const { id } = req.params;
 
     try {
-
-        const business = await userModel.findOne({email: email})
-
+        
         if (id) {
+            const business = await userModel.findOne({email: email})
+            console.log(business, "esto es business")
             const user: userId | null = await userModel.findById(id);
 
             if (user) {
