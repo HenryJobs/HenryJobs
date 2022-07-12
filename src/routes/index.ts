@@ -22,6 +22,7 @@ import { tokenValidation, validateStaffToken } from "../libs/validateToken";
 // user
 
 // router.use('/googleauth', postUserGoogleRoute, getUserByMail);
+router.use("/contact", emailContact)
 router.use("/mail", getUserByMail);
 router.use("/user", createRoute);
 router.use("/signin", Usersignin);
@@ -31,7 +32,6 @@ router.use("/user", userRoute);
 router.use("/user", softdeleteUser);
 router.use("/user", putRoute);
 router.use("/advertencia", emailWarning);
-router.use("/contact", emailContact)
 router.use(
   "/user/staffOnly",
   tokenValidation,
