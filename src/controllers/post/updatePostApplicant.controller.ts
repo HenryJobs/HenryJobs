@@ -2,7 +2,7 @@ import { postModel } from "../../models/Post";
 import { Request, Response } from "express";
 
 export const updatePostApplicantStatus = async (req: Request, res: Response) => {
-    
+
     const { id } = req.params
 
     const { userId, step, showBusiness, name } = req.body
@@ -13,7 +13,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
 
         if (!post?.active) {
             return res.status(404).json("this item has been removed");
-        } 
+        }
 
         const applicants = post?.applicants
         let applicantsUpdated: any = applicants?.map((applicant: any) => {
@@ -21,7 +21,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
             return { ...applicant, step, showBusiness, name }
         })
 
-        await post?.updateOne({ $unset: { applicants: applicantsUpdated } })
+        await post?.updateOne({ $set: { applicants: applicantsUpdated } })
 
         res.status(200).json(post)
 

@@ -25,7 +25,7 @@ const updatePostApplicantStatus = (req, res) => __awaiter(void 0, void 0, void 0
                 return applicant;
             return Object.assign(Object.assign({}, applicant), { step, showBusiness, name });
         });
-        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $unset: { applicants: applicantsUpdated } }));
+        yield (post === null || post === void 0 ? void 0 : post.updateOne({ $set: { applicants: applicantsUpdated } }));
         res.status(200).json(post);
     }
     catch (err) {

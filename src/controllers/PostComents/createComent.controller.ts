@@ -19,11 +19,11 @@ export const createComent = async (req: Request, res: Response) => {
             liked
         })
 
-        if(comentCreated){
+        if (comentCreated) {
             res.status(201).json(comentCreated)
         }
 
-    } catch(err){
+    } catch (err) {
         console.error(err)
     };
 };
