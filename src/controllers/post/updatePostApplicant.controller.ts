@@ -21,7 +21,7 @@ export const updatePostApplicantStatus = async (req: Request, res: Response) => 
             return { ...applicant, step, showBusiness, name }
         })
 
-        await post?.updateOne({ $unset: { applicants: applicantsUpdated } })
+        await post?.updateOne({ $set: { applicants: applicantsUpdated } })
 
         res.status(200).json(post)
 
