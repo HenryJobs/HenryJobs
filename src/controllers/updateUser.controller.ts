@@ -34,6 +34,8 @@ export const updateUser = async (req: Request, res: Response) => {
 		gmail
 	} = req.body;
 
+	console.log("este es el body, luk at dis -> ", req.body)
+
 	try {
 		const userActive = await userModel.findById(id);
 		if (!userActive?.active) {
@@ -69,16 +71,22 @@ export const updateUser = async (req: Request, res: Response) => {
 			}
 		);
 
+		console.log("esto es el updated -> ", updated)
+
 		if (req.files) {
+			console.log("luk at dis, entró al req.files -> ", req.files)
 			const profileImage = req.files?.profileImage as UploadedFile;
+			console.log("este es el profileImage -> ", profileImage)
 			const banner = req.files?.banner as UploadedFile;
 
 			if (profileImage.tempFilePath) {
+				console.log("entró al if de profileImage.tempFilePath")
 				const result = await uploadImage(profileImage.tempFilePath);
 				updated.profileImage = {
 					public_id: result.public_id,
 					secure_url: result.secure_url,
 				};
+				console.log("esto es lo que queda en updated.profileImage desp de que se actualiza -> ", updated.profileImage)
 				await unlink(profileImage.tempFilePath);
 			}
 
