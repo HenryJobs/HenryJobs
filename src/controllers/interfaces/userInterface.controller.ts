@@ -1,6 +1,6 @@
 import { User } from "../../models/User";
 
-export interface userWarningInterface {
+export interface contactInterface {
 	_id: string;
 	name: string;
 	lastName: string;

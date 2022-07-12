@@ -26,6 +26,9 @@ export class Post extends TimeStamps {
 	image: string;
 
 	@prop({})
+	languages: string
+
+	@prop({})
 	workModality: string;
 
 	@prop({})

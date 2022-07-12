@@ -63,3 +63,16 @@ export const sendEmailWarning = async (email: any, user: any) => {
 
 	return
 }
+
+export const contact = async(email: any, business: any) => {
+	const transporter = await createTrans()
+	const info: any = transporter.sendMail({
+		from: '<henryjobsproject@gmail.com>',
+		to: email,
+		subject: "contacto",
+		text: `Hola ${business}, te han contactado`
+	})
+	console.log("message sent", info.messageId)
+
+	return
+}

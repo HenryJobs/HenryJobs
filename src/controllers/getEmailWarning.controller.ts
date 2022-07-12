@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { userModel } from "../models/User";
 import { sendEmailWarning } from "./config/emailer";
-import { userWarningInterface, userId } from "./interfaces/userInterface.controller";
+import { contactInterface, userId } from "./interfaces/userInterface.controller";
 
 export const getEmailWarning = async (req: Request, res: Response) => {
 
@@ -13,7 +13,7 @@ export const getEmailWarning = async (req: Request, res: Response) => {
 
             if (user) {
                 console.log("user dentro del if ", user)
-                const allEmail: userWarningInterface = {
+                const allEmail: contactInterface = {
                     _id: user?._id,
                     name: user?.name,
                     lastName: user?.lastName,

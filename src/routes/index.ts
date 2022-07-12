@@ -14,6 +14,7 @@ import postUserGoogleRoute from './user/postEmailGoogle.routes'
 import softdeleteUser from "./user/softdelete.routes";
 import staffFunctionsUser from "./user/StaffUserFunctions.routes";
 import emailWarning from "./user/getEmailWarning.routes";
+import emailContact from './user/getEmailContact.routes'
 
 //validador de token
 import { tokenValidation, validateStaffToken } from "../libs/validateToken";
@@ -30,6 +31,7 @@ router.use("/user", userRoute);
 router.use("/user", softdeleteUser);
 router.use("/user", putRoute);
 router.use("/advertencia", emailWarning);
+router.use("/contact", emailContact)
 router.use(
   "/user/staffOnly",
   tokenValidation,
