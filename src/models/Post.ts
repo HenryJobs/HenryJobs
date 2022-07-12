@@ -6,9 +6,10 @@ import {
 } from "@typegoose/typegoose";
 import { applicantsInterface } from "../controllers/interfaces/userInterface.controller";
 import { User } from "./User";
+import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
 @modelOptions({ options: { allowMixed: 0 } })
-export class Post {
+export class Post extends TimeStamps {
 	@prop({ ref: () => User })
 	posterUser: Ref<User>;
 
