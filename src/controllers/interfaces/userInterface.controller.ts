@@ -3,7 +3,6 @@ import { User } from "../../models/User";
 export interface contactInterface {
 	_id: string;
 	name: string;
-	lastName: string;
 	email: string;
 }
 
@@ -18,7 +17,7 @@ export interface userInterface {
 	userTypes: number;
 	technologies: string[];
 	country: string;
-	province: string;
+	city: string;
 	backFront: string;
 	languages: string;
 	otherStudies: string[];
@@ -30,7 +29,7 @@ export interface userInterface {
 	banner: object;
 	acercaDe: string;
 	premium: boolean;
-	stars: number;
+	stars: object;
 	linkedin: string;
 	github: string;
 	gmail: string;
@@ -57,4 +56,9 @@ export interface applicantsInterface {
 	step: string;
 	userId: string;
 	name: string
+}
+
+export interface starInterface {
+	userId: string;
+	numero: number
 }

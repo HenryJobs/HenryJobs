@@ -21,7 +21,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, linkedin, github, gmail } = req.body;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, linkedin, github, gmail } = req.body;
     try {
         let emailUser = yield User_1.userModel.findOne({
             email: email,
@@ -46,7 +46,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
                 banner,
                 technologies,
                 country,
-                province,
+                city,
                 backFront,
                 languages,
                 otherStudies,

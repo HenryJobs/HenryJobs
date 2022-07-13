@@ -16,7 +16,7 @@ const User_1 = require("../models/User");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     const { id } = req.params;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, province, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, linkedin, github, gmail } = req.body;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, acercaDe, linkedin, github, gmail } = req.body;
     console.log("este es el body, luk at dis -> ", req.body);
     try {
         const userActive = yield User_1.userModel.findById(id);
@@ -34,7 +34,7 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             userTypes,
             technologies,
             country,
-            province,
+            city,
             followers,
             following,
             backFront,

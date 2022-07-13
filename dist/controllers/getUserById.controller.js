@@ -28,7 +28,7 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     userTypes: userId.userTypes,
                     technologies: userId.technologies,
                     country: userId.country,
-                    province: userId.province,
+                    city: userId.city,
                     backFront: userId.backFront,
                     languages: userId.languages,
                     followers: userId.followers,

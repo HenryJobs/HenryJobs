@@ -13,10 +13,9 @@ exports.getEmailContact = void 0;
 const User_1 = require("../models/User");
 const emailer_1 = require("./config/emailer");
 const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email } = req.body;
     const { id } = req.params;
+    const { email } = req.body;
     try {
-        const business = yield User_1.userModel.findOne({ email: email });
         if (id) {
             const user = yield User_1.userModel.findById(id);
             if (user) {
@@ -24,11 +23,10 @@ const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function
                 const allEmail = {
                     _id: user === null || user === void 0 ? void 0 : user._id,
                     name: user === null || user === void 0 ? void 0 : user.name,
-                    lastName: user === null || user === void 0 ? void 0 : user.lastName,
                     email: user === null || user === void 0 ? void 0 : user.email
                 };
-                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, business === null || business === void 0 ? void 0 : business.email);
-                return res.status(200).json(allEmail);
+                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, email);
+                return res.status(200).json(email);
             }
         }
         res.status(200).send("hola lucho");

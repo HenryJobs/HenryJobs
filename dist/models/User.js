@@ -82,7 +82,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
-], User.prototype, "province", void 0);
+], User.prototype, "city", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
@@ -112,8 +112,8 @@ __decorate([
     __metadata("design:type", Object)
 ], User.prototype, "banner", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ min: 1, max: 5 }),
-    __metadata("design:type", Number)
+    (0, typegoose_1.prop)({}),
+    __metadata("design:type", Array)
 ], User.prototype, "stars", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),

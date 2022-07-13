@@ -64,13 +64,13 @@ export const sendEmailWarning = async (email: any, user: any) => {
 	return
 }
 
-export const contact: any = async(email: any, business: any) => {
+export const contact = async(email: any, falopa: any) => {
 	const transporter = await createTrans()
 	const info: any = transporter.sendMail({
 		from: '<henryjobsproject@gmail.com>',
 		to: email,
 		subject: "contacto",
-		text: `Hola ${business}, te han contactado`
+		text: `Hola, ${falopa} te han contactado`
 	})
 	console.log("message sent", info.messageId)
 
