@@ -116,7 +116,7 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "stars", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ default: 0 }),
+    (0, typegoose_1.prop)({ default: 1 }),
     __metadata("design:type", Number)
 ], User.prototype, "allStars", void 0);
 __decorate([

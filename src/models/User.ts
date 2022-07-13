@@ -83,7 +83,7 @@ export class User {
 	@prop({})
 	stars: starInterface[];
 
-	@prop({ default: 0 })
+	@prop({ default: 1 })
 	allStars: number;
 
 	@prop({})

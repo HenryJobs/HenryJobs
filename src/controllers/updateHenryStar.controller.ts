@@ -18,11 +18,10 @@ export const updateStar = async (req: Request, res: Response) => {
 			});
             let numeroMapped: any | undefined = user?.stars.map(el => el.numero)
 
-            if (numeroMapped.length < 2) {
-                console.log("entró al ife")
-                console.log("-> numeroMapped", numeroMapped)
-                return await user?.updateOne({ $set: { allStars: numeroMapped[0] }})
-            }
+                // console.log("entró al ife")
+                // console.log("-> numeroMapped", numeroMapped)
+                // await user?.updateOne({ $set: { allStars: numeroMapped[0] }})
+            
 
             let promedio: any = numeroMapped?.reduce((acc: number, val: number) => { 
                 return acc + val

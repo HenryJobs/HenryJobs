@@ -22,11 +22,9 @@ const updateStar = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 $push: { stars: { userId: userId, numero: numero } },
             }));
             let numeroMapped = user === null || user === void 0 ? void 0 : user.stars.map(el => el.numero);
-            if (numeroMapped.length < 2) {
-                console.log("entró al ife");
-                console.log("-> numeroMapped", numeroMapped);
-                return yield (user === null || user === void 0 ? void 0 : user.updateOne({ $set: { allStars: numeroMapped[0] } }));
-            }
+            // console.log("entró al ife")
+            // console.log("-> numeroMapped", numeroMapped)
+            // await user?.updateOne({ $set: { allStars: numeroMapped[0] }})
             let promedio = (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.reduce((acc, val) => {
                 return acc + val;
             }, 0)) / (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.length);
