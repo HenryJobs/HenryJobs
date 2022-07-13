@@ -83,6 +83,8 @@ export class User {
 	@prop({})
 	stars: starInterface[];
 
+	@prop()
+	allStars: number;
 
 	@prop({})
 	followers: string[];

@@ -38,6 +38,7 @@ export const getUserEmail = async (req: Request, res: Response) => {
 					acercaDe: userEmail.acercaDe,
 					premium: userEmail.premium,
 					stars: userEmail.stars,
+					allStars: userEmail.allStars,
 					linkedin: userEmail.linkedin,
 					github: userEmail.github,
 					gmail: userEmail.gmail

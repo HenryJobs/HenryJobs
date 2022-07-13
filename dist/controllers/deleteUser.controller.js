@@ -42,6 +42,7 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     acercaDe: deleteById.acercaDe,
                     premium: deleteById.premium,
                     stars: deleteById.stars,
+                    allStars: deleteById.allStars,
                     linkedin: deleteById.linkedin,
                     github: deleteById.github,
                     gmail: deleteById.gmail

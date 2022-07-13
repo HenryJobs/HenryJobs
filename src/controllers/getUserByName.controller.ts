@@ -40,6 +40,7 @@ export const getUserByName = async (
 				acercaDe: user.acercaDe,
 				premium: user.premium,
 				stars: user.stars,
+				allStars: user.allStars,
 				linkedin: user.linkedin,
 				github: user.github,
 				gmail: user.gmail

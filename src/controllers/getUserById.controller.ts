@@ -34,6 +34,7 @@ export const getUserById = async (req: Request, res: Response) => {
 					acercaDe: userId.acercaDe,
 					premium: userId.premium,
 					stars: userId.stars,
+					allStars: userId.allStars,
 					linkedin: userId.linkedin,
 					github: userId.github,
 					gmail: userId.gmail

@@ -30,6 +30,9 @@ export const updateStar = async (req: Request, res: Response) => {
             
             await user?.updateOne({ $set: { stars: starUpdated }});
             
+
+            
+
         }
             return res.status(200).json(user)
 

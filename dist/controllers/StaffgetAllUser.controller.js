@@ -38,6 +38,7 @@ const StaffgetAllUser = (_, res, next) => __awaiter(void 0, void 0, void 0, func
                     premium: user.premium,
                     acercaDe: user.acercaDe,
                     stars: user.stars,
+                    allStars: user.allStars,
                     followers: user.followers,
                     following: user.following,
                     linkedin: user.linkedin,

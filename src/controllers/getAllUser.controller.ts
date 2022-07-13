@@ -34,6 +34,7 @@ export const getAllUser = async (
                     premium: user.premium,
                     acercaDe: user.acercaDe,
                     stars: user.stars,
+                    allStars: user.allStars,
                     followers: user.followers,
                     following: user.following,
                     linkedin: user.linkedin,

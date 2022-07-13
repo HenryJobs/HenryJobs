@@ -44,6 +44,7 @@ const getUserEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                     acercaDe: userEmail.acercaDe,
                     premium: userEmail.premium,
                     stars: userEmail.stars,
+                    allStars: userEmail.allStars,
                     linkedin: userEmail.linkedin,
                     github: userEmail.github,
                     gmail: userEmail.gmail

@@ -30,6 +30,7 @@ export interface userInterface {
 	acercaDe: string;
 	premium: boolean;
 	stars: object;
+	allStars: number;
 	linkedin: string;
 	github: string;
 	gmail: string;

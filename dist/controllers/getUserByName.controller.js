@@ -43,6 +43,7 @@ const getUserByName = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 acercaDe: user.acercaDe,
                 premium: user.premium,
                 stars: user.stars,
+                allStars: user.allStars,
                 linkedin: user.linkedin,
                 github: user.github,
                 gmail: user.gmail

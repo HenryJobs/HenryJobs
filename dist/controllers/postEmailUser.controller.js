@@ -15,7 +15,7 @@ const User_1 = require("../models/User");
 const cloudinary_1 = require("../cloudinary");
 const createUserGoogle = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
-    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, linkedin, github, gmail, acercaDe } = req.body.payload;
+    const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, allStars, linkedin, github, gmail, acercaDe } = req.body.payload;
     try {
         if (email) {
             req.query.userEmail = email;
@@ -42,6 +42,7 @@ const createUserGoogle = (req, res, next) => __awaiter(void 0, void 0, void 0, f
                 curriculumCounter,
                 premium,
                 stars,
+                allStars,
                 acercaDe,
                 linkedin,
                 github,
