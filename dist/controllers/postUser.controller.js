@@ -13,14 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = void 0;
-const fs_extra_1 = require("fs-extra");
 const User_1 = require("../models/User");
 const emailer_1 = require("./config/emailer");
-const cloudinary_1 = require("../cloudinary");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const { TOKEN_SECRET } = process.env;
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, allStars, acercaDe, linkedin, github, gmail } = req.body;
     try {
         let emailUser = yield User_1.userModel.findOne({
@@ -62,26 +59,6 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             });
             (0, emailer_1.sendMail)(email);
             (0, emailer_1.sendPassword)(email, password);
-            if (req.files) {
-                const profileImage = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
-                const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
-                if (profileImage.tempFilePath) {
-                    const result = yield (0, cloudinary_1.uploadImage)(profileImage.tempFilePath);
-                    user.profileImage = {
-                        public_id: result.public_id,
-                        secure_url: result.secure_url,
-                    };
-                    yield (0, fs_extra_1.unlink)(profileImage.tempFilePath);
-                }
-                if (banner.tempFilePath) {
-                    const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
-                    user.banner = {
-                        public_id: result.public_id,
-                        secure_url: result.secure_url,
-                    };
-                    yield (0, fs_extra_1.unlink)(banner.tempFilePath);
-                }
-            }
             yield user.save();
             // crea un token y lo manda al header
             const token = jsonwebtoken_1.default.sign({

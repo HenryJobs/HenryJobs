@@ -10,12 +10,13 @@ import putRoute from "./user/putUser.routes";
 import getUserById from "./user/getUserById.routes";
 import Usersignin from "./user/signinUser.routes";
 import getUserByMail from "./user/getEmailUser.routes";
-import postUserGoogleRoute from './user/postEmailGoogle.routes' 
+import postUserGoogleRoute from './user/postEmailGoogle.routes';
 import softdeleteUser from "./user/softdelete.routes";
 import staffFunctionsUser from "./user/StaffUserFunctions.routes";
 import emailWarning from "./user/getEmailWarning.routes";
-import emailContact from './user/getEmailContact.routes'
-import henryStar from './user/updateUserStar.routes'
+import emailContact from './user/getEmailContact.routes';
+import henryStar from './user/updateUserStar.routes';
+import uploadImageRoute from "./user/uploadImage.routes";
 
 //validador de token
 import { tokenValidation, validateStaffToken } from "../libs/validateToken";
@@ -33,7 +34,8 @@ router.use("/user", userRoute);
 router.use("/user", softdeleteUser);
 router.use("/user", putRoute);
 router.use("/advertencia", emailWarning);
-router.use('/user/star', henryStar)
+router.use('/user/star', henryStar);
+router.use('/upload', uploadImageRoute);
 router.use(
   "/user/staffOnly",
   tokenValidation,

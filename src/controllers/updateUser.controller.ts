@@ -1,9 +1,5 @@
-import { unlink } from "fs-extra";
-import { uploadImage } from "../cloudinary";
-import { UploadedFile } from "express-fileupload";
 import { Request, Response } from "express";
 import { userModel } from "../models/User";
-import { userInterface } from "./interfaces/userInterface.controller";
 
 export const updateUser = async (req: Request, res: Response) => {
 	const { id } = req.params;
@@ -34,8 +30,6 @@ export const updateUser = async (req: Request, res: Response) => {
 		github,
 		gmail
 	} = req.body;
-
-	console.log("este es el body, luk at dis -> ", req.body)
 
 	try {
 		const userActive = await userModel.findById(id);
@@ -73,35 +67,34 @@ export const updateUser = async (req: Request, res: Response) => {
 			}
 		);
 
-		console.log("esto es el updated -> ", updated)
+		// if (req.files) {
+		// 	console.log("luk at dis, entró al req.files -> ", req.files)
+		// 	const profileImage = req.files?.profileImage as UploadedFile;
+		// 	console.log("este es el profileImage -> ", profileImage)
+		// 	const banner = req.files?.banner as UploadedFile;
 
-		if (req.files) {
-			console.log("luk at dis, entró al req.files -> ", req.files)
-			const profileImage = req.files?.profileImage as UploadedFile;
-			console.log("este es el profileImage -> ", profileImage)
-			const banner = req.files?.banner as UploadedFile;
+		// 	if (profileImage.tempFilePath) {
+		// 		console.log("entró al if de profileImage.tempFilePath")
+		// 		const result = await uploadImage(profileImage.tempFilePath);
+		// 		updated.profileImage = {
+		// 			public_id: result.public_id,
+		// 			secure_url: result.secure_url,
+		// 		};
+		// 		console.log("esto es lo que queda en updated.profileImage desp de que se actualiza -> ", updated.profileImage)
+		// 		await unlink(profileImage.tempFilePath);
+		// 	}
 
-			if (profileImage.tempFilePath) {
-				console.log("entró al if de profileImage.tempFilePath")
-				const result = await uploadImage(profileImage.tempFilePath);
-				updated.profileImage = {
-					public_id: result.public_id,
-					secure_url: result.secure_url,
-				};
-				console.log("esto es lo que queda en updated.profileImage desp de que se actualiza -> ", updated.profileImage)
-				await unlink(profileImage.tempFilePath);
-			}
+		// 	if (banner.tempFilePath) {
+		// 		const result = await uploadImage(banner.tempFilePath);
+		// 		updated.banner = {
+		// 			public_id: result.public_id,
+		// 			secure_url: result.secure_url,
+		// 		};
+		// 		await unlink(banner.tempFilePath);
+		// 	}
 
-			if (banner.tempFilePath) {
-				const result = await uploadImage(banner.tempFilePath);
-				updated.banner = {
-					public_id: result.public_id,
-					secure_url: result.secure_url,
-				};
-				await unlink(banner.tempFilePath);
-			}
-
-		}
+		// }
+		                            //////// casi seguro ya no sirve la lógica del req.files ///////////
 		await updated.save();
 
 		res.status(200).json(updated)

@@ -18,6 +18,7 @@ const StaffUserFunctions_routes_1 = __importDefault(require("./user/StaffUserFun
 const getEmailWarning_routes_1 = __importDefault(require("./user/getEmailWarning.routes"));
 const getEmailContact_routes_1 = __importDefault(require("./user/getEmailContact.routes"));
 const updateUserStar_routes_1 = __importDefault(require("./user/updateUserStar.routes"));
+const uploadImage_routes_1 = __importDefault(require("./user/uploadImage.routes"));
 //validador de token
 const validateToken_1 = require("../libs/validateToken");
 // user
@@ -33,6 +34,7 @@ router.use("/user", softdelete_routes_1.default);
 router.use("/user", putUser_routes_1.default);
 router.use("/advertencia", getEmailWarning_routes_1.default);
 router.use('/user/star', updateUserStar_routes_1.default);
+router.use('/upload', uploadImage_routes_1.default);
 router.use("/user/staffOnly", validateToken_1.tokenValidation, validateToken_1.validateStaffToken, StaffUserFunctions_routes_1.default);
 //sacar para la demo los token, volverlos a poner inmediatamente
 //post

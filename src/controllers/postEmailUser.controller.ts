@@ -1,9 +1,5 @@
-import { unlink } from "fs-extra";
 import { Request, Response, NextFunction } from "express";
-import { userModel, User } from "../models/User";
-import { uploadImage } from "../cloudinary";
-import { UploadedFile } from "express-fileupload";
-
+import { userModel } from "../models/User";
 
 export const createUserGoogle = async (
     req: Request,
@@ -71,33 +67,7 @@ export const createUserGoogle = async (
                 gmail
             });
 
-            if (req.files) {
-                const { tempFilePath } = req.files?.profileImage as UploadedFile;
-                const banner = req.files?.banner as UploadedFile;
-
-                if (tempFilePath) {
-                    const result = await uploadImage(tempFilePath);
-                    user.profileImage = {
-                        public_id: result.public_id,
-                        secure_url: result.secure_url,
-                    };
-
-                    await unlink(tempFilePath);
-                }
-
-                if (banner.tempFilePath) {
-                    const result = await uploadImage(banner.tempFilePath);
-                    user.banner = {
-                        public_id: result.public_id,
-                        secure_url: result.secure_url,
-                    };
-                }
-
-                await unlink(banner.tempFilePath);
-            }
-
             await user.save()
-
             return res.status(200).json(user)
         }
     } catch (err) {

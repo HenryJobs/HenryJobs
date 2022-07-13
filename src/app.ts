@@ -23,10 +23,11 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: "./uploads"
-}));
+// app.use(fileUpload({
+//     useTempFiles: true,
+//     tempFileDir: "./uploads"
+// }));
+            /////////////////// yy... mirá, luk at dis... yo creo que eso no sirve ya, viste... /////////////////////
 
 app.set("port", process.env.PORT || 3002)
 app.use('/api', routes)

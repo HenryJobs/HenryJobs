@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = void 0;
 const User_1 = require("../models/User");
-const cloudinary_1 = require("../cloudinary");
 const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
@@ -47,8 +46,6 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     github: deleteById.github,
                     gmail: deleteById.gmail
                 };
-                yield (0, cloudinary_1.deleteImage)(deleteById.profileImage.public_id);
-                // await deleteImage(deleteById.banner.public_id);
                 return res.status(200).json(myDelete);
             }
             ;

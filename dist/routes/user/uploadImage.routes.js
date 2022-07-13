@@ -1,6 +1,7 @@
 "use strict";
-// import { Router } from "express";
-// import { uploadImageController } from "../../controllers/uploadImage.controller";
-// const router = Router()
-// router.post('/', uploadImageController)
-// export default router;
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const uploadImages_controller_1 = require("../../controllers/uploadImages.controller");
+const router = (0, express_1.Router)();
+router.post('/', uploadImages_controller_1.uploadImageController);
+exports.default = router;

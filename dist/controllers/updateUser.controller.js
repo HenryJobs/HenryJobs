@@ -10,14 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = void 0;
-const fs_extra_1 = require("fs-extra");
-const cloudinary_1 = require("../cloudinary");
 const User_1 = require("../models/User");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
     const { id } = req.params;
     const { name, lastName, userName, email, password, profileImage, banner, userTypes, technologies, country, city, followers, following, backFront, languages, otherStudies, workModality, curriculumCounter, premium, stars, allStars, acercaDe, linkedin, github, gmail } = req.body;
-    console.log("este es el body, luk at dis -> ", req.body);
     try {
         const userActive = yield User_1.userModel.findById(id);
         if (!(userActive === null || userActive === void 0 ? void 0 : userActive.active)) {
@@ -50,31 +46,31 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             github,
             gmail
         });
-        console.log("esto es el updated -> ", updated);
-        if (req.files) {
-            console.log("luk at dis, entró al req.files -> ", req.files);
-            const profileImage = (_a = req.files) === null || _a === void 0 ? void 0 : _a.profileImage;
-            console.log("este es el profileImage -> ", profileImage);
-            const banner = (_b = req.files) === null || _b === void 0 ? void 0 : _b.banner;
-            if (profileImage.tempFilePath) {
-                console.log("entró al if de profileImage.tempFilePath");
-                const result = yield (0, cloudinary_1.uploadImage)(profileImage.tempFilePath);
-                updated.profileImage = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-                console.log("esto es lo que queda en updated.profileImage desp de que se actualiza -> ", updated.profileImage);
-                yield (0, fs_extra_1.unlink)(profileImage.tempFilePath);
-            }
-            if (banner.tempFilePath) {
-                const result = yield (0, cloudinary_1.uploadImage)(banner.tempFilePath);
-                updated.banner = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                };
-                yield (0, fs_extra_1.unlink)(banner.tempFilePath);
-            }
-        }
+        // if (req.files) {
+        // 	console.log("luk at dis, entró al req.files -> ", req.files)
+        // 	const profileImage = req.files?.profileImage as UploadedFile;
+        // 	console.log("este es el profileImage -> ", profileImage)
+        // 	const banner = req.files?.banner as UploadedFile;
+        // 	if (profileImage.tempFilePath) {
+        // 		console.log("entró al if de profileImage.tempFilePath")
+        // 		const result = await uploadImage(profileImage.tempFilePath);
+        // 		updated.profileImage = {
+        // 			public_id: result.public_id,
+        // 			secure_url: result.secure_url,
+        // 		};
+        // 		console.log("esto es lo que queda en updated.profileImage desp de que se actualiza -> ", updated.profileImage)
+        // 		await unlink(profileImage.tempFilePath);
+        // 	}
+        // 	if (banner.tempFilePath) {
+        // 		const result = await uploadImage(banner.tempFilePath);
+        // 		updated.banner = {
+        // 			public_id: result.public_id,
+        // 			secure_url: result.secure_url,
+        // 		};
+        // 		await unlink(banner.tempFilePath);
+        // 	}
+        // }
+        //////// casi seguro ya no sirve la lógica del req.files ///////////
         yield updated.save();
         res.status(200).json(updated);
     }
