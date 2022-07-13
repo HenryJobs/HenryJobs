@@ -17,7 +17,7 @@ export interface userInterface {
 	userTypes: number;
 	technologies: string[];
 	country: string;
-	province: string;
+	city: string;
 	backFront: string;
 	languages: string;
 	otherStudies: string[];

@@ -27,7 +27,7 @@ export const getUserByName = async (
 				userTypes: user.userTypes,
 				technologies: user.technologies,
 				country: user.country,
-				province: user.province,
+				city: user.city,
 				backFront: user.backFront,
 				followers: user.followers,
 				following: user.following,

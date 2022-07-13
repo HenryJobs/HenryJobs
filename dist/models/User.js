@@ -82,7 +82,7 @@ __decorate([
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)
-], User.prototype, "province", void 0);
+], User.prototype, "city", void 0);
 __decorate([
     (0, typegoose_1.prop)({}),
     __metadata("design:type", String)

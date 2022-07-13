@@ -57,7 +57,7 @@ export class User {
 	country: string;
 
 	@prop({})
-	province: string;
+	city: string;
 
 	@prop({})
 	backFront: string;
