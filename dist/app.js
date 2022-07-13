@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const index_1 = __importDefault(require("./routes/index"));
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
@@ -19,10 +20,10 @@ app.use((_req, res, next) => {
     res.setHeader("Acess-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
-// app.use(fileUpload({
-//     useTempFiles: true,
-//     tempFileDir: "./uploads"
-// }));
+app.use((0, express_fileupload_1.default)({
+    useTempFiles: true,
+    tempFileDir: "./uploads"
+}));
 /////////////////// yy... mirá, luk at dis... yo creo que eso no sirve ya, viste... /////////////////////
 app.set("port", process.env.PORT || 3002);
 app.use('/api', index_1.default);
