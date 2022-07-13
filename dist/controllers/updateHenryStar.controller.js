@@ -30,7 +30,7 @@ const updateStar = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             let promedio = (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.reduce((acc, val) => {
                 return acc + val;
             }, 0)) / (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.length);
-            let promedioRedondo = Math.round(promedio);
+            let promedioRedondo = Math.floor(promedio);
             console.log("promedio -> ", promedioRedondo);
             yield (user === null || user === void 0 ? void 0 : user.updateOne({ $set: { allStars: promedioRedondo } }));
             console.log(pushed, "pushed despues de push");

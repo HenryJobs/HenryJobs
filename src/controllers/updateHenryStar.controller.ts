@@ -27,7 +27,7 @@ export const updateStar = async (req: Request, res: Response) => {
             let promedio: any = numeroMapped?.reduce((acc: number, val: number) => { 
                 return acc + val
             }, 0) / numeroMapped?.length
-            let promedioRedondo = Math.round(promedio)
+            let promedioRedondo = Math.floor(promedio)
             console.log("promedio -> ", promedioRedondo)
             await user?.updateOne({ $set: { allStars: promedioRedondo }})
             console.log(pushed, "pushed despues de push")
