@@ -23,6 +23,9 @@ const updateStar = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             yield (user === null || user === void 0 ? void 0 : user.updateOne({
                 $push: { stars: { userId: userId, numero: numero } },
             }));
+            let numeroMapped = user === null || user === void 0 ? void 0 : user.stars.map(el => el.numero);
+            let promedio = (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.reduce((acc, val) => acc + val)) / (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.length);
+            yield (user === null || user === void 0 ? void 0 : user.updateOne({ $set: { allStars: promedio } }));
             console.log(pushed, "pushed despues de push");
         }
         else {
@@ -34,6 +37,9 @@ const updateStar = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             });
             console.log(henryStar, "esto es henryStar");
             yield (user === null || user === void 0 ? void 0 : user.updateOne({ $set: { stars: starUpdated } }));
+            let numeroMapped = user === null || user === void 0 ? void 0 : user.stars.map(el => el.numero);
+            let promedio = (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.reduce((acc, val) => acc + val)) / (numeroMapped === null || numeroMapped === void 0 ? void 0 : numeroMapped.length);
+            yield (user === null || user === void 0 ? void 0 : user.updateOne({ $set: { allStars: promedio } }));
         }
         return res.status(200).json(user);
     }
