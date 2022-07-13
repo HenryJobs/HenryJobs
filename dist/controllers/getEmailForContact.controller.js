@@ -25,7 +25,7 @@ const getEmailContact = (req, res) => __awaiter(void 0, void 0, void 0, function
                     name: user === null || user === void 0 ? void 0 : user.name,
                     email: user === null || user === void 0 ? void 0 : user.email
                 };
-                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, 'renecadenacontacto@gmail.com');
+                (0, emailer_1.contact)(allEmail === null || allEmail === void 0 ? void 0 : allEmail.email, email);
                 return res.status(200).json(email);
             }
         }

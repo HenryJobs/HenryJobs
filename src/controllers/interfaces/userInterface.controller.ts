@@ -29,7 +29,7 @@ export interface userInterface {
 	banner: object;
 	acercaDe: string;
 	premium: boolean;
-	stars: number;
+	stars: object;
 	linkedin: string;
 	github: string;
 	gmail: string;
@@ -56,4 +56,9 @@ export interface applicantsInterface {
 	step: string;
 	userId: string;
 	name: string
+}
+
+export interface starInterface {
+	userId: string;
+	numero: number
 }

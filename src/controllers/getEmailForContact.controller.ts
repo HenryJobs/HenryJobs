@@ -21,8 +21,8 @@ export const getEmailContact = async (req: Request, res: Response) => {
                         email: user?.email
                     }
 
-                    contact(allEmail?.email, 'renecadenacontacto@gmail.com')
-                    return res.status(200).json('renecadenacontacto@gmail.com');
+                    contact(allEmail?.email, email)
+                    return res.status(200).json(email);
                 }
             }
             res.status(200).send("hola lucho")

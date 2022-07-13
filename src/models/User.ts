@@ -6,6 +6,7 @@ import {
 	modelOptions,
 } from "@typegoose/typegoose";
 import { compare, genSalt, hash } from "bcrypt";
+import { starInterface } from "../controllers/interfaces/userInterface.controller";
 
 enum UserTypes {
 	NN,
@@ -79,8 +80,9 @@ export class User {
 	@prop({})
 	banner: object;
 
-	@prop({ min: 1, max: 5 })
-	stars: number;
+	@prop({})
+	stars: starInterface[];
+
 
 	@prop({})
 	followers: string[];
