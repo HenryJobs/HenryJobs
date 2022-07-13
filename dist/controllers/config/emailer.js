@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contact = exports.sendEmailWarning = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
 ////pcmjcdzyfrgflexq
+//ngtzgzujwpjimtla
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
     const transport = nodemailer_1.default.createTransport({
@@ -21,8 +22,8 @@ const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
         port: 465,
         secure: true,
         auth: {
-            user: "gaerca123@gmail.com",
-            pass: "pcmjcdzyfrgflexq",
+            user: "henryjobsproject@gmail.com",
+            pass: "ngtzgzujwpjimtla",
         },
     });
     return transport;
