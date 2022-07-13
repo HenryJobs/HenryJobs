@@ -20,7 +20,7 @@ export const sendMail = async (email: any) => {
     from: "<henryjobsproject@gmail.com>",
     to: email,
     subject: "registro",
-    text: `te encuentras registrado`,
+    text: `Bienvenido a Henry Jobs, te encuentras actualmente registrado`,
   });
   console.log("message sent", info.messageId);
 
@@ -39,17 +39,6 @@ export const sendPassword = async (email: any, password: any) => {
   return;
 };
 
-export const comment = async (to: any, who: any) => {
-  const transporter = await createTrans();
-  const info: any = transporter.sendMail({
-    from: "<henryjobsproject@gmail.com>",
-    to: `${to}`,
-    subject: "han contestado tu publicación",
-    text: `${who}, han contestado tu publicación`,
-  });
-  console.log("message sent", info.message);
-  return;
-};
 
 export const sendEmailWarning = async (email: any, user: any) => {
   const transporter = await createTrans();
@@ -70,7 +59,7 @@ export const contact = async (email: any, falopa: any) => {
     from: "<henryjobsproject@gmail.com>",
     to: email,
     subject: "contacto",
-    text: `Hola, ${falopa} te han contactado`,
+    text: `Hola, te ha contactado un reclutador/empresa ${falopa}`,
   });
   console.log("message sent", info.messageId);
 

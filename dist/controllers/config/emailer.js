@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.contact = exports.sendEmailWarning = exports.comment = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
+exports.contact = exports.sendEmailWarning = exports.sendPassword = exports.sendMail = exports.createTrans = void 0;
 ////pcmjcdzyfrgflexq
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -34,7 +34,7 @@ const sendMail = (email) => __awaiter(void 0, void 0, void 0, function* () {
         from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "registro",
-        text: `te encuentras registrado`,
+        text: `Bienvenido a Henry Jobs, te encuentras actualmente registrado`,
     });
     console.log("message sent", info.messageId);
     return;
@@ -52,18 +52,6 @@ const sendPassword = (email, password) => __awaiter(void 0, void 0, void 0, func
     return;
 });
 exports.sendPassword = sendPassword;
-const comment = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
-    const transporter = yield (0, exports.createTrans)();
-    const info = transporter.sendMail({
-        from: "<henryjobsproject@gmail.com>",
-        to: `${to}`,
-        subject: "han contestado tu publicación",
-        text: `${who}, han contestado tu publicación`,
-    });
-    console.log("message sent", info.message);
-    return;
-});
-exports.comment = comment;
 const sendEmailWarning = (email, user) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
@@ -82,7 +70,7 @@ const contact = (email, falopa) => __awaiter(void 0, void 0, void 0, function* (
         from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "contacto",
-        text: `Hola, ${falopa} te han contactado`,
+        text: `Hola, te ha contactado un reclutador/empresa ${falopa}`,
     });
     console.log("message sent", info.messageId);
     return;
