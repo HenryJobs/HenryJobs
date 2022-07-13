@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { getEmailContact } from "../../controllers/getEmailForContact.controller";
 
-const router = Router()
+const router = Router();
 
-router.get('/:id', getEmailContact)
+router.get("/:id/:emailBusiness", getEmailContact);
 
-export default router
+export default router;

@@ -21,9 +21,9 @@ const createTrans = () => __awaiter(void 0, void 0, void 0, function* () {
         port: 465,
         secure: true,
         auth: {
-            user: 'gaerca123@gmail.com',
-            pass: 'pcmjcdzyfrgflexq',
-        }
+            user: "gaerca123@gmail.com",
+            pass: "pcmjcdzyfrgflexq",
+        },
     });
     return transport;
 });
@@ -31,10 +31,10 @@ exports.createTrans = createTrans;
 const sendMail = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
-        from: '<henryjobsproject@gmail.com>',
+        from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "registro",
-        text: `te encuentras registrado`
+        text: `te encuentras registrado`,
     });
     console.log("message sent", info.messageId);
     return;
@@ -43,10 +43,10 @@ exports.sendMail = sendMail;
 const sendPassword = (email, password) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
-        from: '<henryjobsproject@gmail.com>',
+        from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "contraseña",
-        text: `tu contraseña es ${password}`
+        text: `tu contraseña es ${password}`,
     });
     console.log("message sent", info.message);
     return;
@@ -55,10 +55,10 @@ exports.sendPassword = sendPassword;
 const comment = (to, who) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
-        from: '<henryjobsproject@gmail.com>',
+        from: "<henryjobsproject@gmail.com>",
         to: `${to}`,
         subject: "han contestado tu publicación",
-        text: `${who}, han contestado tu publicación`
+        text: `${who}, han contestado tu publicación`,
     });
     console.log("message sent", info.message);
     return;
@@ -67,10 +67,10 @@ exports.comment = comment;
 const sendEmailWarning = (email, user) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
     const info = transporter.sendMail({
-        from: '<henryjobsproject@gmail.com>',
+        from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "registro",
-        text: `Hola ${user}, detectamos recientemente que tus postulaciones en el período acordado por contrato no estaría cumpliénse. Por favor, te pedimos que puedas ponerte al corriente con las postulaciones enviadas a empresas`
+        text: `Hola ${user}, detectamos recientemente que tus postulaciones en el período acordado por contrato no estaría cumpliénse. Por favor, te pedimos que puedas ponerte al corriente con las postulaciones enviadas a empresas`,
     });
     console.log("message sent", info.messageId);
     return;
@@ -78,11 +78,11 @@ const sendEmailWarning = (email, user) => __awaiter(void 0, void 0, void 0, func
 exports.sendEmailWarning = sendEmailWarning;
 const contact = (email, falopa) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = yield (0, exports.createTrans)();
-    const info = transporter.sendMail({
-        from: '<henryjobsproject@gmail.com>',
+    const info = yield transporter.sendMail({
+        from: "<henryjobsproject@gmail.com>",
         to: email,
         subject: "contacto",
-        text: `Hola, ${falopa} te han contactado`
+        text: `Hola, ${falopa} te han contactado`,
     });
     console.log("message sent", info.messageId);
     return;
