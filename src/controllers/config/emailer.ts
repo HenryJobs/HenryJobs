@@ -1,5 +1,4 @@
-////pcmjcdzyfrgflexq
-//ngtzgzujwpjimtla
+
 import nodemailer from "nodemailer";
 
 export const createTrans = async () => {
@@ -8,8 +7,8 @@ export const createTrans = async () => {
     port: 465,
     secure: true,
     auth: {
-      user: "gaerca123@gmail.com",
-      pass: "pcmjcdzyfrgflexq",
+      user: "",
+      pass: "",
     },
   });
   return transport;

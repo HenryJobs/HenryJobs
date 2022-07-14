@@ -66,6 +66,7 @@ export const updateUser = async (req: Request, res: Response) => {
 				gmail
 			}
 		);
+		
 
 		// if (req.files) {
 		// 	console.log("luk at dis, entró al req.files -> ", req.files)
