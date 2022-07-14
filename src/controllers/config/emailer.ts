@@ -18,7 +18,7 @@ export const createTrans = async () => {
 export const sendMail = async (email: any) => {
   const transporter = await createTrans();
   const info: any = transporter.sendMail({
-    from: "<henryjobsproject@gmail.com>",
+    from: "henryjobsproject@gmail.com",
     to: email,
     subject: "registro",
     text: `Bienvenido a Henry Jobs, te encuentras actualmente registrado`,
@@ -31,7 +31,7 @@ export const sendMail = async (email: any) => {
 export const sendPassword = async (email: any, password: any) => {
   const transporter = await createTrans();
   const info: any = transporter.sendMail({
-    from: "<henryjobsproject@gmail.com>",
+    from: "henryjobsproject@gmail.com",
     to: email,
     subject: "contraseña",
     text: `tu contraseña es ${password}`,
@@ -44,7 +44,7 @@ export const sendPassword = async (email: any, password: any) => {
 export const sendEmailWarning = async (email: any, user: any) => {
   const transporter = await createTrans();
   const info: any = transporter.sendMail({
-    from: "<henryjobsproject@gmail.com>",
+    from: "henryjobsproject@gmail.com",
     to: email,
     subject: "registro",
     text: `Hola ${user}, detectamos recientemente que tus postulaciones en el período acordado por contrato no estaría cumpliénse. Por favor, te pedimos que puedas ponerte al corriente con las postulaciones enviadas a empresas`,
@@ -57,7 +57,7 @@ export const sendEmailWarning = async (email: any, user: any) => {
 export const contact = async (email: any, falopa: any) => {
   const transporter = await createTrans();
   const info: any = await transporter.sendMail({
-    from: "<henryjobsproject@gmail.com>",
+    from: "henryjobsproject@gmail.com",
     to: email,
     subject: "contacto",
     text: `Hola, te ha contactado un reclutador/empresa ${falopa}`,
